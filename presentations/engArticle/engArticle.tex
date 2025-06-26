@@ -1,0 +1,229 @@
+\documentclass[12pt]{beamer}
+
+% ****************
+% ***** INFO *****
+% ****************
+\usepackage[english]{babel}
+\usepackage{tikz}
+\title[Institute]{Gromov--Hausdorff distance between clouds of special type}
+\subtitle{Calculating distance to cloud of bounded metric spaces}
+\author[Boris Nesterov]{Boris Nesterov}
+\institute[]{M. V. Lomonosov Moscow State University}
+\newcommand{\currentyear}{\the\year} % \currentyear
+\newcommand{\nextyear}{\the\numexpr\year+1\relax} % \nextyear
+
+\date{\currentyear} % or \today
+
+% *******************
+% ***** PROJECT *****
+% *******************
+\definecolor{main}{HTML}{0F0063}
+\setbeamercolor{structure}{fg=main}
+
+% *****************
+% ***** THEME *****
+% *****************
+\usetheme{Luebeck}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\setbeamertemplate{frametitle continuation}{\gdef\beamer@frametitle{}}
+\setbeamertemplate{footline}{}
+
+% *****************
+% ***** CODE *****
+% *****************
+\usepackage{listings}
+\lstdefinestyle{java}{
+    backgroundcolor=\color{white},
+    basicstyle=\ttfamily\scriptsize,
+    breaklines=true,
+    commentstyle=\color{gray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{magenta},
+    identifierstyle=\color{black},
+    numberstyle=\color{gray},
+    language=Java
+}
+\lstdefinestyle{cpp}{
+    backgroundcolor=\color{white},
+    basicstyle=\ttfamily\scriptsize,
+    breaklines=true,
+    commentstyle=\color{gray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{magenta},
+    identifierstyle=\color{black},
+    numberstyle=\color{gray},
+    language=C++
+}
+\lstdefinestyle{py}{
+    backgroundcolor=\color{white},
+    basicstyle=\ttfamily\scriptsize,
+    breaklines=true,
+    commentstyle=\color{gray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{magenta},
+    language=Python
+}
+\lstdefinestyle{js}{
+    backgroundcolor=\color{white},
+    basicstyle=\ttfamily\scriptsize,
+    breaklines=true,
+    commentstyle=\color{gray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{magenta},
+    identifierstyle=\color{black},
+    numberstyle=\color{gray},
+    language=JavaScript,
+    escapechar=@
+}
+\lstdefinestyle{sh}{
+    basicstyle=\ttfamily\scriptsize,
+    breaklines=true,
+    commentstyle=\color{gray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{magenta},
+    identifierstyle=\color{black},
+    numberstyle=\color{gray},
+    language=bash
+}
+
+% **********************
+% ***** ALGORITHMS *****
+% **********************
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% *****************
+% ***** UTILS *****
+% *****************
+\usepackage{xcolor}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\dis}{dis}
+% ********************
+% ***** DOCUMENT *****
+% ********************
+\begin{document}
+
+% **********************
+% ***** TITLEPAGE ******
+% **********************
+\begin{frame}{}
+\vspace{\fill}
+
+
+\Large
+\color{main}
+\inserttitle
+
+\medskip
+
+\large
+\color{black}
+\insertsubtitle
+
+\vspace{\fill}
+
+\footnotesize
+\insertinstitute
+
+\vspace{\fill}
+
+\textbf{Author:} \insertauthor
+
+\medskip
+
+\insertdate
+
+\vspace{\fill}
+\end{frame}
+
+% *****************
+% ***** START *****
+% *****************
+\begin{frame}[allowframebreaks]{Gromov--Hausdorff distance}
+1
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Clouds}
+The Gromov--Hausdorff distance is a \underline{generalized} pseudometric on the class of all metric spaces.
+
+Example: $d_{GH}\left(\Delta_{1}, \mathbb{R}\right) = \infty$.
+
+\textbf{Clouds}: all metric spaces that are at a finite distance from each other.
+$[X]$ --- cloud containing $X$.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Cloud of bounded metric spaces}
+\[|X,\Delta_1| = \frac 1 2 \diam X\]
+
+Cloud $[\Delta_{1}]$ --- cloud of all \underline{bounded} metric spaces.\\
+Ultrametric inequality:
+\[\left|X,Y\right| \le \max\left\{\left|X,\Delta_{1}\right|,\left|Y,\Delta_{1}\right|\right\}\]
+
+Geodesic:
+\[\left|\lambda X, \mu X\right| = |\lambda - \mu||X, \Delta_1|\]
+\scalebox{1}
+{
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{Gromov-Hausdorff-space-general-properties.jpg}
+    \label{fig:enter-label}
+\end{figure}
+}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Stabilizer group}
+Multiplying spaces by \(\lambda > 0\) can produce interesting results. The distance $|X,\lambda X|$ can be infinite. For example, if $X$ is a geometric progression.
+
+\textbf{Stabilizer group:} all $\lambda > 0$ such that $[X] = [\lambda X]$.
+
+\textbf{Trivial:} $\St\left([X]\right) = \{1\}$.
+
+\textbf{Center:} metric space $X$, such that $X = \lambda X$ \\for all $\lambda \in \St([X])$.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Gromov--Hausdorff distance between clouds}
+Metric spaces are \underline{sets} by definition. 
+
+Clouds are not sets, they are \underline{proper classes}. They contain sets of arbitrary cardinality.
+
+Definition of Gromov--Hausdorff distance is modified.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Center image Theorem}
+Clouds $[M], [\Delta_1]$, $[M]$ has a nontrivial stabilizer and $M$ --- center. $R$ --- correspondence between them, $\dis R = \epsilon < \infty$. Then  $\big|R(\Delta_1), M\big| \le 2\epsilon$.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Center image Theorem}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\input{image1}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Center image Theorem}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\input{image2}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Distance theorem}
+A cloud has a \underline{nontrivial} stabilizer, and there are two spaces which break the ultrametric inequality. Then it's distance to $[\Delta_1]$ is \underline{infinite}.
+
+$M$ is the center of $[M]$, $Y_1$ and $Y_2$ are such metric spaces that 
+\begin{gather*}
+    |Y_1, M| \le \rho,\\
+    |Y_1,M| \le \rho,\\
+    |Y_1,Y_2| > \rho.
+\end{gather*}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Distance Theorem}
+\[X_1 = R^{-1}(Y_1), X_2 = R^{-1}(Y_2)\]
+\input{image3}
+\end{frame}
+
+
+% ***************
+% ***** END *****
+% ***************
+
+\end{document}

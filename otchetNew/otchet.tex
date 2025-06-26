@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{ {./images/} }
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{multirow}
+
+\DeclareMathOperator{\facmin}{facmin}
+\DeclareMathOperator{\facmax}{facmax}
+\DeclareMathOperator{\fac}{fac}
+\DeclareMathOperator{\tol}{tol}
+\DeclareMathOperator{\err}{err}
+\title{отчет 29}
+\author{nesterov.boris123 }
+\date{December 2023}
+
+\begin{document}
+
+\section{Условие.}
+\begin{gather*}
+ \int\limits_{0}^{\frac{\pi} 2}\big(\dot{x}^{2} - x^{2}\cos(\alpha x)\big)dx \rightarrow ext\\
+  x(0) = 0\\
+  x(\frac{\pi} 2) = 1\\
+  \alpha \in \{0;0.01;0.5;1.5;10.5\}
+\end{gather*}
+\section{Система необходимых условий оптимальности}
+\begin{gather*}
+  L = \lambda_{0}\big(\dot{x}^{2} - x^{2}\cos(\alpha x)\big)
+\end{gather*}
+Уравнение Эйлера-Лагранжа:
+\begin{gather*}
+  \ddot{x} = \frac{\alpha}{2} x^{2}\sin\alpha x - x \cos \alpha x
+\end{gather*}
+\section{Краевая задача.}
+Итак, получили краевую задачу:
+$$\begin{cases}
+  \dot x_{1} = x_{2}\\
+  \dot{x_{2}} = \frac{\alpha}{2} x_{1}^{2}\sin\alpha x_{1} - x_{1} \cos \alpha x_{1}\\
+  x_1(0) = 0\\
+  x(\frac{\pi} 2) = 1
+\end{cases}$$
+\section{Аналитическое решение при $\lambda = 0$}
+При $\alpha = 0$ получаем $\ddot{x} = -x$, откуда из граничных условий:
+\[x = \sin t\]
+Отсюда в частности получаем, что точное решение при $\alpha = 0$ начинается в $(0,1)$.
+\section{Численное решение в общем виде}
+Зададим функцию ошибок как функцию от $x_{2}(0)$, возвращающую $x_{1}(\frac{\pi}{2}-1)$ --- ошибка.
+Для $\alpha = 0$ известно, что она равна нулю в $1$. Для малых $\alpha$ достаточно искать нули
+ методом Ньютона, начиная из 1. Для $\alpha = 10.5$ метод Ньютона не
+ сходится. Воспользуемся методом случайного поиска, и получим, например, что один из нулей функции ошибок лежит на
+ интервале $(1.7, 1.9)$. Метод Ньютона из точки $1.8$ сходится. Также из значений функции ошибок на интервале $(0, 5)$
+ ясно, что нулей несколько, т. е. допустимых экстремалей несколько при $\alpha = 10.5$.
+
+
+\section{Оценки точности решений.}
+Матрица Якоби системы:
+$$A = \begin{pmatrix}
+0 & 1  \\
+  2\alpha x_{1} \sin \alpha x_{1} + (\frac\alpha 2 x^{2}_{1}-1)\cos \alpha x_{1}  & 0
+\end{pmatrix}.$$
+Для нахождения ее логарифмической нормы необходимо найти максимальное по модулю собственное значение матрицы:
+$$\frac 1 2 (A + A^{T}) = \begin{pmatrix}
+0 & \alpha x_{1} \sin \alpha x_{1} + (\frac\alpha 4 x^{2}_{1}-\frac 1 2)\cos \alpha x_{1} + \frac 1 2 \\
+  \alpha x_{1} \sin \alpha x_{1} + (\frac\alpha 4 x^{2}_{1}-\frac 1 2)\cos \alpha x_{1} + \frac 1 2  & 0
+\end{pmatrix}.$$
+Им будет $\lambda(x) = |\alpha x_{1} \sin \alpha x_{1} + (\frac\alpha 4 x^{2}_{1}-\frac 1 2)\cos \alpha x_{1}|$.
+Ошибка расчитывалась по формуле $\delta(x_{i+1}) = r_{i} + \delta(x_{i})*e^{L_{i}}$, где
+\begin{itemize}
+  \item $\delta(x_{N})$ -- глобольная ошибка
+  \item $r_{i}$ -- ошибка на шаге, равная $10^{-11}$
+  \item $L_{i} = h\max(\lambda(x_{i}), \lambda(x_{i-1}))$
+\end{itemize}
+\section{Исследование оптимальности экстремалей}
+Отметим, что $L_{\dot{x}\dot{x}} = 2 > 0$, значит выполняется усиленное условие Лежандра
+\begin{gather*}
+L_{\dot{x}x} = 0 \\
+L_{xx} =2\alpha x_{1} \sin \alpha x_{1} + (\frac\alpha 2 x^{2}_{1}-1)\cos \alpha x_{1}
+\end{gather*}
+\[\int\limits_{0}^{\frac \pi 2} \dot{h}^{2} + \alpha \hat{x} (\sin \alpha \hat{x} + (\frac\alpha 4 \hat{x}^{2}-\frac 1 2)\cos \alpha \hat x)h^{2}\]
+Уравнение Якоди имеет вид:
+        \[\ddot{h} = \alpha \hat{x} (\sin \alpha \hat{x} + (\frac\alpha 4 \hat{x}^{2}-\frac 1 2)\cos \alpha \hat x)h\]
+        \[h(0) = 0.\]
+
+Условие Якоби выполнено, если не существует не равного $0$ $h$, такого что $h(\tau) = 0$, $\tau \in (0, \frac \pi 2)$.
+Для усиленного условия таких $\tau$ должно не быть в $(0, \frac \pi 2]$.
+
+При $\alpha = 0$, уравнение Якоби приобретает вид
+\begin{gather*}
+  \ddot h = -h\\
+  h(0) = 0
+\end{gather*}
+Решением этого уравнения явяется $C\sin t$, у которого нет сопряженных точек на $(0, \frac \pi 2]$, т. е. выполнено усилонное
+условие Якоби.
+
+Функция Вейерштрасса будет иметь вид $(u + v)^{2}\ge 0$, т. е. выполнено усиленное условие Вейерштрасса.
+
+Итак, при $\alpha = 0$ экстремаль является сильным локальным минимумом. Так как задача квадратичная, минимум будет глобальным.
+\section{Результаты вычислений.}
+В таблице приведены $\alpha$, начальные параметры и векторы ошибок:
+
+\begin{tabular}{|c|c|c|c|}
+  \hline
+   $\alpha$ & $x_{2}(0)$ & $x_{1}(1) - 1$ & Ошибка\\
+  \hline
+    $0$ & $1$ & $2e-10$ & $ 5e-11$\\
+    $0.01$ & $0.999963$ &$4e-11$ &$ 5e-11$ \\
+    $0.5$ &$0.923263$ &$9e-10$ & $3e-11$ \\
+    $1.5$ &$0.682993$ &$3e-09$& $6e-11$\\
+    $10.5$ &$1.797965$ &$-4e-09$& $2e-6$\\
+  \hline
+\end{tabular}
+\end{document}

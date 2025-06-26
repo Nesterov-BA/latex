@@ -1,0 +1,628 @@
+
+
+\documentclass[11pt,twoside,draft
+]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,indentfirst,enumerate,textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage{chebsb}
+\usepackage[russian]{babel}
+\usepackage{indentfirst, array}
+\usepackage{amscd,latexsym}
+\usepackage{mathrsfs}
+%\usepackage[ruled, linesnumbered]{algorithm2e}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+\usepackage{graphicx}
+\usepackage{textcase}% Оформление страниц
+
+
+\label{beg}
+% заглавие стати и аннотация
+\levkolonttl{%левый колонтитул - авторы
+Б.~А.~Нестеров}
+\prvkolonttl{%правый колонтитул - сокращенное название статьи
+О расстоянии Громова–Хаусдорфа \ldots}
+
+\UDK{% УДК статьи
+514}
+
+\DOI{
+10.22405/2226-8383-\god-\tom-\iss-\pageref{beg}-\pageref{end}
+}
+
+\title
+{%название статьи на русском языке с указанием источника финансирования при необходимости
+О расстоянии Громова--Хаусдорфа между облаком ограниченных метрических пространств и облаком с нетривиальной стационарной группой 
+}
+{%название статьи на английском языке
+On the Gromov--Hausdorff distance between the cloud of bounded
+metric spaces and a cloud with nontrivial stabilizer}
+
+\author
+{%авторы статьи
+Б. А. Нестеров}
+{%авторы статьи
+B. A. Nesterov}
+
+\Cite{
+Б. А. Нестеров. О расстоянии Громова--Хаусдорфа между облаком ограниченных метрических пространств и облаком с нетривиальной стационарной группой // Чебышевcкий сборник, \god, т.~\tom, вып.~\iss, с.~\pageref{beg}--\pageref{end}.
+}
+{Nesterov B. A. \god, ``On the Gromov--Hausdorff distance between the cloud of bounded
+metric spaces and cloud with nontrivial stabilizer''\,, {\it Che\-by\-shev\-skii sbornik}, vol.~\tom, no.~\iss, pp.~\pageref{beg}--\pageref{end}.
+}
+
+\info
+{%авторы статьи на русском языке
+\noindent {\bf Нестеров Борис Аркадьевич}~--- Московский государственный университет им. М. В. Ломоносова (г. Москва).
+
+\noindent
+\emph{e-mail: nesterov.boris123@gmail.com}
+
+
+}
+{%авторы статьи на английском языке
+\noindent {\bf Nesterov Boris Arkadyevich}~--- Lomonosov Moscow State University (Moscow).
+
+\noindent
+\emph{e-mail: nesterov.boris123@gmail.com}
+
+}
+
+\Abstract
+{%Аннотация статьи на русском языке 150-250 слов с учетом ключевых слов
+В статье обсуждается класс всех метрических пространств, рассматриваемых с точностью до 
+нулевого расстояния Громова--Хаусдорфа между ними. Этот класс разбивается на облака --- классы пространств, лежащих на конечном расстоянии от данного. В работе доказывается, что каждое облако является собственным классом. Между облаками естественно определяется расстояние Громова--Хаусдорфа, по аналогии с метрическими пространствами. В работе показано, что при некоторых ограничениях расстояние между облаком ограниченных метрических пространств и облаком с нетривиальной стационарной группой равно бесконечности. В частности, посчитано расстояние между облаком ограниченных метрических пространств и облаком содержащим вещественную прямую.
+}
+{%Аннотация статьи на английском языке
+The paper studies the class of all metric spaces considered up to zero Gromov-Hausdorff distance between them. In this class, we examine clouds --- classes of spaces situated at finite Gromov-Hausdorff distances from a reference space. The paper proves that all clouds are proper classes. The Gromov--Hausdorff distance is defined for clouds analogous to the case of metric spaces. The paper shows that under certain limitations the distance between the cloud of bounded metric spaces and a cloud with a nontrivial stabilizer is finite. In particular, the distance between the cloud of bounded metric spaces and the cloud containing the real line is calculated.
+}
+
+\keywords
+{%ключевые слова на русском языке
+метрические пространства, расстояние Громова--Хаусдорфа, облака, собственный класс
+}
+{%ключевые слова на английском языке
+metric spaces, Gromov–Hausdorff distance, clouds, proper class
+}
+
+%число наименований в библиографии
+\Bibliography{15 названий.}{15 titles.}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\dis}{dis}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\thin}{thin}
+\begin{document}
+
+
+%генерация заглавия статьи
+\maketitle
+
+\enmaketitle
+
+
+\section{Введение}  \addcontentsline{toc}{section}{Введение}
+Настоящая работа посвящена исследованию расстояния Громова--Хаусдорфа ~\cite{Edwards, Gromov81, Gromov99},
+определенному на классе всех непустых метрических пространств. Известно, что на этом классе расстояние является обобщенной псевдометрикой, равной нулю на парах изометричных пространств, причем на неизометричных пространствах расстояние также может быть равно нулю (здесь ''псевдо-'' означает, что расстояние может быть равным $0$ на неравных элементах, а ''обобщенная'' означает, что расстояние может принимать бесконечные значения).
+Традиционно расстояние Громова--Хаусдорфа изучается на классе компактных метрических пространств, рассматриваемых с точностью до изометрии. Этот класс называется пространством Громова--Хаусдорфа. На нем расстояние становится метрикой. Далее расстояние Громова--Хаусдорфа между пространствами $X$ и $Y$ будем обозначать $d_{GH}(X,Y)$ или $|X,Y|$.
+
+
+
+Сам М. Громов использовал расстояние Громова--Хаусдорфа в \cite{Gromov81} для доказательства теоремы о группах полиномиального роста.
+Позднее это расстояние нашло применение в сфере компьютерной геометрии, где было использовано для сопоставления образов и измерения их похожести \cite{memoli1}. Также расстояние Громова--Хаусдорфа может быть использовано в сфере робототехники при планировании перемещений 
+\cite{robotics}.
+Измерение расстояния Громова--Хаусдорфа алгоритмически является NP-трудной проблемой, для  упрощения расчетов расстояние часто модифицируют, например см. \cite{memoli2}.
+
+В \cite{Gromov99}
+М. Громов рассматривал расстояние Громова--Хаусдорфа также и на классах неограниченных пространств, находящихся на конечном расстоянии друг от друга. Данные классы впоследствии стали называться \emph{облаками}, именно они являются основным предметом исследования настоящей работы. Громов утверждал, что все облака полные и стягиваемые, но доказательства этих фактов не приводил \cite{Gromov99}. В дальнейшем Богатый С. А. и Тужилин А. А. в \cite{TuzhBog1} доказали полноту облаков. Проблема стягиваемости оказалась существенно сложнее.
+
+Прежде всего отметим, что стягиваемость является топологическим понятием, так как основана на непрерывных отображениях. Напомним, что в аксиоматике фон Неймана--Бернайса--Гёделя (NBG) всякий объект является либо множеством, либо собственным классом.
+Отличие в том, что собственный класс не может быть элементом другого класса ~\cite{Neumann, Bernays, Godel}. Для собственных классов нельзя задать топологию в привычном понимании, так как тогда сам класс должен быть ее элементом. 
+В работе \cite{BorIvTuzh1}
+для собственного класса обобщения топологии и непрерывного отображения определяются с использованием понятия фильтрации множествами. 
+Если в классе существует такая фильтрация, то такой класс называется топологическим. 
+В настоящей работе доказывается, что каждое облако является собственным классом. Поэтому, для того, чтобы можно было говорить о стягиваемости облаков, необходимо обобщение топологии, что было сделано в \cite{BorIvTuzh1}.
+
+Обобщения топологии оказывается недостаточно. Для того чтобы это продемонстрировать, введем ряд дополнительных понятий.
+Для всякого метрического пространства можно задать операцию умножения его на вещественное положительное число $\lambda$. 
+Под действием этой операции $H_\lambda\colon X \rightarrow \lambda X$ все расстояния в метрическом пространстве $X$ умножаются на $\lambda$.
+Кроме того, в случае ограниченных метрических пространств можно доопределить эту операцию в нуле, положив $0\cdot X := \Delta_1$.
+Хорошо известно, что для любых  ограниченных пространств $X$, $ Y$ и вещественных неотрицательных $\lambda$, $\mu$ выполняется $|\lambda X, \mu X| = |\lambda - \mu|\left|X,\Delta_1\right| = \frac  1 2 |\lambda - \mu|\diam X$ и $|\lambda X, \lambda Y| = \lambda |X,Y|$, где $\Delta_1$ --- одноточечное метрическое пространство, а $\diam X$ --- диаметр пространства $X$. 
+Исходя из этих свойств несложно показать, что облако ограниченных метрических пространств действительно является стягиваемым. 
+Если же рассматривать облако, содержащее пространство $\mathbb{R}^n$, в них операция $H_\lambda$ при всех $\lambda$ переводит облако в себя, но в некоторых точках разрывна.
+Более того, существуют также пространства, которые при умножении на некоторые положительные вещественные числа переходят в пространства на бесконечном расстоянии Громова--Хаусдорфа \cite{TuzhBog1}. Это означает, что содержащие их облака при таком умножении не переходят в себя. 
+
+Из приведенных выше свойств видно, что если при умножении на $\lambda$ пространство остается в своем облаке, то и все пространства из этого облака также остаются в нем. 
+Более того, если пространство переходит в другое облако, то и все пространства из того же облака переходят туда же.
+Тем самым операция умножения на $\lambda$ переносится и на облака. 
+Из сказанного выше вытекает, что это отображение обладает нетривиальными свойствами, что мотивирует интерес к его исследованию.
+Для изучения операции $H_\lambda$ было введено понятие стационарной группы облака --- мультипликативной группы всех тех положительных 
+$\lambda$, для которых $H_\lambda$ оставляет облако на месте. В \cite{TuzhBog2} было введено понятие центра облака --- пространства, переходящего в пространство на нулевом расстоянии от себя под действием преобразований стационарной группы, а также было показано, что в каждом центр существует и единственен с точностью до нулевых расстояний. Понятия стационарной группы и центра облака играют ключевую роль в данной работе.
+
+Настоящая работа в большей степени посвящена исследованию расстояния Громова--Хаусдорфа между облаками, одно из которых --- облако ограниченных метрических пространств. Формулируется и доказывается теорема об образе $\Delta_1$ при соответствии с конечным искажением между облаком ограниченных метрических пространств и облаком с нетривиальной стационарной группой. 
+Далее, как следствие доказывается теорема о том, что расстояние от облака ограниченных метрических пространств до облаков специального вида с нетривиальными стационарными группами равно бесконечности. В качестве примера приводится облако, содержащее $\mathbb{R}$.
+
+Автор выражает благодарность своему научному руководителю, Тужилину А.А. и профессору Иванову А.О. за постановку задачи и плодотворное обсуждение результатов.
+
+  %!TEX root = ../kursovaya.tex
+
+\section{Основные определения и предварительные результаты} Пусть $X$ и $Y$ ---
+метрические пространства. Тогда между ними можно задать расстояние, называемое
+расстоянием Громова--Хаусдорфа. Введем два его эквивалентных 
+определения \cite{Lectures}.
+\begin{defin}
+	Пусть $X$, $Y$ --- метрические пространства. \emph{Соответствием} $R$ между этими пространствами
+	называется сюръективное многозначное отображение между ними.
+	Множество всех соответствий между $X$ и $Y$ обозначается
+	$\mathcal{R}(X,Y)$. Также будем отождествлять соответствие и его график.
+\end{defin}
+\begin{defin}
+	Пусть $R$ --- соответствие между $X$ и $Y$.
+	\emph{Искажением} соответствия $R$ является величина
+	$$ \dis{R} = \sup{\Bigl\{ \big| |xx'| - |yy'| \big| : (x, y), (x', y') \in R\Bigr\}}.$$
+	Тогда \emph{расстояние Громова--Хаусдорфа} $d_{GH}(X,Y)$ можно определить
+	следующим образом
+	$$ d_{GH}(X,Y) = \frac{1}{2}\inf \bigl\{\dis{R} : R \in \mathcal{R}(X,Y)\bigr\}.$$
+	\label{defSootvet}
+\end{defin}
+
+\begin{defin}
+	\emph{Реализацией} пары метрических пространств $(X,Y)$ назовем тройку
+	метрических пространств $(X',Y',Z)$ таких, что $X' \subset Z$, $Y' \subset Z$,
+	$X'$ изометрично $X$, $Y'$ изометрично $Y$. \emph{Расстоянием Громова--Хаусдорфа}
+	$d_{GH}(X,Y)$ между метрическими пространствами $X, Y$ является точная нижняя
+	грань чисел $r$ таких, что существует реализация $(X',Y',Z)$ и $d_H(X', Y')
+	\le
+	r$, где $d_H$ --- расстояние Хаусдорфа.
+\end{defin}
+Далее, расстояние Громова--Хаусдорфа между метрическими пространствами $X$ и $Y$ будет обозначаться $|X,Y|$.
+
+Рассмотрим собственный класс всех метрических пространств и отождествим в нем между собой все метрические пространства, находящиеся на нулевом расстоянии друг от друга. Обозначим получившийся класс $\mathcal{GH}_0$.  На нем расстояние Громова -- Хаусдорфа будет являться обобщенной метрикой.
+
+\begin{defin}[\cite{TuzhBog1}] В классе $\mathcal{GH}_{0}$ рассмотрим следующее
+	отношение: $X \thicksim Y \Leftrightarrow d_{GH}(X, Y) < \infty$. Нетрудно
+	убедиться, что оно будет отношением эквивалентности. Классы этой эквивалентности
+	называются \emph{облаками}. Облако, в котором лежит метрическое пространство $X$
+	будем обозначать $[X]$.
+\end{defin}
+
+Для любого метрического пространства $X$ определена операция умножения его
+на положительное вещественное число $\lambda\colon X\mapsto \lambda X$, а именно
+$(X, \rho) \mapsto (X, \lambda \rho)$, расстояние между любыми точками
+пространства изменяется в $\lambda$ раз.
+\begin{remark} Пусть метрические
+	пространства $X$, $Y$ лежат в одном облаке. Тогда
+	$d_{GH}(\lambda X, \lambda Y) = \lambda d_{GH}(X,Y) < \infty$, т.е. пространства
+	$\lambda X$, $\lambda Y$ также будут лежать в одном облаке.
+	\label{remOneCloud}
+\end{remark}
+\begin{defin}Определим операцию умножения облака $[X]$ на положительное вещественное
+	число $\lambda$ как отображение, переводящее все пространства $Y \in [X]$ в
+	пространства $\lambda Y$. По замечанию $\ref{remOneCloud}$ все полученные пространства будут
+	лежать в облаке $[\lambda X]$.
+\end{defin} 
+При таком отображении облако может как
+измениться, так и перейти в себя. Для последнего случая вводится специальное
+определение.
+\begin{defin}[\cite{TuzhBog2}]
+	Стационарной группой $\St\bigl([X]\bigr)$ облака $[X]$
+	называется подмножество $\mathbb{R}_+$ такое, что для всех
+	$\lambda \in \St\bigl([X]\bigr)$, $[X] = [\lambda X]$. Полученное подмножество
+	действительно будет подгруппой в $\mathbb{R}_+$. Тривиальной
+	будем называть стационарную группу равную $\{1\}$.
+\end{defin}
+
+Приведем несколько примеров облаков и их стационарных групп.
+
+\begin{itemize}
+	\item Пусть $\Delta_1$ --- одноточечное метрическое
+	пространство.  Тогда\\ $\St\bigl([\Delta_1]\bigr) = \mathbb{R}_+$.
+	\item $\St\bigl([\mathbb{R}]\bigr) = \mathbb{R}_+ $.
+	\item Предположим, что функция $\phi(n)$ удовлетворяет соотношению $\lim\limits_{n \rightarrow \infty } \phi(n + 1) - \phi(n) = +\infty$. Для $q > 1$ зададим пространство $X_q = \left\{q^{\phi(n)}: n \in \mathbb{N}\right\}$. Тогда выполняется
+	$\St\bigl(\left[X_q\right]\bigr) = \{1\}$\cite{TuzhBog1}.
+	\item Для натурального $p$ зададим пространство $X_p = \left\{p^n:n \in \mathbb{Z}\right\}$.
+	Для любого простого $p$ выполняется $\St\left[X_p\right] = \left\{p^n:n \in \mathbb{Z}\right\}$\cite{BogBog1}.
+\end{itemize}
+\begin{lemma}[\cite{TuzhBog2}]
+	В каждом облаке с нетривиальной стационарной группой существует единственное
+	пространство $X$ такое, что для любого $\lambda$ из стационарной группы
+	выполняется $X = \lambda X$.
+	\label{centerLemma}
+\end{lemma}
+\begin{defin}
+	Пространство из леммы \ref{centerLemma} будем называть \emph{центром} облака.
+\end{defin}
+\begin{remark} В
+	облаке $[\Delta_1]$ для любого пространства $X$ выполняется:
+	$$|\lambda X, \mu X| = |\lambda - \mu||X,\Delta_1|.$$
+\end{remark} \begin{remark}[Ультраметрическое неравенство] В облаке
+	$[\Delta_{1}]$ для всех пространств $X_{1}, X_{2}$ выполняется неравенство:
+	$$|X_{1},X_{2}| \le \max\{|X_{1}, \Delta_{1}|,|X_{2},\Delta_{1}|\}$$
+	\label{remUltraMetric}
+\end{remark}
+
+
+\section{Мощность облаков}
+Метрические пространства по своему определению являются множествами.
+Соответственно для переноса конструкции расстояния Громова-Хаусдорфа на облака,
+необходимо либо установить, что они --- множества, либо соответствующим
+образом изменить определение расстояния.
+
+Воспользуемся леммой о виде множеств кардинальных чисел.
+\begin{lemma}[\cite{levySet}]
+	У любого множества кардинальных чисел есть верхняя грань.
+\end{lemma}
+Для доказательства теоремы нам понадобится следующее следствие.
+\begin{corollary}
+	Класс кардиналов, не ограниченных сверху, является собственным.
+	\label{colCardinal}
+\end{corollary}
+Далее, сформулируем и докажем теорему о классе пространств в каждом облаке.
+\begin{theorem} Все облака представляют собой собственные классы.
+\end{theorem}
+\begin{proof} Для доказательства теоремы достаточно показать, по следствию \ref{colCardinal}, что в любом
+	облаке лежат пространства сколь угодно большой мощности.  Пусть $X$ --
+	метрическое пространство мощности $\alpha$. Расширим это пространство до
+	пространства большей мощности. Обозначим $\Delta_\beta$ --- симплекс мощности
+	$\beta$, где $\beta > \alpha$. Обозначим $X_\beta = X \cup \Delta_\beta$.
+	Зафиксируем произвольную точку $x$ пространства $X$ и положим расстояние от нее
+	до любой точки симплекса равным $1$. Для точек $x' \in X$,
+	$y \in \Delta_\beta$ определим
+	$$\rho_{X_\beta}(y,x') = \rho_{X_\beta}(x',y) := \rho_X(x',x) + 1.$$
+	Расстояния между другими парами точек оставим без изменений.
+	Симметричность и неотрцательность расстояния $\rho_{X_{\beta}}$ очевидны.
+	Для того чтобы
+	полученное расстояние являлось метрикой достаточно проверить выполнение
+	неравенства треугольника
+	$\rho_{X_\beta}(x',z') \le \rho_{X_\beta}(x',y') +\rho_{X_\beta}(y',z')$
+	только в том случае, если точки $x', y', z'$ не лежат одновременно в
+	$\Delta_\beta$ или в $X$. Случаи $x', z' \in \Delta_\beta$ и $ x', z' \in X$
+	очевидны. Разберем подробнее случаи, когда $x' \in X, z' \in \Delta_\beta$:
+	$$ y' \in X: \rho_{X_\beta}(x', z') = \rho_X(x,x') + 1 \le \rho_X(x,y') + \rho_X(y',x') + 1 = \rho_X(x',y') + \rho_X(y',z')$$
+	$$y' \in \Delta_\beta: \rho_{X_\beta}(x', z') = \rho_X(x,x') + 1 \le \rho_X(x',x) + 2 = \rho_X(x',y') + \rho_X(y',z')$$
+	Итак, полученное пространство действительно будет метрическим. Осталось
+	заметить, что если вложить $X$ в $X_\beta$, то $X_\beta$ будет лежать в
+	замкнутой окрестности $X$ радиуса 1, что означает конечность расстояния между
+	ними.
+\end{proof}
+
+\begin{remark} Поскольку все облака являются собственными классами, между
+	любыми двумя облаками существует биекция. Это означает, в частности, что класс соответствий между любыми двумя облаками не пуст.
+\end{remark}
+
+\begin{defin}
+	Пусть $\mathcal{R}\big([X],[Y]\big)$ --- класс всех соответствий между
+	облаками $[X]$ и $[Y]$. Определим \emph{искажение} соответствия $\dis R$
+	аналогично определению \ref{defSootvet}. \emph{Расстоянием Громова--Хаусдорфа} между облаками
+	будем называть величину
+	$d_{GH}\big([X],[Y]\big) = \frac{1}{2}\inf\bigl\{\dis R : R\in \mathcal{R}\big([X],[Y]\big)\bigr\}$.
+\end{defin}
+
+
+\section{Теорема об образе центра}
+Прежде, чем сформулировать теорему, приведем некоторые полезные
+утверждения о соответствиях.
+\begin{lemma}
+	Диаметр образа пространства не превосходит
+	искажение соответствия.
+	\label{lemDiamImage}
+\end{lemma}
+\begin{proof}
+	Если пространства $Y_{1}, Y_{2}$ лежат в образе $X$, то
+	\[\dis R \ge \big|\left|Y_{1},Y_{2}\right| - \left|X,X\right|\big| = |Y_{1}, Y_{2}|,\]
+	откуда $\diam R(X) \le \dis R$.
+\end{proof}
+
+\begin{corollary}
+	Если пространства лежат на расстоянии большем, чем
+	искажение соответствия, то они не могут лежать
+	в образе одного пространства.
+\end{corollary}
+\begin{theorem}
+	Пусть $M$ -- центр облака $[M]$, имеющего нетривиальную
+	\\стационарную группу. $R$ -- соответствие между $[\Delta_{1}]$ и $[M]$ с конечным
+	искажением $\epsilon$. Тогда образ пространства $\Delta_{1}$ лежит от $M$ на
+	расстоянии не большем $2\epsilon$.
+	\label{thrmCenterImage}
+\end{theorem}
+\begin{proof}
+	Нетривиальность стационарной группы $[M]$ означает, что найдется
+	число $l > 1$ такое, что $\{l^{j}|j\in \mathbb{Z}\}$ является подгруппой в
+	$\St{[M]}$.
+	
+	Зафиксируем $Y$ из образа $\Delta_{1}$.
+	Предположим, что $|M, Y| = d > \epsilon$.  Обозначим
+	$|Y, kY| = \rho$, $k \ge 2$, $k = l^{j_{1}}$. По неравенству треугольника $\rho + d \ge kd$,
+	откуда $\rho \ge (k-1)d > (k-1)\epsilon$. Тогда $kY$ лежит в образе
+	$X \ne \Delta_1$. При этом,
+	$\rho - \epsilon \le |X, \Delta_1| \le \rho + \epsilon$. 
+	
+	Возьмем произвольные $\alpha > 0$ и $\beta \in (0,1)$. Для пространств $(1+\alpha)X, (1-\beta)X$ будут выполняться неравенства:
+	$$|X, (1+\alpha)X| = \alpha |X, \Delta_1| \le \alpha\rho + \alpha\epsilon,$$
+	$$|X, (1-\beta)X| = \beta|X, \Delta_1| \le \beta\rho + \beta\epsilon,$$
+	$$|(1+\alpha) X, (1-\beta)X| = (\alpha + \beta)|X, \Delta_1| \ge (\alpha+\beta)\rho - (\alpha+\beta)\epsilon.$$
+	Существуют
+	$Y_\alpha, Y_\beta \in [M]$ такие, что
+	$kY_\alpha \in R\big((1+\alpha)X\big)$, $kY_\beta \in R\big((1-\beta)X\big)$, и
+	для них выполняются следующие неравенства:
+	$$|kY, kY_\alpha| \le |X, (1+\alpha)X| + \epsilon \le \alpha\rho + (\alpha+1)\epsilon,$$
+	$$|kY, kY_\beta| \le |X, (1-\beta)X| + \epsilon \le \beta\rho + (\beta+1)\epsilon,$$
+	$$|kY_\alpha, kY_\beta| \ge |(1+\alpha)X, (1-\beta)X| - \epsilon \ge  (\alpha+\beta)\rho - (\alpha+\beta+1)\epsilon.$$
+	Поделим эти неравенства на $k$:
+	$$|Y, Y_{\alpha}| \le \frac{\alpha}{k}\rho + \frac{\alpha+1}{k}\epsilon,$$
+	$$|Y, Y_{\beta}| \le \frac{\beta}{k}\rho + \frac{\beta+1}{k}\epsilon,$$
+	$$|Y_\alpha, Y_{\beta}| \ge \frac{\alpha+\beta}{k}\rho - \frac{\alpha+\beta+1}{k}\epsilon.$$
+	и возьмем прообразы пространств $Y, Y_{\alpha}, Y_{\beta}$:
+	$$|\Delta_1, X_{\alpha}| \le \frac{\alpha}{k}\rho + \big(\frac{\alpha+1}{k} + 1\big)\epsilon,$$
+	$$|\Delta, X_{\beta}| \le \frac{\beta}{k}\rho + \big(\frac{\beta+1}{k}+1\big)\epsilon,$$
+	$$|X_\alpha, X_{\beta}| \ge \frac{\alpha+\beta}{k}\rho - \big(\frac{\alpha+\beta+1}{k}+1\big)\epsilon.$$
+	Считая, что $\alpha > \beta$ получаем неравенство:
+	$$\frac{\alpha+\beta}{k}\rho - \big(\frac{\alpha+\beta+1}{k}+1\big)\epsilon \le \frac{\alpha}{k}\rho + \big(\frac{\alpha+1}{k} + 1\big)\epsilon,$$
+	$$\Updownarrow$$
+	$$\rho \le \frac{k}{\beta}\bigg(\frac{2\alpha+\beta+2}{k}+2\bigg)\epsilon,$$
+	$$\Updownarrow$$
+	$$\rho \le \bigg(1+\frac{2\alpha + 2}{\beta} + 2\frac{k}{\beta}\bigg)\epsilon.$$
+	Нас интересует оценка сверху для $d$:
+	$$d \le \frac{\rho}{k-1} \le \bigg(\frac{1}{k-1}+\frac{2\alpha + 2}{\beta(k-1)} + 2\frac{k}{\beta(k-1)}\bigg)\epsilon. $$
+	Последнее слагаемое в скобках строго больше 2 при любых $k>2$, $\alpha>0$,
+	$\beta\in (0,1)$, а остальные слагаемые с ростом $k$ стремятся к $0$. Так как стационарная группа нетривиальна, в ней есть последовательности чисел стремящихся к 0 и к $\infty$.
+	Устремив $\beta$ к 1, а $k$ к бесконечности получаем оценку:
+	$$|Y, M| \le 2\epsilon,$$
+	которая завершает доказательство.
+	
+\end{proof}
+
+
+\section{Невыполнение ультраметрического неравенства}
+\begin{lemma}
+	Если $X$ является подмножеством прямой и в $\mathbb{R}\setminus X$ лежит интервал диаметра $2d$, 
+	то $X$ лежит от $\mathbb{R}$ на расстоянии, не меньшем $d$.
+	\label{lemmaDiamDist}
+\end{lemma}
+\begin{proof}В $\mathbb{R} \setminus X$ лежит интервал $(a-d, a+d)$. Предположим, что $d_{G H}(\mathbb{R}, X)<d$. Пусть $\left(\mathbb{R}^{\prime}, X^{\prime}, Y\right)$ - реализация $(\mathbb{R}, X)$ такая, что $d_H\left(\mathbb{R}^{\prime}, X^{\prime}\right)=$ $d^{\prime}<d$. Обозначим \[U_1:=\cup_{x \in X^{\prime}, x \leqslant a-d} B\left(x, d^{\prime}+\frac{d-d^{\prime}}{2}\right),~~ U_2:=\cup_{x \in X^{\prime}, x \geqslant a+d} B\left(x, d^{\prime}+\frac{d-d^{\prime}}{2}\right),\] 
+	то есть $U_1 \cup U_2$ --- покрытие $X^{\prime}$ шарами радиуса
+	$d^\prime + \frac{d-d^{\prime}}{2}$.
+	Получаем, что $U_1, U_2$ - два открытых непересекающихся множества, но также $\mathbb{R}^{\prime} \in U_1 \cup U_2$, что противоречит связности прямой.
+\end{proof}
+Для облака $[\Delta_{1}]$, по замечанию \ref{remUltraMetric} справедливо
+ультраметрическое неравенство.
+Следующая лемма показывает, что для облака $[\mathbb{R}]$
+это неравенство может не выполняться.
+
+Рассмотрим $\mathbb{R}$ как подмножество
+$\mathbb{R}^2$ и добавим к нему точку $(0,1)$, расстояние до которой будет
+соответствовать метрике $L_{1}$ в $\mathbb{R}^2$. Обозначим это
+пространство $\widetilde{\mathbb{R}}$.
+\begin{theorem}
+	Для пространств $\mathbb{Z}$ и $\widetilde{\mathbb{R}}$ выполняются следующие
+	утверждения:
+	\begin{enumerate}
+		\item Пространства $\mathbb{Z}$ и $\widetilde{\mathbb{R}}$ находятся от $\mathbb{R}$
+		на расстоянии не большем $\frac 1 2$.\label{thrmPt:1}
+		\item Расстояние между $\mathbb{Z}$ и $\widetilde{\mathbb{R}}$ строго
+		больше $\frac 1 2$.\label{thrmPt:2}
+	\end{enumerate}
+	\label{thrmRUltraMetric}
+\end{theorem}
+\begin{proof}
+	Вложением целых чисел в вещественную прямую получается реализация $\mathbb{Z}$, $\mathbb{R}$ с расстоянием Хаусдорфа равным $\frac 1 2$.
+	Если вложить $\widetilde{\mathbb{R}}$ в $\mathbb{R}^{2}$ естественным образом, а $\mathbb{R}$ вложить как подмножество $\mathbb{R}^{2}$, равное $\bigl\{(x, \frac1 2 ):x\in \mathbb{R}\bigr\}$,
+	расстояние Хаусдорфа между ними также будет равно $\frac 1 2$. Таким образом, доказан пункт \ref{thrmPt:1}.
+	
+	Пусть $R$ --- соответствие
+	между $\mathbb{Z}$ и $\widetilde{\mathbb{R}}$, с искажением,
+	равным $1 + \epsilon$ и
+	в образе точки $i$ из $\mathbb{Z}$ лежит $(0,1)$. По лемме \ref{lemDiamImage} диаметр
+	образа точки не может быть больше искажения соответствия,
+	следовательно, образ $i$ лежит в $(-\epsilon, \epsilon) \cup \bigl\{(0,1)\bigr\}$. Это
+	означает, что для
+	$x$ не лежащих в $(-\epsilon, \epsilon)$, пара $(i, x)$ не лежит в $R$.
+	Обозначим через $\mathcal{N}$ множество всех целых чисел таких, что их
+	образ лежит в $(-\epsilon, \epsilon) \cup \bigl\{(0,1)\bigr\}$. Множество
+	$\mathcal{N}$ не пусто и не равно $\mathbb{Z}$, следовательно, по лемме \ref{lemmaDiamDist},
+	расстояние от $\mathbb{Z} \setminus\mathcal{N}$ до $\mathbb{R}$ будет не
+	меньше 1.
+	Из соответствия $R$ уберем пару $\bigl(i,(0,1)\bigr)$, а также
+	все пары $(k,x)$ такие, что $x \in  (-\epsilon, \epsilon)$.
+	Получившееся множество обозначим $R'$.
+	Так как все точки из $\mathbb{R}\setminus(-\epsilon, \epsilon)$ лежат в $R$
+	только в паре с точками из $ \mathbb{Z} \setminus\mathcal{N}$ и наоборот,
+	множество $R'$ будет соответствием между
+	$\mathbb{R}\setminus(-\epsilon, \epsilon)$ и
+	$ \mathbb{Z} \setminus\mathcal{N}$. Искажение
+	подмножества соответствия по определению не больше искажения
+	самого соответствия. Получаем цепочку неравенств:
+	\[1+\epsilon = \dis R \ge \dis R' \ge 2d_{GH}\bigl(\mathbb{R}\setminus(-\epsilon, \epsilon), \mathbb{Z} \setminus \mathcal{N}\bigr).\]
+	По неравенству треугольника
+	\[
+	2d_{GH}\bigl(\mathbb{R}\setminus(-\epsilon, \epsilon), \mathbb{Z} \setminus \mathcal{N}\bigr) \ge
+	2\Big|d_{GH}\bigl(\mathbb{R}, \mathbb{Z} \setminus \mathcal{N}\bigr) - d_{GH}\bigl(\mathbb{R}\setminus(-\epsilon, \epsilon), \mathbb{R}\bigr)\Big| \ge 2 - 2\epsilon.
+	\]
+	Получили неравенство: $1 + \epsilon \ge 2 - 2\epsilon$.
+	Из него получаем нижнюю оценку на $\epsilon$:
+	\[\epsilon \ge \frac 1 3,\]
+	откуда $\dis R \ge \frac 4 3$ и
+	$d_{GH}\left(\widetilde{\mathbb{R}}, \mathbb{Z}\right) \ge \frac 2 3 > \frac 1 2$,
+	что доказывает пункт \ref{thrmPt:2}.
+\end{proof}
+
+
+
+\section{Основная теорема}
+
+Приведем лемму о расстоянии между облаками с пересекающимися стационарными группами.
+\begin{lemma}
+	Если два облака имеют нетривиальное пересечение стационарных групп,
+	то расстояние между ними может быть равно $0$ или $\infty$.
+	\label{lemmaDist}
+\end{lemma}
+\begin{proof}
+	Для любых облаков $[X], [Y]$ и любого $\lambda$ из $\mathbb{R}^{+}$ верно
+	\[\big|\lambda[X], \lambda[Y]\big| = \lambda\big|[X], [Y]\big|.\]
+	Отсюда, если $\lambda \neq 1$ лежит в стационарных группах обоих облаков, то
+	\[\big|[X],[Y]\big| = \big|\lambda[X], \lambda[Y]\big| = \lambda\big|[X], [Y]\big|.\]
+	Так как $\lambda \neq 1$, величина $\big|[X],[Y]\big|$ может быть равна
+	только $0$ или бесконечности.
+\end{proof}
+\begin{theorem} Пусть у облака $[Z]$ нетривиальная стационарная группа, и $Z$
+	является его центром. Также, пусть в этом облаке есть пространства $Y_{1}, Y_{2}$
+	такие, что $\max\big\{ |Y_{1},Z|, |Y_{2}, Z| \big\} = r>0$, а
+	$|Y_{1}, Y_{2}|>r$. Тогда, расстояние между облаками $[\Delta_1]$ и $[Z]$
+	равно бесконечности.
+	\label{thrmDist}
+\end{theorem} 
+\begin{proof} У облаков $[\Delta_1]$ и $[Z]$ стационарные группы имеют
+	нетривиальное пересечение, и, по лемме \ref{lemmaDist},
+	расстояние между ними может быть
+	равно либо $0$, либо $\infty$. 
+	
+	Для доказательства утверждения теоремы
+	достаточно будет показать, что расстояние между ними не равно $0$.  Для этого
+	необходимо установить, что между ними не может существовать соответствия со
+	сколь угодно малым искажением. Итак, пусть $R$ --- соответствие между
+	$[\Delta_1]$ и $[Z]$, $\dis R = \epsilon < \infty$.
+	Зафиксируем $Y$ из $R(\Delta_1)$. По теореме \ref{thrmCenterImage} расстояние между $Y$ и $Z$ не
+	больше $2\epsilon$.
+	
+	По условию теоремы выполнено неравенство:
+	$$\max\big\{ |Y_{1},Z|, |Y_{2}, Z| \big\} = r < |Y_{1}, Y_{2}|$$
+	Неравенство означает, что существует $c > 0$ такое, что
+	$|Y_{1},Y_{2}| = (1 + c)r.$ Вместе с $Y_{1}$ и
+	$ Y_{2}$ рассмотрим их прообразы $X_1 \in R^{-1}(Y_{1})$,
+	$ X_2 \in R^{-1}(Y_{2})$. Получаем следующую цепочку
+	неравенств:
+	$$|X_1, \Delta_1| \le |Y_{1}, Y| + \epsilon \le |Y_{1}, \mathbb{R}| + |\mathbb{R}, Y| +\epsilon \le r + 2\epsilon + \epsilon = r + 3\epsilon.$$
+	Аналогичное неравенство имеет место для $X_2$, при этом
+	$$|X_1, X_2|  \ge |Y_{1}, Y_{2}| - \epsilon = (1+c)r - \epsilon.$$
+	По замечанию \ref{remUltraMetric}:
+	$$|X_1, X_2| \le \max\big\{ |X_1, \Delta_1|, |X_2, \Delta_1| \big\},$$
+	$$\Updownarrow$$
+	$$(1+c)r - \epsilon\le r + 3\epsilon,$$
+	$$\Updownarrow$$
+	$$\epsilon \ge \frac{cr}{4}.$$
+	Мы получаем оценку снизу для $\epsilon = \dis R$. Это означает, что
+	искажение не может быть произвольно малым, и, следовательно, расстояние между
+	пространствами не может быть равно 0. Значит, оно равно бесконечности.
+	
+\end{proof}
+
+Тем самым получаем следующее: любое облако с нетривиальной стационарной подгруппой
+и не выполняющимся ультраметрическим неравенством для центра лежит
+на бесконечном расстоянии от $[\Delta_{1}]$. В частности это верно
+для облака $[\mathbb{R}]$.
+
+\begin{corollary}
+	В облаке $[\mathbb{R}]$ в качестве пространств $Y_{1}, Y_{2}$ можно взять
+	$\mathbb{Z}, \widetilde{\mathbb{R}}$. Для них, по теореме \ref{thrmRUltraMetric} будет выполнено
+	неравенство из условия теоремы
+	\ref{thrmDist}
+	с $r = \frac 1 2$. Стационарная группа облака
+	$[\mathbb{R}]$ равна $\mathbb{R}^{+}$, то есть нетривиальна. Получаем, что расстояние между облаками
+	$[\Delta_{1}]$ и $[\mathbb{R}]$ равно бесконечности.
+\end{corollary}
+
+
+
+%библиография по ГОСТу
+\begin{thebibliography}{99}
+	
+\bibitem{Edwards} Edwards D. \emph{The Structure of Superspace. In: Studies in Topology}, ed. by Stavrakas N.M. and Allen K.R.//1975, New York, London, San Francisco, Academic Press, Inc.
+\bibitem{Gromov81} Gromov M. \emph{Structures m\'etriques pour les vari\'et\'es riemanniennes}, edited by Lafontaine and Pierre Pansu// 1981.
+\bibitem{Gromov99} Gromov M. \emph{Metric structures for Riemannian and non-Riemannian spaces}// Birkh\"auser, 1999. ISBN 0-8176-3898-9 (translation with additional content).
+\bibitem{memoli1}
+Mémoli F., Guillermo Sapiro Comparing point clouds// 2004, In Proceedings of the 2004 Eurographics/ACM SIGGRAPH symposium on Geometry processing (SGP '04). Association for Computing Machinery, New York, NY, USA, 32–40. https://doi.org/10.1145/1057432.1057436
+\bibitem{robotics} Fouad Sukkar, Jennifer Wakulicz, Ki Myung Brian Lee, Weiming Zhi, Robert Fitch, Multi-query Robotic Manipulator Task Sequencing with Gromov-Hausdorff Approximations // 2024, ArXiv e-prints,
+arXiv:2209.04800 [cs.RO]
+
+
+\bibitem{memoli2}
+Mémoli F., Gromov-Hausdorff distances in Euclidean spaces // 2008 IEEE Computer Society Conference on Computer Vision and Pattern Recognition Workshops, Anchorage, AK, USA, 2008, pp. 1-8
+\bibitem{TuzhBog1}
+Bogatyy S.A., Tuzhilin A.A. Gromov–Hausdorff class: its completeness and cloud geometry //2021, ArXiv e-prints,
+arXiv:2110.06101, [math.MG]
+
+\bibitem{Neumann} 
+von Neumann J., "Eine Axiomatisierung der Mengenlehre"//1925, Journal für die Reine und Angewandte Mathematik 
+
+\bibitem{Bernays}
+Bernays P., "A System of Axiomatic Set Theory—Part I"//1937, The Journal of Symbolic Logic, doi:10.2307/2268862, JSTOR 2268862
+
+\bibitem{Godel}
+    Gödel K. The Consistency of the Axiom of Choice and of the Generalized Continuum Hypothesis with the Axioms of Set Theory (Revised ed.)//1940, Princeton University Press,  ISBN 978-0-691-07927-1
+
+\bibitem{BorIvTuzh1}
+Borzov S.I., Ivanov A.O., Tuzhilin A.A., Extendability of Metric Segments in
+Gromov–Hausdorff Distance // 2020, ArXiv e-prints,
+arXiv:2009.00458, [math.MG] 
+
+\bibitem{TuzhBog2}
+    Bogataya S.I., Bogatyy S.A., Redkozubov V.V. Tuzhilin A.A. Clouds in Gromov–Hausdorff Class: their
+	completeness and centers//2022, ArXiv e-prints,
+arXiv:2202.07337, [math.MG]
+
+
+
+\bibitem{Lectures}
+   Бураго Д., Бураго Ю., Иванов С.А. Курс метрической геометрии//2004, Ин-т компьютерных исслед.
+\bibitem{BogBog1}
+Bogataya S.I., Bogatyy S.A. Isometric Cloud Stabilizer//2023, Topology and its Applications,
+Volume 329
+\bibitem{levySet}Levy A. Basic set theory. Perspectives in mathematical logic//1979, Springer-Verlag, Berlin, Heidelberg, and New York
+
+
+
+		
+
+\end{thebibliography}
+
+
+%библиография по Гарвардскому стандарту
+\begin{engbibliography}{99}
+    
+    \bibitem{enEdwards} Edwards, D. 1975, \emph{The Structure of Superspace. In: Studies in Topology}, ed. by Stavrakas N.M. and Allen K.R., New York, London, San Francisco, Academic Press, Inc.
+\bibitem{enGromov81} Gromov, M. 1981, \emph{Structures m\'etriques pour les vari\'et\'es riemanniennes}, edited by Lafontaine and Pierre Pansu.
+\bibitem{enGromov99} Gromov, M. 1999, \emph{Metric structures for Riemannian and non-Riemannian spaces}, Birkh\"auser, ISBN 0-8176-3898-9 (translation with additional content).
+\bibitem{enmemoli1}
+Mémoli, F. \& Guillermo, S. 2004, Comparing point clouds, In Proceedings of the 2004 Eurographics/ACM SIGGRAPH symposium on Geometry processing (SGP '04). Association for Computing Machinery, New York, NY, USA, 32–40. https://doi.org/10.1145/1057432.1057436
+\bibitem{enrobotics} Fouad Sukkar, Jennifer Wakulicz, Ki Myung Brian Lee, Weiming Zhi and Robert Fitch, 2024, Multi-query Robotic Manipulator Task Sequencing with Gromov-Hausdorff Approximations, ArXiv e-prints,
+arXiv:2209.04800 [cs.RO]
+\bibitem{enmemoli2}
+Mémoli, F. 2008, Gromov-Hausdorff distances in Euclidean spaces, IEEE Computer Society Conference on Computer Vision and Pattern Recognition Workshops, Anchorage, AK, USA, pp. 1-8
+\bibitem{enTuzhBog1}
+Bogatyy, S.\,A. \& Tuzhilin, A.\,A. 2021, Gromov–Hausdorff class: its completeness and cloud geometry, ArXiv e-prints,
+arXiv:2110.06101, [math.MG]
+
+\bibitem{enNeumann} 
+von Neumann, J. 1925, "Eine Axiomatisierung der Mengenlehre", Journal für die Reine und Angewandte Mathematik 
+
+\bibitem{enBernays}
+Bernays, P. 1937, "A System of Axiomatic Set Theory—Part I", The Journal of Symbolic Logic, doi:10.2307/2268862, JSTOR 2268862
+
+\bibitem{enGodel}
+    Gödel, K. 1940, The Consistency of the Axiom of Choice and of the Generalized Continuum Hypothesis with the Axioms of Set Theory (Revised ed.), Princeton University Press,  ISBN 978-0-691-07927-1
+
+\bibitem{enBorIvTuzh1}
+Borzov, S.\,I., Ivanov, A.\,O. \& Tuzhilin A.\,A. 2020, Extendability of Metric Segments in
+Gromov–Hausdorff Distance, ArXiv e-prints,
+arXiv:2009.00458, [math.MG] 
+
+\bibitem{enTuzhBog2}
+    Bogataya, S.\,I., Bogatyy, S.\,A., Redkozubov, V.\,V. \& Tuzhilin A.\,A. 2022, Clouds in Gromov–Hausdorff Class: their
+	completeness and centers, ArXiv e-prints,
+arXiv:2202.07337, [math.MG]
+
+
+
+\bibitem{enLectures}
+   Burago, D., Burago, Y.\,D., \& Ivanov, S.\,O. (2001). A Course in Metric Geometry, American Mathematical Soc.
+\bibitem{enBogBog1}
+Bogataya, S.\,I. \& Bogatyy, S.\,A. 2023, Isometric Cloud Stabilizer, Topology and its Applications,
+Volume 329
+\bibitem{enlevySet}Levy, A. 1979, Basic set theory. Perspectives in mathematical logic, Springer-Verlag, Berlin, Heidelberg, and New York
+
+\end{engbibliography}
+
+\label{end}
+
+\end{document} 

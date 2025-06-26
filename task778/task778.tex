@@ -1,0 +1,107 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[margin=0.25in]{geometry}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+% We will externalize the figures
+\date{\today}
+\begin{document}
+\section{Задача 7.78}
+Пространства $ (Y,\rho_Y),(Z,\rho_Z) $. \\Пространства функций 
+$ \big(C(Y),L_{\rho_Y}\big), $  $\big(C(Z),L_{\rho_Z}\big) $. Рассмотрим $ f\in C(Y) $, $ f(y_i)=a_i $.\\
+Тогда $ L_{\rho_Y}(f) = \max\left\{\frac{|a_i,a_j|}{\rho_Y(y_i,y_j)},i\neq j\right\} = \max\left\{|a_2-a_1|,|a_3-a_2|\right\}$.\\
+Аналогично для $ g\in C(Z), g(z_i) = b_i $ выполнено $ L_{\rho_Z}(g) = \frac{|b_2-b_1|}{3} .$
+Теперь рассмотрим соответствующие пространства состояний\\ $ \mathcal{S}\big(C(Y)\big) ,\mathcal{S}\big(C(Z)\big)$. Так как квантовые пространства представляют из себя функции на дискретных пространствах, $ \mathcal{S}\big(C(Y)\big) = \{c_1 \delta_{y_1} + c_2 \delta_{y_2} + c_1 \delta_{y_3} \colon c_1+c_2+c_3=1, c_i\ge 0\}$,
+$ \mathcal{S}\big(C(Z)\big) = \{t \delta_{z_1} + (1-t) \delta_{z_2}\colon t \in [0,1]\}$. Найдем расстояния между элементами этих пространств:
+\begin{multline*}
+  \rho_{L_{\rho_Z}}\big(t_1\delta_{z_1} + (1-t_1)\delta_{z_2},t_2\delta_{z_1} + (1-t_2)\delta_{z_2}\big) =\\
+  = \sup\big\{|t_1b_1 + (1-t_1)b_2 - t_2b_1 - (1-t_2)b_2| \colon |b_2-b_1|\le 3\big\}=\\
+  = \sup\big\{|(t_2-t_1)(b_2-b_1)\colon |b_2-b_1|\le 3\big\}=3|t_2-t_1|
+\end{multline*}
+
+Пространство состояний $ \mathcal{S}\big(C(Z)\big) $ является отрезком длиной $ 3 $. Аналогично показывается, что в пространстве $ \mathcal{S}\big(C(Y)\big) $ точки $ \delta_{y_1},\delta_{y_2},\delta_{y_3} $ соединены отрезками $ \big|\left[\delta_1,\delta_2\right]\big|=\big|\left[\delta_2,\delta_3\right]\big|=1,\big|\left[\delta_1,\delta_3\right]\big|=2 .$
+
+Далее, пусть два элемента $ \mathcal{S}\big(C(Y)\big)$ равны $ c_1 \delta_{y_1} + c_3 \delta_{y_3}  + (1-c_1 - c_3)\delta_{y_2} $, $ \widetilde{c}_1 \delta_{y_1} + \widetilde{c}_3 \delta_{y_3}  + (1-\widetilde{c}_1 - \widetilde{c}_3)\delta_{y_3} $. Мы параметризуем каждый элемент двумя числами из множества $\{(c_1,c_2) \colon c_1 + c_1 \le 1, c_1\ge 0, c_2 \ge 0\}$ Тогда расстояние между ними равно 
+\begin{multline*}
+  \sup\big\{|c_1 a_1 + c_3a_3+(1-c_1-c_2)a_2 - \widetilde{c}_1a_1-\widetilde{c}_3a_3 - (1-\widetilde{c}_1-\widetilde{c}_3)a_2|\\ \colon |a_2-a_1|\le1, |a_3-a_2|\le 1\big\} = \\
+ = \sup\big\{|(\widetilde{c}_1 - c_1)(a_2-a_1) + (\widetilde{c}_2-c_1)(a_2-a_3)| \colon|a_2-a_1|\le1, |a_3-a_2|\le 1 \big\} =\\
+  = |\widetilde{c}_1-c_1 + \widetilde{c}_2 - c_2|.
+\end{multline*}  
+
+Из формулы ясно, что расстояние задается как в треугольнике с вершинами $ \delta_{y_1},\delta_{y_2}, \delta_{y_3} $ в $ l_1 $ метрике. Поскольку у треугольника стороны равны $ 1,1,2 $, он вырождается в отрезок длиной $ 2 $. Известно, что для любых компактных метрических пространств $ X,Y $ выполняется $$ d_{GH}(X,Y)\ge \frac{1}{2}|\text{diam}X-\text{diam}Y|. $$ 
+В случае отрезков длины $ 2 $ и $ 3 $, $$d_{GH}\Big(\mathcal{S}\big(C(Y)\big),\mathcal{S}\big(C(Z)\big)\Big)\ge \frac{1}{2}.$$
+Причем равенство достигается, если меньший отрезок вложить в больший так, чтобы середины совпали. Осталось найти такую Lip-норму на $ C(Y)\oplus C(Z) $, при которой достигается это вложение пространств состояний.
+
+Будем отождествлять элементы $ C(Y)\oplus C(Z) $ с функциями на точках $0,0.5,1.5,2.5,3$ вещественной прямой, где $0,3$ соответствуют $ z_1,z_2 $, а $ 0.5,1.5,2.5 $ соответствуют $y_1,y_2,y_3$. Проекциями $ \pi_{C(Y)}, \pi_{C(Z)} $ будут ограничения функции на соответствующие точки. На графиках точки соединены ломаными и Lip-норма равна наибольшей норме Липшица по каждому отрезку ломанной.
+
+\begin{tikzpicture}
+\begin{axis}[
+    title=$f\in C(Y)\oplus C(Z)$,
+    xmin=0, xmax=3,
+    ymin=0, ymax=120,
+    xtick={0,0.5,1.5,2.5,3},
+  ]
+\addplot[color=red,mark=o]coordinates{(0,0)(0.5,30)(1.5,50)(2.5,10)(3,60)};
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[
+  title=$\pi_{C(Y)}f$,
+    xmin=0, xmax=3,
+    ymin=0, ymax=120,
+    xtick={0.5,1.5,2.5},
+  ]
+\addplot[color=red,mark=o]coordinates{(0.5,30)(1.5,50)(2.5,10)};
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[
+  title=$\pi_{C(Z)}f$,
+    xmin=0, xmax=3,
+    ymin=0, ymax=120,
+    xtick={0,3},
+  ]
+\addplot[color=red,mark=o]coordinates{(0,0)(3,60)};
+\end{axis}
+\end{tikzpicture}
+
+Приведем функции на которых достигается инфинум из определения фактор нормы:
+$$ L(g_Y) = L_{\rho_Y}(f), $$
+$$L(g_Z)=L_{\rho_Z}(f). $$
+
+
+\begin{tikzpicture}
+\begin{axis}[
+  title=$g_Y\in C(Y)\oplus C(Z)$,
+    xmin=0, xmax=3,
+    ymin=0, ymax=120,
+    xtick={0,0.5,1.5,2.5,3},
+  ]
+\addplot[color=red,mark=o]coordinates{(0,30)(0.5,30)(1.5,50)(2.5,10)(3,10)};
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[
+  title=$g_Z\in C(Y)\oplus C(Z)$,
+    xmin=0, xmax=3,
+    ymin=0, ymax=120,
+    xtick={0,0.5,1.5,2.5,3},
+  ]
+\addplot[color=red,mark=o]coordinates{(0,0)(0.5,10)(1.5,30)(2.5,50)(3,60)};
+\end{axis}
+\end{tikzpicture}
+
+Итак, прямая сумма с такой Lip-нормой удовлетворяет определению квантового расстояния. Аналогично случаю $ C(Y) $, пространство состояний представляет собой пятиугольник, вырождающийся в отрезок длиной $ 3 $. Каждое состояние есть имеет вид:
+$$ \left\{c_{z_1}\delta_{z_1} +c_{z_2}\delta_{z_2} +c_{y_1}\delta_{y_1} +c_{y_2}\delta_{y_2} +c_{y_3}\delta_{y_3} \right\}. $$
+Пространство $\mathcal{S}\big(C(Y)\big)$ вкладывается как подмножество сумм с $c_{z_1}=c_{z_2}=0 $, $ \mathcal{S}\big(C(Z)\big) $ соответственно как суммы с $c_{y_1} = c_{y_2}=c_{y_3}=0$. Поскольку длины отрезков $ \mathcal{S}\big(C(Y)\oplus C(Z)\big) $ и $ \mathcal{S}\big(C(Z)\big) $ совпадают,  $\mathcal{S}\big(C(Z)\big) $, они совпадают как метрические пространства и $ \mathcal{S}\big(C(Y)\big)  $ вкладывается туда как отрезок длины $2$. Остается заметить, что $\rho_L(\delta_{z_1},\delta_{y_1})= \frac{1}{2}$. Итак, получили искомое вложение с расстоянием Хаусдорфа равным $\frac{1}{2}$.
+\end{document}
+
