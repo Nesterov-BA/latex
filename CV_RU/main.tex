@@ -1,0 +1,282 @@
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.3, 10 May 2020) written by LianTze Lim (liantze@gmail.com). Now
+% compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+% This fork/modified version has been made by Nicolás Omar González
+% Passerino (nicolas.passerino@gmail.com, 15 Oct 2020)
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% If you need to pass whatever options to xcolor
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+%% If you are using \orcid or academicons
+%% icons, make sure you have the academicons
+%% option here, and compile with XeLaTeX
+%% or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
+
+%% Use the "normalphoto" option if you want a normal photo instead of
+% cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+%% Fork: CV dark mode toggle enabler to use a inverted color palette.
+%% Use the "darkmode" option if you want a color palette used to
+% \documentclass[10pt,a4paper,darkmode]{altacv}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+%% AltaCV uses the fontawesome5 and academicons fonts
+%% and packages.
+%% See http://texdoc.net/pkg/fontawesome5 and
+% http://texdoc.net/pkg/academicons for full list of symbols. You
+% MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+% Change the page layout if you need to
+\geometry{left=1.2cm,right=1.2cm,top=1cm,bottom=1cm,columnsep=0.75cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+\usepackage[english, russian]{babel}
+\usepackage{setspace}
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+% If using xelatex or lualatex:
+\setmainfont{Roboto Slab}
+\setsansfont{Lato}
+\renewcommand{\familydefault}{\sfdefault}
+\else
+% If using pdflatex:
+\usepackage[rm]{roboto}
+\usepackage[defaultsans]{lato}
+% \usepackage{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Fork: Change the color codes to test your personal variant on any mode
+\ifdarkmode%
+\definecolor{PrimaryColor}{HTML}{0F52D9}
+\definecolor{SecondaryColor}{HTML}{3F7FFF}
+\definecolor{ThirdColor}{HTML}{F3890B}
+\definecolor{BodyColor}{HTML}{ABABAB}
+\definecolor{EmphasisColor}{HTML}{ABA2A2}
+\definecolor{BackgroundColor}{HTML}{242424}
+\else%
+\definecolor{PrimaryColor}{HTML}{475C08}
+\definecolor{SecondaryColor}{HTML}{6A8911}
+\definecolor{ThirdColor}{HTML}{E0F120}
+\definecolor{BodyColor}{HTML}{666666}
+\definecolor{EmphasisColor}{HTML}{2E2E2E}
+\definecolor{BackgroundColor}{HTML}{F9F9F9}
+\fi%
+
+\colorlet{name}{PrimaryColor}
+\colorlet{tagline}{PrimaryColor}
+\colorlet{heading}{PrimaryColor}
+\colorlet{headingrule}{ThirdColor}
+\colorlet{subheading}{SecondaryColor}
+\colorlet{accent}{SecondaryColor}
+\colorlet{emphasis}{EmphasisColor}
+\colorlet{body}{BodyColor}
+\pagecolor{BackgroundColor}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\small\bfseries}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+%% sample.bib contains your publications
+%% \addbibresource{sample.bib}
+
+\begin{document}
+\name{Нестеров Борис}
+\tagline{Студент математик}
+%% You can add multiple photos on the left or right
+%% \photoL{2cm}{FullSizeRender 3.jpg}
+%% \photoR{2cm}{IMG_1122.JPG}
+\photoL {2cm}{IMG_6720.jpg}
+
+\personalinfo{
+  \printinfo{\faBirthdayCake}{26.04.2002}\\
+  \email{nesterov.boris123@gmail.com}
+  %\homepage{nicolasomar.me}
+  %\medium{nicolasomar}
+  %% You MUST add the academicons option to \documentclass, then
+  % compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or
+  % other academicons commands.
+  % \orcid{0000-0000-0000-0000}
+  %% You can add your own arbtrary detail with
+  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+  \printinfo{\faPhone}{+79998261105}
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  \github{Nesterov-BA}
+}
+
+\makecvheader
+%% Depending on your tastes, you may want to make fonts of itemize
+% environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
+
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.25}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+  % ----- STRENGTHS -----
+  \cvsection{Навыки}
+
+  \cvtag{Теория Вероятностей}
+  \cvtag{Статистика}
+  \cvtag{Мат. Анализ}
+  \cvtag{A/B тестирование}
+  \\
+  \cvtag{Линейная Алгебра}
+  \\
+  \cvtag{Численные Методы}
+  \cvtag{Случайные процессы}
+
+  % ----- STRENGTHS -----
+
+  % ----- LANGUAGES -----
+  \cvsection{Языки}
+  \cvlang{Английский}{C1}\\
+  \divider
+
+  %% Yeah I didn't spend too much time making all the
+  %% spacing consistent... sorry. Use \smallskip, \medskip,
+  %% \bigskip, \vpsace etc to make ajustments.
+  \cvlang{Русский}{Носитель}\\
+  \smallskip
+  % ----- LANGUAGES -----
+
+  % ----- LEARNING -----
+  \cvsection{
+    \begin{spacing}{1.0}Технические навыки
+  \end{spacing}}
+  \cvtag{Python}
+  \cvtag{NumPy}
+  \cvtag{Pandas}
+  \cvtag{Sklearn}
+  \cvtag{Matplotlib}
+  \cvtag{SQL}
+  \cvtag{C++}
+  \cvtag{Excel}
+  % ----- LEARNING -----
+
+  % ----- OTHER -----
+  \cvsection{}
+  \cvtag{Основы ML}
+  \cvtag{Photoshop}
+  \cvtag{Linux}
+  \cvtag{LaTex}
+  % ----- OTHER -----
+
+  % ----- HOBBIES -----
+
+  % ----- HOBBIES -----
+
+  % ----- MOST PROUD -----
+  % \cvsection{Most Proud of}
+
+  % \cvachievement{\faTrophy}{Fantastic Achievement}{and some details
+  % about it}\\
+  % \divider
+  % \cvachievement{\faHeartbeat}{Another achievement}{more details
+  % about it of course}\\
+  % \divider
+  % \cvachievement{\faHeartbeat}{Another achievement}{more details
+  % about it of course}
+  % ----- MOST PROUD -----
+
+  % \cvsection{A Day of My Life}
+
+  % Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+  % \wheelchart{outer radius}{inner radius}{
+  % comma-separated list of value/text width/color/detail}
+  % \wheelchart{1.5cm}{0.5cm}{%
+  %   6/8em/accent!30/{Sleep,\\beautiful sleep},
+  %   3/8em/accent!40/Hopeful novelist by night,
+  %   8/8em/accent!60/Daytime job,
+  %   2/10em/accent/Sports and relaxation,
+  %   5/6em/accent!20/Spending time with family
+  % }
+
+  % use ONLY \newpage if you want to force a page break for
+  % ONLY the current column
+  \newpage
+
+  %% Switch to the right column. This will now automatically move to the second
+  %% page if the content is too long.
+  \switchcolumn
+  \cvsection{Проекты}
+  \cvevent{Численные Методы}{| Механико-Математический факультет}{}{}
+  \begin{itemize}
+    \item Численное решение системы дифференциальных уравнений
+    \item Численное решение уравнений с частными производными
+    \item Численное приближение функций многих переменных
+  \end{itemize}
+  \divider
+
+  \cvevent{Научная Работа}{| Механико-Математический
+  факультет}{Сентябрь 2023 -- Н.В.}{}
+  \begin{itemize}
+    \item Написание и публикация статьи по метрической геометрии в
+      коллаборации с научным руководителем
+
+  \end{itemize}
+
+  % ----- EXPERIENCE -----
+  \cvsection{Опыт работы}
+  \cvevent{Репетитор}{}{Сентябрь 2022 -- Н.В.}{}
+  \begin{itemize}
+    \item Подготовка школьников к математическим олимпиадам,
+      экзаменам и поступлению в университеты
+    \item Занятия с учениками младших курсов технических факультетов
+  \end{itemize}
+  \divider
+
+  \cvevent{Преподаватель математики }{| Школа №54}{Сентябрь 2021 --
+  Май 2022}{Москва, Россия}
+  \begin{itemize}
+    \item Проведение еженедельного кружка по подготовке к олимпиадам
+      по математике
+    \item Составление листков с задачами
+  \end{itemize}
+
+  \vspace{3pt}
+  % ----- EXPERIENCE -----
+
+  % ----- EDUCATION -----
+  \cvsection{Образование}
+  \cvevent{Специалитет}{| МГУ имени М. В. Ломоносова}{Сентябрь 2019
+  -- Н.В.}{Москва, Россия}
+  Специалист по направлению "Фундаментальная математика и механика"
+
+  \divider
+
+  \cvevent{Доп. образование}{| Институт ИИ МГУ}{Сентябрь 2024 --
+  Н.В.}{Москва, Россия}
+  AI Masters, программа ''Data Science / Data Engineering''
+
+  % ----- EDUCATION -----
+  % ----- SPHERES -----
+
+\end{paracol}
+\end{document}
