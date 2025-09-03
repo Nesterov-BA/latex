@@ -1,152 +1,35 @@
-Далее считаем, что все облака имеют нетривиальную стационарную группу. \\
-В евклидовом пространстве косинус угла между двумя векторами
-определяется по теореме косинусов:
-$\|a-b\|^2 = \|a\|^2 + \|b\|^2 - 2\cos(a,b)\|a\|\|b\|$. Если длины
-векторов равны, то формула превращается в $\|a-b\|^2=2\|a\|^2 -
-2\cos(a,b)\|a\|^2$. Таким образом косинус между векторами будет равен
-$\frac{\|a-b\|^2}{\|a\|^2}-1$. Этой формулой мотивировано следующее определение:
-
+В данной секции мы рассмотрим два определения угла облака. Для того, чтобы дать эти определения сначала необходимо определить угол между пространствами. 
+\\
+Далее, будем считать, что у облаков нетривиальная стационарная группа и будем обозначать $ [M] $ - облако с центром $ m $.
 \begin{defin}
-  Пусть у облака $[M]$ центр $M$. Также, пусть метрические
-  пространства $X_1,X_2$ находятся на расстоянии $|X_1,M| =|X_2,M| =r$
-  и $|X_1,X_2| =d$. \emph{Углом} между метрическими пространствами
-  $X_1,X_2$ называется величина $$\varphi(X_1,X_2) =
-  \arccos\left(1-\frac{d^2}{2r^2}\right).$$
-  По неравенству треугольника $0\le d^2 \le 4r^2$,откуда $-1 \le
-  1-\displaystyle\frac{d^2}{2r^2}\le 1$. Это означает, что угол
-  определен корректно.\\
-  \emph{Углом раствора} облака $[M]$ называется величина
-  \[
-    \varphi([M])=\sup\big\{\varphi(X_1,X_2)\colon |X_1,M| =|X_2,M|\big\}.
-  \]
+    Пусть у облака $ [M] $ нетривиальная стационарная группа и его центром является $ M $. \textbf{Углом} между пространствами $ X_1, X_2 $, $ |X_1 M| = r_1, | X_2, M | =r_2, |X_1 X_2| = d$, где $ r_1, r_2 \neq 0 $ называется величина $ \arccos \left(\frac{r_1^2 + r_{2}^2 - d^2}{2r_1r_2} \right)$.\\ Будем обозначать его $ \varphi(X_1, X_2) $.
 \end{defin}
-Приведем известные примеры углов раствора:
-\begin{enumerate}
-  \item $\varphi\big([\Delta_1]\big)=\frac{\pi}{3}$.
-  \item $\varphi\big([\mathbb{R}]\big) = \pi$.
-\end{enumerate}
-Понятие угла раствора обобщает идею неравенства треугольника и
-ультраметрического неравенства. Следующая лемма является тривиальным
-свойством угла.
+\begin{remark}
+    Такое определение естественным образом вытекает из теоремы косинусов, а именно $ c^{2} = a^2 + b^2 - 2ab\cos (a,b) $.
+\end{remark}
+У угла между пространствами есть следующее свойство.
 \begin{lemma}
-  Для любого облака $[M]$ и $\lambda \in \mathbb{R}^+$ выполнено
-  $\varphi\big(\lambda[M]\big) = \varphi\big([M]\big).$
+    Для любых \( X_1, X_2 \in [M], \lambda \in \St([M]) \) выполняется \( \varphi (X_1, X_2) = \varphi (\lambda X_1, X_2) \).
+\end{lemma} 
+\begin{proof}
+    Как в определении угла, будем обозначать \[ |X_1 M| = r_1, | X_2, M | =r_2, |X_1 X_2| = d.\] 
+\end{proof}
+Рассмотрим теперь два интересующих нас определения угла облака.
+\begin{defin}
+\textbf{Углом} облака $ [M] $ называется величина
+\[
+    \varphi \big([M]\big)= \sup \big\{\varphi (X_1, X_2) \mid | X_1,M |, |X_2,M| \neq 0\big\}.
+\]
+\end{defin}
+\begin{defin}
+    \textbf{Равнобедренным углом} облака $ [M] $ называется величина \[ \varphi_e \big([M]\big) = \sup \big\{\varphi (X_1, X_2) \mid | X_1,M | = |X_2,M| \neq 0\big\}. \]
+\end{defin}
+Приведем известные примеры углов облаков.
+\begin{lemma}
+    Для облаков \( [\Delta _{1}], [\mathbb{R}] \) известно следующее:
+    \begin{itemize}
+    \item \( \varphi \big([\Delta _{1}]\big) = \frac{\pi }{2} \),
+    \item \( \varphi_e \big([\Delta _{1}]\big) = \frac{\pi }{3} \),
+    \item \( \varphi \big([\mathbb{R}]\big) = \varphi_e \big([\mathbb{R}]\big) = \pi  \).
+    \end{itemize}
 \end{lemma}
-\begin{proof}
-  Пусть в облаке $[M]$ есть пространства $X_1,X_2$ и угол между ними
-  равен $\varphi(X_1,X_2)$. Это означает, что
-  $1-\frac{|X_1,X_2|^2}{2|X_1,M|^2}=\cos\big(\varphi(X_1,X_2)\big)$.
-  В облаке $\lambda[M]$ соответственно лежат пространства $\lambda
-  X_1, \lambda X_2$, найдем косинус угла между ними:
-  \[
-    \cos\big(\varphi(\lambda X_1, \lambda X_2)\big) =
-    1-\frac{|\lambda X_1,\lambda X_2|^2}{2|\lambda X_1,M|^2} = 1-
-    \frac{\lambda^2|X_1,X_2|^2}{2\lambda^2|X_1,M|^2}=\cos
-    \big(\varphi(X_1,X_2)\big).
-  \]
-  Отображение $\pi_\lambda \colon X \rightarrow \lambda X$ является
-  биекцией между облаками $[M],\lambda [M]$ и сохраняет углы между
-  пространствами. Значит, углы раствора этих облаков равны.
-\end{proof}
-\begin{theorem}[Теорема об образе центра ]
-  Пусть облака $[X],[Y]$ имеют нетривиальное пересечение стационарных
-  групп и $\varphi\big([X]\big)\neq \varphi\big([Y]\big)$. Также
-  пусть $ R $ - соответствие между этими облаками с конечным
-  искажением равным $ \varepsilon $. Тогда $ \big|R(X),Y\big| \le
-  2\varepsilon $.
-
-\end{theorem}
-\begin{proof}
-  Нетривиальность стационарной группы $[Y]$ означает, что найдется
-  число $l > 1$ такое, что $\{l^{j}|j\in \mathbb{Z}\}$ является подгруппой в
-  $\St{[Y]}$.
-
-  Зафиксируем $Z$ из образа $X$.
-  Предположим, что $|Y,Z| = d > \epsilon$.  Обозначим
-  $|Z, kZ| = \rho$, $k \ge 2$, $k = l^{j_{1}}$. По неравенству
-  треугольника $\rho + d \ge kd$,
-  откуда $\rho \ge (k-1)d > (k-1)\epsilon$. Тогда $kZ$ лежит в образе
-  $M \ne X$. При этом,
-  $\rho - \epsilon \le |X, M| \le \rho + \epsilon$.
-
-  Возьмем произвольные $\alpha > 0$ и $\beta \in (0,1)$. Для
-  пространств $(1+\alpha)M, (1-\beta)M$ будут выполняться неравенства:
-  $$|X, (1+\alpha)X| = \alpha |X, \Delta_1| \le \alpha\rho + \alpha\epsilon,$$
-  $$|X, (1-\beta)X| = \beta|X, \Delta_1| \le \beta\rho + \beta\epsilon,$$
-  $$|(1+\alpha) X, (1-\beta)X| = (\alpha + \beta)|X, \Delta_1| \ge
-  (\alpha+\beta)\rho - (\alpha+\beta)\epsilon.$$
-  Существуют
-  $Y_\alpha, Y_\beta \in [M]$ такие, что
-  $kY_\alpha \in R\big((1+\alpha)X\big)$, $kY_\beta \in
-  R\big((1-\beta)X\big)$, и
-  для них выполняются следующие неравенства:
-  $$|kY, kY_\alpha| \le |X, (1+\alpha)X| + \epsilon \le \alpha\rho +
-  (\alpha+1)\epsilon,$$
-  $$|kY, kY_\beta| \le |X, (1-\beta)X| + \epsilon \le \beta\rho +
-  (\beta+1)\epsilon,$$
-  $$|kY_\alpha, kY_\beta| \ge |(1+\alpha)X, (1-\beta)X| - \epsilon
-  \ge  (\alpha+\beta)\rho - (\alpha+\beta+1)\epsilon.$$
-  Поделим эти неравенства на $k$:
-  $$|Y, Y_{\alpha}| \le \frac{\alpha}{k}\rho + \frac{\alpha+1}{k}\epsilon,$$
-  $$|Y, Y_{\beta}| \le \frac{\beta}{k}\rho + \frac{\beta+1}{k}\epsilon,$$
-  $$|Y_\alpha, Y_{\beta}| \ge \frac{\alpha+\beta}{k}\rho -
-  \frac{\alpha+\beta+1}{k}\epsilon.$$
-  и возьмем прообразы пространств $Y, Y_{\alpha}, Y_{\beta}$:
-  $$|\Delta_1, X_{\alpha}| \le \frac{\alpha}{k}\rho +
-  \big(\frac{\alpha+1}{k} + 1\big)\epsilon,$$
-  $$|\Delta, X_{\beta}| \le \frac{\beta}{k}\rho +
-  \big(\frac{\beta+1}{k}+1\big)\epsilon,$$
-  $$|X_\alpha, X_{\beta}| \ge \frac{\alpha+\beta}{k}\rho -
-  \big(\frac{\alpha+\beta+1}{k}+1\big)\epsilon.$$
-  Считая, что $\alpha > \beta$ получаем неравенство:
-  $$\frac{\alpha+\beta}{k}\rho -
-  \big(\frac{\alpha+\beta+1}{k}+1\big)\epsilon \le
-  \frac{\alpha}{k}\rho + \big(\frac{\alpha+1}{k} + 1\big)\epsilon,$$
-  $$\Updownarrow$$
-  $$\rho \le \frac{k}{\beta}\bigg(\frac{2\alpha+\beta+2}{k}+2\bigg)\epsilon,$$
-  $$\Updownarrow$$
-  $$\rho \le \bigg(1+\frac{2\alpha + 2}{\beta} +
-  2\frac{k}{\beta}\bigg)\epsilon.$$
-  Нас интересует оценка сверху для $d$:
-  $$d \le \frac{\rho}{k-1} \le \bigg(\frac{1}{k-1}+\frac{2\alpha +
-  2}{\beta(k-1)} + 2\frac{k}{\beta(k-1)}\bigg)\epsilon. $$
-  Последнее слагаемое в скобках строго больше 2 при любых $k>2$, $\alpha>0$,
-  $\beta\in (0,1)$, а остальные слагаемые с ростом $k$ стремятся к
-  $0$. Так как стационарная группа нетривиальна, в ней есть
-  последовательности чисел стремящихся к 0 и к $\infty$.
-  Устремив $\beta$ к 1, а $k$ к бесконечности получаем оценку:
-  $$|Y, M| \le 2\epsilon,$$
-  которая завершает доказательство.
-
-\end{proof}
-
-\begin{theorem}
-  Пусть облака $[X],[Y]$ имеют нетривиальное пересечение стационарных
-  групп и $\varphi\big([X]\big)\neq \varphi\big([Y]\big)$. Тогда
-  $\big|[X],[Y]\big| =\infty$.
-\end{theorem}
-
-\begin{proof}
-  Предположим, что $ \big|[X],[Y]\big| \neq \infty $. Поскольку
-  облака имеют нетривиальное пересечение стационарных групп, это
-  расстояние может быть равно только $0$. Это означает, что между
-  облаками $ [X], [Y] $ существуют соответствия со сколь угодно малым
-  искажением.
-
-  Обозначим углы облаков $ \varphi_X, \varphi_Y $ и $ k_X =
-  \sqrt{2-2\cos \varphi_X},  k_Y = \sqrt{2-2\cos \varphi_Y} $. По
-  определению угла раствора для всякого $ \varepsilon > 0 $ найдутся
-  пространства $ X_1,X_2 $ для которых выполнено $ |X,X_1|=|X,X_2| =
-  r $ и  $ |X_1,X_2|\le (k_X + \varepsilon) r $. Аналогичное
-  неравенство выполнено для облака $[Y]$. Без ограничения общности
-  будем считать, что $ k_Y < k_X $. Найдутся пространства $Y_1, Y_2,
-  X_1, X_2$ для которых выполнено $|X_1,X_2| = k_1 r_X$, $|Y_1,Y_2| =
-  k_2 r_Y$, где $ |X,X_1|=|X,X_2| = r_X $, $ |Y,Y_1|=|Y,Y_2| = r_Y $
-  и $k_1 \ge k_X > k_2 \ge k_Y $.
-
-  Пусть $ R $ - соответствие между облаками $ [X], [Y] $ и $ \dis R =
-  \delta$. Будем обозначать за $ R(A) $ какое-либо пространство из
-  образа $A$ при соответствии. Рассмотрим пространства $ R(X),
-  R(X_1), R(X_2) $. По теореме об образе центра $ \big|Y,R(X)\big| \le 2\delta$
-\end{proof}
-\end{document}
