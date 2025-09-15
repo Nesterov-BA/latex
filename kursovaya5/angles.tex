@@ -28,7 +28,8 @@
   По определению угла получаем следующую цепочку равенств:
   \[ \varphi (\lambda X_1, \lambda X_2) = \frac{\lambda ^{2} r_1^2 +
     \lambda ^2 r_2^2 - \lambda^2 d^2}{2 \lambda  r_1 \lambda r_2} =
-  \varphi (X_1, X_2)\]
+  \varphi (X_1, X_2).
+\]
 \end{proof}
 Рассмотрим теперь два интересующих нас определения угла облака.
 \begin{defin}
@@ -68,12 +69,24 @@
   \end{enumerate}
 \end{proof}
 Приведем известные примеры углов облаков.
-\begin{HYP}
+\begin{lemma}
   Для облаков \( [\Delta _{1}], [\mathbb{R}] \) известно следующее:
-  \begin{itemize}
+  \begin{enumerate}
     \item \( \varphi \big([\Delta _{1}]\big) = \frac{\pi }{2} \),
     \item \( \varphi_e \big([\Delta _{1}]\big) = \frac{\pi }{3} \),
     \item \( \varphi \big([\mathbb{R}]\big) = \varphi_e
       \big([\mathbb{R}]\big) = \pi  \).
-  \end{itemize}
-\end{HYP}
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+    \item Из ультраметрического неравенства следует, что \( \varphi \big([\Delta _1]\big)\le \frac{\pi }{2} \). Для доказательства обратного неравенства найдем угол между двухточечным симплексом \( \Delta _{2} = \{x_1, x_2\} \) и трехточечным симплексом \( \lambda \Delta _3  = \{y_1,y_2, y_3\}\). Заметим, что если \( R \) --- соответствие между \( \Delta _2, \lambda \Delta _3 \), то в нем найдутся пары точек \( (x_i,y_j), (x_i,y_k), j \neq k \). Значит \( \dis R \ge \big||x_ix_i|-|y_jy_k|\big|  = \lambda \). Ясно, что существует \( R \) такое, что \( \dis R = \lambda  \). Отсюда \( d _{GH}(\Delta _2, \lambda \Delta _3) = \frac{\lambda }{2} \). Далее, учитывая, что \( |\Delta _1 \Delta _2|=\frac{1}{2}, |\Delta _1 \lambda \Delta _3|=\frac{\lambda }{2} \), найдем угол между \( \Delta _2, \lambda \delta _3 \):
+        \[
+            \cos \big(\varphi (\Delta _2 , \lambda \Delta _3)\big) =\frac{\frac{\lambda ^2}{4} + \frac{1}{4} - \frac{\lambda ^2}{4}}{\frac{\lambda }{2}} = \frac{1}{2 \lambda } \rightarrow 0, \lambda \rightarrow \infty. 
+        \]
+        Отсюда, \( \varphi \big([\Delta _1]\big) \ge \sup \varphi (\Delta _2, \lambda \Delta _3) = \frac \pi 2. \)
+    \item Из ультраметрического неравенства следует, что \( \varphi_e \big([\Delta _1]\big)\le \frac{\pi }{3} \). Для доказательства обратного неравенства достаточно найти пространства одинакового диаметра, расстояние между которыми равно их диаметрам. Этими пространствами являются, например, \( \Delta _2, \Delta _3 \).
+    \item Достаточно привести пример пространств \( X,Y\in [\mathbb{R}] \), таких, что \( |X \mathbb{R}| = |Y \mathbb{R}| = \frac 1 2 |XY|. \) Такими пространствами являются \( \mathbb{Z}, \mathbb{R}\times [0,1] \).
+\end{enumerate}
+    
+\end{proof}
