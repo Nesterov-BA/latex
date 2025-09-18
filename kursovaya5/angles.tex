@@ -1,41 +1,42 @@
-В данной секции мы рассмотрим два определения угла облака. Для того,
+В данном разделе мы рассмотрим два определения угла облака. Для того,
 чтобы дать эти определения сначала необходимо определить угол между
 пространствами.
 \\
-Далее, будем считать, что у облаков нетривиальная стационарная группа
-и будем обозначать $ [M] $ - облако с центром $ m $.
+В дальнейшем будем считать, что у облаков нетривиальная стационарная группа
+и в обозначении облака $ [M] $, $ M $ является его центром.
 \begin{defin}
-  Пусть у облака $ [M] $ нетривиальная стационарная группа и его
-  центром является $ M $. \textbf{Углом} между пространствами $ X_1,
-  X_2 $, $ |X_1 M| = r_1, | X_2, M | =r_2, |X_1 X_2| = d$, где $ r_1,
+  \textbf{Углом} между пространствами $ X_1,
+  X_2 \in [M] $ такими, что $ |X_1 M| = r_1, | X_2 M | =r_2, |X_1
+  X_2| = d$, где $ r_1,
   r_2 \neq 0 $ называется величина $ \arccos \left(\frac{r_1^2 +
   r_{2}^2 - d^2}{2r_1r_2} \right)$.\\ Будем обозначать его $
   \varphi(X_1, X_2) $.
 \end{defin}
 \begin{remark}
-  Такое определение естественным образом вытекает из теоремы
+  Такое определение естественным образом вытекает из евклидовой теоремы
   косинусов, а именно $ c^{2} = a^2 + b^2 - 2ab\cos (a,b) $.
 \end{remark}
 У угла между пространствами есть следующее свойство.
 \begin{lemma}
   \label{lemmaAngleBetweenSpaces}
-  Для любых \( X_1, X_2 \in [M], \lambda \in \St([M]) \) выполняется
+  Для любых \( X_1, X_2 \in [M], \lambda \in \St\big([M]\big) \) выполняется
   \( \varphi (X_1, X_2) = \varphi (\lambda X_1, \lambda X_2) \).
 \end{lemma}
 \begin{proof}
-  Как в определении угла, будем обозначать \[ |X_1 M| = r_1, | X_2, M
+  Как в определении угла, положим \[ |X_1 M| = r_1, | X_2, M
   | =r_2, |X_1 X_2| = d.\]
   По определению угла получаем следующую цепочку равенств:
   \[ \varphi (\lambda X_1, \lambda X_2) = \frac{\lambda ^{2} r_1^2 +
     \lambda ^2 r_2^2 - \lambda^2 d^2}{2 \lambda  r_1 \lambda r_2} =
-  \varphi (X_1, X_2).
-\]
+    \varphi (X_1, X_2).
+  \]
+  На этом доказательство закончено.
 \end{proof}
 Рассмотрим теперь два интересующих нас определения угла облака.
 \begin{defin}
   \textbf{Углом} облака $ [M] $ называется величина
   \[
-    \varphi \big([M]\big)= \sup \big\{\varphi (X_1, X_2) \bigm| | X_1,M
+    \varphi \big([M]\big)= \sup \big\{\varphi (X_1, X_2) \colon | X_1,M
     |, |X_2,M| \neq 0\big\}.
   \]
 \end{defin}
@@ -46,16 +47,21 @@
     |X_1,M | = |X_2,M| \neq 0\big\}.
   \)
 \end{defin}
+% Записать лемму о том, что центр переходит в центр при умножении на
+% \lambda не из стационарной группы. Кузен облака [M] -- любое облако
+% [\lambda M]. \lambda[M] = [\lambda M]. Оформить все это как лемму.
 Для этих определений получаем следствие из леммы \ref{lemmaAngleBetweenSpaces}.
 \begin{lemma}
-  Углы облаков обладают следующими свойствами:
-  \begin{enumerate}
-    \item \(\varphi \big(\lambda [M]\big) = \varphi \big([M]\big)\),
+  Углы облаков обладают следующими свойствами:\label{lem:angles}
+  \begin{itemize}
+      %сказать откуда \lamda
+    \item \(\varphi \big(\lambda [M]\big) = \varphi
+      \big([M]\big)\),\label{lem:angles:1}
     \item \(\varphi_e \big(\lambda [M]\big) = \varphi_e \big([M]\big)\),
     \item \( \varphi_e \big([M]\big) \le \varphi \big([M]\big) \),
     \item \(0 \le \varphi ([M]) \le \pi\),
     \item \(0 \le \varphi_e ([M]) \le \pi\).
-  \end{enumerate}
+  \end{itemize}
 \end{lemma}
 \begin{proof}
   \begin{enumerate}
@@ -68,9 +74,9 @@
     \item Аналогично.
   \end{enumerate}
 \end{proof}
-Приведем известные примеры углов облаков.
+Приведем примеры углов облаков.
 \begin{lemma}
-  Для облаков \( [\Delta _{1}], [\mathbb{R}] \) известно следующее:
+  Для облаков \( [\Delta _{1}], [\mathbb{R}] \) выполняются следующие равенства:
   \begin{enumerate}
     \item \( \varphi \big([\Delta _{1}]\big) = \frac{\pi }{2} \),
     \item \( \varphi_e \big([\Delta _{1}]\big) = \frac{\pi }{3} \),
@@ -79,14 +85,39 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-\begin{enumerate}
-    \item Из ультраметрического неравенства следует, что \( \varphi \big([\Delta _1]\big)\le \frac{\pi }{2} \). Для доказательства обратного неравенства найдем угол между двухточечным симплексом \( \Delta _{2} = \{x_1, x_2\} \) и трехточечным симплексом \( \lambda \Delta _3  = \{y_1,y_2, y_3\}\). Заметим, что если \( R \) --- соответствие между \( \Delta _2, \lambda \Delta _3 \), то в нем найдутся пары точек \( (x_i,y_j), (x_i,y_k), j \neq k \). Значит \( \dis R \ge \big||x_ix_i|-|y_jy_k|\big|  = \lambda \). Ясно, что существует \( R \) такое, что \( \dis R = \lambda  \). Отсюда \( d _{GH}(\Delta _2, \lambda \Delta _3) = \frac{\lambda }{2} \). Далее, учитывая, что \( |\Delta _1 \Delta _2|=\frac{1}{2}, |\Delta _1 \lambda \Delta _3|=\frac{\lambda }{2} \), найдем угол между \( \Delta _2, \lambda \delta _3 \):
-        \[
-            \cos \big(\varphi (\Delta _2 , \lambda \Delta _3)\big) =\frac{\frac{\lambda ^2}{4} + \frac{1}{4} - \frac{\lambda ^2}{4}}{\frac{\lambda }{2}} = \frac{1}{2 \lambda } \rightarrow 0, \lambda \rightarrow \infty. 
-        \]
-        Отсюда, \( \varphi \big([\Delta _1]\big) \ge \sup \varphi (\Delta _2, \lambda \Delta _3) = \frac \pi 2. \)
-    \item Из ультраметрического неравенства следует, что \( \varphi_e \big([\Delta _1]\big)\le \frac{\pi }{3} \). Для доказательства обратного неравенства достаточно найти пространства одинакового диаметра, расстояние между которыми равно их диаметрам. Этими пространствами являются, например, \( \Delta _2, \Delta _3 \).
-    \item Достаточно привести пример пространств \( X,Y\in [\mathbb{R}] \), таких, что \( |X \mathbb{R}| = |Y \mathbb{R}| = \frac 1 2 |XY|. \) Такими пространствами являются \( \mathbb{Z}, \mathbb{R}\times [0,1] \).
-\end{enumerate}
-    
+  \begin{enumerate}
+    \item Из ультраметрического неравенства следует, что \( \varphi
+      \big([\Delta _1]\big)\le \frac{\pi }{2} \). Для доказательства
+      обратного неравенства найдем угол между двухточечным симплексом
+      \( \Delta _{2} = \{x_1, x_2\} \) и трехточечным симплексом \(
+      \lambda \Delta _3  = \{y_1,y_2, y_3\}\). Заметим, что если \( R
+      \) --- соответствие между \( \Delta _2, \lambda \Delta _3 \),
+      то в нем найдутся пары точек \( (x_i,y_j), (x_i,y_k), j \neq k
+      \). Значит \( \dis R \ge \big||x_ix_i|-|y_jy_k|\big|  = \lambda
+      \). Ясно, что существует \( R \) такое, что \( \dis R = \lambda
+      \). Отсюда \( d _{GH}(\Delta _2, \lambda \Delta _3) =
+      \frac{\lambda }{2} \). Далее, учитывая, что \( |\Delta _1
+        \Delta _2|=\frac{1}{2}, |\Delta _1 \lambda \Delta
+      _3|=\frac{\lambda }{2} \), найдем угол между \( \Delta _2,
+      \lambda \Delta _3 \):
+      \[
+        \cos \big(\varphi (\Delta _2 , \lambda \Delta _3)\big)
+        =\frac{\frac{\lambda ^2}{4} + \frac{1}{4} - \frac{\lambda
+        ^2}{4}}{\frac{\lambda }{2}} = \frac{1}{2 \lambda }
+        \rightarrow 0, \lambda \rightarrow \infty.
+      \]
+      Отсюда, \( \varphi \big([\Delta _1]\big) \ge \sup \varphi
+      (\Delta _2, \lambda \Delta _3) = \frac \pi 2. \)
+    \item Из ультраметрического неравенства следует, что \( \varphi_e
+      \big([\Delta _1]\big)\le \frac{\pi }{3} \). Для доказательства
+      обратного неравенства достаточно найти пространства одинакового
+      диаметра, расстояние между которыми равно их диаметрам. Этими
+      пространствами являются, например, \( \Delta _2, \Delta _3 \).
+    \item Достаточно привести пример пространств \( X,Y\in
+      [\mathbb{R}] \), таких, что \( |X \mathbb{R}| = |Y \mathbb{R}|
+      = \frac 1 2 |XY|. \) Такими пространствами являются \(
+      \mathbb{Z}, \mathbb{R}\times [0,1] \).
+      %Вставить ссылку на Ивана с названием.
+  \end{enumerate}
+
 \end{proof}
