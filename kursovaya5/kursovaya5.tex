@@ -1,6 +1,6 @@
 
 
-\documentclass[11pt,twoside,draft
+\documentclass[11pt,twoside
 ]{article}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,indentfirst,enumerate,textcomp}
 \usepackage[T1,T2A]{fontenc}
@@ -24,107 +24,6 @@
 \prvkolonttl{%правый колонтитул - сокращенное название статьи
 Углы облаков \ldots}
 
-\UDK{% УДК статьи
-514}
-
-\DOI{
-  10.22405/2226-8383-\god-\tom-\iss-\pageref{beg}-\pageref{end}
-}
-
-\title
-{%название статьи на русском языке с указанием источника
-  % финансирования при необходимости
-  Углы облаков и расстояние Громова--Хаусдорфа между облаками с
-  различными углами
-}
-{%название статьи на английском языке
-  Angles of clouds and the Gromov--Hausdorff distance between clouds
-with different angles}
-
-\author
-{%авторы статьи
-Б. А. Нестеров}
-{%авторы статьи
-B. A. Nesterov}
-
-\Position{
-  профессор
-}
-\AcademicDegree{
-  д.ф.-м.н.
-}
-\SciAdvisor{
-  Тужилин Алексей Августинович
-}
-\Cite{
-  Б. А. Нестеров. О расстоянии Громова--Хаусдорфа между облаком
-  ограниченных метрических пространств и облаком с нетривиальной
-  стационарной группой // Чебышевcкий сборник, \god, т.~\tom,
-  вып.~\iss, с.~\pageref{beg}--\pageref{end}.
-}
-{Nesterov B. A. \god, ``On the Gromov--Hausdorff distance between the
-  cloud of bounded
-  metric spaces and cloud with nontrivial stabilizer''\,, {\it
-  Che\-by\-shev\-skii sbornik}, vol.~\tom, no.~\iss,
-  pp.~\pageref{beg}--\pageref{end}.
-}
-
-\info
-{%авторы статьи на русском языке
-  \noindent {\bf Нестеров Борис Аркадьевич}~\\
-  \noindent Кафедра дифференциальной геометрии и приложений\\
-  \noindent {\bf Научный руководитель:}\\
-  \noindent профессор, д.ф.-м.н.\\
-  \noindent Тужилин Алексей Августинович
-}
-{%авторы статьи на английском языке
-  \noindent {\bf Nesterov Boris Arkadyevich}~--- Lomonosov Moscow
-  State University (Moscow).
-
-  \noindent
-  \emph{e-mail: nesterov.boris123@gmail.com}
-
-}
-
-\Abstract
-{%Аннотация статьи на русском языке 150-250 слов с учетом ключевых слов
-  В статье обсуждается класс всех метрических пространств,
-  рассматриваемых с точностью до
-  нулевого расстояния Громова--Хаусдорфа между ними. Этот класс
-  разбивается на облака --- классы пространств, лежащих на конечном
-  расстоянии от данного. В работе доказывается, что каждое облако
-  является собственным классом. Между облаками естественно
-  определяется расстояние Громова--Хаусдорфа, по аналогии с
-  метрическими пространствами. В работе показано, что при некоторых
-  ограничениях расстояние между облаком ограниченных метрических
-  пространств и облаком с нетривиальной стационарной группой равно
-  бесконечности. В частности, посчитано расстояние между облаком
-  ограниченных метрических пространств и облаком содержащим вещественную прямую.
-}
-{%Аннотация статьи на английском языке
-  The paper studies the class of all metric spaces considered up to
-  zero Gromov-Hausdorff distance between them. In this class, we
-  examine clouds --- classes of spaces situated at finite
-  Gromov-Hausdorff distances from a reference space. The paper proves
-  that all clouds are proper classes. The Gromov--Hausdorff distance
-  is defined for clouds analogous to the case of metric spaces. The
-  paper shows that under certain limitations the distance between the
-  cloud of bounded metric spaces and a cloud with a nontrivial
-  stabilizer is finite. In particular, the distance between the cloud
-  of bounded metric spaces and the cloud containing the real line is calculated.
-}
-
-\keywords
-{%ключевые слова на русском языке
-  метрические пространства, расстояние Громова--Хаусдорфа, облака,
-  собственный класс
-}
-{%ключевые слова на английском языке
-  metric spaces, Gromov–Hausdorff distance, clouds, proper class
-}
-
-%число наименований в библиографии
-\Bibliography{15 названий.}{15 titles.}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\dis}{dis}
 \DeclareMathOperator{\St}{St}
@@ -133,7 +32,31 @@ B. A. Nesterov}
 \begin{document}
 
 %генерация заглавия статьи
-\maketitle
+\begin{titlepage}
+    \centering
+    \textbf{Московский государственный университет\\
+    имени М.В.~Ломоносова}\\[1em]
+    Механико-математический факультет\\
+    Кафедра дифференциальной геометрии и приложений\\[10em]
+
+    \begin{large}
+    {\bfseries КУРСОВАЯ РАБОТА}\\[2em]
+
+    Углы облаков и расстояние Громова--Хаусдорфа между облаками с различными углами\\[0.5em]
+    Angles of clouds and the Gromov--Hausdorff distance between clouds with different angles
+\end{large}
+
+\vfill
+    \begin{flushright}
+    Выполнил студент 5 курса\\
+    Нестеров Б. А.\\[0.5em]
+    Научный руководитель \\ 
+    д.ф.-м.н., проф. А.А.~Тужилин
+    \end{flushright}
+
+    \vfill
+    Москва 2024
+  \end{titlepage}%
 \newpage
 \tableofcontents
 \newpage
@@ -148,6 +71,6 @@ B. A. Nesterov}
 \section{Расстояние между облаками с разными углами}
 \input{infiniteDistanceThm.tex}
 \label{end}
-\bibliographystyle{plain}
+\bibliographystyle{acm}
 \bibliography{refs}
 \end{document}
