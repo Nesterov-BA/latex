@@ -7,7 +7,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{chebsb}
 \usepackage[russian]{babel}
-\usepackage{indentfirst, array}
+\usepackage{indentfirst, array, csquotes}
 \usepackage{amscd,latexsym}
 \usepackage{mathrsfs}
 %\usepackage[ruled, linesnumbered]{algorithm2e}
@@ -16,6 +16,8 @@
 
 \usepackage{graphicx}
 \usepackage{textcase}% Оформление страниц
+\usepackage[style = ieee]{biblatex}
+\addbibresource{refs.bib}
 
 \label{beg}
 % заглавие стати и аннотация
@@ -71,6 +73,7 @@
 \section{Расстояние между облаками с разными углами}
 \input{infiniteDistanceThm.tex}
 \label{end}
-\bibliographystyle{acm}
-\bibliography{refs}
+\printbibliography
+% \bibliographystyle{acm}
+% \bibliography{refs}
 \end{document}
