@@ -1,121 +1,123 @@
-В работе была доказана следующая теорема.
+В работе \cite{nesterov2025gromovhausdorffdistancecloudbounded} была
+доказана следующая теорема.
 \begin{thm}
-    Пусть в облаке \( [Z] \) есть пространства $Y_{1}$, $ Y_{2}$ такие,
-    что \\$\max\big\{ |Y_{1}Z|, |Y_{2} Z| \big\} = r>0$, а $|Y_{1}
-    Y_{2}|>r$. Тогда, расстояние между облаками $[\Delta_1]$ и $[Z]$
-    равно бесконечности. \label{thrmDist}
+  Пусть в облаке \( [Z] \) есть пространства $Y_{1}$, $ Y_{2}$ такие,
+  что \\$\max\big\{ |Y_{1}Z|, |Y_{2} Z| \big\} = r>0$, а $|Y_{1}
+  Y_{2}|>r$. Тогда, расстояние между облаками $[\Delta_1]$ и $[Z]$
+  равно бесконечности. \label{thrmDist}
 \end{thm}
-Следующая теорема является обобщение теоремы \ref{thrmDist}.
+Следующая теорема является обобщением теоремы \ref{thrmDist}.
 \begin{thm}
-    Пусть облака \( [M], [N] \) имеют нетривиальное пересечение
-    стационарных групп и их углы \( \varphi \big([M]\big), \varphi
-    \big([N]\big) \) различны. Тогда \( d_{GH} \big([M], [N]\big) =
-    \infty \).
+  Пусть облака \( [M], [N] \) имеют нетривиальное пересечение
+  стационарных групп и их углы \( \varphi \big([M]\big), \varphi
+  \big([N]\big) \) различны. Тогда \( d_{GH} \big([M], [N]\big) =
+  \infty \).
 \end{thm}
 \begin{proof}
-    Без ограничения общности будем считать, что \( \varphi \big([M]\big)>
-    \varphi \big([N]\big) \). Для доказательства теоремы покажем, что не
-    существует соответствия \( R\in \mathcal{R}\big([M],[N]\big) \) с
-    конечным искажением.
+  Без ограничения общности будем считать, что \( \varphi \big([M]\big)>
+  \varphi \big([N]\big) \). Для доказательства теоремы покажем, что не
+  существует соответствия \( R\in \mathcal{R}\big([M],[N]\big) \) с
+  конечным искажением.
 
-    Предположим противное, т. е. существует соответствие \( R \) с
-    конечным искажением \( \dis R = \varepsilon < \infty \) как
-    отображение из облака \( [M] \) в облако \( [N] \). Построим функцию
-    \( f \colon [M] \rightarrow [N] \), \( f(X) \) -- произвольное
-    пространство из \(
+  Предположим противное, т. е. существует соответствие \( R \) с
+  конечным искажением \( \dis R = \varepsilon < \infty \) как
+  отображение из облака \( [M] \) в облако \( [N] \). Построим функцию
+  \( f \colon [M] \rightarrow [N] \), \( f(X) \) -- произвольное
+  пространство из \(
     R(X)
-    \). По определению угла, в облаке \( [M] \) найдутся пространства \(
-    X_1, X_2 \) для которых выполнено:
-    \[
-        \varphi \big([N]\big) < \varphi (X_1, X_2) \le \varphi
-    \big([M]\big). \]
-    Положим \( |X_1 M| = r_1^X,  |X_2 M| = r_2^X, | X_1 X_2 | = d^X\).
-    Также зададим функцию
-    \[ d^N \colon \mathbb{R}^+ \times \mathbb{R}^+ \rightarrow
-        \mathbb{R}^+, d^N(r_1, r_2) =
-        \sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\Big(\varphi \big([N]\big)\Big)}.
-    \]
-    Тогда выполняется следующее неравенство:
-    \begin{equation}
-        d^N(r_1^X, r_2^X) < d^X.
-        \label{ineqdx}
-    \end{equation}
-    По определению угла для любых пространств \( Y_1, Y_2 \in [N] \)
-    выполняется
-    \begin{equation}
-        | Y_1 Y_2 | \le d^N\big(| Y_1N |, | Y_2N |\big). \label{ineqAngle}
-    \end{equation}
-    Итак, наша задача --- показать, что найдутся пространства в \( [N]
-    \), для которых неравенство (\ref{ineqAngle}) не выполняется.
+  \). По определению угла, в облаке \( [M] \) найдутся пространства \(
+  X_1, X_2 \) для которых выполнено:
+  \[
+    \varphi \big([N]\big) < \varphi (X_1, X_2) \le \varphi
+  \big([M]\big). \]
+  Положим \( |X_1 M| = r_1^X,  |X_2 M| = r_2^X, | X_1 X_2 | = d^X\).
+  Также зададим функцию
+  \[ d^N \colon \mathbb{R}^+ \times \mathbb{R}^+ \rightarrow
+    \mathbb{R}^+, d^N(r_1, r_2) =
+    \sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\Big(\varphi \big([N]\big)\Big)}.
+  \]
+  Тогда выполняется следующее неравенство:
+  \begin{equation}
+    d^N(r_1^X, r_2^X) < d^X.
+    \label{ineqdx}
+  \end{equation}
+  По определению угла для любых пространств \( Y_1, Y_2 \in [N] \)
+  выполняется
+  \begin{equation}
+    | Y_1 Y_2 | \le d^N\big(| Y_1N |, | Y_2N |\big). \label{ineqAngle}
+  \end{equation}
+  Итак, наша задача --- показать, что найдутся пространства в \( [N]
+  \), для которых неравенство (\ref{ineqAngle}) не выполняется.
 
-    Нетривиальность пересечения стационарных групп означает, что найдется
-    подгруппа \[
-        \{q^k, k\in \mathbb{Z}, q> 1\} \in \St\big([M]\big) \cap \St
-        \big([N]\big).
-    \]
-    Обозначим \( |N R(M)| = l \). Будем рассматривать пространства \(
-    R(q^k X_1), R(q^k X_2), k \in \mathbb{N} \). Для них выполнены
-    следующие неравенства:
-    \begin{equation}
-        \big| R(q^k X_1), R(q^k X_2) \big| \ge q^k d^X - \varepsilon,
-        \label{ineqDistx1x2}
-    \end{equation}
-    \[
-        q^k r_1^X - \varepsilon  \le\big | R(M), R(q^k X_1) \big| \le q^k
-        r_1^X + \varepsilon ,
-    \]
-    \[
-        q^k r_2^X - \varepsilon  \le\big | R(M), R(q^k X_2) \big| \le q^k
-        r_2^X + \varepsilon .
-    \]
-    Из последних двух неравенств по неравенству треугольника получаем
-    следующее:
-    \begin{equation}
-        q^k r_1^X - l - \varepsilon \le \big|N, R(q^k X_1) \big| \le
-        q^k r_1^X + l + \varepsilon,\label{ineqDistx1N}
-    \end{equation}
-    \begin{equation}
-        q^k r_2^X - l - \varepsilon \le \big|N, R(q^k X_2) \big| \le q^k
-        r_2^X + l + \varepsilon.\label{ineqDistx2N}
-    \end{equation}
-    Поделим неравенства \ref{ineqDistx1x2}, \ref{ineqDistx1N},
-    \ref{ineqDistx2N}, на \( q^k \):
-    \[ \big| q^{-k}R(q^k X_1), q^{-k}R(q^k X_2) \big| \ge d^X -
-    \frac{\varepsilon }{q^k}, \]
-    \[
-        r_1^X - \frac{l + \varepsilon}{q^k} \le \big|N, q^{-k}R(q^k X_1)
-        \big| \le
-        r_1^X + \frac{l + \varepsilon}{q^k},
-    \]
-    \[
-        r_2^X - \frac{l + \varepsilon}{q^k} \le \big|N, q^{-k}R(q^k X_2)
-        \big| \le
-        r_2^X + \frac{l + \varepsilon}{q^k}.
-    \]
-    Функция \( d^N \) непрерывная, значит
-    \[
-        \lim_{k \rightarrow \infty
-            }d^N\Big(\big|N, q^{-k}R(q^k X_1)
-                \big|, \big|N, q^{-k}R(q^k X_2)
-            \big|\Big) = d^N(r_1^X, r_2^X).
-        \]
-        Из неравенства \ref{ineqdx} следует, что найдутся \( \delta
-        _1, \delta _2
-        > 0 \) такие, что \( d^n(r_1^X,r_2^X)<d^N(r_1^X, r_2^X)+\delta
-        _1 < d^X- \delta _2 < d^X \). Выберем такое \( k_1 \), чтобы
-        для всех \( k > k_1 \) выполнялось:
-        \[
-            d^N\Big(\big|N, q^{-k}R(q^k X_1)
-                \big|, \big|N, q^{-k}R(q^k X_2)
-            \big|\Big) \in \big(d^N(r_1^X, r_2^X)- \delta _1,
-        d^N(r_1^X, r_2^X)+ \delta _1\big).  \]
-        Также выберем \( k_2 \), такое что \( \big| q^{-k}R(q^k X_1), q^{-k}R(q^k X_2) \big| > d^X - \delta _2 \).
-        Теперь, если взять \( k_0 = \max\{k_1,k_2\} \), то
-        \[ \big| q^{-k_0}R(q^{k_0} X_1), q^{-k_0}R(q^{k_0} X_2) \big|
-            > d^N\Big(\big|N, q^{-k_0}R(q^k_0 X_1) \big|, \big|N,
-        q^{-k_0}R(q^{k_0} X_2) \big|\Big) \]
-        Пространства \( q^{-k_0}R(q^{k_0}X_1), q^{-k_0}R(q^{k_0}X_2)\)
-        ---
-        искомые, для которых не выполняется неравенство (\ref{ineqAngle}).
-        Противоречие.
-    \end{proof}
+  Нетривиальность пересечения стационарных групп означает, что найдется
+  подгруппа \[
+    \{q^k, k\in \mathbb{Z}, q> 1\} \in \St\big([M]\big) \cap \St
+    \big([N]\big).
+  \]
+  Обозначим \( |N R(M)| = l \). Будем рассматривать пространства \(
+  R(q^k X_1), R(q^k X_2), k \in \mathbb{N} \). Для них выполнены
+  следующие неравенства:
+  \begin{equation}
+    \big| R(q^k X_1), R(q^k X_2) \big| \ge q^k d^X - \varepsilon,
+    \label{ineqDistx1x2}
+  \end{equation}
+  \[
+    q^k r_1^X - \varepsilon  \le\big | R(M), R(q^k X_1) \big| \le q^k
+    r_1^X + \varepsilon ,
+  \]
+  \[
+    q^k r_2^X - \varepsilon  \le\big | R(M), R(q^k X_2) \big| \le q^k
+    r_2^X + \varepsilon .
+  \]
+  Из последних двух неравенств по неравенству треугольника получаем
+  следующее:
+  \begin{equation}
+    q^k r_1^X - l - \varepsilon \le \big|N, R(q^k X_1) \big| \le
+    q^k r_1^X + l + \varepsilon,\label{ineqDistx1N}
+  \end{equation}
+  \begin{equation}
+    q^k r_2^X - l - \varepsilon \le \big|N, R(q^k X_2) \big| \le q^k
+    r_2^X + l + \varepsilon.\label{ineqDistx2N}
+  \end{equation}
+  Поделим неравенства \ref{ineqDistx1x2}, \ref{ineqDistx1N},
+  \ref{ineqDistx2N}, на \( q^k \):
+  \[ \big| q^{-k}R(q^k X_1), q^{-k}R(q^k X_2) \big| \ge d^X -
+  \frac{\varepsilon }{q^k}, \]
+  \[
+    r_1^X - \frac{l + \varepsilon}{q^k} \le \big|N, q^{-k}R(q^k X_1)
+    \big| \le
+    r_1^X + \frac{l + \varepsilon}{q^k},
+  \]
+  \[
+    r_2^X - \frac{l + \varepsilon}{q^k} \le \big|N, q^{-k}R(q^k X_2)
+    \big| \le
+    r_2^X + \frac{l + \varepsilon}{q^k}.
+  \]
+  Функция \( d^N \) непрерывная, значит
+  \[
+    \lim_{k \rightarrow \infty
+    }d^N\Big(\big|N, q^{-k}R(q^k X_1)
+      \big|, \big|N, q^{-k}R(q^k X_2)
+    \big|\Big) = d^N(r_1^X, r_2^X).
+  \]
+  Из неравенства \ref{ineqdx} следует, что найдутся \( \delta
+    _1, \delta _2
+  > 0 \) такие, что \( d^N(r_1^X,r_2^X)<d^N(r_1^X, r_2^X)+\delta
+  _1 < d^X- \delta _2 < d^X \). Выберем такое \( k_1 \), чтобы
+  для всех \( k > k_1 \) выполнялось:
+  \[
+    d^N\Big(\big|N, q^{-k}R(q^k X_1)
+      \big|, \big|N, q^{-k}R(q^k X_2)
+    \big|\Big) \in \big(d^N(r_1^X, r_2^X)- \delta _1,
+  d^N(r_1^X, r_2^X)+ \delta _1\big).  \]
+  Также выберем \( k_2 \), такое что \( \big| q^{-k}R(q^k X_1),
+  q^{-k}R(q^k X_2) \big| > d^X - \delta _2 \).
+  Теперь, если взять \( k_0 = \max\{k_1,k_2\} \), то
+  \[ \big| q^{-k_0}R(q^{k_0} X_1), q^{-k_0}R(q^{k_0} X_2) \big|
+    > d^N\Big(\big|N, q^{-k_0}R(q^k_0 X_1) \big|, \big|N,
+  q^{-k_0}R(q^{k_0} X_2) \big|\Big) \]
+  Пространства \( q^{-k_0}R(q^{k_0}X_1), q^{-k_0}R(q^{k_0}X_2)\)
+  ---
+  искомые, для которых не выполняется неравенство (\ref{ineqAngle}).
+  Противоречие.
+\end{proof}
