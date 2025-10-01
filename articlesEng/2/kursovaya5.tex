@@ -1,0 +1,81 @@
+
+
+\documentclass[11pt,twoside
+]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,indentfirst,enumerate,textcomp}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{chebsb}
+\usepackage[russian]{babel}
+\usepackage{indentfirst, array, csquotes}
+\usepackage{amscd,latexsym}
+\usepackage{mathrsfs}
+%\usepackage[ruled, linesnumbered]{algorithm2e}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+\usepackage{graphicx}
+\usepackage{textcase}% Оформление страниц
+\usepackage[style = ieee]{biblatex}
+\addbibresource{refs.bib}
+%
+\label{beg}
+% заглавие стати и аннотация
+\levkolonttl{%левый колонтитул - авторы
+Б.~А.~Нестеров}
+\prvkolonttl{%правый колонтитул - сокращенное название статьи
+Углы облаков \ldots}
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\dis}{dis}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\thin}{thin}
+\begin{document}
+
+%генерация заглавия статьи
+\begin{titlepage}
+  \centering
+  \textbf{Московский государственный университет\\
+  имени М.В.~Ломоносова}\\[1em]
+  Механико-математический факультет\\
+  Кафедра дифференциальной геометрии и приложений\\[10em]
+
+  \begin{large}
+    {\bfseries КУРСОВАЯ РАБОТА}\\[2em]
+
+    Углы облаков и расстояние Громова--Хаусдорфа между облаками с
+    различными углами\\[0.5em]
+    Angles of clouds and the Gromov--Hausdorff distance between
+    clouds with different angles
+  \end{large}
+
+  \vfill
+  \begin{flushright}
+    Выполнил студент 5 курса\\
+    Нестеров Б. А.\\[0.5em]
+    Научный руководитель \\
+    д.ф.-м.н., проф. А.А.~Тужилин
+  \end{flushright}
+
+  \vfill
+  Москва 2024
+\end{titlepage}%
+\newpage
+\tableofcontents
+\newpage
+
+\section{Введение}
+\input{intro.tex}
+\section{Предварительные результаты}
+\input{preliminaries.tex}
+
+\section{Два определения угла}
+\input{angles.tex}
+\section{Расстояние между облаками с разными углами}
+\input{infiniteDistanceThm.tex}
+\label{end}
+\printbibliography
+% \bibliographystyle{acm}
+% \bibliography{refs}
+\end{document}
