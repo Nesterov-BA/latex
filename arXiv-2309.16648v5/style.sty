@@ -1,0 +1,139 @@
+\ProvidesPackage{style}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts,amssymb}
+\usepackage{url}
+\usepackage{mathtools}  
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{enumerate, paralist}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{calc,arrows}
+\usetikzlibrary{math} % Using variables inside tikz
+\usetikzlibrary{arrows,decorations,backgrounds,calc,math}
+\tikzstyle{map}=[->,semithick]
+\tikzstyle{arc}=[bend left,->,semithick]
+\tikzstyle{rinclusion}=[right hook->,semithick]
+\tikzstyle{linclusion}=[left hook->,semithick]
+
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{subfigure}
+%\usepackage{enumitem}
+%\usepackage{enumerate}
+%\setlist[enumerate]{topsep=1pt,itemsep=-1ex,partopsep=1ex,parsep=1ex}
+
+\newtheoremstyle{myremark} % name
+{7pt}                    % Space above
+{7pt}                    % Space below
+{}  	                 % Body font
+{}                           % Indent amount
+{\bf}       	         % Theorem head fuont
+{.}                          % Punctuation after theorem head
+{.5em}                       % Space after theorem head
+{}  % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{plain}
+\newtheorem{theorem-main}{Theorem}
+\newtheorem*{theorem-main1}{Theorem~\ref{thm:main1}}
+\newtheorem*{theorem-main2}{Theorem~\ref{thm:main2}}
+\newtheorem*{theorem-main3}{Theorem~\ref{thm:main3}}
+\newtheorem*{theorem-main4}{Theorem~\ref{thm:main4}}
+\newtheorem*{theorem-main5}{Theorem~\ref{thm:main5}}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{conjecture}[lemma]{Conjecture}
+\newtheorem{claim}[lemma]{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem*{definition-cnk}{Definition~\ref{def:cnk}}
+\newtheorem{question}{Question}
+\newtheorem*{question-motivating}{Motivating Question}
+\newtheorem{fact}[lemma]{Fact}
+\makeatletter
+\newenvironment{subtheorem}[1]{%
+  \def\subtheoremcounter{#1}%
+  \refstepcounter{#1}%
+  \protected@edef\theparentnumber{\csname the#1\endcsname}%
+  \setcounter{parentnumber}{\value{#1}}%
+  \setcounter{#1}{0}%
+  \expandafter\def\csname the#1\endcsname{\theparentnumber\Alph{#1}}%
+  \ignorespaces
+}{%
+  \setcounter{\subtheoremcounter}{\value{parentnumber}}%
+  \ignorespacesafterend
+}
+\makeatother
+\newcounter{parentnumber}
+%%%%%
+
+\theoremstyle{myremark}
+\newtheorem{remark}[lemma]{Remark}
+\newtheorem{example}[lemma]{Example}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\RP}{\ensuremath{\mathbb{R}\mathrm{P}}}
+\newcommand{\CP}{\ensuremath{\mathbb{C}\mathrm{P}}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\nU}{\mathcal{U}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\image}{\mathrm{im}}
+\newcommand{\diam}{\mathrm{diam}}
+\newcommand{\cost}{\mathrm{cost}}
+\newcommand{\dis}{\mathrm{dis}}
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\conv}{\mathrm{conv}}
+\newcommand{\cone}{\mathrm{cone}}
+\newcommand{\st}{\mathrm{st}}
+\newcommand{\sm}{\mathrm{SM}}
+\newcommand{\m}{\mathrm{M}}
+\newcommand{\SM}{\mathbb{SM}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\sym}{\mathrm{Sym}}
+\newcommand{\lip}{\mathrm{Lip}}
+\newcommand{\sd}{\mathrm{sd}}
+
+\newcommand{\Conf}{\mathrm{Conf}}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\oo}{\mathrm{O}}
+\newcommand{\so}{\mathrm{SO}}
+\newcommand{\gh}{\mathrm{GH}}
+\newcommand{\h}{\mathrm{H}}
+\newcommand{\ph}{\mathrm{PH}}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand\abs[1]{\left|#1\right|}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\ut}{\underline{t}}
+\newcommand{\ind}{\mathrm{ind}}
+\newcommand{\coind}{\mathrm{coind}}
+\newcommand{\codis}{\mathrm{codis}}
+\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\pack}{\mathrm{pack}}
+
+\newcommand{\note}[1]{\textcolor{blue}{({#1})}}
+\newcommand{\notep}[1]{\textcolor{purple}{({#1})}}
+
+\newcommand{\vr}[2]{\mathrm{VR}\left(#1;#2\right)}
+\newcommand{\cech}[2]{\mathrm{\check{C}}\left(#1;#2\right)}
+
+\DeclareMathOperator{\sk}{\mathrm{sk}}
+\DeclareMathOperator{\relint}{\mathrm{relint}}
+
+\linespread{1.2}

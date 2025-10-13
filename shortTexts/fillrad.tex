@@ -1,0 +1,53 @@
+\documentclass[11pt,twoside
+]{article}
+\usepackage{myrussian}
+
+\addbibresource{refs.bib}
+\begin{document}
+
+\section{Радиус заполнения}
+\begin{thm}[Старшие \( n \)-мерные гомологии]
+  \label{thm:homology}
+  Let $M$ be a connected (not necessarily compact) $n$--dimensional
+  manifold without boundary.
+  The $n$-dimensional homology $H_n(M;\Z/2)$ of $M$ is
+  well-understood and is dictated by the compactness of $M$.
+  More specifically,
+  \begin{equation}\label{eq:fund-cls}
+    H_n(M;\Z/2)\simeq
+    \begin{cases}
+      \Z/2&\text{ if }M\text{ is compact} \\
+      0&\text{ if }M\text{ is not compact}.
+    \end{cases}
+  \end{equation}
+\end{thm}
+Рассмотрим компактное риманово многообразие $M$, изометрически
+погруженное в пространство функций $L^{\infty}(M)$ вложением
+Куратовского. Будем обозначать это пространство $M ^{\prime}$.
+Известно, что $H_{n}(M,\mathbb{Z}^{2})= H_{n}(M ^{\prime},
+\mathbb{Z}^{2})= \mathbb{Z}^2$ Далее, будем рассматривать
+рассматривать открытые раздутия $B(M ^{\prime}, r)$ пространства $M
+^{\prime}$. Для малых $r$ такое раздутие будет гомотопически
+эквивалентно пространству $M ^{\prime}$ и $H_{n}\big(B(M
+^{\prime},r), \mathbb{Z}^{2}\big) = H_{n}(M ^{\prime},
+\mathbb{Z}^{2})= \mathbb{Z}^2$. При этом, раздутие, очевидно будет
+открытым, значит не компактным. Но его размерность не будет равна \(
+n \), значит
+для него теорема \ref{thm:homology} не применима. При этом, если
+радиус будет достаточно большим, раздутие станет стягиваемым, и его
+группа гомологий станет нулевой. Инфинум таких радиусов, что группа
+\( n \)-мерных гомологий раздутия \( H_{n}\big(B(M
+^{\prime},r), \mathbb{Z}^{2}\big) \) равна \( 0 \) называется
+\emph{радиусом заполнения} \( M \) и обозначается \( \FillRad(M)\). В
+\cite{katz1983filling} доказано,
+что оценкой сверху является \( \frac 1 3 \diam M \).
+
+В оригинальном определении рассматривается фундаментальный класс, и
+его образ при вложении в раздутие. \textbf{Фундаментальный класс} ---
+генератор группы \( n \) - мерных гомологий, т.е. класс циклов,
+факторизованный по границам. При этом, при вложении в раздутие он
+может как остаться нетривиальным, так и перейти в \( 0 \). Это и
+означает, что группа гомологий может стать нулевой.
+\section{Стягиваемость при большом радиусе}
+\printbibliography
+\end{document}
