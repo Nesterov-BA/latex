@@ -1,9 +1,9 @@
-\ProvidesPackage{myrussian}
+\ProvidesPackage{myenglish}
 
 \usepackage{amsmath,amsfonts,amssymb,amsthm,indentfirst,enumerate,textcomp}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
+\usepackage[english]{babel}
 \usepackage{indentfirst, array, csquotes}
 \usepackage{amscd,latexsym}
 \usepackage{mathrsfs}
@@ -15,20 +15,20 @@
 \usepackage[style = ieee]{biblatex}
 
 \theoremstyle{plain}
-\newtheorem*{maintheorem}{Main Theorem}
-\newtheorem{theorem}{Теорема}[section]
-\newtheorem{prop}[theorem]{Предложение}
-\newtheorem{corollary}[theorem]{Следствие}
-\newtheorem{ass}[theorem]{Утверждение}
-\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem*{mainthm}{Main Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{ass}[theorem]{Assertion}
+\newtheorem{lemma}[theorem]{Lemma}
 
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Определение}
-\newtheorem{remark}[theorem]{Замечание}
-\newtheorem{constr}[theorem]{Конструкция}
-\newtheorem{problem}[theorem]{Задача}
-\newtheorem{example}[theorem]{Пример}
-\newtheorem{sol}[theorem]{Решение}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{constr}[theorem]{Construction}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{sol}[theorem]{Solution}
 
 \def\labelenumi{\rm(\theenumi)}
 
@@ -48,6 +48,7 @@
 \makeindex
 
 \tolerance=2000
+
 \def\@seccntformat#1{\csname the#1\endcsname.\ } % точка после номера раздела
 
 \newcommand{\prvkolonttl}[1]{%

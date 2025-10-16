@@ -1,0 +1,162 @@
+\documentclass[11pt,twoside
+]{article}
+
+\usepackage{myenglish}
+\begin{document}
+
+\title{Cloud Angles}
+\author{Nesterov B. A.}
+\date{}
+\newpage
+
+\section{Preliminary Results}
+Henceforth, the Gromov--Hausdorff distance between metric spaces $X$
+and $Y$ will be denoted by $|XY|$ or \( | X,Y | \).
+
+Consider the proper class of all metric spaces and identify within it
+all metric spaces that are at zero distance from each other. Denote
+the resulting class by $\mathcal{GH}_0$. On it, the Gromov--Hausdorff
+distance will be a generalized metric. Here, "generalized" means that
+the distance between metric spaces can be equal to infinity.
+\begin{definition} In the class $\mathcal{GH}_{0}$, consider the following
+  relation: $X \thicksim Y \Leftrightarrow d_{GH}(X, Y) < \infty$. It
+  is easy to verify that this is an equivalence relation. The
+  equivalence classes of this relation are called \emph{clouds}. The
+  cloud containing a metric space $X$ will be denoted by $[X]$.
+\end{definition}
+
+For any metric space $X$, the operation of multiplying it by a
+positive real number $\lambda$ is defined: $X\mapsto \lambda X$,
+namely, the distance between any two points of the space is
+multiplied by $\lambda$.
+\begin{remark} Let metric spaces $X$, $Y$ lie in the same cloud. Then
+  $d_{GH}(\lambda X, \lambda Y) = \lambda d_{GH}(X,Y) < \infty$,
+  i.e., the spaces $\lambda X$, $\lambda Y$ will also lie in the same cloud.
+  \label{remOneCloud}
+\end{remark}
+\begin{definition} Define the operation of multiplying a cloud $[X]$ by a
+  positive real number $\lambda$ as the mapping that sends all spaces
+  $Y \in [X]$ to spaces $\lambda Y$. By Remark $\ref{remOneCloud}$,
+  all the resulting spaces will lie in the cloud $[\lambda X]$.
+\end{definition}
+Under such a mapping, the cloud can change, as was shown in , or it
+can map into itself. For the latter case, a special definition is introduced.
+\begin{definition}
+  The \emph{stabilizer} $\St\bigl([X]\bigr)$ of a cloud $[X]$
+  is the subset of $\mathbb{R}_+$, i.e., the set of all positive real
+  numbers, such that for all $\lambda \in \St\bigl([X]\bigr)$, $[X] =
+  [\lambda X]$. The resulting subset is indeed a subgroup of
+  $\mathbb{R}_+$. The stabilizer is called \emph{trivial} if it
+  is equal to $\{1\}$. The intersection of two stabilizers is
+  called \emph{nontrivial} if it is not equal to \( \{1\} \).
+\end{definition}
+
+\begin{lemma}
+  In every cloud with a nontrivial stabilizer, there exists a
+  unique space $X$ such that for any $\lambda$ from the stabilizer,
+  $X = \lambda X$ holds.
+  \label{centerLemma}
+\end{lemma}
+\begin{definition}
+  The space from Lemma \ref{centerLemma} will be called the
+  \emph{center} of the cloud.
+\end{definition}
+\begin{remark} In the cloud $[\Delta_1]$, for any space $X$, the
+  following holds:
+  $$|\lambda X \mu X| = |\lambda - \mu||X\Delta_1|.$$
+\end{remark}
+\begin{remark}[Ultrametric Inequality] In the cloud $[\Delta_{1}]$,
+  for all spaces $X_{1}, X_{2}$, the following inequality holds:
+  $$|X_{1}X_{2}| \le \max\big\{|X_{1} \Delta_{1}|,|X_{2}\Delta_{1}|\big\}.$$
+  \label{remUltraMetric}
+\end{remark}
+\section{Definitions of Angle}
+In what follows, we will assume that clouds have a nontrivial
+stabilizer and in the notation for a cloud $ [M] $, $ M $ is its center.
+\begin{definition}
+  The \textbf{angle} between spaces $ X_1, X_2 \in [M] $ such that $
+  |X_1 M| = r_1, | X_2 M | =r_2, |X_1 X_2| = d$, where $ r_1, r_2
+  \neq 0 $, is the quantity $ \arccos \left(\frac{r_1^2 + r_{2}^2 -
+  d^2}{2r_1r_2} \right)$.\\ It will be denoted by $ \varphi(X_1, X_2) $.
+\end{definition}
+\begin{remark}
+  This definition follows naturally from the Euclidean law of
+  cosines, namely $ c^{2} = a^2 + b^2 - 2ab\cos (a,b) $.
+\end{remark}
+Before formulating the property of the angle, we will need the
+following auxiliary lemma.
+\begin{lemma}
+  \label{lem:lambdacloud} For any cloud \( [M] \) and \( \lambda
+  \in\mathbb{R}^+ \), the following properties hold{\textup{:}}
+  \begin{enumerate}
+    \item \( \St\big(\lambda [M]\big) = \St\big([M]\big)\),
+      \label{lem:lambdacloud:1}
+    \item \( \lambda [M] = [\lambda M] \).\label{lem:lambdacloud:2}
+  \end{enumerate}
+\end{lemma}
+The angle between spaces has the following property.
+\begin{lemma}
+  \label{lemmaAngleBetweenSpaces} For any \( X_1, X_2 \in [M],
+  \lambda \in\mathbb{R}^+ \), \( \varphi (X_1, X_2) = \varphi
+  (\lambda X_1, \lambda X_2) \) holds.
+\end{lemma}
+Let us now consider the two definitions of a cloud's angle that interest us.
+\begin{definition}
+  The \textbf{angle} of a cloud $ [M] $ is the quantity
+  \[
+    \varphi \big([M]\big)= \sup \big\{\varphi (X_1, X_2) \colon |
+    X_1,M |, |X_2,M| \neq 0\big\}.
+  \]
+\end{definition}
+\begin{definition}
+  The \textbf{isosceles angle} of a cloud $ [M] $ is the quantity \(
+    \varphi_e \big([M]\big) = \sup \big\{\varphi (X_1, X_2) \bigm|
+  |X_1,M | = |X_2,M| \neq 0\big\}. \)
+\end{definition}
+For these definitions, we obtain a corollary from Lemma
+\ref{lemmaAngleBetweenSpaces}.
+\begin{lemma}
+  For any cloud \( [M] \) and \( \lambda \in\mathbb{R}^+ \), the
+  following holds\textup{:}\label{lem:angles}
+  \begin{enumerate}
+    \item \(\varphi \big(\lambda [M]\big) = \varphi
+      \big([M]\big)\),\label{lem:angles:1}
+    \item \(\varphi_e \big(\lambda [M]\big) = \varphi_e
+      \big([M]\big)\),\label{lem:angles:2}
+    \item \( \varphi_e \big([M]\big) \le \varphi \big([M]\big)
+      \),\label{lem:angles:3}
+    \item \(0 \le \varphi ([M]) \le \pi\),\label{lem:angles:4}
+    \item \(0 \le \varphi_e ([M]) \le \pi\).\label{lem:angles:5}
+  \end{enumerate}
+\end{lemma}
+Let us give examples of cloud angles.
+\begin{lemma}
+  For the clouds \( [\Delta _{1}], [\mathbb{R}] \), the following
+  equalities hold: \label{lem:angleexam}
+  \begin{enumerate}
+    \item \( \varphi \big([\Delta _{1}]\big) = \frac{\pi }{2}
+      \),\label{lem:angleexam:1}
+    \item \( \varphi_e \big([\Delta _{1}]\big) = \frac{\pi }{3}
+      \),\label{lem:angleexam:2}
+    \item \( \varphi \big([\mathbb{R}]\big) = \varphi_e
+      \big([\mathbb{R}]\big) = \pi  \).\label{lem:angleexam:3}
+  \end{enumerate}
+\end{lemma}
+\section{Main Theorem}
+A theorem was previously proven:
+\begin{theorem}
+  If clouds \( [M] \), \( [N] \) have a nontrivial intersection of
+  stabilizers, then \( d_{GH}\big([M],[N]\big) \) can be either
+  \( 0 \) or \( \infty \).
+\end{theorem}
+The main theorem of the work:
+\begin{theorem}
+  Let clouds \( [M], [N] \) have a nontrivial intersection of
+  stabilizers and let their angles \( \varphi \big([M]\big),
+  \varphi \big([N]\big) \) be different. Then \( d_{GH} \big([M],
+  [N]\big) = \infty \).
+\end{theorem}
+\label{end}
+% \bibliographystyle{acm}
+% \bibliography{refs}
+\end{document}
