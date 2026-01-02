@@ -1,6 +1,9 @@
-\def\ig#1#2#3#4{\begin{figure}[!ht]\begin{center}%
-\includegraphics[height=#2\textheight]{#1.eps}\caption{#4}\label{#3}%
-\end{center}\end{figure}}
+\def\ig#1#2#3#4{
+  \begin{figure}[!ht]
+    \begin{center}%
+      \includegraphics[height=#2\textheight]{#1.eps}\caption{#4}\label{#3}%
+    \end{center}
+\end{figure}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -36,15 +39,14 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{sol}[theorem]{Solution}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% My HEADINGs %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- \pagestyle{myheadings}
+\pagestyle{myheadings}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%  Canonical Definitions %%%%%%%%%%%%%%%%
- \catcode`@=11
- \def\.{.\spacefactor\@m}
- \catcode`@=12
+\catcode`@=11
+\def\.{.\spacefactor\@m}
+\catcode`@=12
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -56,26 +58,45 @@
 \def\Y{{\mathbb Y}}
 \def\Z{{\mathbb Z}}
 
-\def\a{\alpha}
-\def\b{\beta}
-\def\e{\varepsilon}
-\def\dl{\delta}
-\def\D{\Delta}
-\def\g{\gamma}
-\def\G{\Gamma}
+% Greek letters and symbols definitions
+\def\co{\colon}
+\def\al{\alpha}
+\def\Al{\mathcal{A}}
+\def\be{\beta}
+\def\ga{\gamma}
+\def\Ga{\Gamma}
+\def\de{\delta}
+\def\De{\Delta}
+\def\ep{\varepsilon}
+\def\ze{\zeta}
+\def\et{\eta}
+\def\th{\theta}
+\def\Th{\Theta}
+\def\io{\iota}
+\def\ka{\varkappa}
+\def\la{\lambda}
+\def\La{\Lambda}
+\def\xi{\xi}
+\def\Xi{\Xi}
+\def\pi{\pi}
+\def\Pi{\Pi}
+\def\rh{\rho}
+\def\si{\sigma}
+\def\Si{\Sigma}
+\def\ta{\tau}
+\def\up{\upsilon}
+\def\Up{\Upsilon}
+\def\ph{\varphi}
+\def\Ph{\Phi}
+\def\ch{\chi}
+\def\ps{\psi}
+\def\Ps{\Psi}
 \def\om{\omega}
 \def\Om{\Omega}
-\def\k{\varkappa}
-\def\l{\lambda}
-\def\r{\rho}
-\def\s{\sigma}
-\def\S{\Sigma}
-\def\t{\tau}
-\def\v{\varphi}
+\def\cd{\cdot}
 
 \def\almost#1{\stackrel{\mbox{\scriptsize п.в.}}{#1}}
 \def\0{\emptyset}
-\def\:{\colon}
 \def\<{\langle}
 \def\>{\rangle}
 \def\[{\llbracket}
@@ -227,5 +248,3 @@
 
 \def\gM{{\mathfrak M}}
 \def\gR{{\mathfrak R}}
-
-
