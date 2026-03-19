@@ -92,6 +92,16 @@
     \end{center}
 \end{figure}}
 
+\def\pdfimage#1#2#3#4{
+  \begin{figure}[h]
+
+    \centering
+    \includegraphics[width=0.3, page=#2]{#1.pdf}
+    \caption{#4}\label{#3}
+  \end{figure}
+
+\end{figure}}
+
 \def\C{{\mathbb C}}
 \def\N{{\mathbb N}}
 \def\Q{{\mathbb Q}}
