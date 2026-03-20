@@ -6,6 +6,7 @@
 \usepackage{setspace} % Для управления интервалами
 \usepackage{myrussian}
 
+\addbibresource{refs_1.bib}
 % Настройка полей согласно ГОСТ (приблизительно для диплома МГУ)
 \geometry{
   left=3cm,
@@ -20,6 +21,14 @@
 \begin{document}
 \input{title.tex}
 \newpage
-\section{Введение}
+\tableofcontents
+\newpage
+\pagestyle{plain}
+\section{Введение.}
 \input{intro.tex}
+\section{Предварительные результаты.}
+\input{prelim.tex}
+\section{Мощность облаков.}
+\input{properclass.tex}
+\printbibliography
 \end{document}

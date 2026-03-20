@@ -7,12 +7,32 @@
 \usepackage{indentfirst, array, csquotes}
 \usepackage{amscd,latexsym}
 \usepackage{mathrsfs}
+\usepackage{mathtools}
 \usepackage{tabularx}
 \usepackage{multirow}
+\usepackage{tikz}
 
 \usepackage{graphicx}
 \usepackage{textcase}% Оформление страниц
 \usepackage[style = ieee]{biblatex}
+
+\usetikzlibrary{%
+  arrows,
+  knots,
+  calc,
+}
+
+\tikzset{
+  every path/.style={
+    red,
+    line width=2pt
+  },
+  every node/.style={
+    transform shape,
+    knot crossing,
+    inner sep=1.5pt
+  }
+}
 
 \theoremstyle{plain}
 \newtheorem*{maintheorem}{Main Theorem}
@@ -64,6 +84,24 @@
       {\vbox{\hbox to \textwidth{\thepage \hfil \strut #1  \hfil}%
       \hrule}}%
 }}}
+
+\def\epsimage#1#2#3#4{
+  \begin{figure}[!ht]
+    \begin{center}%
+      \includegraphics[height=#2\textheight]{#1.eps}\caption{#4}\label{#3}%
+    \end{center}
+\end{figure}}
+
+\def\pdfimage#1#2#3#4{
+  \begin{figure}[h]
+
+    \centering
+    \includegraphics[width=0.3, page=#2]{#1.pdf}
+    \caption{#4}\label{#3}
+  \end{figure}
+
+\end{figure}}
+
 \def\C{{\mathbb C}}
 \def\N{{\mathbb N}}
 \def\Q{{\mathbb Q}}
