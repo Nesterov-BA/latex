@@ -57,7 +57,8 @@
 %Добровольский=========================================
 \renewcommand{\le}{\leqslant}
 \renewcommand{\ge}{\geqslant}
-
+\let\emph\relax % there's no \RedeclareTextFontCommand
+\DeclareTextFontCommand{\emph}{\bfseries\em}
 \textwidth=468pt \textheight=676,4pt
 
 \oddsidemargin -2mm

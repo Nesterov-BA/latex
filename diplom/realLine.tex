@@ -1,0 +1,67 @@
+По замечанию \ref{remUltraMetric} в облаке \( [\Delta _1] \) для
+любых пространств \( X_1, X_2 \) выполняется ультраметрическое
+неравенство. Целью данного раздела является показать, что в общем
+случае это не верно.
+\begin{lemma}
+  Если $X$ --- подмножество вещественной прямой. Положим \( d
+  \sup\{r\in \R_+\ \}\) в $\mathbb{R}
+  \setminus X$
+  лежит интервал диаметра $2d$,
+  то $X$ лежит от $\mathbb{R}$ на расстоянии, не меньшем $d$.
+  \label{lemmaDiamDist}
+\end{lemma}
+\begin{proof} Далее считаем, что в $\mathbb{R} \setminus X$ лежит
+  интервал $(a-d, a+d)$.
+  Предположим, что $d_{G H}(\mathbb{R}, X)<d$. Тогда должна
+  существовать реализация
+  $\left(\mathbb{R}^{\prime}, X^{\prime}, Y\right)$ такая, что
+  $d_H\left(\mathbb{R}^{\prime},
+  X^{\prime}\right)=$ $d^{\prime}<d$. Обозначим
+  \[
+    X_l \coloneqq \left\{x\in X \colon x \le a-d\right\},
+    X_r \coloneqq \left\{x\in X \colon x \ge a+d\right\}.
+  \]
+  Это подмножества \( X \) лежащие слева и справа от интервала \(
+  (a-d, a+d) \) соответственно. Заметим, что \( X = X_l \sqcup X_r
+  \). Также обозначим \( X_l', X_r'\) их образы в реализации.
+  Далее обозначим \[U_l:=\cup_{x \in
+    X_l'} B\left(x,
+    d^{\prime}+\frac{d-d^{\prime}}{2}\right),~~ U_r:=\cup_{x \in
+    X_r'} B\left(x,
+  d^{\prime}+\frac{d-d^{\prime}}{2}\right),\]
+  то есть $U_l \cup U_r$ --- покрытие $X^{\prime}$ шарами радиуса
+  $d^\prime + \frac{d-d^{\prime}}{2}$.
+  Получаем, что $U_l, U_r$ - два открытых непересекающихся множества,
+  но также $\mathbb{R}^{\prime} \in U_l \cup U_r$ по определению
+  расстояния Хаусдорфа, что противоречит
+  связности прямой.
+\end{proof}
+Нам понадобится следующая вспомогательная лемма, аналогичная лемме
+\ref{lemDiamImage}.
+\begin{lemma}
+  Если \( R \) - соответствие между метрическими пространствами \( X
+  \) и \( Y \), то \( \diam R(x) \le \dis R \) для любой точки \( x\in X \).
+\end{lemma}
+Обозначим \( \widetilde \R \) подпространство \( \R^2 \) с метрикой
+\( l_1 \), состоящее из прямой \( \big\{(x,0) \colon x\in \R\big\} \)
+и точки \( (0,1) \).
+\begin{theorem}
+  Пусть \( \Z \) --- метрическое  пространство целых чисел с метрикой
+  из \( \R \). Тогда
+  \begin{enumerate}
+    \item \( d_{GH}(\Z, \R) = \frac 1 2 \), \( d_{GH}(\widetilde \R,
+      \R)\le \frac 1 2 , \)\label{thrmPt:1}
+    \item \( d_{GH}(\Z, \widetilde \R) \ge \frac 2 3 . \)\label{thrmPt:2}
+  \end{enumerate}
+  \label{thrmRUltraMetric}
+\end{theorem}
+\begin{proof}
+  \ref{thrmPt:1}. Каноничное вложение \( \Z \hookrightarrow \R \)
+  задает реализацию с расстоянием Хаусдорфа равным \( \frac 1 2 \).
+  Отсюда \( d_{GH}(\Z,\R) \le \frac 1 2 \). Обратное неравенство
+  следует из леммы \ref{lemmaDiamDist}. Далее, вложение \( \widetilde
+  \R \subset \R^2 \) и \( \R' = \left\{(x,\frac 1 2) \colon x \in \R\right\} \)
+  дает реализацию с расстоянием Хаусдорфа равным \( \frac 1 2 \).
+
+  \ref{thrmPt:2}.
+\end{proof}

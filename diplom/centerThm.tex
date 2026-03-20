@@ -1,0 +1,93 @@
+Прежде, чем сформулировать теорему, приведем некоторые полезные
+утверждения о соответствиях.
+\begin{lemma}
+  Пусть пространства \( Y_1, Y_2 \) лежат в образе пространства \( X
+  \) при соответствии \( R \). Тогда \( | Y_1, Y_2 | \) не больше
+  искажения \( R \).
+  \label{lemDiamImage}
+\end{lemma}
+\begin{proof}
+  Если пространства $Y_{1}, Y_{2}$ лежат в образе $X$, то
+  \[\dis R \ge \big|\left|Y_{1},Y_{2}\right| - \left|X,X\right|\big|
+  = |Y_{1}, Y_{2}|.\]
+\end{proof}
+
+\begin{corollary}
+  Если пространства лежат на расстоянии большем, чем
+  искажение соответствия, то они не могут лежать
+  в образе одного пространства.
+\end{corollary}
+\begin{theorem}
+  Пусть $M$ -- центр облака $[M]$, имеющего нетривиальную
+  стационарную группу. $R$ -- соответствие между $[\Delta_{1}]$ и
+  $[M]$ с конечным
+  искажением $\varepsilon$. Тогда образ пространства $\Delta_{1}$
+  лежит от $M$ на
+  расстоянии не большем $2 \varepsilon$.
+  \label{thrmCenterImage}
+\end{theorem}
+\begin{proof}
+  Нетривиальность стационарной группы $[M]$ означает, что найдется
+  число $l > 1$ такое, что $\{l^{j}|j\in \mathbb{Z}\}$ является подгруппой в
+  $\St{[M]}$.
+
+  Зафиксируем $Y$ из образа $\Delta_{1}$.
+  Предположим, что $|M, Y| = d > \varepsilon$.  Обозначим
+  $|Y, kY| = \rho$, $k \ge 2$, $k = l^{j_{1}}$. По неравенству
+  треугольника $\rho + d \ge kd$,
+  откуда $\rho \ge (k-1)d > (k-1)\varepsilon$. Тогда $kY$ лежит в образе
+  $X \ne \Delta_1$. При этом,
+  $\rho - \varepsilon \le |X, \Delta_1| \le \rho + \varepsilon$.
+
+  Возьмем произвольные $\alpha > 0$ и $\beta \in (0,1)$. Для
+  пространств $(1+\alpha)X, (1-\beta)X$ будут выполняться неравенства:
+  $$|X, (1+\alpha)X| = \alpha |X, \Delta_1| \le \alpha\rho +
+  \alpha\varepsilon,$$
+  $$|X, (1-\beta)X| = \beta|X, \Delta_1| \le \beta\rho + \beta\varepsilon,$$
+  $$|(1+\alpha) X, (1-\beta)X| = (\alpha + \beta)|X, \Delta_1| \ge
+  (\alpha+\beta)\rho - (\alpha+\beta)\varepsilon.$$
+  Существуют
+  $Y_\alpha, Y_\beta \in [M]$ такие, что
+  $kY_\alpha \in R\big((1+\alpha)X\big)$, $kY_\beta \in
+  R\big((1-\beta)X\big)$, и
+  для них выполняются следующие неравенства:
+  $$|kY, kY_\alpha| \le |X, (1+\alpha)X| + \varepsilon \le \alpha\rho +
+  (\alpha+1)\varepsilon,$$
+  $$|kY, kY_\beta| \le |X, (1-\beta)X| + \varepsilon \le \beta\rho +
+  (\beta+1)\varepsilon,$$
+  $$|kY_\alpha, kY_\beta| \ge |(1+\alpha)X, (1-\beta)X| - \varepsilon
+  \ge  (\alpha+\beta)\rho - (\alpha+\beta+1)\varepsilon.$$
+  Поделим эти неравенства на $k$:
+  $$|Y, Y_{\alpha}| \le \frac{\alpha}{k}\rho + \frac{\alpha+1}{k}\varepsilon,$$
+  $$|Y, Y_{\beta}| \le \frac{\beta}{k}\rho + \frac{\beta+1}{k}\varepsilon,$$
+  $$|Y_\alpha, Y_{\beta}| \ge \frac{\alpha+\beta}{k}\rho -
+  \frac{\alpha+\beta+1}{k}\varepsilon.$$
+  и возьмем прообразы пространств $Y, Y_{\alpha}, Y_{\beta}$:
+  $$|\Delta_1, X_{\alpha}| \le \frac{\alpha}{k}\rho +
+  \big(\frac{\alpha+1}{k} + 1\big)\varepsilon,$$
+  $$|\Delta, X_{\beta}| \le \frac{\beta}{k}\rho +
+  \big(\frac{\beta+1}{k}+1\big)\varepsilon,$$
+  $$|X_\alpha, X_{\beta}| \ge \frac{\alpha+\beta}{k}\rho -
+  \big(\frac{\alpha+\beta+1}{k}+1\big)\varepsilon.$$
+  Считая, что $\alpha > \beta$ получаем неравенство:
+  $$\frac{\alpha+\beta}{k}\rho -
+  \big(\frac{\alpha+\beta+1}{k}+1\big)\varepsilon \le
+  \frac{\alpha}{k}\rho + \big(\frac{\alpha+1}{k} + 1\big)\varepsilon,$$
+  $$\Updownarrow$$
+  $$\rho \le
+  \frac{k}{\beta}\bigg(\frac{2\alpha+\beta+2}{k}+2\bigg)\varepsilon,$$
+  $$\Updownarrow$$
+  $$\rho \le \bigg(1+\frac{2\alpha + 2}{\beta} +
+  2\frac{k}{\beta}\bigg)\varepsilon.$$
+  Нас интересует оценка сверху для $d$:
+  $$d \le \frac{\rho}{k-1} \le \bigg(\frac{1}{k-1}+\frac{2\alpha +
+  2}{\beta(k-1)} + 2\frac{k}{\beta(k-1)}\bigg)\varepsilon. $$
+  Последнее слагаемое в скобках строго больше 2 при любых $k>2$, $\alpha>0$,
+  $\beta\in (0,1)$, а остальные слагаемые с ростом $k$ стремятся к
+  $0$. Так как стационарная группа нетривиальна, в ней есть
+  последовательности чисел стремящихся к 0 и к $\infty$.
+  Устремив $\beta$ к 1, а $k$ к бесконечности получаем оценку:
+  $$|Y, M| \le 2\varepsilon,$$
+  которая завершает доказательство.
+
+\end{proof}
