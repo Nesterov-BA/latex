@@ -3,38 +3,53 @@
 неравенство. Целью данного раздела является показать, что в общем
 случае это не верно.
 \begin{lemma}
-  Если $X$ --- подмножество вещественной прямой. Положим \( d
-  \sup\{r\in \R_+\ \}\) в $\mathbb{R}
-  \setminus X$
-  лежит интервал диаметра $2d$,
-  то $X$ лежит от $\mathbb{R}$ на расстоянии, не меньшем $d$.
+  Если $X$ --- подмножество вещественной прямой. Положим
+  \[
+    d =\sup\{r\in \R_+ \colon \exists a, (a-r, a+r)\subset \R
+    \setminus X \}.
+  \]
+  Тогда \( d_{GH}(X,\R) \) равно \( d \).
   \label{lemmaDiamDist}
 \end{lemma}
-\begin{proof} Далее считаем, что в $\mathbb{R} \setminus X$ лежит
-  интервал $(a-d, a+d)$.
-  Предположим, что $d_{G H}(\mathbb{R}, X)<d$. Тогда должна
+\begin{proof} Каноническое вложение \( X \hookrightarrow \R \) задает
+  реализацию с расстоянием Хаусдорфа равным \( d \).
+  Отсюда
+  \begin{equation}
+    d_{GH}(X, \R) \le d.
+    \label{eq:lemmaDiamDist}
+  \end{equation}
+
+  Далее считаем, что в $\mathbb{R} \setminus X$ лежит
+  интервал $(a-r, a+r)$, \( r \le d \).
+  Предположим, что $d_{G H}(\mathbb{R}, X)<r$. Тогда должна
   существовать реализация
   $\left(\mathbb{R}^{\prime}, X^{\prime}, Y\right)$ такая, что
   $d_H\left(\mathbb{R}^{\prime},
-  X^{\prime}\right)=$ $d^{\prime}<d$. Обозначим
+  X^{\prime}\right)=$ $r^{\prime}<r$. Обозначим
   \[
-    X_l \coloneqq \left\{x\in X \colon x \le a-d\right\},
-    X_r \coloneqq \left\{x\in X \colon x \ge a+d\right\}.
+    X_l \coloneqq \left\{x\in X \colon x \le a-r\right\},
+    X_r \coloneqq \left\{x\in X \colon x \ge a+r\right\}.
   \]
   Это подмножества \( X \) лежащие слева и справа от интервала \(
-  (a-d, a+d) \) соответственно. Заметим, что \( X = X_l \sqcup X_r
+  (a-r, a+r) \) соответственно. Заметим, что \( X = X_l \sqcup X_r
   \). Также обозначим \( X_l', X_r'\) их образы в реализации.
   Далее обозначим \[U_l:=\cup_{x \in
     X_l'} B\left(x,
-    d^{\prime}+\frac{d-d^{\prime}}{2}\right),~~ U_r:=\cup_{x \in
+    r^{\prime}+\frac{r-r^{\prime}}{2}\right),~~ U_r:=\cup_{x \in
     X_r'} B\left(x,
-  d^{\prime}+\frac{d-d^{\prime}}{2}\right),\]
+  r^{\prime}+\frac{r-r^{\prime}}{2}\right),\]
   то есть $U_l \cup U_r$ --- покрытие $X^{\prime}$ шарами радиуса
-  $d^\prime + \frac{d-d^{\prime}}{2}$.
+  $r^\prime + \frac{r-r^{\prime}}{2}$.
   Получаем, что $U_l, U_r$ - два открытых непересекающихся множества,
   но также $\mathbb{R}^{\prime} \in U_l \cup U_r$ по определению
   расстояния Хаусдорфа, что противоречит
   связности прямой.
+
+  Получили, что \( d_{GH}(X. \R) \ge r \) для всех \( r \) таких, что
+  в \( \R \setminus X \) лежит интервал диаметра \( 2r \). Переходя к
+  \( \sup \) получаем \( d_{GH}(X, \R) \ge d \). Вместе с
+  неравенством \ref{eq:lemmaDiamDist} получаем искомое равенство \(
+  d_{GH}(X, \R) = d\).
 \end{proof}
 Нам понадобится следующая вспомогательная лемма, аналогичная лемме
 \ref{lemDiamImage}.
@@ -56,12 +71,57 @@
   \label{thrmRUltraMetric}
 \end{theorem}
 \begin{proof}
-  \ref{thrmPt:1}. Каноничное вложение \( \Z \hookrightarrow \R \)
+  (\ref{thrmPt:1}). Каноничное вложение \( \Z \hookrightarrow \R \)
   задает реализацию с расстоянием Хаусдорфа равным \( \frac 1 2 \).
   Отсюда \( d_{GH}(\Z,\R) \le \frac 1 2 \). Обратное неравенство
   следует из леммы \ref{lemmaDiamDist}. Далее, вложение \( \widetilde
   \R \subset \R^2 \) и \( \R' = \left\{(x,\frac 1 2) \colon x \in \R\right\} \)
   дает реализацию с расстоянием Хаусдорфа равным \( \frac 1 2 \).
 
-  \ref{thrmPt:2}.
+  (\ref{thrmPt:2}).
+  Пусть $R$ --- соответствие
+  между $\mathbb{Z}$ и $\widetilde{\mathbb{R}}$, с искажением,
+  равным $1 + \varepsilon$ и
+  в образе точки $i$ из $\mathbb{Z}$ лежит $(0,1)$. По лемме
+  \ref{lemDiamImage} диаметр
+  образа точки не может быть больше искажения соответствия,
+  следовательно, образ $i$ лежит в $(-\varepsilon, \varepsilon) \cup
+  \bigl\{(0,1)\bigr\}$. Это
+  означает, что для
+  $x$ не лежащих в $(-\varepsilon, \varepsilon)$, пара $(i, x)$ не лежит в $R$.
+  Обозначим через $\mathcal{N}$ множество всех целых чисел таких, что их
+  образ лежит в $(-\varepsilon, \varepsilon) \cup
+  \bigl\{(0,1)\bigr\}$. Множество
+  $\mathcal{N}$ не пусто и не равно $\mathbb{Z}$, следовательно, по
+  лемме \ref{lemmaDiamDist},
+  расстояние от $\mathbb{Z} \setminus\mathcal{N}$ до $\mathbb{R}$ будет не
+  меньше 1.
+  Из соответствия $R$ уберем пару $\bigl(i,(0,1)\bigr)$, а также
+  все пары $(k,x)$ такие, что $x \in  (-\varepsilon, \varepsilon)$.
+  Получившееся множество обозначим $R'$.
+  Так как все точки из $\mathbb{R}\setminus(-\varepsilon,
+  \varepsilon)$ лежат в $R$
+  только в паре с точками из $ \mathbb{Z} \setminus\mathcal{N}$ и наоборот,
+  множество $R'$ будет соответствием между
+  $\mathbb{R}\setminus(-\varepsilon, \varepsilon)$ и
+  $ \mathbb{Z} \setminus\mathcal{N}$. Искажение
+  подмножества соответствия по определению не больше искажения
+  самого соответствия. Получаем цепочку неравенств:
+  \[1+\varepsilon = \dis R \ge \dis R' \ge
+    2d_{GH}\bigl(\mathbb{R}\setminus(-\varepsilon, \varepsilon), \mathbb{Z}
+  \setminus \mathcal{N}\bigr).\]
+  По неравенству треугольника
+  \[
+    2d_{GH}\bigl(\mathbb{R}\setminus(-\varepsilon, \varepsilon), \mathbb{Z}
+    \setminus \mathcal{N}\bigr) \ge
+    2\Big|d_{GH}\bigl(\mathbb{R}, \mathbb{Z} \setminus
+    \mathcal{N}\bigr) - d_{GH}\bigl(\mathbb{R}\setminus(-\varepsilon,
+    \varepsilon), \mathbb{R}\bigr)\Big| \ge 2 - 2\varepsilon.
+  \]
+  Получили неравенство: $1 + \varepsilon \ge 2 - 2\varepsilon$.
+  Из него получаем нижнюю оценку на $\varepsilon$:
+  \[\varepsilon \ge \frac 1 3,\]
+  откуда $\dis R \ge \frac 4 3$ и
+  $d_{GH}\left(\widetilde{\mathbb{R}}, \mathbb{Z}\right) \ge \frac 2
+  3 $.
 \end{proof}
