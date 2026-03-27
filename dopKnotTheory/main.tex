@@ -1,0 +1,40 @@
+\documentclass[a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{geometry}
+\usepackage{setspace} % Для управления интервалами
+\usepackage{myrussian}
+
+\geometry{
+  left=3cm,
+  right=1cm,
+  top=2cm,
+  bottom=2cm
+}
+
+\begin{document}
+\textbf{4.} Положим \( \sigma _1, \sigma _2 \) --- образующие,
+соответствующие перестановке, в которой нить идущая слева направо
+лежит сверху (рис. \ref{fig:sigma1 and 2}).
+
+\epsimage{sigma1}{0.14}{fig:sigma1 and 2}{\( \sigma _1, \sigma _2\)}
+
+Чтобы доказать, что \(\sigma _1 \neq \sigma _2 \)
+покажем, что \( \sigma _1 \sigma _2^{-1} \neq 1 \). Если бы это было
+так, то соответствующие диаграммы были бы изотопны. Тогда должны быть
+изотопны и их замыкания. Диаграмма соответствующая единице --- три
+прямых отрезка, ее замыкание --- тривиальное зацепление из трех
+компонент. На рисунке \ref{fig:sigma1 sigma 2 -1} показано замыкание
+диаграммы \( \sigma _1
+\sigma _2^{-1} \). На рис. \ref{fig:sigma12iso} показано изотопное
+зацепление, которое
+изотопно тривиальному узлу. В частности оно не изотопно зацеплению из
+трех компонент.
+
+\epsimage{sigma12}{0.20}{fig:sigma1 sigma 2 -1}{Замыкание \( \sigma
+_1 \sigma _2^{-1}\)}
+
+\epsimage{sigma12iso}{0.20}{fig:sigma12iso}{Сглаженное замыкание \( \sigma
+_1 \sigma _2^{-1}\)}
+\end{document}
