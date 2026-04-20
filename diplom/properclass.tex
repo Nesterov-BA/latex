@@ -57,5 +57,47 @@
     d_{GH}\big([X],[Y]\big) = \frac{1}{2}\inf\left\{\dis R : R\in
     \mathcal{R}\big([X],[Y]\big)\right\}.
   \]
-
 \end{definition}
+Приведем лемму о расстоянии между облаками специального вида.
+\begin{lemma}
+  Пусть для стационарных групп облаков \( [X] \), \( [Y] \)
+  выполняется следующее соотношение:
+  \[
+    \St \bigl([X]\bigr) \cap \St \bigl([Y]\bigr) \neq \{1\}.
+  \]
+  Тогда расстояние Громова--Хаусдорфа между ними равно или \( 0 \)
+  или \( \infty \).
+\end{lemma}
+\begin{proof}
+  Для любых метрических пространств \( X_1 \), \( X_2 \) и любого \(
+  \lambda > 0 \) выполняется
+  \begin{equation}
+    d_{GH}(\lambda X_1, \lambda X_2)  = \lambda d_{GH}(X_1, X_2).
+    \label{eq:proof:dgh}
+  \end{equation}
+  Пусть \( R_1 \) -- соответствие между \([X]\) и \( [Y] \) и \(
+  \lambda > 0 \). Положим
+  \( R_2 \) --- подмножество \( \lambda [X] \times \lambda [Y]
+  \) такое, что \( (X_1, Y_1) \in R_1 \iff (\lambda X_1, \lambda Y_1)
+  \in R_2 \). Так как \( \lambda [X], \lambda [Y] \) состоят в
+  точности из пространств \( \lambda X_1, \lambda Y_1 \), \( X_1 \in
+  [X] \), \( Y_1 \in [Y] \), \( R_2 \) также будет соответствием. При
+  этом, из любого соответствия между \( \lambda [X] \) и \( \lambda [Y] \) можно
+  получить соответствие между \( [X] \) и \( [Y] \) умножением на \(
+  \frac 1 \lambda \). Из соотношения \ref{eq:proof:dgh} получаем \(
+  \dis R_2 = \lambda \dis R_1 \).
+
+  Итак, между классами соответствий \( \mathcal{R}\big([X],[Y]\big)
+  \) и \( \mathcal{R}\big(\lambda [X], \lambda [Y]\big) \) существуем
+  биекция \( f \) такая, что \( \dis f(R) = \lambda \dis R \) для
+  всех соответствий \( R \in \mathcal{R}\big([X],[Y]\big) \). Отсюда
+  \( d_{GH}\big(\lambda [X], \lambda [Y]\big) = \lambda
+  d_{GH}\big([X], [Y]\big) \). Пусть теперь \( \lambda \in
+  \St\big([X]\big)\cap \St\big([Y]\big) \), \( \lambda \neq 1 \). Тогда
+  \[
+    d_{GH}\big([X],[Y]\big) = d_{GH}\big(\lambda [X], \lambda [Y]\big) = \lambda
+    d_{GH}\big([X], [Y]\big).
+  \]
+  Так как \( \lambda \neq 1 \) величина \( d_{GH}\big([X], [Y]\big)\)
+  может быть равна либо \( 0 \) либо \( \infty \).
+\end{proof}
