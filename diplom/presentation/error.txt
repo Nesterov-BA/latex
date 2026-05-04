@@ -1,0 +1,2 @@
+engArticle.tex|16 warning| LaTeX Font Warning: Font shape `T2A/phv/m/n' undefined using `T2A/cmr/m/n' instead
+engArticle.tex|| LaTeX Font Warning: Some font shapes were not available, defaults substituted.
