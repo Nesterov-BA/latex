@@ -30,21 +30,22 @@ metric spaces and a cloud with nontrivial stabilizer}
 \maketitle
 
 \begin{abstract}
-  The paper studies the class of all metric spaces considered up to
-  zero Gromov--Hausdorff distance between them. In this class, we
-  examine clouds --- classes of spaces situated at finite
-  Gromov--Hausdorff distances from a reference space. We prove that
-  all clouds are proper classes. The Gromov--Hausdorff distance is
-  defined for clouds similarly with the case of that for metric
-  spaces. A multiplicative group of transformations of clouds is
-  defined which is called stabilizer.%% Explain stabilizer
-  We show that under certain restrictions the distance between the
-  cloud of bounded metric spaces and a cloud with a nontrivial
-  stabilizer is finite. In particular, the distance between the cloud
-  of bounded metric spaces and the cloud containing the real line is calculated.
+    The paper studies the class of all metric spaces considered up to
+    zero Gromov--Hausdorff distance between them. In this class, we
+    examine clouds --- classes of spaces situated at finite
+    Gromov--Hausdorff distances from a reference space. We prove that
+    all clouds are proper classes. The Gromov--Hausdorff distance is
+    defined for clouds similarly with the case of that for metric
+    spaces. A multiplicative group of transformations of clouds is
+    defined which is called stabilizer.%% Explain stabilizer
+    We show that under certain restrictions the distance between the
+    cloud of bounded metric spaces and a cloud with a nontrivial
+    stabilizer is finite. In particular, the distance between the cloud
+    of bounded metric spaces and the cloud containing the real line
+    is calculated.
 
-  {\bf Keywords:} metric spaces, Gromov--Hausdorff distance, clouds,
-  proper class
+    {\bf Keywords:} metric spaces, Gromov--Hausdorff distance, clouds,
+    proper class
 \end{abstract}
 
 \section{Intodiction}
@@ -174,48 +175,49 @@ Let $ X $ and $ Y $ be metric spaces. A distance between them, called
 the \emph{Gromov--Hausdorff distance}, can be defined. Below, we
 present two equivalent definitions \cite{Lectures}.
 
-\begin{defin}
-  Let $ X $ and $ Y $ be metric spaces. A \emph{correspondence} $ R $
-  between these spaces is a surjective multivalued mapping from $ X $
-  to $ Y $. The set of all correspondences between $ X $ and $ Y $ is
-  denoted by $ \mathcal{R}(X,Y) $. We will also identify a
-  correspondence with its graph.
-\end{defin}
+\begin{definition}
+    Let $ X $ and $ Y $ be metric spaces. A \emph{correspondence} $ R $
+    between these spaces is a surjective multivalued mapping from $ X $
+    to $ Y $. The set of all correspondences between $ X $ and $ Y $ is
+    denoted by $ \mathcal{R}(X,Y) $. We will also identify a
+    correspondence with its graph.
+\end{definition}
 
-\begin{defin}
-  Let $ R $ be a correspondence between $ X $ and $ Y $. The
-  \emph{distortion} of $ R $ is defined as
-  $$
-  \dis{R} = \sup \Bigl\{ \big| |xx'| - |yy'| \big| : (x, y), (x', y')
-  \in R \Bigr\}.
-  $$
-  Then, the \emph{Gromov--Hausdorff distance} $ d_{GH}(X,Y) $ can be defined as
-  $$
-  d_{GH}(X,Y) = \frac{1}{2} \inf \bigl\{ \dis{R} : R \in
-  \mathcal{R}(X,Y) \bigr\}.
-  $$
-  \label{defSootvet}
-\end{defin}
-\begin{defin}
-  Let $X,Y$ be subsets of a metric space $Z$. We define the Hausdorff
-  distance between $X,Y$ as follows:
-  $$
-  d_H(X, Y) \coloneqq \max \left\{ \sup_{x \in X} d(x, Y), \sup_{y
-  \in Y} d(X, y) \right\}.
-  $$
-\end{defin}
-\begin{defin}
-  A \emph{realization} of a pair of metric spaces $ (X,Y) $ is a
-  triple $ (X', Y', Z) $ of metric spaces such that:
-  $ X' \subset Z $ and $ Y' \subset Z $,
-  $ X' $ is isometric to $ X $ and
-  $ Y' $ is isometric to $ Y $.
+\begin{definition}
+    Let $ R $ be a correspondence between $ X $ and $ Y $. The
+    \emph{distortion} of $ R $ is defined as
+    $$
+    \dis{R} = \sup \Bigl\{ \big| |xx'| - |yy'| \big| : (x, y), (x', y')
+    \in R \Bigr\}.
+    $$
+    Then, the \emph{Gromov--Hausdorff distance} $ d_{GH}(X,Y) $ can
+    be defined as
+    $$
+    d_{GH}(X,Y) = \frac{1}{2} \inf \bigl\{ \dis{R} : R \in
+    \mathcal{R}(X,Y) \bigr\}.
+    $$
+    \label{defSootvet}
+\end{definition}
+\begin{definition}
+    Let $X,Y$ be subsets of a metric space $Z$. We define the Hausdorff
+    distance between $X,Y$ as follows:
+    $$
+    d_H(X, Y) \coloneqq \max \left\{ \sup_{x \in X} d(x, Y), \sup_{y
+    \in Y} d(X, y) \right\}.
+    $$
+\end{definition}
+\begin{definition}
+    A \emph{realization} of a pair of metric spaces $ (X,Y) $ is a
+    triple $ (X', Y', Z) $ of metric spaces such that:
+    $ X' \subset Z $ and $ Y' \subset Z $,
+    $ X' $ is isometric to $ X $ and
+    $ Y' $ is isometric to $ Y $.
 
-  The \emph{Gromov--Hausdorff distance} $ d_{GH}(X,Y) $ between $ X $
-  and $ Y $ is the infimum of all numbers $ r $ for which there
-  exists a realization $ (X', Y', Z) $ satisfying $ d_H(X', Y') \leq
-  r $, where $ d_H $ is the Hausdorff distance.
-\end{defin}
+    The \emph{Gromov--Hausdorff distance} $ d_{GH}(X,Y) $ between $ X $
+    and $ Y $ is the infimum of all numbers $ r $ for which there
+    exists a realization $ (X', Y', Z) $ satisfying $ d_H(X', Y') \leq
+    r $, where $ d_H $ is the Hausdorff distance.
+\end{definition}
 
 Henceforth, the Gromov--Hausdorff distance between metric spaces $ X
 $ and $ Y $ will be denoted by $ |X,Y| $.
@@ -225,13 +227,13 @@ Gromov--Hausdorff distance from each other. The resulting class is
 denoted by $ \mathcal{GH}_0 $. On this class, the Gromov--Hausdorff
 distance becomes a \emph{generalized metric}.
 
-\begin{defin}[\cite{TuzhBog1}]
-  In the class $\mathcal{GH}_{0}$, we consider the following
-  relation: $X \thicksim Y \Leftrightarrow d_{GH}(X, Y) < \infty$. It
-  is easy to verify that this is an equivalence relation. The
-  equivalence classes of this relation are called \emph{clouds}. The
-  cloud containing a metric space $X$ will be denoted by $[X]$.
-\end{defin}
+\begin{definition}[\cite{TuzhBog1}]
+    In the class $\mathcal{GH}_{0}$, we consider the following
+    relation: $X \thicksim Y \Leftrightarrow d_{GH}(X, Y) < \infty$. It
+    is easy to verify that this is an equivalence relation. The
+    equivalence classes of this relation are called \emph{clouds}. The
+    cloud containing a metric space $X$ will be denoted by $[X]$.
+\end{definition}
 
 For any metric space $X$, we can define an operation of
 multiplication by a positive real number $\lambda\colon X\mapsto
@@ -240,66 +242,67 @@ the distance between any two points of the space is scaled by a
 factor of $\lambda$.
 
 \begin{remark}
-  Let metric spaces $X$, $Y$ belong to the same cloud. Then
-  $d_{GH}(\lambda X, \lambda Y) = \lambda d_{GH}(X,Y)\allowbreak <
-  \infty$, which means the spaces $\lambda X$, $\lambda Y$ will also
-  belong to the same cloud.
-  \label{remOneCloud}
+    Let metric spaces $X$, $Y$ belong to the same cloud. Then
+    $d_{GH}(\lambda X, \lambda Y) = \lambda d_{GH}(X,Y)\allowbreak <
+    \infty$, which means the spaces $\lambda X$, $\lambda Y$ will also
+    belong to the same cloud.
+    \label{remOneCloud}
 \end{remark}
 
-\begin{defin}
-  We define the operation of multiplying a cloud $[X]$ by a positive
-  real number $\lambda$ as the mapping that transforms all spaces $Y
-  \in [X]$ into spaces $\lambda Y$. According to Remark
-  \ref{remOneCloud}, all resulting spaces will belong to the cloud
-  $[\lambda X]$.
-\end{defin}
+\begin{definition}
+    We define the operation of multiplying a cloud $[X]$ by a positive
+    real number $\lambda$ as the mapping that transforms all spaces $Y
+    \in [X]$ into spaces $\lambda Y$. According to Remark
+    \ref{remOneCloud}, all resulting spaces will belong to the cloud
+    $[\lambda X]$.
+\end{definition}
 
 Under such a mapping, a cloud may either change or remain invariant.
 For the latter case, we introduce a special definition.
 
-\begin{defin}[\cite{TuzhBog2}]
-  The \emph{stabilizer} $\St\bigl([X]\bigr)$ of a cloud $[X]$ is the
-  subset of $\mathbb{R}_+$ such that for all $\lambda \in
-  \St\bigl([X]\bigr)$, $[X] = [\lambda X]$. This subset forms a
-  subgroup of $\mathbb{R}_+$. The stabilizer is called \emph{trivial}
-  when it equals $\{1\}$.
-\end{defin}
+\begin{definition}[\cite{TuzhBog2}]
+    The \emph{stabilizer} $\St\bigl([X]\bigr)$ of a cloud $[X]$ is the
+    subset of $\mathbb{R}_+$ such that for all $\lambda \in
+    \St\bigl([X]\bigr)$, $[X] = [\lambda X]$. This subset forms a
+    subgroup of $\mathbb{R}_+$. The stabilizer is called \emph{trivial}
+    when it equals $\{1\}$.
+\end{definition}
 
 Let us provide several examples of clouds and their stabilizers.
 
 \begin{itemize}
-  \item Let $\Delta_1$ be a one-point metric space. Then
-    $\St\bigl([\Delta_1]\bigr) = \mathbb{R}_+$.
-  \item $\St\bigl([\mathbb{R}]\bigr) = \mathbb{R}_+$.
-  \item Suppose a function $\phi(n)$ satisfies $\lim\limits_{n
-    \rightarrow \infty} \phi(n + 1) - \phi(n) = +\infty$. For $q >
-    1$, define the space $X_q = \left\{q^{\phi(n)}: n \in
-    \mathbb{N}\right\}$. Then $\St\bigl([X_q]\bigr) = \{1\}$ \cite{TuzhBog1}.
-  \item For a natural number $p$, define the space $X_p = \left\{p^n
-    : n \in \mathbb{Z}\right\}$. For any prime $p$, we have
-    $\St\bigl([X_p]\bigr) = \left\{p^n : n \in \mathbb{Z}\right\}$
-    \cite{BogBog1}.
+    \item Let $\Delta_1$ be a one-point metric space. Then
+        $\St\bigl([\Delta_1]\bigr) = \mathbb{R}_+$.
+    \item $\St\bigl([\mathbb{R}]\bigr) = \mathbb{R}_+$.
+    \item Suppose a function $\phi(n)$ satisfies $\lim\limits_{n
+        \rightarrow \infty} \phi(n + 1) - \phi(n) = +\infty$. For $q >
+        1$, define the space $X_q = \left\{q^{\phi(n)}: n \in
+        \mathbb{N}\right\}$. Then $\St\bigl([X_q]\bigr) = \{1\}$
+        \cite{TuzhBog1}.
+    \item For a natural number $p$, define the space $X_p = \left\{p^n
+        : n \in \mathbb{Z}\right\}$. For any prime $p$, we have
+        $\St\bigl([X_p]\bigr) = \left\{p^n : n \in \mathbb{Z}\right\}$
+        \cite{BogBog1}.
 \end{itemize}
 
 \begin{lemma}[\cite{TuzhBog2}]
-  In every cloud with a nontrivial stabilizer, there exists a unique
-  space $X$ such that for any $\lambda$ from the stabilizer, $X =
-  \lambda X$ holds.
-  \label{centerLemma}
+    In every cloud with a nontrivial stabilizer, there exists a unique
+    space $X$ such that for any $\lambda$ from the stabilizer, $X =
+    \lambda X$ holds.
+    \label{centerLemma}
 \end{lemma}
 
-\begin{defin}
-  The metric space from the Lemma \ref{centerLemma} will be called
-  the \emph{center} of the cloud.
-\end{defin}
+\begin{definition}
+    The metric space from the Lemma \ref{centerLemma} will be called
+    the \emph{center} of the cloud.
+\end{definition}
 \begin{remark} For any metric space $X$ in the cloud $[\Delta_1]$:
-  $$|\lambda X, \mu X| = |\lambda - \mu|\cdot|X,\Delta_1|.$$
+    $$|\lambda X, \mu X| = |\lambda - \mu|\cdot|X,\Delta_1|.$$
 \end{remark}
 \begin{remark}[Ultrametric inequaliy] For any metric spaces $X_{1},
-  X_{2}$ from the cloud$[\Delta_{1}]$ the following inequality holds:
-  $$|X_{1},X_{2}| \le \max\{|X_{1}, \Delta_{1}|,|X_{2},\Delta_{1}|\}.$$
-  \label{remUltraMetric}
+    X_{2}$ from the cloud$[\Delta_{1}]$ the following inequality holds:
+    $$|X_{1},X_{2}| \le \max\{|X_{1}, \Delta_{1}|,|X_{2},\Delta_{1}|\}.$$
+    \label{remUltraMetric}
 \end{remark}
 \section{Cloud cardinality}
 \markright{\thesection.~Cloud cardinality}
@@ -311,74 +314,75 @@ establish that clouds are sets or appropriately modify the distance definition.
 We employ the lemma concerning the nature of cardinal number sets:
 
 \begin{lemma}[\cite{levySet}]
-  Any set of cardinal numbers has an upper bound.
+    Any set of cardinal numbers has an upper bound.
 \end{lemma}
 
 The following corollary from this lemma will be necessary for our proof:
 
 \begin{corollary}\label{colCardinal}
-  The class of unbounded cardinals is proper.
+    The class of unbounded cardinals is proper.
 \end{corollary}
 
 We now formulate and prove the theorem about the class of spaces
 within each cloud:
 
 \begin{theorem}
-  All clouds are proper classes.
+    All clouds are proper classes.
 \end{theorem}
 
 \begin{proof}
-  Following Corollary \ref{colCardinal}, it suffices to show that any
-  cloud contains spaces of arbitrarily large cardinality. Let $X$ be
-  a metric space of cardinality $\alpha$. We extend this space to one
-  of greater cardinality $\beta > \alpha$ by constructing $X_\beta =
-  X \cup \Delta_\beta$, where $\Delta_\beta$ is a simplex of
-  cardinality $\beta$.
+    Following Corollary \ref{colCardinal}, it suffices to show that any
+    cloud contains spaces of arbitrarily large cardinality. Let $X$ be
+    a metric space of cardinality $\alpha$. We extend this space to one
+    of greater cardinality $\beta > \alpha$ by constructing $X_\beta =
+    X \cup \Delta_\beta$, where $\Delta_\beta$ is a simplex of
+    cardinality $\beta$.
 
-  Fix an arbitrary point $x \in X$ and set the distance from $x$ to
-  any simplex point as 1. For $x' \in X$ and $y \in \Delta_\beta$, define:
-  $$
-  \rho_{X_\beta}(y,x') = \rho_{X_\beta}(x',y) := \rho_X(x',x) + 1.
-  $$
-  All other distances remain unchanged.
+    Fix an arbitrary point $x \in X$ and set the distance from $x$ to
+    any simplex point as 1. For $x' \in X$ and $y \in \Delta_\beta$, define:
+    $$
+    \rho_{X_\beta}(y,x') = \rho_{X_\beta}(x',y) := \rho_X(x',x) + 1.
+    $$
+    All other distances remain unchanged.
 
-  The resulting space $X_\beta$ is indeed metric:
-  \begin{enumerate}
-    \item Symmetry and non-negativity are obvious
-    \item The triangle inequality holds for all cases:
-      \begin{itemize}
-        \item When $x', z' \in \Delta_\beta$ or $x', z' \in X$: trivial.
-        \item When $x' \in X$, $z' \in \Delta_\beta$:
-          \begin{itemize}
-            \item if $y' \in X$: $\rho_{X_\beta}(x',z') =
-              \rho_X(x,x') + 1 \leq \rho_X(x,y') + \rho_X(y',x') + 1$,
-            \item if $y' \in \Delta_\beta$: $\rho_{X_\beta}(x',z') =
-              \rho_X(x,x') + 1 \leq \rho_X(x',x) + 2$.
-          \end{itemize}
-      \end{itemize}
-  \end{enumerate}
+    The resulting space $X_\beta$ is indeed metric:
+    \begin{enumerate}
+        \item Symmetry and non-negativity are obvious
+        \item The triangle inequality holds for all cases:
+            \begin{itemize}
+                \item When $x', z' \in \Delta_\beta$ or $x', z' \in X$: trivial.
+                \item When $x' \in X$, $z' \in \Delta_\beta$:
+                    \begin{itemize}
+                        \item if $y' \in X$: $\rho_{X_\beta}(x',z') =
+                            \rho_X(x,x') + 1 \leq \rho_X(x,y') +
+                            \rho_X(y',x') + 1$,
+                        \item if $y' \in \Delta_\beta$: $\rho_{X_\beta}(x',z') =
+                            \rho_X(x,x') + 1 \leq \rho_X(x',x) + 2$.
+                    \end{itemize}
+            \end{itemize}
+    \end{enumerate}
 
-  Since $X$ can be isometrically embedded into $X_\beta$ with
-  $X_\beta$ lies in a closed 1-neighborhood of $X$, their
-  Gromov--Hausdorff distance is finite.
+    Since $X$ can be isometrically embedded into $X_\beta$ with
+    $X_\beta$ lies in a closed 1-neighborhood of $X$, their
+    Gromov--Hausdorff distance is finite.
 \end{proof}
 
 \begin{remark}
-  As all clouds are proper classes, a bijection exists between any
-  two clouds. This implies, in particular, that the class of
-  correspondences between any two clouds is non-empty.
+    As all clouds are proper classes, a bijection exists between any
+    two clouds. This implies, in particular, that the class of
+    correspondences between any two clouds is non-empty.
 \end{remark}
 
-\begin{defin}
-  Let $\mathcal{R}([X],[Y])$ denote the class of all correspondences
-  between clouds $[X]$ and $[Y]$. We define the distortion
-  $\text{dis}\, R$ as in Definition \ref{defSootvet}. The
-  Gromov--Hausdorff distance between clouds is:
-  $$
-  d_{GH}([X],[Y]) = \frac{1}{2}\inf\{\text{dis}\, R : R \in
-  \mathcal{R}([X],[Y])\}.
-  $$
-\end{defin}
+\begin{definition}
+    Let $\mathcal{R}([X],[Y])$ denote the class of all correspondences
+    between clouds $[X]$ and $[Y]$. We define the distortion
+    $\text{dis}\, R$ as in Definition \ref{defSootvet}. The
+    Gromov--Hausdorff distance between clouds is:
+    $$
+    d_{GH}([X],[Y]) = \frac{1}{2}\inf\{\text{dis}\, R : R \in
+    \mathcal{R}([X],[Y])\}.
+    $$
+\end{definition}
 
 \section{Center image theorem}
 \markright{\thesection.~Center image theorem}
@@ -387,118 +391,121 @@ Before proving the main theorem of this section we must list several
 key properties of correspondences between clouds on which our proof will rely.
 %% Написать все обозначения и пояснения
 \begin{lemma}\label{lemDiamImage}
-  If $R$ is a correspondence between two clouds with distortion $r$
-  then for any spaces $Y_1,Y_2$ which lie in $R(X)$, $|Y_1,Y_2| \le r$.
+    If $R$ is a correspondence between two clouds with distortion $r$
+    then for any spaces $Y_1,Y_2$ which lie in $R(X)$, $|Y_1,Y_2| \le r$.
 \end{lemma}
 
 \begin{proof}
-  If spaces $Y_{1}, Y_{2}$ lie in the image of $X$, then
-  $$
-  \operatorname{dis} R \geq \big|\left|Y_{1},Y_{2}\right| -
-  \left|X,X\right|\big| = |Y_{1}, Y_{2}|,
-  $$
-  from which $\operatorname{diam} R(X) \leq \operatorname{dis} R$ follows.
+    If spaces $Y_{1}, Y_{2}$ lie in the image of $X$, then
+    $$
+    \operatorname{dis} R \geq \big|\left|Y_{1},Y_{2}\right| -
+    \left|X,X\right|\big| = |Y_{1}, Y_{2}|,
+    $$
+    from which $\operatorname{diam} R(X) \leq \operatorname{dis} R$ follows.
 \end{proof}
 
 \begin{corollary}
-  Suppose than $R$ is a correspondence between two clouds with
-  distortion $r$ and $Y_1,Y_2$ are metric spaces such that $|Y_1,Y_2|
-  > r$. Then $Y_1$ and $Y_2$ cannot lie in the image of a single metric space.
+    Suppose than $R$ is a correspondence between two clouds with
+    distortion $r$ and $Y_1,Y_2$ are metric spaces such that $|Y_1,Y_2|
+    > r$. Then $Y_1$ and $Y_2$ cannot lie in the image of a single metric space.
 \end{corollary}
 Now we are ready to formulate and prove the theorem about the image
 of $\Delta_1$.
 \begin{theorem}\label{thrmCenterImage}
-  Let $M$ be the center of the cloud $[M]$ with a nontrivial
-  stabilizer. Let $R$ be a correspondence between $[\Delta_{1}]$ and
-  $[M]$ with finite distortion $\varepsilon$. Then any space from the
-  image $R(\Delta_{1})$ lies at a distance from $M$ not exceeding
-  $2\varepsilon$.
+    Let $M$ be the center of the cloud $[M]$ with a nontrivial
+    stabilizer. Let $R$ be a correspondence between $[\Delta_{1}]$ and
+    $[M]$ with finite distortion $\varepsilon$. Then any space from the
+    image $R(\Delta_{1})$ lies at a distance from $M$ not exceeding
+    $2\varepsilon$.
 \end{theorem}
 
 \begin{proof}
-  The nontriviality of the stabilizer $[M]$ implies that there exists
-  a number $l > 1$ such that $\{l^{j} \mid j\in \mathbb{Z}\}$ is a
-  subgroup of $\operatorname{St}([M])$.
+    The nontriviality of the stabilizer $[M]$ implies that there exists
+    a number $l > 1$ such that $\{l^{j} \mid j\in \mathbb{Z}\}$ is a
+    subgroup of $\operatorname{St}([M])$.
 
-  Fix $Y$ in the image of $\Delta_{1}$. Suppose that $|M, Y| = d >
-  \varepsilon$. Denote $|Y, kY| = \rho$, where $k \geq 2$, $k =
-  l^{j_{1}}$. By the triangle inequality $\rho + d \geq kd$, hence
-  $\rho \geq (k-1)d > (k-1)\varepsilon$. Then $kY$ lies in the image
-  of $X \neq \Delta_1$, with $\rho - \varepsilon \leq |X, \Delta_1|
-  \leq \rho + \varepsilon$.
+    Fix $Y$ in the image of $\Delta_{1}$. Suppose that $|M, Y| = d >
+    \varepsilon$. Denote $|Y, kY| = \rho$, where $k \geq 2$, $k =
+    l^{j_{1}}$. By the triangle inequality $\rho + d \geq kd$, hence
+    $\rho \geq (k-1)d > (k-1)\varepsilon$. Then $kY$ lies in the image
+    of $X \neq \Delta_1$, with $\rho - \varepsilon \leq |X, \Delta_1|
+    \leq \rho + \varepsilon$.
 
-  Take arbitrary $\alpha > 0$ and $\beta \in (0,1)$. For spaces
-  $(1+\alpha)X$, $(1-\beta)X$ the following inequalities hold:
-  \begin{align*}
-    |X, (1+\alpha)X| &= \alpha |X, \Delta_1| \leq \alpha\rho +
-    \alpha\varepsilon, \\
-    |X, (1-\beta)X| &= \beta|X, \Delta_1| \leq \beta\rho + \beta\varepsilon, \\
-    |(1+\alpha) X, (1-\beta)X| &= (\alpha + \beta)|X, \Delta_1| \geq
-    (\alpha+\beta)\rho - (\alpha+\beta)\varepsilon.
-  \end{align*}
+    Take arbitrary $\alpha > 0$ and $\beta \in (0,1)$. For spaces
+    $(1+\alpha)X$, $(1-\beta)X$ the following inequalities hold:
+    \begin{align*}
+        |X, (1+\alpha)X| &= \alpha |X, \Delta_1| \leq \alpha\rho +
+        \alpha\varepsilon, \\
+        |X, (1-\beta)X| &= \beta|X, \Delta_1| \leq \beta\rho +
+        \beta\varepsilon, \\
+        |(1+\alpha) X, (1-\beta)X| &= (\alpha + \beta)|X, \Delta_1| \geq
+        (\alpha+\beta)\rho - (\alpha+\beta)\varepsilon.
+    \end{align*}
 
-  There exist $Y_\alpha, Y_\beta \in [M]$ such that $kY_\alpha \in
-  R\big((1+\alpha)X\big)$, $kY_\beta \in R\big((1-\beta)X\big)$, and
-  for them the following inequalities hold:
-  \begin{align*}
-    |kY, kY_\alpha| &\leq |X, (1+\alpha)X| + \varepsilon \leq
-    \alpha\rho + (\alpha+1)\varepsilon, \\
-    |kY, kY_\beta| &\leq |X, (1-\beta)X| + \varepsilon \leq \beta\rho
-    + (\beta+1)\varepsilon, \\
-    |kY_\alpha, kY_\beta| &\geq |(1+\alpha)X, (1-\beta)X| -
-    \varepsilon \geq (\alpha+\beta)\rho - (\alpha+\beta+1)\varepsilon.
-  \end{align*}
+    There exist $Y_\alpha, Y_\beta \in [M]$ such that $kY_\alpha \in
+    R\big((1+\alpha)X\big)$, $kY_\beta \in R\big((1-\beta)X\big)$, and
+    for them the following inequalities hold:
+    \begin{align*}
+        |kY, kY_\alpha| &\leq |X, (1+\alpha)X| + \varepsilon \leq
+        \alpha\rho + (\alpha+1)\varepsilon, \\
+        |kY, kY_\beta| &\leq |X, (1-\beta)X| + \varepsilon \leq \beta\rho
+        + (\beta+1)\varepsilon, \\
+        |kY_\alpha, kY_\beta| &\geq |(1+\alpha)X, (1-\beta)X| -
+        \varepsilon \geq (\alpha+\beta)\rho - (\alpha+\beta+1)\varepsilon.
+    \end{align*}
 
-  Dividing these inequalities by $k$, we obtain:
-  \begin{align*}
-    |Y, Y_{\alpha}| &\leq \frac{\alpha}{k}\rho +
-    \frac{\alpha+1}{k}\varepsilon, \\
-    |Y, Y_{\beta}| &\leq \frac{\beta}{k}\rho + \frac{\beta+1}{k}\varepsilon, \\
-    |Y_\alpha, Y_{\beta}| &\geq \frac{\alpha+\beta}{k}\rho -
-    \frac{\alpha+\beta+1}{k}\varepsilon.
-  \end{align*}
+    Dividing these inequalities by $k$, we obtain:
+    \begin{align*}
+        |Y, Y_{\alpha}| &\leq \frac{\alpha}{k}\rho +
+        \frac{\alpha+1}{k}\varepsilon, \\
+        |Y, Y_{\beta}| &\leq \frac{\beta}{k}\rho +
+        \frac{\beta+1}{k}\varepsilon, \\
+        |Y_\alpha, Y_{\beta}| &\geq \frac{\alpha+\beta}{k}\rho -
+        \frac{\alpha+\beta+1}{k}\varepsilon.
+    \end{align*}
 
-  Taking preimages of spaces $Y, Y_{\alpha}, Y_{\beta}$, we obtain:
-  \begin{align*}
-    |\Delta_1, X_{\alpha}| &\leq \frac{\alpha}{k}\rho +
-    \left(\frac{\alpha+1}{k} + 1\right)\varepsilon, \\
-    |\Delta, X_{\beta}| &\leq \frac{\beta}{k}\rho +
-    \left(\frac{\beta+1}{k}+1\right)\varepsilon, \\
-    |X_\alpha, X_{\beta}| &\geq \frac{\alpha+\beta}{k}\rho -
-    \left(\frac{\alpha+\beta+1}{k}+1\right)\varepsilon.
-  \end{align*}
+    Taking preimages of spaces $Y, Y_{\alpha}, Y_{\beta}$, we obtain:
+    \begin{align*}
+        |\Delta_1, X_{\alpha}| &\leq \frac{\alpha}{k}\rho +
+        \left(\frac{\alpha+1}{k} + 1\right)\varepsilon, \\
+        |\Delta, X_{\beta}| &\leq \frac{\beta}{k}\rho +
+        \left(\frac{\beta+1}{k}+1\right)\varepsilon, \\
+        |X_\alpha, X_{\beta}| &\geq \frac{\alpha+\beta}{k}\rho -
+        \left(\frac{\alpha+\beta+1}{k}+1\right)\varepsilon.
+    \end{align*}
 
-  Assuming $\alpha > \beta$ we obtain:
-  $$
-  \frac{\alpha+\beta}{k}\rho -
-  \left(\frac{\alpha+\beta+1}{k}+1\right)\varepsilon \leq
-  \frac{\alpha}{k}\rho + \left(\frac{\alpha+1}{k} + 1\right)\varepsilon,
-  $$
-  which is equivalent to:
-  $$
-  \rho \leq \frac{k}{\beta}\left(\frac{2\alpha+\beta+2}{k}+2\right)\varepsilon,
-  $$
-  and further:
-  $$
-  \rho \leq \left(1+\frac{2\alpha + 2}{\beta} +
-  2\frac{k}{\beta}\right)\varepsilon.
-  $$
+    Assuming $\alpha > \beta$ we obtain:
+    $$
+    \frac{\alpha+\beta}{k}\rho -
+    \left(\frac{\alpha+\beta+1}{k}+1\right)\varepsilon \leq
+    \frac{\alpha}{k}\rho + \left(\frac{\alpha+1}{k} + 1\right)\varepsilon,
+    $$
+    which is equivalent to:
+    $$
+    \rho \leq
+    \frac{k}{\beta}\left(\frac{2\alpha+\beta+2}{k}+2\right)\varepsilon,
+    $$
+    and further:
+    $$
+    \rho \leq \left(1+\frac{2\alpha + 2}{\beta} +
+    2\frac{k}{\beta}\right)\varepsilon.
+    $$
 
-  We are interested in an upper bound for $d$:
-  $$
-  d \leq \frac{\rho}{k-1} \leq \left(\frac{1}{k-1}+\frac{2\alpha +
-  2}{\beta(k-1)} + 2\frac{k}{\beta(k-1)}\right)\varepsilon.
-  $$
+    We are interested in an upper bound for $d$:
+    $$
+    d \leq \frac{\rho}{k-1} \leq \left(\frac{1}{k-1}+\frac{2\alpha +
+    2}{\beta(k-1)} + 2\frac{k}{\beta(k-1)}\right)\varepsilon.
+    $$
 
-  The last term in parentheses is strictly greater than 2 for any
-  $k>2$, $\alpha>0$, $\beta\in (0,1)$, while the other terms tend to
-  0 as $k$ increases. Since the stabilizer is nontrivial, it contains
-  sequences of numbers tending to both 0 and $\infty$. Taking $\beta$
-  to 1 and $k$ to infinity, we obtain the estimate:
-  $$
-  |Y, M| \leq 2\varepsilon,
-  $$
-  which completes the proof.
+    The last term in parentheses is strictly greater than 2 for any
+    $k>2$, $\alpha>0$, $\beta\in (0,1)$, while the other terms tend to
+    0 as $k$ increases. Since the stabilizer is nontrivial, it contains
+    sequences of numbers tending to both 0 and $\infty$. Taking $\beta$
+    to 1 and $k$ to infinity, we obtain the estimate:
+    $$
+    |Y, M| \leq 2\varepsilon,
+    $$
+    which completes the proof.
 \end{proof}
 
 \section{Cloud of the real line and the non-utlrametric unequality}
@@ -506,28 +513,28 @@ of $\Delta_1$.
 non-utlrametric unequality}
 
 \begin{lemma}\label{lemmaDiamDist}
-  If $X$ is a subset of the real line and $\mathbb{R}\setminus X$
-  contains an interval of diameter $2d$, then $|\mathbb{R}, X| \ge d$.
+    If $X$ is a subset of the real line and $\mathbb{R}\setminus X$
+    contains an interval of diameter $2d$, then $|\mathbb{R}, X| \ge d$.
 \end{lemma}
 
 \begin{proof}
-  Suppose that
-  $\mathbb{R} \setminus X$ contains an interval $(a-d, a+d)$. Suppose
-  $|\mathbb{R}, X|<d$. Let $(\mathbb{R}^{\prime}, X^{\prime}, Y)$ be
-  a realization of $(\mathbb{R}, X)$ with $d_H(\mathbb{R}^{\prime},
-  X^{\prime}) = d^{\prime}<d$. Define
-  $$
-  U_1 := \bigcup_{\substack{x \in X^{\prime} \\ x \leq a-d}}
-  B\left(x, d^{\prime}+\frac{d-d^{\prime}}{2}\right), \quad
-  U_2 := \bigcup_{\substack{x \in X^{\prime} \\ x \geq a+d}}
-  B\left(x, d^{\prime}+\frac{d-d^{\prime}}{2}\right),
-  $$
-  so $U_1 \cup U_2$ covers $X^{\prime}$ with balls of radius
-  $d^\prime + \frac{d-d^{\prime}}{2}$.
+    Suppose that
+    $\mathbb{R} \setminus X$ contains an interval $(a-d, a+d)$. Suppose
+    $|\mathbb{R}, X|<d$. Let $(\mathbb{R}^{\prime}, X^{\prime}, Y)$ be
+    a realization of $(\mathbb{R}, X)$ with $d_H(\mathbb{R}^{\prime},
+    X^{\prime}) = d^{\prime}<d$. Define
+    $$
+    U_1 := \bigcup_{\substack{x \in X^{\prime} \\ x \leq a-d}}
+    B\left(x, d^{\prime}+\frac{d-d^{\prime}}{2}\right), \quad
+    U_2 := \bigcup_{\substack{x \in X^{\prime} \\ x \geq a+d}}
+    B\left(x, d^{\prime}+\frac{d-d^{\prime}}{2}\right),
+    $$
+    so $U_1 \cup U_2$ covers $X^{\prime}$ with balls of radius
+    $d^\prime + \frac{d-d^{\prime}}{2}$.
 
-  Then $U_1$ and $U_2$ are two disjoint open sets, but
-  $\mathbb{R}^{\prime} \subset U_1 \cup U_2$, which contradicts the
-  connectedness of the real line.
+    Then $U_1$ and $U_2$ are two disjoint open sets, but
+    $\mathbb{R}^{\prime} \subset U_1 \cup U_2$, which contradicts the
+    connectedness of the real line.
 \end{proof}
 
 For the cloud $[\Delta_{1}]$, Remark \ref{remUltraMetric} shows that
@@ -539,58 +546,60 @@ $(0,1)$ with distances given by the $L_1$ metric in $\mathbb{R}^2$.
 Denote this space by $\widetilde{\mathbb{R}}$.
 
 \begin{theorem}\label{thrmRUltraMetric}
-  For the spaces $\mathbb{Z}$ and $\widetilde{\mathbb{R}}$, the
-  following hold\/\rom{:}
-  \begin{enumerate}
-    \item $|\mathbb{Z}, \mathbb{R}| \le \frac{1}{2}$,
-      $|\widetilde{\mathbb{R}}, \mathbb{R}| \le \frac{1}{2}$.\label{thrmPt:1}
-    \item $|\mathbb{Z}, \widetilde{\mathbb{R}}|>  \frac{1}{2}$.\label{thrmPt:2}
-  \end{enumerate}
+    For the spaces $\mathbb{Z}$ and $\widetilde{\mathbb{R}}$, the
+    following hold\/\rom{:}
+    \begin{enumerate}
+        \item $|\mathbb{Z}, \mathbb{R}| \le \frac{1}{2}$,
+            $|\widetilde{\mathbb{R}}, \mathbb{R}| \le
+            \frac{1}{2}$.\label{thrmPt:1}
+        \item $|\mathbb{Z}, \widetilde{\mathbb{R}}|>
+            \frac{1}{2}$.\label{thrmPt:2}
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  (1) Embedding $\mathbb{Z}$ in $\mathbb{R}$ gives a realization with
-  Hausdorff distance $\frac{1}{2}$. For $\widetilde{\mathbb{R}}$,
-  embed it naturally in $\mathbb{R}^2$ and $\mathbb{R}$ as $\{(x,
-  \frac{1}{2}) : x \in \mathbb{R}\}$; the Hausdorff distance is again
-  $\frac{1}{2}$.
+    (1) Embedding $\mathbb{Z}$ in $\mathbb{R}$ gives a realization with
+    Hausdorff distance $\frac{1}{2}$. For $\widetilde{\mathbb{R}}$,
+    embed it naturally in $\mathbb{R}^2$ and $\mathbb{R}$ as $\{(x,
+    \frac{1}{2}) : x \in \mathbb{R}\}$; the Hausdorff distance is again
+    $\frac{1}{2}$.
 
-  (2) Let $R$ be a correspondence between $\mathbb{Z}$ and
-  $\widetilde{\mathbb{R}}$ with distortion $1 + \varepsilon$, where
-  $(0,1)$ is in the image of some $i \in \mathbb{Z}$. By Lemma
-  \ref{lemDiamImage}, the image of $i$ must lie in $(-\varepsilon,
-  \varepsilon) \times \{0\} \cup \{(0,1)\}$.
+    (2) Let $R$ be a correspondence between $\mathbb{Z}$ and
+    $\widetilde{\mathbb{R}}$ with distortion $1 + \varepsilon$, where
+    $(0,1)$ is in the image of some $i \in \mathbb{Z}$. By Lemma
+    \ref{lemDiamImage}, the image of $i$ must lie in $(-\varepsilon,
+    \varepsilon) \times \{0\} \cup \{(0,1)\}$.
 
-  Let $\mathcal{N}$ be the set of integers whose images lie in
-  $(-\varepsilon, \varepsilon) \times \{0\} \cup \{(0,1)\}$. Then
-  $\mathbb{Z} \setminus \mathcal{N}$ is at \mbox{distance $\geq 1$}
-  from $\mathbb{R}$ by Lemma \ref{lemmaDiamDist}.
+    Let $\mathcal{N}$ be the set of integers whose images lie in
+    $(-\varepsilon, \varepsilon) \times \{0\} \cup \{(0,1)\}$. Then
+    $\mathbb{Z} \setminus \mathcal{N}$ is at \mbox{distance $\geq 1$}
+    from $\mathbb{R}$ by Lemma \ref{lemmaDiamDist}.
 
-  Define $R'$ by removing from $R$:
-  \begin{itemize}
-    \item The pair $(i,(0,1))$,
-    \item all pairs $(k,x)$ with $x \in (-\varepsilon, \varepsilon)
-      \times \{0\}$.
-  \end{itemize}
+    Define $R'$ by removing from $R$:
+    \begin{itemize}
+        \item The pair $(i,(0,1))$,
+        \item all pairs $(k,x)$ with $x \in (-\varepsilon, \varepsilon)
+            \times \{0\}$.
+    \end{itemize}
 
-  Then $R'$ is a correspondence between
-  $\mathbb{R}\setminus(-\varepsilon, \varepsilon) \times \{0\}$ and
-  $\mathbb{Z} \setminus \mathcal{N}$ with distortion:
-  $$
-  1+\varepsilon \geq \operatorname{dis} R' \geq
-  2\big|\mathbb{R}\setminus(-\varepsilon, \varepsilon), \mathbb{Z}
-  \setminus \mathcal{N}\big|.
-  $$
-  By the triangle inequality:
-  $$
-  2\big|\mathbb{R}\setminus(-\varepsilon, \varepsilon), \mathbb{Z}
-  \setminus \mathcal{N}\big| \geq 2(1 - \varepsilon).
-  $$
-  This yields $1+\varepsilon \geq 2-2\varepsilon$, hence $\varepsilon
-  \geq \frac{1}{3}$ and consequently:
-  $$
-  |\widetilde{\mathbb{R}}, \mathbb{Z}| \geq \frac{2}{3} > \frac{1}{2}.
-  $$
+    Then $R'$ is a correspondence between
+    $\mathbb{R}\setminus(-\varepsilon, \varepsilon) \times \{0\}$ and
+    $\mathbb{Z} \setminus \mathcal{N}$ with distortion:
+    $$
+    1+\varepsilon \geq \operatorname{dis} R' \geq
+    2\big|\mathbb{R}\setminus(-\varepsilon, \varepsilon), \mathbb{Z}
+    \setminus \mathcal{N}\big|.
+    $$
+    By the triangle inequality:
+    $$
+    2\big|\mathbb{R}\setminus(-\varepsilon, \varepsilon), \mathbb{Z}
+    \setminus \mathcal{N}\big| \geq 2(1 - \varepsilon).
+    $$
+    This yields $1+\varepsilon \geq 2-2\varepsilon$, hence $\varepsilon
+    \geq \frac{1}{3}$ and consequently:
+    $$
+    |\widetilde{\mathbb{R}}, \mathbb{Z}| \geq \frac{2}{3} > \frac{1}{2}.
+    $$
 \end{proof}
 
 \section{Gromov--Hausdorff distance betweem clouds}
@@ -600,154 +609,440 @@ We present a lemma about the distance between clouds with
 intersecting stabilizers.
 
 \begin{lemma}\label{lemmaDist}
-  If two clouds have a nontrivial intersection of their stabilizers,
-  then the Gromov--Hausdorff distance between them can only be $0$ or $\infty$.
+    If two clouds have a nontrivial intersection of their stabilizers,
+    then the Gromov--Hausdorff distance between them can only be $0$
+    or $\infty$.
 \end{lemma}
 
 \begin{proof}
-  For any clouds $[X], [Y]$ and any $\lambda \in \mathbb{R}^{+}$, we have
-  $$
-  \big|\lambda[X], \lambda[Y]\big| = \lambda\big|[X], [Y]\big|.
-  $$
-  If $\lambda \neq 1$ belongs to the stabilizers of both clouds, then
-  $$
-  \big|[X],[Y]\big| = \big|\lambda[X], \lambda[Y]\big| =
-  \lambda\big|[X], [Y]\big|.
-  $$
-  Since $\lambda \neq 1$, the quantity $\big|[X],[Y]\big|$ can only
-  be $0$ or $\infty$.
+    For any clouds $[X], [Y]$ and any $\lambda \in \mathbb{R}^{+}$, we have
+    $$
+    \big|\lambda[X], \lambda[Y]\big| = \lambda\big|[X], [Y]\big|.
+    $$
+    If $\lambda \neq 1$ belongs to the stabilizers of both clouds, then
+    $$
+    \big|[X],[Y]\big| = \big|\lambda[X], \lambda[Y]\big| =
+    \lambda\big|[X], [Y]\big|.
+    $$
+    Since $\lambda \neq 1$, the quantity $\big|[X],[Y]\big|$ can only
+    be $0$ or $\infty$.
 \end{proof}
 
 \begin{theorem}\label{thrmDist}
-  Let $[Z]$ be a cloud with a nontrivial stabilizer which has $Z$ as
-  its center. Suppose there exist spaces $Y_{1}, Y_{2} \in [Z]$ such that
-  \begin{enumerate}
-    \item $\max\{ |Y_{1},Z|, |Y_{2}, Z| \} = r > 0$,
-    \item $|Y_{1}, Y_{2}| > r$.
-  \end{enumerate}
-  Then the Gromov--Hausdorff distance between clouds $[\Delta_1]$ and
-  $[Z]$ is infinite.
+    Let $[Z]$ be a cloud with a nontrivial stabilizer which has $Z$ as
+    its center. Suppose there exist spaces $Y_{1}, Y_{2} \in [Z]$ such that
+    \begin{enumerate}
+        \item $\max\{ |Y_{1},Z|, |Y_{2}, Z| \} = r > 0$,
+        \item $|Y_{1}, Y_{2}| > r$.
+    \end{enumerate}
+    Then the Gromov--Hausdorff distance between clouds $[\Delta_1]$ and
+    $[Z]$ is infinite.
 \end{theorem}
 
 \begin{proof}
-  The clouds $[\Delta_1]$ and $[Z]$ have stabilizers with nontrivial
-  intersection. By Lemma \ref{lemmaDist}, the distance between them
-  can only be $0$ or $\infty$.
+    The clouds $[\Delta_1]$ and $[Z]$ have stabilizers with nontrivial
+    intersection. By Lemma \ref{lemmaDist}, the distance between them
+    can only be $0$ or $\infty$.
 
-  To prove the theorem, it suffices to show that the
-  Gromov--Hausdorff distance cannot be $0$. We need to establish that
-  no correspondence with arbitrarily small distortion can exist
-  between them. Let $R$ be a correspondence between $[\Delta_1]$ and
-  $[Z]$ with $\operatorname{dis} R = \varepsilon < \infty$.
+    To prove the theorem, it suffices to show that the
+    Gromov--Hausdorff distance cannot be $0$. We need to establish that
+    no correspondence with arbitrarily small distortion can exist
+    between them. Let $R$ be a correspondence between $[\Delta_1]$ and
+    $[Z]$ with $\operatorname{dis} R = \varepsilon < \infty$.
 
-  Fix $Y \in R(\Delta_1)$. By Theorem \ref{thrmCenterImage}, the
-  Gromov--Hausdorff distance between $Y$ and $Z$ is at most $2\varepsilon$.
+    Fix $Y \in R(\Delta_1)$. By Theorem \ref{thrmCenterImage}, the
+    Gromov--Hausdorff distance between $Y$ and $Z$ is at most $2\varepsilon$.
 
-  The theorem's conditions give:
-  $$
-  \max\{ |Y_{1},Z|, |Y_{2}, Z| \} = r < |Y_{1}, Y_{2}|.
-  $$
-  This implies there exists $c > 0$ such that $|Y_{1},Y_{2}| = (1 +
-  c)r$. Consider the preimages $X_1 \in R^{-1}(Y_{1})$, $X_2 \in
-  R^{-1}(Y_{2})$. We obtain:
-  $$
-  |X_1, \Delta_1| \leq |Y_{1}, Y| + \varepsilon \leq r + 3\varepsilon.
-  $$
-  The same is true for $X_2$, while:
-  $$
-  |X_1, X_2| \geq |Y_{1}, Y_{2}| - \varepsilon = (1+c)r - \varepsilon.
-  $$
-  By Remark \ref{remUltraMetric}:
-  $$
-  (1+c)r - \varepsilon \leq r + 3\varepsilon.
-  $$
-  which yields:
-  $$
-  \varepsilon \geq \frac{cr}{4}.
-  $$
-  This lower bound for $\varepsilon = \operatorname{dis} R$ shows the
-  distortion cannot be arbitrarily small, hence the Gromov--Hausdorff
-  distance cannot be $0$ and must therefore be infinite.
+    The theorem's conditions give:
+    $$
+    \max\{ |Y_{1},Z|, |Y_{2}, Z| \} = r < |Y_{1}, Y_{2}|.
+    $$
+    This implies there exists $c > 0$ such that $|Y_{1},Y_{2}| = (1 +
+    c)r$. Consider the preimages $X_1 \in R^{-1}(Y_{1})$, $X_2 \in
+    R^{-1}(Y_{2})$. We obtain:
+    $$
+    |X_1, \Delta_1| \leq |Y_{1}, Y| + \varepsilon \leq r + 3\varepsilon.
+    $$
+    The same is true for $X_2$, while:
+    $$
+    |X_1, X_2| \geq |Y_{1}, Y_{2}| - \varepsilon = (1+c)r - \varepsilon.
+    $$
+    By Remark \ref{remUltraMetric}:
+    $$
+    (1+c)r - \varepsilon \leq r + 3\varepsilon.
+    $$
+    which yields:
+    $$
+    \varepsilon \geq \frac{cr}{4}.
+    $$
+    This lower bound for $\varepsilon = \operatorname{dis} R$ shows the
+    distortion cannot be arbitrarily small, hence the Gromov--Hausdorff
+    distance cannot be $0$ and must therefore be infinite.
 \end{proof}
 
 \begin{corollary}
-  In the cloud $[\mathbb{R}]$, we can take $Y_{1} = \mathbb{Z}$ and
-  $Y_{2} = \widetilde{\mathbb{R}}$. By Theorem
-  \ref{thrmRUltraMetric}, they satisfy the conditions of Theorem
-  \ref{thrmDist} with $r = \frac{1}{2}$. The stabilizer of
-  $[\mathbb{R}]$ is $\mathbb{R}^{+}$ (nontrivial). Therefore
-  $\big|[\Delta_{1}],[\mathbb{R}]\big| = \infty$.
+    In the cloud $[\mathbb{R}]$, we can take $Y_{1} = \mathbb{Z}$ and
+    $Y_{2} = \widetilde{\mathbb{R}}$. By Theorem
+    \ref{thrmRUltraMetric}, they satisfy the conditions of Theorem
+    \ref{thrmDist} with $r = \frac{1}{2}$. The stabilizer of
+    $[\mathbb{R}]$ is $\mathbb{R}^{+}$ (nontrivial). Therefore
+    $\big|[\Delta_{1}],[\mathbb{R}]\big| = \infty$.
 \end{corollary}
+\subsection{Definitions of angles.}
+In this section, we consider two definitions of the angle of a cloud.
+In order to
+give these definitions, we must first define the angle between spaces.
+\\
+In what follows, we shall assume that clouds have a nontrivial stabilizer and in
+the notation for a cloud \( [M] \), \( M \) is its center.
+The \emph{angle} between spaces \( X_1, X_2 \in [M]\)  such that \( |X_1
+M| = r_1, | X_2 M | =r_2, |X_1 X_2| = d\), where \( r_1,
+r_2 \neq 0 \), is the quantity \( \arccos \left(\frac{r_1^2 +
+r_{2}^2 - d^2}{2r_1r_2} \right)\).\\ We denote it by $\varphi(X_1, X_2) $.
+\begin{remark}
+    This definition follows naturally from the Euclidean law of cosines,
+    namely \( c^{2} = a^2 + b^2 - 2ab\cos (a,b) \).
+\end{remark}
+Before formulating the property of the angle, we need the following auxiliary
+lemma.
+\begin{lemma}
+    \label{lem:lambdacloud} For any cloud \( [M] \) and \( \lambda
+    \in\mathbb{R}^+ \), the following properties hold{\textup{:}}
+    \begin{enumerate}
+        \item \( \St\big(\lambda [M]\big) = \St\big([M]\big)\),
+            \label{lem:lambdacloud:1}
+        \item \( \lambda [M] = [\lambda M] \).\label{lem:lambdacloud:2}
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    (\ref{lem:lambdacloud:1}) Let \( \mu \in \St\big([M]\big) \). Then \( \mu
+    \cdot \lambda [M] = \lambda \cdot \mu [M]= \lambda [M] \), i.e. \( \mu \in
+    \St\big(\lambda [M]\big) \). Hence \( \St\big([M]\big) \subseteq
+    \St\big(\lambda [M]\big) \). The reverse inclusion is obtained by
+    considering
+    the cloud \( [M] \) as \(\frac{1}{\lambda}\cdot \lambda [M] \).
+
+    (\ref{lem:lambdacloud:2}) Since the stabilizers coincide, for any
+    \( \mu \in  \St\big(\lambda [M])\) we have \( \mu \cdot \lambda M =
+    \lambda \cdot \mu M = \lambda M \). Hence, \( \lambda M \) is the center
+    of the cloud \( \lambda [M] \).
+\end{proof}
+The angle between spaces has the following property.
+\begin{lemma}
+    \label{lemmaAngleBetweenSpaces} For any \( X_1, X_2 \in [M], \lambda
+    \in\mathbb{R}^+ \), we have \( \varphi (X_1, X_2) = \varphi (\lambda
+            X_1,
+    \lambda X_2) \).
+\end{lemma}
+\begin{proof}
+    By Lemma \ref{lem:lambdacloud}, the space \( \lambda M \) is the
+    center of \( \lambda
+        [M]
+    \). As in the definition of the angle, set \[ |X_1 M| = r_1, |
+        X_2, M | =r_2,
+        |X_1
+    X_2| = d.\] By the definition of the angle, we obtain the following chain
+    of equalities: \[ \varphi (\lambda X_1, \lambda X_2) = \frac{\lambda
+        ^{2} r_1^2 + \lambda ^2 r_2^2 - \lambda^2 d^2}{2 \lambda  r_1
+        \lambda r_2} =
+        \varphi (X_1, X_2).
+    \]
+    This completes the proof.
+\end{proof}
+We now consider the two definitions of the angle of a cloud that interest us.
+\begin{definition}
+    The \emph{angle} of a cloud \( [M] \) is the quantity
+    \[
+        \varphi \big([M]\big)= \sup \big\{\varphi (X_1, X_2) \colon | X_1,M
+        |, |X_2,M| \neq 0\big\}.
+    \]
+\end{definition}
+\begin{definition}
+    The \emph{isosceles angle} of a cloud \( [M] \) is the quantity
+    \[
+        \varphi_e \big([M]\big) = \sup \big\{\varphi (X_1, X_2) \colon |X_1,M |
+        = |X_2,M| \neq 0\big\}.
+    \]
+\end{definition}
+For these definitions, we obtain the following corollary from Lemma
+\ref{lemmaAngleBetweenSpaces}.
+\begin{lemma}
+    For any cloud \( [M] \) and \( \lambda \in\mathbb{R}^+ \), we
+    have\textup{:}\label{lem:angles}
+    \begin{enumerate}
+        \item \(\varphi \big(\lambda [M]\big) = \varphi
+            \big([M]\big)\),\label{lem:angles:1}
+        \item \(\varphi_e \big(\lambda [M]\big) = \varphi_e
+            \big([M]\big)\),\label{lem:angles:2}
+        \item \( \varphi_e \big([M]\big) \le \varphi \big([M]\big)
+            \),\label{lem:angles:3}
+        \item \(0 \le \varphi ([M]) \le \pi\),\label{lem:angles:4}
+        \item \(0 \le \varphi_e ([M]) \le \pi\).\label{lem:angles:5}
+    \end{enumerate}
+\end{lemma}
+
+We give examples of angles of clouds.
+\begin{lemma}
+    For the clouds \( [\Delta _{1}], [\mathbb{R}] \), the following
+    equalities hold: \label{lem:angleexam}
+    \begin{enumerate}
+        \item \( \varphi \big([\Delta _{1}]\big) = \frac{\pi }{2}
+            \),\label{lem:angleexam:1}
+        \item \( \varphi_e \big([\Delta _{1}]\big) = \frac{\pi }{3}
+            \),\label{lem:angleexam:2}
+        \item \( \varphi \big([\mathbb{R}]\big) = \varphi_e
+            \big([\mathbb{R}]\big) = \pi  \).\label{lem:angleexam:3}
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    (\ref{lem:angleexam:1}) From the ultrametric inequality, it follows that \(
+    \varphi \big([\Delta _1]\big)\le \frac{\pi }{2} \). To prove the reverse
+    inequality, we find the angle between the two-point simplex \( \Delta
+    _{2} = \{x_1, x_2\} \) and the three-point simplex \(
+    \lambda \Delta _3  = \{y_1,y_2, y_3\}\). We use the formula proved in
+    \cite{ivanov2016} for the Gromov--Hausdorff distance
+    between two three-point spaces:
+    \[
+        d_{GH}(X,Y) = \frac{1}{2} \max\big\{ |a_1 - a_2|,|b_1 - b_2|,|c_1
+        - c_2|\big\}.
+    \]
+    Here \( a_1 \le b_1 \le c_1 \) are the distances between points in
+    the space \( X \), and \( a_2 \le b_2 \le c_2 \) are the distances between
+    points in the space \( Y \). In our case, these are \( 0,1,1 \) and \(
+    \lambda , \lambda , \lambda . \) Accordingly,
+    \[
+        d_{GH}(\Delta_2, \lambda \Delta _{3}) =\frac{1}{2}
+        \max\big\{|\lambda |, | \lambda  -1|, |\lambda -1|\big\},
+    \]
+    which
+    for \( \lambda \ge \frac 1 2 \) equals \(\frac \lambda 2 \). Thus, \(d
+        _{GH}(\Delta _2, \lambda \Delta _3) =
+    \frac{\lambda }{2} \). Next, taking into account that \( |\Delta _1
+        \Delta _2|=\frac{1}{2}, |\Delta _1 \lambda \Delta
+    _3|=\frac{\lambda }{2} \), we find the angle between \( \Delta _2,
+    \lambda \Delta _3 \):
+    \[ \cos \big(\varphi (\Delta _2 , \lambda \Delta _3)\big)
+        =\frac{\frac{\lambda ^2}{4} + \frac{1}{4} - \frac{\lambda
+        ^2}{4}}{\frac{\lambda }{2}} = \frac{1}{2 \lambda }
+        \rightarrow 0, \lambda \rightarrow \infty.
+    \]
+    Hence, \( \varphi \big([\Delta _1]\big) \ge \sup \varphi (\Delta _2,
+    \lambda \Delta _3) = \frac \pi 2. \)
+
+    (\ref{lem:angleexam:2}) From the ultrametric inequality, it follows that \(
+    \varphi_e \big([\Delta _1]\big)\le \frac{\pi }{3} \). To prove the reverse
+    inequality, it suffices to find spaces of equal diameter whose distance is
+    equal to their diameters. Such spaces are, for example, \( \Delta
+    _2, \Delta _3 \).
+
+    (\ref{lem:angleexam:3}) It suffices to give examples of spaces \( X,Y\in
+    [\mathbb{R}] \) such that \( |X \mathbb{R}| = |Y \mathbb{R}| = \frac 1 2
+    |XY|. \) In \cite{mikhailovUnreleased}, it was proved that such
+    spaces are \( \mathbb{Z}, \mathbb{R}\times
+    [0,1] \).
+    %Insert reference to Ivan with title.
+
+\end{proof}
+\subsection{Distance between clouds with different angles.}
+\begin{theorem}
+    \label{thm:diffAndDist}
+    Let clouds \( [M], [N] \) have a nontrivial intersection of their
+    stabilizers and their angles \( \varphi \big([M]\big), \varphi
+    \big([N]\big) \) be distinct. Then \( d_{GH} \big([M], [N]\big) =
+    \infty \).
+\end{theorem}
+\begin{proof}
+    Without loss of generality, assume that \( \varphi \big([M]\big)>
+    \varphi \big([N]\big) \). To prove the theorem, we show that there
+    exists no correspondence \( R\in \mathcal{R}\big([M],[N]\big) \) with
+    finite distortion.
+
+    Suppose the contrary, i.e. there exists a correspondence \( R \) with
+    finite distortion \( \dis R = \varepsilon < \infty \) as a
+    mapping from the cloud \( [M] \) to the cloud \( [N] \).
+    Construct a function
+    \( f \colon [M] \rightarrow [N] \), \( f(X) \) being an arbitrary
+    space from \(
+        R(X)
+    \). By the definition of the angle, in the cloud \( [M] \) there
+    exist spaces \(
+    X_1, X_2 \) for which
+    \[
+        \varphi \big([N]\big) < \varphi (X_1, X_2) \le \varphi
+    \big([M]\big). \]
+    Set \( |X_1 M| = r_1^X,  |X_2 M| = r_2^X, | X_1 X_2 | = d^X\).
+    Also define the function
+    \[ d^N \colon \mathbb{R}^+ \times \mathbb{R}^+ \rightarrow
+        \mathbb{R}^+, d^N(r_1, r_2) =
+        \sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\Big(\varphi \big([N]\big)\Big)}.
+    \]
+    Then the following inequality holds:
+    \begin{equation}
+        d^N(r_1^X, r_2^X) < d^X.
+        \label{ineqdx}
+    \end{equation}
+    By the definition of the angle, for any spaces \( Y_1, Y_2 \in [N] \),
+    we have
+    \begin{equation}
+        | Y_1 Y_2 | \le d^N\big(| Y_1N |, | Y_2N |\big). \label{ineqAngle}
+    \end{equation}
+    So our task is to show that there exist spaces in \( [N]
+    \) for which inequality (\ref{ineqAngle}) fails.
+
+    The nontriviality of the intersection of stabilizers means that there
+    exists a subgroup \[
+        \{q^k \colon k\in \mathbb{Z}, q> 1\} \in \St\big([M]\big) \cap \St
+        \big([N]\big).
+    \]
+    Set \( |N R(M)| = l \). We consider the spaces \(
+    R(q^k X_1), R(q^k X_2), k \in \mathbb{N} \). For them, the following
+    inequalities hold:
+    \begin{equation}
+        \big| R(q^k X_1), R(q^k X_2) \big| \ge q^k d^X - \varepsilon,
+        \label{ineqDistx1x2}
+    \end{equation}
+    \[
+        q^k r_1^X - \varepsilon  \le\big | R(M), R(q^k X_1) \big| \le q^k
+        r_1^X + \varepsilon ,
+    \]
+    \[
+        q^k r_2^X - \varepsilon  \le\big | R(M), R(q^k X_2) \big| \le q^k
+        r_2^X + \varepsilon .
+    \]
+    From the last two inequalities, by the triangle inequality, we obtain
+    the following:
+    \begin{equation}
+        q^k r_1^X - l - \varepsilon \le \big|N, R(q^k X_1) \big| \le
+        q^k r_1^X + l + \varepsilon,\label{ineqDistx1N}
+    \end{equation}
+    \begin{equation}
+        q^k r_2^X - l - \varepsilon \le \big|N, R(q^k X_2) \big| \le q^k
+        r_2^X + l + \varepsilon.\label{ineqDistx2N}
+    \end{equation}
+    Divide inequalities (\ref{ineqDistx1x2}), (\ref{ineqDistx1N}),
+    (\ref{ineqDistx2N}) by \( q^k \):
+    \[ \big| q^{-k}R(q^k X_1), q^{-k}R(q^k X_2) \big| \ge d^X -
+    \frac{\varepsilon }{q^k}, \]
+    \[
+        r_1^X - \frac{l + \varepsilon}{q^k} \le \big|N, q^{-k}R(q^k X_1)
+        \big| \le
+        r_1^X + \frac{l + \varepsilon}{q^k},
+    \]
+    \[
+        r_2^X - \frac{l + \varepsilon}{q^k} \le \big|N, q^{-k}R(q^k X_2)
+        \big| \le
+        r_2^X + \frac{l + \varepsilon}{q^k}.
+    \]
+    The function \( d^N \) is continuous, hence
+    \[
+        \lim_{k \rightarrow \infty
+        }d^N\Big(\big|N, q^{-k}R(q^k X_1)
+            \big|, \big|N, q^{-k}R(q^k X_2)
+        \big|\Big) = d^N(r_1^X, r_2^X).
+    \]
+    From inequality (\ref{ineqdx}), it follows that there exist \( \delta
+        _1, \delta _2
+    > 0 \) such that \( d^N(r_1^X,r_2^X)<d^N(r_1^X, r_2^X)+\delta
+    _1 < d^X- \delta _2 < d^X \). Choose \( k_1 \) such that
+    for all \( k > k_1 \),
+    \[
+        d^N\Big(\big|N, q^{-k}R(q^k X_1)
+            \big|, \big|N, q^{-k}R(q^k X_2)
+        \big|\Big) \in \big(d^N(r_1^X, r_2^X)- \delta _1,
+    d^N(r_1^X, r_2^X)+ \delta _1\big).  \]
+    Also choose \( k_2 \) such that \( \big| q^{-k}R(q^k X_1),
+    q^{-k}R(q^k X_2) \big| > d^X - \delta _2 \).
+    Now, if we take \( k_0 = \max\{k_1,k_2\} \), then
+    \[ \big| q^{-k_0}R(q^{k_0} X_1), q^{-k_0}R(q^{k_0} X_2) \big|
+        > d^N\Big(\big|N, q^{-k_0}R(q^k_0 X_1) \big|, \big|N,
+    q^{-k_0}R(q^{k_0} X_2) \big|\Big) \]
+    The spaces \( q^{-k_0}R(q^{k_0}X_1), q^{-k_0}R(q^{k_0}X_2)\)
+    are the desired ones, for which inequality (\ref{ineqAngle}) fails.
+    Contradiction.
+\end{proof}
+\begin{remark}
+    Theorem \ref{thm:diffAndDist} is not a generalization of Theorem
+    \ref{thrmDist}. For instance, the spaces \( \Z \) and \(
+    \widetilde \R \) from
+    Theorem \ref{thrmRUltraMetric} allow one to prove that the distance
+    between \( [\Delta _1] \) and \( [\R] \) is infinite using
+    Theorem \ref{thrmDist}. At the same time, the angle between these
+    spaces may be less than \( \frac \pi 2 \), i.e. they do not
+    prove that the angles of the clouds \( [\Delta _1] \) and \( [\R]
+    \) are distinct. Therefore,
+    using only these spaces and Theorem \ref{thm:diffAndDist}, one
+    cannot prove the infiniteness of the distance.
+\end{remark}
 \markright{References}
 
 %библиография по Гарвардскому стандарту
 \begin{thebibliography}{99}
 
-  \bibitem{Edwards} D. Edwards, \emph{The Structure of Superspace.
-  In: Studies in Topology}, ed. by Stavrakas N.M. and Allen K.R., New
-  York, London, San Francisco, Academic Press, 1975.
+    \bibitem{Edwards} D. Edwards, \emph{The Structure of Superspace.
+    In: Studies in Topology}, ed. by Stavrakas N.M. and Allen K.R., New
+    York, London, San Francisco, Academic Press, 1975.
 
-  \bibitem{Gromov81} M. Gromov, \emph{Structures m\'etriques pour les
-  vari\'et\'es riemanniennes}, edited by Lafontaine and Pierre Pansu, 1981.
+    \bibitem{Gromov81} M. Gromov, \emph{Structures m\'etriques pour les
+    vari\'et\'es riemanniennes}, edited by Lafontaine and Pierre Pansu, 1981.
 
-  \bibitem{Gromov99} M. Gromov, \emph{Metric structures for
-  Riemannian and non-Riemannian spaces}, Birkh\"auser, ISBN
-  0-8176-3898-9 (translation with additional content), 1999
+    \bibitem{Gromov99} M. Gromov, \emph{Metric structures for
+    Riemannian and non-Riemannian spaces}, Birkh\"auser, ISBN
+    0-8176-3898-9 (translation with additional content), 1999
 
-  \bibitem{memoli1}
-  F. M\'emoli and S. Guillermo, \emph{Comparing point clouds}, In
-  Proceedings of the 2004 Eurographics/ACM SIGGRAPH symposium on
-  Geometry processing (SGP '04). Association for Computing Machinery,
-  New York, NY, USA, 32-40. https://doi.org/10.1145/1057432.1057436, 2004.
+    \bibitem{memoli1}
+    F. M\'emoli and S. Guillermo, \emph{Comparing point clouds}, In
+    Proceedings of the 2004 Eurographics/ACM SIGGRAPH symposium on
+    Geometry processing (SGP '04). Association for Computing Machinery,
+    New York, NY, USA, 32-40. https://doi.org/10.1145/1057432.1057436, 2004.
 
-  \bibitem{robotics} F. Sukkar, J. Wakulicz, K. M. B. Lee, W. Zhi and
-  R. Fitch, \emph{Multi-query Robotic Manipulator Task Sequencing
-  with Gromov--Hausdorff Approximations}, ArXiv e-prints,
-  arXiv:2209.04800, 2024.
+    \bibitem{robotics} F. Sukkar, J. Wakulicz, K. M. B. Lee, W. Zhi and
+    R. Fitch, \emph{Multi-query Robotic Manipulator Task Sequencing
+    with Gromov--Hausdorff Approximations}, ArXiv e-prints,
+    arXiv:2209.04800, 2024.
 
-  \bibitem{memoli2}
-  F. M\'emoli, \emph{Gromov--Hausdorff distances in Euclidean
-  spaces}, IEEE Computer Society Conference on Computer Vision and
-  Pattern Recognition Workshops, Anchorage, AK, USA, pp. 1-8, 2008.
+    \bibitem{memoli2}
+    F. M\'emoli, \emph{Gromov--Hausdorff distances in Euclidean
+    spaces}, IEEE Computer Society Conference on Computer Vision and
+    Pattern Recognition Workshops, Anchorage, AK, USA, pp. 1-8, 2008.
 
-  \bibitem{TuzhBog1}
-  S.\,A. Bogatyy and A.\,A. Tuzhilin, \emph{Gromov--Hausdorff class:
-  its completeness and cloud geometry}, ArXiv e-prints,
-  arXiv:2110.06101, 2021.
+    \bibitem{TuzhBog1}
+    S.\,A. Bogatyy and A.\,A. Tuzhilin, \emph{Gromov--Hausdorff class:
+    its completeness and cloud geometry}, ArXiv e-prints,
+    arXiv:2110.06101, 2021.
 
-  \bibitem{Neumann}
-  J. von Neumann, \emph{Eine Axiomatisierung der Mengenlehre},
-  Journal f\"ur die Reine und Angewandte Mathematik, 1925.
+    \bibitem{Neumann}
+    J. von Neumann, \emph{Eine Axiomatisierung der Mengenlehre},
+    Journal f\"ur die Reine und Angewandte Mathematik, 1925.
 
-  \bibitem{Bernays}
-  P. Bernays, \emph{A System of Axiomatic Set Theory--Part I}, The
-  Journal of Symbolic Logic, doi:10.2307/2268862, JSTOR 2268862, 1937.
+    \bibitem{Bernays}
+    P. Bernays, \emph{A System of Axiomatic Set Theory--Part I}, The
+    Journal of Symbolic Logic, doi:10.2307/2268862, JSTOR 2268862, 1937.
 
-  \bibitem{Godel}
-  K. G\"odel, \emph{The Consistency of the Axiom of Choice and of the
-    Generalized Continuum Hypothesis with the Axioms of Set Theory
-  (Revised ed.)}, Princeton University Press,  ISBN 978-0-691-07927-1, 1940.
+    \bibitem{Godel}
+    K. G\"odel, \emph{The Consistency of the Axiom of Choice and of the
+        Generalized Continuum Hypothesis with the Axioms of Set Theory
+    (Revised ed.)}, Princeton University Press,  ISBN 978-0-691-07927-1, 1940.
 
-  \bibitem{BorIvTuzh1}
-  S.\,I. Borzov, A.\,O. Ivanov and A.\,A. Tuzhilin,
-  \emph{Extendability of Metric Segments in Gromov--Hausdorff
-  Distance}, ArXiv e-prints, arXiv:2009.00458, 2020.
+    \bibitem{BorIvTuzh1}
+    S.\,I. Borzov, A.\,O. Ivanov and A.\,A. Tuzhilin,
+    \emph{Extendability of Metric Segments in Gromov--Hausdorff
+    Distance}, ArXiv e-prints, arXiv:2009.00458, 2020.
 
-  \bibitem{TuzhBog2}
-  S.\,I. Bogataya, S.\,A. Bogatyy, S.\,A., Redkozubov, V.\,V. \&
-  Tuzhilin A.\,A. , Clouds in Gromov--Hausdorff Class: their
-  completeness and centers, ArXiv e-prints, arXiv:2202.07337, 2022.
+    \bibitem{TuzhBog2}
+    S.\,I. Bogataya, S.\,A. Bogatyy, S.\,A., Redkozubov, V.\,V. \&
+    Tuzhilin A.\,A. , Clouds in Gromov--Hausdorff Class: their
+    completeness and centers, ArXiv e-prints, arXiv:2202.07337, 2022.
 
-  \bibitem{Lectures}
-  D. Burago, Y.\,D. Burago, and S.\,O. Ivanov, \emph{A Course in
-  Metric Geometry}, American Mathematical Soc., 2001.
+    \bibitem{Lectures}
+    D. Burago, Y.\,D. Burago, and S.\,O. Ivanov, \emph{A Course in
+    Metric Geometry}, American Mathematical Soc., 2001.
 
-  \bibitem{BogBog1}
-  S.\,I. Bogataya and S.\,A. Bogatyy, \emph{Isometric Cloud
-  Stabilizer}, Topology and its Applications, Volume 329, 2023.
+    \bibitem{BogBog1}
+    S.\,I. Bogataya and S.\,A. Bogatyy, \emph{Isometric Cloud
+    Stabilizer}, Topology and its Applications, Volume 329, 2023.
 
-  \bibitem{levySet}A. Levy, \emph{Basic set theory}, Perspectives in
-  mathematical logic, Springer-Verlag, Berlin, Heidelberg, and New York, 1979.
+    \bibitem{levySet}A. Levy, \emph{Basic set theory}, Perspectives in
+    mathematical logic, Springer-Verlag, Berlin, Heidelberg, and New York, 1979.
 
 \end{thebibliography}
 
