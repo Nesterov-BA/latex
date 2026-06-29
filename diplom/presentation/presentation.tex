@@ -1,0 +1,159 @@
+\documentclass[12pt]{beamer}
+
+% ****************
+% ***** INFO *****
+% ****************
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry, csquotes}
+\usepackage[style = ieee]{biblatex}
+\addbibresource{refs_1.bib}
+\usetheme{Madrid}
+
+\def\epsimage#1#2#3#4{
+  \begin{figure}[!ht]
+    \begin{center}%
+      \includegraphics[height=#2\textheight]{#1.eps}\caption{#4}\label{#3}%
+    \end{center}
+\end{figure}}
+\renewcommand*{\bibfont}{\normalfont\footnotesize}
+% \usepackage{helvet}
+\title[Расстояние Г-Х между облаками...]{Расстояние Громова--Хаусдорфа
+  между облаками с нетривиальным
+пересечением стационарных групп}
+\author{Нестеров Б. А.}
+\institute{607 группа}
+\date{2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Основные определения}
+  \begin{itemize}
+    \item \textbf{Симплекс} --- метрическое пространство \( \Delta _ \alpha
+      \), в котором все расстояния равны \( 1 \).
+    \item \textbf{Расстояние Громова–Хаусдорфа} $d_{GH}$ --- метрика на
+      классах изометричных компактных пространств. Для неограниченных
+      пространств $d_{GH}$ может быть \( 0 \) и $\infty$.
+    \item \textbf{Соответствие} между пространствами \( X, Y \) ---
+      подмножество \( X \times Y \), проекции которого на \( X \) и
+      \( Y \) сюръективны.
+  \end{itemize}
+\end{frame}
+\begin{frame}{Основные определения}
+  \begin{itemize}
+    \item \textbf{Облако} $[X]$ --- класс эквивалентности: $Y\sim X \iff
+      d_{GH}(X,Y)<\infty$.
+    \item \textbf{Стационарная группа} $\mathrm{St}\big([X]\big) =
+      \bigl\{\lambda>0
+      : [\lambda X]=[X]\bigr\}$.
+    \item \textbf{Центр} облака с нетривиальной стац. группой --- единственное
+      $M$: $\lambda M = M$ для $\lambda\in\mathrm{St}\big([M]\big)$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Облака --- собственные классы}
+  \begin{block}{Лемма}
+    В любом облаке лежат пространства сколь угодно большой мощности.
+  \end{block}
+  \pause
+  \begin{block}{Теорема 3.3}
+    Все облака являются собственными классами в системе аксиом NBG.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Расстояние между облаками с пересечением стац. групп}
+  \begin{block}{Лемма 3.6}
+    Пусть $\mathrm{St}([X])\cap\mathrm{St}([Y])\neq\{1\}$. Тогда
+    $d_{GH}([X],[Y])$ равно $0$ или $\infty$.
+  \end{block}
+  \pause
+  \begin{block}{Примеры}
+    Облака \( [\mathbb{R}^n], n \in \mathbb{N} \), \( [\Delta _1] \)
+    все попарно имеют
+    нетривиальное пересечение стационарных групп, равное \( \mathbb{R}^+ \).
+  \end{block}
+\end{frame}
+
+\begin{frame}{Теорема об образе центра}
+  \begin{block}{Теорема 4.3}
+    Пусть $[M]$ --- облако с нетривиальной стац. группой, $M$ --- его
+    центр. $R$ --- соответствие между $[\Delta_1]$ и $[M]$ с искажением
+    $\varepsilon$. Тогда образ $\Delta_1$ лежит на расстоянии $\le
+    2\varepsilon$ от $M$.
+  \end{block}
+  \pause
+  \textbf{Следствие (теорема 5.1):}
+  Если в $[M]$ есть $Y_1,Y_2$ с $\max|Y_i,M|=r$, $|Y_1,Y_2|>r$, то
+  $d_{GH}([\Delta_1],[M])=\infty$.
+\end{frame}
+\begin{frame}
+  \epsimage{diffAngles}{0.50}{fig:diffAngles}{Иллюстрация
+  несовпадения расстояний}
+\end{frame}
+
+\begin{frame}{Облако вещественной прямой}
+  \begin{itemize}
+    \item $d_{GH}(\mathbb{Z},\mathbb{R}) = \frac12$,
+      $d_{GH}(\tilde{\mathbb{R}},\mathbb{R})\le\frac12$,
+      $d_{GH}(\mathbb{Z},\tilde{\mathbb{R}})\ge\frac23$ (теорема 6.3).
+    \item Пространства $\mathbb{Z}$ и $\tilde{\mathbb{R}}$
+      удовлетворяют условиям теоремы 5.1.
+    \item \textbf{Следствие 6.4:} $d_{GH}([\Delta_1],[\mathbb{R}]) = \infty$.
+  \end{itemize}
+  \pause
+  \vfill
+  \textbf{Замечание:} В облаке $[\Delta_1]$ выполняется
+  ультраметрическое неравенство, в $[\mathbb{R}]$ --- нет.
+\end{frame}
+
+\begin{frame}{Углы облаков}
+  \begin{block}{Определение}
+    Угол между $X_1,X_2\in[M]$ ($M$ --- центр):
+    \[
+      \varphi(X_1,X_2)=\arccos\frac{r_1^2+r_2^2-d^2}{2r_1r_2},\quad
+      r_i=|X_iM|,\ d=|X_1X_2|.
+    \]
+  \end{block}
+  \pause
+  \begin{block}{Определение}
+    Угол облака $[M]$: $\varphi([M])=\sup\varphi(X_1,X_2).$
+
+    Равнобедренный угол $\varphi_e([M])$ --- супремум по $|X_1M|=|X_2M|$.
+  \end{block}
+  \pause
+  \textbf{Примеры:}
+  \[
+    \varphi([\Delta_1])=\frac\pi2,\quad
+    \varphi_e([\Delta_1])=\frac\pi3,\quad
+    \varphi([\mathbb{R}])=\varphi_e([\mathbb{R}])=\pi.
+  \]
+\end{frame}
+
+\begin{frame}{Теорема об облаках с различными углами}
+  \begin{block}{Теорема 7.9}
+    Пусть $\mathrm{St}([M])\cap\mathrm{St}([N])\neq\{1\}$ и
+    $\varphi([M])\neq\varphi([N])$. Тогда $d_{GH}([M],[N])=\infty$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Выводы}
+  \begin{itemize}
+    \item Облака --- собственные классы, а не множества (в NBG).
+    \item Расстояние между облаками с нетривиальным пересечением
+      стационарных групп может быть только $0$ или $\infty$.
+    \item Доказана теорема об образе центра и получено условие
+      бесконечности расстояния до $[\Delta_1]$.
+    \item Исследовано облако вещественной прямой: вычислены расстояния
+      до подпространств.
+    \item Введены новые инварианты --- угол и равнобедренный угол облака.
+    \item Различие углов при нетривиальном пересечении стац. групп
+      влечёт бесконечность расстояния Громова–Хаусдорфа.
+  \end{itemize}
+\end{frame}
+\nocite{*}
+\printbibliography
+\end{document}
