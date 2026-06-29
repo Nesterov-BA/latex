@@ -1,0 +1,32 @@
+\documentclass[a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{setspace} % Для управления интервалами
+\usepackage{myrussian}
+
+\addbibresource{refs.bib}
+% Настройка полей согласно ГОСТ (приблизительно для диплома МГУ)
+\geometry{
+    left=3cm,
+    right=1cm,
+    top=2cm,
+    bottom=2cm
+}
+
+% Убираем нумерацию страниц на титульном листе
+\pagestyle{empty}
+
+\begin{document}
+\input{title.tex}
+\newpage
+\tableofcontents
+\newpage
+\pagestyle{plain}
+\setcounter{page}{1}
+\input{old.tex}
+\input{angles.tex}
+\newpage
+\renewcommand{\emph}{\em}
+\printbibliography
+\end{document}
