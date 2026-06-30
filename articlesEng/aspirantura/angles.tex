@@ -6,155 +6,276 @@ give these definitions, we must first define the angle between spaces.
 In what follows, we shall assume that clouds have a nontrivial stabilizer and in
 the notation for a cloud \( [M] \), \( M \) is its center.
 \begin{definition}
-    The \emph{angle} between spaces \( X_1, X_2 \in [M] \) such that \( |X_1
-    M| = r_1 \), \( | X_2 M | =r_2 \), \( |X_1 X_2| = d\), where \( r_1,
-    r_2 \neq 0 \), is the quantity \( \arccos \left(\frac{r_1^2 +
-    r_{2}^2 - d^2}{2r_1r_2} \right)\).\\ We denote it by \(
-    \varphi(X_1, X_2) \).
+  The \emph{angle} between spaces \( X_1, X_2 \in [M] \) such that \( |X_1
+  M| = r_1 \), \( | X_2 M | =r_2 \), \( |X_1 X_2| = d\), where \( r_1,
+  r_2 \neq 0 \), is the quantity \( \arccos \left(\frac{r_1^2 +
+  r_{2}^2 - d^2}{2r_1r_2} \right)\).\\ We denote it by \(
+  \varphi(X_1, X_2) \).
 \end{definition}
 \begin{remark}
-    This definition follows naturally from the Euclidean law of cosines,
-    namely \( c^{2} = a^2 + b^2 - 2ab\cos (a,b) \).
+  This definition follows naturally from the Euclidean law of cosines,
+  namely \( c^{2} = a^2 + b^2 - 2ab\cos (a,b) \).
 \end{remark}
 Before formulating the property of the angle, we need the following auxiliary
 lemma.
 \begin{lemma}
-    \label{lem:lambdacloud} For any cloud \( [M] \) and \( \lambda
-    \in\mathbb{R}^+ \), the following properties hold:
-    \begin{enumerate}
-        \item \( \St\big(\lambda [M]\big) = \St\big([M]\big) \),
-            \label{lem:lambdacloud:1}
-        \item \( \lambda [M] = [\lambda M] \).\label{lem:lambdacloud:2}
-    \end{enumerate}
+  \label{lem:lambdacloud} For any cloud \( [M] \) and \( \lambda
+  \in\mathbb{R}^+ \), the following properties hold:
+  \begin{enumerate}
+    \item \( \St\big(\lambda [M]\big) = \St\big([M]\big) \),
+      \label{lem:lambdacloud:1}
+    \item \( \lambda [M] = [\lambda M] \).\label{lem:lambdacloud:2}
+  \end{enumerate}
 \end{lemma}
 \begin{proof}
-    (\ref{lem:lambdacloud:1}) Let \( \mu \in \St\big([M]\big) \). Then \( \mu
-    \cdot \lambda [M] = \lambda \cdot \mu [M]= \lambda [M] \), i.e. \( \mu \in
-    \St\big(\lambda [M]\big) \). Hence \( \St\big([M]\big) \subseteq
-    \St\big(\lambda [M]\big) \). The reverse inclusion is obtained by
-    considering
-    the cloud \( [M] \) as \(\frac{1}{\lambda}\cdot \lambda [M] \).
+  (\ref{lem:lambdacloud:1}) Let \( \mu \in \St\big([M]\big) \). Then \( \mu
+  \cdot \lambda [M] = \lambda \cdot \mu [M]= \lambda [M] \), i.e. \( \mu \in
+  \St\big(\lambda [M]\big) \). Hence \( \St\big([M]\big) \subseteq
+  \St\big(\lambda [M]\big) \). The reverse inclusion is obtained by
+  considering
+  the cloud \( [M] \) as \(\frac{1}{\lambda}\cdot \lambda [M] \).
 
-    (\ref{lem:lambdacloud:2}) Since the stabilizers coincide, for any
-    \( \mu \in  \St\big(\lambda [M])\) we have \( \mu \cdot \lambda M =
-    \lambda \cdot \mu M = \lambda M \). Hence, \( \lambda M \) is the center
-    of the cloud \( \lambda [M] \).
+  (\ref{lem:lambdacloud:2}) Since the stabilizers coincide, for any
+  \( \mu \in  \St\big(\lambda [M])\) we have \( \mu \cdot \lambda M =
+  \lambda \cdot \mu M = \lambda M \). Hence, \( \lambda M \) is the center
+  of the cloud \( \lambda [M] \).
 \end{proof}
 The angle between spaces has the following property.
 \begin{lemma}
-    \label{lemmaAngleBetweenSpaces} For any \( X_1, X_2 \in [M] \), \( \lambda
-    \in\mathbb{R}^+ \), we have \( \varphi (X_1, X_2) = \varphi (\lambda
-            X_1,
-    \lambda X_2) \).
+  \label{lemmaAngleBetweenSpaces} For any \( X_1, X_2 \in [M] \), \( \lambda
+  \in\mathbb{R}^+ \), we have \( \varphi (X_1, X_2) = \varphi (\lambda
+      X_1,
+  \lambda X_2) \).
 \end{lemma}
 \begin{proof}
-    By Lemma \ref{lem:lambdacloud}, the space \( \lambda M \) is the
-    center of \( \lambda
-        [M]
-    \). As in the definition of the angle, set \[ |X_1 M| = r_1,\quad
-        | X_2 M | =r_2,\quad
-        |X_1
-    X_2| = d.\] By the definition of the angle, we obtain the following chain
-    of equalities: \[ \varphi (\lambda X_1, \lambda X_2) =
-        \arccos\left(\frac{\lambda
-            ^{2} r_1^2 + \lambda ^2 r_2^2 - \lambda^2 d^2}{2 \lambda  r_1
-        \lambda r_2}\right) =
-        \varphi (X_1, X_2).
-    \]
-    This completes the proof.
+  By Lemma \ref{lem:lambdacloud}, the space \( \lambda M \) is the
+  center of \( \lambda
+    [M]
+  \). As in the definition of the angle, set \[ |X_1 M| = r_1,\quad
+    | X_2 M | =r_2,\quad
+    |X_1
+  X_2| = d.\] By the definition of the angle, we obtain the following chain
+  of equalities: \[ \varphi (\lambda X_1, \lambda X_2) =
+    \arccos\left(\frac{\lambda
+      ^{2} r_1^2 + \lambda ^2 r_2^2 - \lambda^2 d^2}{2 \lambda  r_1
+    \lambda r_2}\right) =
+    \varphi (X_1, X_2).
+  \]
+  This completes the proof.
 \end{proof}
 We now consider the two definitions of the angle of a cloud that interest us.
 \begin{definition}
-    The \emph{angle} of a cloud \( [M] \) is the quantity
-    \[
-        \varphi \big([M]\big)= \sup \big\{\varphi (X_1, X_2) \colon | X_1,M
-        |, |X_2,M| \neq 0\big\}.
-    \]
+  The \emph{angle} of a cloud \( [M] \) is the quantity
+  \[
+    \varphi \big([M]\big)= \sup \big\{\varphi (X_1, X_2) \colon | X_1,M
+    |, |X_2,M| \neq 0\big\}.
+  \]
 \end{definition}
 \begin{definition}
-    The \emph{isosceles angle} of a cloud \( [M] \) is the quantity
-    \[
-        \varphi_e \big([M]\big) = \sup \big\{\varphi (X_1, X_2) \colon |X_1,M |
-        = |X_2,M| \neq 0\big\}.
-    \]
+  The \emph{isosceles angle} of a cloud \( [M] \) is the quantity
+  \[
+    \varphi_e \big([M]\big) = \sup \big\{\varphi (X_1, X_2) \colon |X_1,M |
+    = |X_2,M| \neq 0\big\}.
+  \]
 \end{definition}
 For these definitions, we obtain the following corollary from Lemma
 \ref{lemmaAngleBetweenSpaces}.
 \begin{lemma}
-    For any cloud \( [M] \) and \( \lambda \in\mathbb{R}^+ \), we
-    have:
-    \label{lem:angles}
-    \begin{enumerate}
-        \item \(\varphi \big(\lambda [M]\big) = \varphi
-            \big([M]\big)\),\label{lem:angles:1}
-        \item \(\varphi_e \big(\lambda [M]\big) = \varphi_e
-            \big([M]\big)\),\label{lem:angles:2}
-        \item \( \varphi_e \big([M]\big) \le \varphi \big([M]\big)
-            \),\label{lem:angles:3}
-        \item \(0 \le \varphi ([M]) \le \pi\),\label{lem:angles:4}
-        \item \(0 \le \varphi_e ([M]) \le \pi\).\label{lem:angles:5}
-    \end{enumerate}
+  For any cloud \( [M] \) and \( \lambda \in\mathbb{R}^+ \), we
+  have:
+  \label{lem:angles}
+  \begin{enumerate}
+    \item \(\varphi \big(\lambda [M]\big) = \varphi
+      \big([M]\big)\),\label{lem:angles:1}
+    \item \(\varphi_e \big(\lambda [M]\big) = \varphi_e
+      \big([M]\big)\),\label{lem:angles:2}
+    \item \( \varphi_e \big([M]\big) \le \varphi \big([M]\big)
+      \),\label{lem:angles:3}
+    \item \(0 \le \varphi ([M]) \le \pi\),\label{lem:angles:4}
+    \item \(0 \le \varphi_e ([M]) \le \pi\).\label{lem:angles:5}
+  \end{enumerate}
 \end{lemma}
 
 We give examples of angles of clouds.
 \begin{lemma}
-    For the clouds \( [\Delta _{1}], [\mathbb{R}] \), the following
-    equalities hold: \label{lem:angleexam}
-    \begin{enumerate}
-        \item \( \varphi \big([\Delta _{1}]\big) = \frac{\pi }{2}
-            \),\label{lem:angleexam:1}
-        \item \( \varphi_e \big([\Delta _{1}]\big) = \frac{\pi }{3}
-            \),\label{lem:angleexam:2}
-        \item \( \varphi \big([\mathbb{R}]\big) = \varphi_e
-            \big([\mathbb{R}]\big) = \pi  \).\label{lem:angleexam:3}
-    \end{enumerate}
+  For the clouds \( [\Delta _{1}], [\mathbb{R}] \), the following
+  equalities hold: \label{lem:angleexam}
+  \begin{enumerate}
+    \item \( \varphi \big([\Delta _{1}]\big) = \frac{\pi }{2}
+      \),\label{lem:angleexam:1}
+    \item \( \varphi_e \big([\Delta _{1}]\big) = \frac{\pi }{3}
+      \),\label{lem:angleexam:2}
+    \item \( \varphi \big([\mathbb{R}]\big) = \varphi_e
+      \big([\mathbb{R}]\big) = \pi  \).\label{lem:angleexam:3}
+  \end{enumerate}
 \end{lemma}
 \begin{proof}
-    (\ref{lem:angleexam:1}) From the ultrametric inequality, it follows that \(
-    \varphi \big([\Delta _1]\big)\le \frac{\pi }{2} \). To prove the reverse
-    inequality, we find the angle between the two-point simplex \( \Delta
-    _{2} = \{x_1, x_2\} \) and the three-point simplex \(
-    \lambda \Delta _3  = \{y_1,y_2, y_3\}\). We use the formula proved in
-    \cite{ivanov2016} for the Gromov--Hausdorff distance
-    between two three-point spaces:
-    \[
-        d_{GH}(X,Y) = \frac{1}{2} \max\big\{ |a_1 - a_2|,|b_1 - b_2|,|c_1
-        - c_2|\big\}.
-    \]
-    Here \( a_1 \le b_1 \le c_1 \) are the distances between points in
-    the space \( X \), and \( a_2 \le b_2 \le c_2 \) are the distances between
-    points in the space \( Y \). In our case, these are \( 0,1,1 \) and \(
-    \lambda , \lambda , \lambda . \) Accordingly,
-    \[
-        d_{GH}(\Delta_2, \lambda \Delta _{3}) =\frac{1}{2}
-        \max\big\{|\lambda |, | \lambda  -1|, |\lambda -1|\big\},
-    \]
-    which
-    for \( \lambda \ge \frac 1 2 \) equals \(\frac \lambda 2 \). Thus, \(d
-        _{GH}(\Delta _2, \lambda \Delta _3) =
-    \frac{\lambda }{2} \). Next, taking into account that \( |\Delta _1
-        \Delta _2|=\frac{1}{2}, |\Delta _1 \lambda \Delta
-    _3|=\frac{\lambda }{2} \), we find the angle between \( \Delta _2,
-    \lambda \Delta _3 \):
-    \[ \cos \big(\varphi (\Delta _2 , \lambda \Delta _3)\big)
-        =\frac{\frac{\lambda ^2}{4} + \frac{1}{4} - \frac{\lambda
-        ^2}{4}}{\frac{\lambda }{2}} = \frac{1}{2 \lambda }
-        \rightarrow 0,\quad \lambda \rightarrow \infty.
-    \]
-    Hence, \( \varphi \big([\Delta _1]\big) \ge \sup \varphi (\Delta _2,
-    \lambda \Delta _3) = \frac \pi 2. \)
+  (\ref{lem:angleexam:1}) From the ultrametric inequality, it follows that \(
+  \varphi \big([\Delta _1]\big)\le \frac{\pi }{2} \). To prove the reverse
+  inequality, we find the angle between the two-point simplex \( \Delta
+  _{2} = \{x_1, x_2\} \) and the three-point simplex \(
+  \lambda \Delta _3  = \{y_1,y_2, y_3\}\). We use the formula proved in
+  \cite{ivanov2016} for the Gromov--Hausdorff distance
+  between two three-point spaces:
+  \[
+    d_{GH}(X,Y) = \frac{1}{2} \max\big\{ |a_1 - a_2|,|b_1 - b_2|,|c_1
+    - c_2|\big\}.
+  \]
+  Here \( a_1 \le b_1 \le c_1 \) are the distances between points in
+  the space \( X \), and \( a_2 \le b_2 \le c_2 \) are the distances between
+  points in the space \( Y \). In our case, these are \( 0,1,1 \) and \(
+  \lambda , \lambda , \lambda . \) Accordingly,
+  \[
+    d_{GH}(\Delta_2, \lambda \Delta _{3}) =\frac{1}{2}
+    \max\big\{|\lambda |, | \lambda  -1|, |\lambda -1|\big\},
+  \]
+  which
+  for \( \lambda \ge \frac 1 2 \) equals \(\frac \lambda 2 \). Thus, \(d
+    _{GH}(\Delta _2, \lambda \Delta _3) =
+  \frac{\lambda }{2} \). Next, taking into account that \( |\Delta _1
+    \Delta _2|=\frac{1}{2}, |\Delta _1 \lambda \Delta
+  _3|=\frac{\lambda }{2} \), we find the angle between \( \Delta _2,
+  \lambda \Delta _3 \):
+  \[ \cos \big(\varphi (\Delta _2 , \lambda \Delta _3)\big)
+    =\frac{\frac{\lambda ^2}{4} + \frac{1}{4} - \frac{\lambda
+    ^2}{4}}{\frac{\lambda }{2}} = \frac{1}{2 \lambda }
+    \rightarrow 0,\quad \lambda \rightarrow \infty.
+  \]
+  Hence, \( \varphi \big([\Delta _1]\big) \ge \sup \varphi (\Delta _2,
+  \lambda \Delta _3) = \frac \pi 2. \)
 
-    (\ref{lem:angleexam:2}) From the ultrametric inequality, it follows that \(
-    \varphi_e \big([\Delta _1]\big)\le \frac{\pi }{3} \). To prove the reverse
-    inequality, it suffices to find spaces of equal diameter whose distance is
-    equal to their diameters. Such spaces are, for example, \( \Delta
-    _2, \Delta _3 \).
+  (\ref{lem:angleexam:2}) From the ultrametric inequality, it follows that \(
+  \varphi_e \big([\Delta _1]\big)\le \frac{\pi }{3} \). To prove the reverse
+  inequality, it suffices to find spaces of equal diameter whose distance is
+  equal to their diameters. Such spaces are, for example, \( \Delta
+  _2, \Delta _3 \).
 
-    (\ref{lem:angleexam:3}) It suffices to give examples of spaces \( X,Y\in
-    [\mathbb{R}] \) such that \( |X \mathbb{R}| = |Y \mathbb{R}| = \frac 1 2
-    |XY|. \) In \cite{mikhailovUnreleased}, it was proved that such
-    spaces are \( \mathbb{Z}, \mathbb{R}\times
-    [0,1] \).
-    %Insert reference to Ivan with title.
+  (\ref{lem:angleexam:3}) It suffices to give examples of spaces \( X,Y\in
+  [\mathbb{R}] \) such that \( |X \mathbb{R}| = |Y \mathbb{R}| = \frac 1 2
+  |XY|. \) In \cite{mikhailovUnreleased}, it was proved that such
+  spaces are \( \mathbb{Z}, \mathbb{R}\times
+  [0,1] \).
+  %Insert reference to Ivan with title.
 
 \end{proof}
+\subsection{Distance between clouds with different angles.}
+
+\begin{theorem}
+  \label{thm:diffAngles}
+  Let clouds \([M]\) and \([N]\) have a nontrivial intersection of
+  stabilizers, and their angles \(\varphi([M])\),
+  \(\varphi([N])\) are distinct. Then \(d_{GH}([M],[N]) = \infty\).
+\end{theorem}
+
+\begin{proof}
+  Without loss of generality, assume that \(\varphi([M]) >
+  \varphi([N])\). To prove the theorem, we show that there is no
+  correspondence \(R \in \mathcal{R}([M],[N])\) with finite distortion.
+
+  Suppose the contrary, i.e., there exists a correspondence \(R\)
+  with finite distortion \(\operatorname{dis} R = \varepsilon <
+  \infty\) as a mapping from the cloud \([M]\) to the cloud \([N]\).
+  Define a function \(f \colon [M] \to [N]\), where \(f(X)\) is an
+  arbitrary space from \(R(X)\). By the definition of the angle, in
+  the cloud \([M]\) there exist spaces \(X_1, X_2\) such that
+  \[
+    \varphi([N]) < \varphi(X_1, X_2) \le \varphi([M]).
+  \]
+  Set \(|X_1 M| = r_1^X\), \(|X_2 M| = r_2^X\), \(|X_1 X_2| = d^X\).
+  Also define the function
+  \[
+    d^N \colon \mathbb{R}^+ \times \mathbb{R}^+ \to \mathbb{R}^+,
+    \quad d^N(r_1, r_2) = \sqrt{r_1^2 + r_2^2 - 2 r_1 r_2
+    \cos\bigl(\varphi([N])\bigr)}.
+  \]
+  Then the following inequality holds:
+  \begin{equation}
+    d^N(r_1^X, r_2^X) < d^X. \label{eq:ineqdx}
+  \end{equation}
+  By the definition of the angle, for any spaces \(Y_1, Y_2 \in [N]\) we have
+  \begin{equation}
+    |Y_1 Y_2| \le d^N(|Y_1 N|, |Y_2 N|). \label{eq:ineqAngle}
+  \end{equation}
+  Thus, our task is to show that there exist spaces in \([N]\) for
+  which inequality \eqref{eq:ineqAngle} fails.
+
+  The nontriviality of the intersection of stabilizers means
+  that there exists a subgroup
+  \[
+    \{q^k : k \in \mathbb{Z}, q > 1\} \subset \operatorname{St}([M])
+    \cap \operatorname{St}([N]).
+  \]
+  Set \(|N R(M)| = l\). Consider the spaces \(R(q^k X_1), R(q^k
+  X_2)\) for \(k \in \mathbb{N}\). For them, the following inequalities hold:
+  \begin{equation}
+    |R(q^k X_1), R(q^k X_2)| \ge q^k d^X - \varepsilon, \label{eq:distX1X2}
+  \end{equation}
+  \[
+    q^k r_1^X - \varepsilon \le |R(M), R(q^k X_1)| \le q^k r_1^X + \varepsilon,
+  \]
+  \[
+    q^k r_2^X - \varepsilon \le |R(M), R(q^k X_2)| \le q^k r_2^X + \varepsilon.
+  \]
+  From the last two inequalities, by the triangle inequality, we obtain:
+  \begin{equation}
+    q^k r_1^X - l - \varepsilon \le |N, R(q^k X_1)| \le q^k r_1^X + l
+    + \varepsilon, \label{eq:distX1N}
+  \end{equation}
+  \begin{equation}
+    q^k r_2^X - l - \varepsilon \le |N, R(q^k X_2)| \le q^k r_2^X + l
+    + \varepsilon. \label{eq:distX2N}
+  \end{equation}
+  Divide inequalities \eqref{eq:distX1X2}, \eqref{eq:distX1N},
+  \eqref{eq:distX2N} by \(q^k\):
+  \[
+    |q^{-k} R(q^k X_1), q^{-k} R(q^k X_2)| \ge d^X - \frac{\varepsilon}{q^k},
+  \]
+  \[
+    r_1^X - \frac{l+\varepsilon}{q^k} \le |N, q^{-k} R(q^k X_1)| \le
+    r_1^X + \frac{l+\varepsilon}{q^k},
+  \]
+  \[
+    r_2^X - \frac{l+\varepsilon}{q^k} \le |N, q^{-k} R(q^k X_2)| \le
+    r_2^X + \frac{l+\varepsilon}{q^k}.
+  \]
+  The function \(d^N\) is continuous, hence
+  \[
+    \lim_{k \to \infty} d^N\!\bigl(|N, q^{-k} R(q^k X_1)|,\ |N,
+    q^{-k} R(q^k X_2)|\bigr) = d^N(r_1^X, r_2^X).
+  \]
+  From inequality \eqref{eq:ineqdx} it follows that there exist
+  \(\delta_1, \delta_2 > 0\) such that
+  \[
+    d^N(r_1^X, r_2^X) < d^N(r_1^X, r_2^X) + \delta_1 < d^X - \delta_2 < d^X.
+  \]
+  Choose \(k_1\) such that for all \(k > k_1\),
+  \[
+    d^N\!\bigl(|N, q^{-k} R(q^k X_1)|,\ |N, q^{-k} R(q^k X_2)|\bigr)
+    \in \bigl(d^N(r_1^X, r_2^X) - \delta_1,\ d^N(r_1^X, r_2^X) + \delta_1\bigr).
+  \]
+  Also choose \(k_2\) such that
+  \[
+    |q^{-k} R(q^k X_1), q^{-k} R(q^k X_2)| > d^X - \delta_2.
+  \]
+  Now take \(k_0 = \max\{k_1, k_2\}\). Then
+  \[
+    |q^{-k_0} R(q^{k_0} X_1), q^{-k_0} R(q^{k_0} X_2)|
+    >
+    d^N\!\bigl(|N, q^{-k_0} R(q^{k_0} X_1)|,\ |N, q^{-k_0} R(q^{k_0}
+    X_2)|\bigr).
+  \]
+  The spaces \(q^{-k_0} R(q^{k_0} X_1)\) and \(q^{-k_0} R(q^{k_0}
+  X_2)\) are the desired ones for which inequality
+  \eqref{eq:ineqAngle} fails. Contradiction.
+\end{proof}
+
+\begin{remark}
+  Theorem \ref{thm:diffAngles} is not a generalization of Theorem
+  6.2. Indeed, the spaces \(\mathbb Z\) and \(\widetilde{\mathbb R}\)
+  from Theorem 5.2 allow us to prove that the distance between
+  \([\Delta_1]\) and \([\mathbb R]\) is infinite using Theorem 6.2.
+  However, the angle between these spaces can be less than \(\pi/2\),
+  so they do not prove that the angles of the clouds \([\Delta_1]\)
+  and \([\mathbb R]\) are distinct. Therefore, using only these
+  spaces and Theorem 6.2, one cannot prove the infiniteness of the distance.
+\end{remark}

@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[12pt]{article}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
@@ -8,10 +8,10 @@
 \addbibresource{refs.bib}
 % Настройка полей согласно ГОСТ (приблизительно для диплома МГУ)
 \geometry{
-    left=3cm,
-    right=1cm,
-    top=2cm,
-    bottom=2cm
+  left=3cm,
+  right=1cm,
+  top=2cm,
+  bottom=2cm
 }
 
 % Убираем нумерацию страниц на титульном листе
@@ -23,9 +23,11 @@
 \tableofcontents
 \newpage
 \pagestyle{plain}
-\setcounter{page}{1}
 \input{old.tex}
+\section{Angles of clouds}
 \input{angles.tex}
+\section{Conclusion}
+\input{closer.tex}
 \newpage
 \renewcommand{\emph}{\em}
 \printbibliography
