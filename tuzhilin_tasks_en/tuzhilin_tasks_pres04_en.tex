@@ -1,0 +1,189 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\input{pres_preamble_en.tex}
+\title[Objectives of lesson 4]{Learning objectives of lesson \textup{4}: triangulation, continuation of mappings, intersection property}
+\subtitle{Lesson on the presentation \textup{4} of the minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>}
+\author{Alexey A.~Tuzhilin}
+\date{Beijing University, October 2026}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Lesson plan (\textup{50} minutes)}
+\begin{enumerate}
+\item Task \textup{1}. Triangulation Lemma --- \textup{10} minutes.
+\item Task \textup{2}. Continuous continuation lemma --- \textup{12} minutes.
+\item Task \textup{3}. Weak rating --- \textup{12} minutes.
+\item Task \textup{4}. Intersection property for sup-norm --- \textup{10} minutes.
+\item Task \textup{5}. Corollaries for the sup-norm and cylindrical norms --- \textup{6} minutes.
+\end{enumerate}
+\medskip
+At the presentation \textup{4} the enhanced assessment is fully discussed \textup{(}steps \textup{1}--\textup{8}\textup{)}. Other results\textup{:} triangulation, continuation of mappings, Webster's lemma, weak estimate and corollaries --- are given as statements and sketches.
+\end{frame}
+
+\begin{frame}{Problem \textup{1}: triangulation lemma}
+\begin{block}{Formulation}
+Let $V$ be an $n$-dimensional normed space. Prove that for any $\varepsilon > 0$ there exists a triangulation $\Sigma$ of the space $V$ such that all simplices have a diameter less than $\varepsilon$.
+\end{block}
+\begin{block}{Note}
+Take the basis $e_1,\dots,e_n$ with $\|e_i\| < \varepsilon/n$, lattice $\Lambda = \{\sum m_i e_i\}$ and parallelepipeds
+\[
+K_m = \Bigl\{\sum_{i=1}^n (m_i + t_i)e_i : 0 \le t_i \le 1\Bigr\}, \qquad \diam K_m < \varepsilon .
+\]
+Family $\{K_m\}$ --- polyhedral complex\textup{:} induction on the dimension of the cells gives a consistent triangulation \textup{(}cell $P$ is partitioned into $\conv(b_P \cup T)$, where $b_P$ is the center of $P$, and $T$ are the simplices of the partition $\partial P$\textup{)}.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{2}: Continuous Extension Lemma}
+\begin{block}{Formulation}
+Let $f\colon V \to X \subset V$ be an arbitrary mapping with $\dis f < C < \infty$, and $\Sigma$ be a triangulation with $\diam\Delta < \varepsilon$. Prove that there is a continuous $f^*\colon V \to V$ such that $f^*(y) = f(y)$ at the vertices, $\dis f^* \le 3C + 4\varepsilon$ and $\diam f^*(\Delta) < C+\varepsilon$.
+\end{block}
+\begin{block}{Note}
+Continue $f$ affinely\textup{:} $f^*(v) = \sum_i \lambda_i f(y_i)$ for $v = \sum_i \lambda_i y_i$. Then write out
+\[
+f^*(v) - f^*(w) = \sum_{i,j}\lambda_i\mu_j\bigl(f(y_i) - f(y_j)\bigr)
+\]
+and estimate $\|f(y_i) - f(y_j)\| \le \diam\Delta + \dis f < \varepsilon + C$. To estimate the distortion, add and subtract $f(y_v)$ and $f(y_w)$ at the vertices of the simplexes containing $v$ and $w$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{3}: weak estimate}
+\begin{block}{Formulation}
+Prove that for any finite-dimensional normed space $V$ and any non-empty $X \subseteq V$
+\[
+\ghdist{V}{X} \ge \frac{1}{2\JungRel{V}} \hdist{V}{X}.
+\]
+\end{block}
+\begin{block}{Fact (Webster's Lemma)}
+Continuous $f\colon V \to W$ with $\dim V \ge \dim W$ and $\dis f < \infty$ implies $\dim V = \dim W$ and $f$ is surjective.
+\end{block}
+\begin{block}{Note}
+Take $C > 2\ghdist{V}{X}$, a map of $f$ with $\dis f < C$ and extend it to $f^*$. By Webster's lemma $V = \bigcup_\Delta f^*(\Delta)$. For $A = f(\text{vertices }\Delta)$ and $v \in f^*(\Delta)$ we have $v \in \conv A$ and by Gulevich's theorem $\inf_{a\in A}\|v-a\| \le \JungRel{V}(C+\varepsilon)$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{4}: intersection property for sup-norm}
+\begin{block}{Formulation}
+Let $V = \R^n$ with norm $\|\cdot\|_\infty$. Prove that for any $\rho > 0$ $t = 2\rho$\textup{:} for $t' > 2\rho$ and any family of balls $B(x_i;r_i)$ with $r_i \le \rho$ set
+\[
+Q \cap \bigl(V \setminus \ClosedBall{0}{t'}\bigr), \qquad Q = \bigcap_i \OpenBall{x_i}{r_i},
+\]
+either empty or contractible. Explain why this implies the intersection property for any norm at $\dim V = 2$, and discuss the case of an octahedron in $\R^3$.
+\end{block}
+\begin{block}{Note}
+A sup-norm ball is a cube, so $Q$ is an open parallelepiped with half-widths $\le \rho < t'$\textup{:} it does not intersect both half-spaces $\{x_j > t'\}$ and $\{x_j < -t'\}$ for the same $j$. The parts $P_j^{\pm} = Q \cap \{\pm x_j > t'\}$ are convex and all contain a common point $w$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{5}: consequences}
+\begin{block}{Formulation}
+Let $X \subseteq V$ be nonempty and $\hdist{V}{X} < \infty$. Prove that
+\begin{enumerate}
+\item[(a)] for $V = \R^n$ with sup-norm $\ghdist{V}{X} = \hdist{V}{X}$\textup{;}
+\item[(b)] if the norm is cylindrical or $\dim V = 2$, then $\ghdist{V}{X} \ge \dfrac{1}{2\Jung{V}} \hdist{V}{X}$.
+\end{enumerate}
+\end{block}
+\begin{block}{Note}
+The upper bound $\ghdist{V}{X} \le \hdist{V}{X}$ is always correct. Give lower bounds by a strengthened bound\textup{:} for the sup-norm $\Jung{V} = \frac12$, and the cylindrical norms and norms for $\dim V = 2$ have the intersection property.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{1}}
+\begin{block}{Small parallelepipeds}
+Basis with $\|e_i\| < \varepsilon/n$ gives $\diam K_m < \varepsilon$, and $\{K_m\}$ is a polyhedral complex with body $V$.
+\end{block}
+\begin{block}{Induction on dimension}
+Cell $P$ is divided by a cone over the boundary tiling\textup{:} $P = \bigcup_T \conv(b_P \cup T)$, where $b_P$ is the center of $P$, and $T$ are the simplices of the tiling $\partial P$. Consistency on common faces is ensured by the fact that the partition of a face depends only on itself. Each simplex lies in some $K_m$, so its diameter is less than $\varepsilon$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{2}: points \textup{(1)} and \textup{(3)}}
+\begin{block}{Affine continuation}
+$f^*(v) = \sum_i \lambda_i f(y_i)$ for $v = \sum_i \lambda_i y_i$\textup{:} on each simplex this is an affine mapping, so $f^*$ is continuous, and at the vertices $f^* = f$.
+\end{block}
+\begin{block}{Diameter of the simplex image}
+Since $f^*(v) - f^*(w) = \sum_{i,j}\lambda_i\mu_j(f(y_i)-f(y_j))$ and $\|f(y_i)-f(y_j)\| < C+\varepsilon$,
+\[
+\|f^*(v)-f^*(w)\| \le (C+\varepsilon)\Bigl(\sum_i\lambda_i\Bigr)\Bigl(\sum_j\mu_j\Bigr) = C+\varepsilon .
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{2}: point \textup{(2)}}
+\begin{block}{Distortion assessment}
+Let's take the vertices $y_v \in \Delta_v$, $y_w \in \Delta_w$ and estimate
+\[
+\|f^*(v)-f^*(w)\| - \|v-w\| \le (C+\varepsilon) + \bigl(\|y_vy_w\| + C\bigr) + (C+\varepsilon) - \|y_vy_w\| + 2\varepsilon = 3C+4\varepsilon .
+\]
+The reverse inequality is obtained by reversing the roles of $v$ and $w$, so $\dis f^* \le 3C + 4\varepsilon$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{3}}
+\begin{block}{Scheme}
+$C > 2\ghdist{V}{X}$ $\Rightarrow$ $R$ with $\dis R < C$ $\Rightarrow$ $f$ with $\dis f < C$ $\Rightarrow$ $f^*$ with $\dis f^* \le 3C+4\varepsilon$ $\Rightarrow$ $f^*$ surjective \textup{(}Webster\textup{)}.
+\end{block}
+\begin{block}{Estimating the distance to $X$}
+For $v \in f^*(\Delta)$ and $A = f(\text{vertices }\Delta) \subset X$ we have $v \in \conv A$, so
+\[
+\inf_{a \in A}\|v-a\| \le \lambda(A) \le \JungRel{V}\diam A \le \JungRel{V}(C+\varepsilon).
+\]
+Since $X \subset V$, $\hdist{V}{X} = \sup_{v \in V}|vX| \le \JungRel{V}(C+\varepsilon)$.
+\end{block}
+\begin{block}{Limits}
+$\varepsilon \to 0$, then the infimum over $C > 2\ghdist{V}{X}$ gives $\hdist{V}{X} \le 2\JungRel{V}\ghdist{V}{X}$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{4}, point \textup{(a)}}
+\begin{block}{Device $Q$}
+$\OpenBall{x}{r} = \prod_j (x_j - r, x_j + r)$, so $Q = \prod_j (a_j, b_j)$ with $b_j - a_j \le 2r_1 \le 2\rho < 2t'$.
+\end{block}
+\begin{block}{Common point of all parts}
+Every non-empty $P_j^{\pm} = Q \cap \{\pm x_j > t'\}$ is convex, and for one $j$ both signs cannot be non-empty. Let's choose $w$ by coordinates\textup{:} $w_j = (b_j + t')/2$ for a non-empty $P_j^{+}$, $w_j = (a_j - t')/2$ for a non-empty $P_j^{-}$, otherwise $w_j \in (a_j,b_j)$. Then $w$ lies in all non-empty $P_j^{\pm}$, which means that their union $U = Q \cap (V\setminus \ClosedBall{0}{t'})$ is star-shaped with respect to $w$, that is, contractible.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{4}, points \textup{(b)} and \textup{(c)}}
+\begin{block}{\textup{(b)} Dimension \textup{2}}
+For $n = 2$, the cylindrical construction gives $K^{0}$ \textup{(}point\textup{)}, that is, $B^2 \times K^0 = B^2$\textup{:} all norms on the plane are cylindrical, and the intersection property for them is known.
+\end{block}
+\begin{block}{\textup{(c)} Octahedron in $\R^3$}
+For a unit ball-octahedron \textup{(}as well as icosahedron and dodecahedron\textup{)} the intersection property is violated \textup{(}Remark \textup{4.5} by Adams--Bogatyi--Frick--Ilyukhin--Ivanov--Mikhailov--Tuzhilin--Vikhrov\textup{)}. The reason\textup{:} the decisive point in point \textup{(a)} was the representation of the intersection of balls in the form of a product and the independence of the conditions for different coordinates.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{5}}
+\begin{block}{\textup{(a)} Sup-norm}
+$\ghdist{V}{X} \le \hdist{V}{X}$ always, and according to the problem \textup{4} and $\Jung{V} = \frac12$
+\[
+\ghdist{V}{X} \ge \frac{1}{2\cdot\frac12}\hdist{V}{X} = \hdist{V}{X},
+\]
+that is, $\ghdist{V}{X} = \hdist{V}{X}$.
+\end{block}
+\begin{block}{\textup{(b)} Cylindrical norms}
+They have the intersection property, so the strengthened estimate is applicable
+\[
+\ghdist{V}{X} \ge \frac{1}{2\Jung{V}}\hdist{V}{X}, \qquad \text{and since } \Jung{V} \le \JungRel{V},
+\]
+this refines the weak estimate.
+\end{block}
+\end{frame}
+
+\begin{frame}{Lesson summary \textup{4}}
+\begin{block}{What has been proven}
+\begin{enumerate}
+\item There is triangulation of simplexes of arbitrarily small diameter.
+\item The mapping with $\dis f < C$ extends to a continuous $f^*$ with $\dis f^* \le 3C+4\varepsilon$ and $\diam f^*(\Delta) < C+\varepsilon$.
+\item $\ghdist{V}{X} \ge \frac{1}{2\JungRel{V}}\hdist{V}{X}$ for any finite-dimensional $V$.
+\item Sup-norm has the property of intersection \textup{(}with $t = 2\rho$\textup{)}\textup{;} for $\dim V = 2$ all norms have it.
+\item $\ghdist{V}{X} = \hdist{V}{X}$ for sup-norm and $\ghdist{V}{X} \ge \frac{1}{2\Jung{V}}\hdist{V}{X}$ for cylindrical norms.
+\end{enumerate}
+\end{block}
+\begin{block}{Summary of the mini-course}
+Invariants \textup{(}lesson \textup{1}\textup{)}, ultrametrization \textup{(}lesson \textup{2}\textup{)}, homology \textup{(}lesson \textup{3}\textup{)} and GH-distance estimates \textup{(}lesson \textup{4}\textup{)} are collected in a single scheme.
+\end{block}
+\end{frame}
+
+\end{document}

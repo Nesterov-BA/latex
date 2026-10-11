@@ -1,0 +1,589 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Lesson Problem Solutions \textup{2}}\\[2mm]
+{\large Ultrametrization and its applications in GH geometry}\\[2mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, presentation lesson \textup{2}}
+\end{center}
+
+Numbering of tasks --- as in the sheet <<Learning tasks for the lesson \textup{2}>>. Below we use the main theorem on ultrametrization proven in the lecture, that is, the inequality $\ghdist{X}{Y}\ge\ghdist{\mathcal U(X)}{\mathcal U(Y)}$, the theorem $\ghdist{P_n}{S^1}=\pi/n$ for a regular $n$-gon with the internal metric of the circle, the formula for the distance to the simplex and the estimate of the distance to the simplex through the constant Jung. In addition to them, the properties of ultrametric spaces given in the sheet without proof and their representation by trees are used.
+
+Let us recall the notation. \emph{Ultrametric} --- a metric in which $d(x,z)\le\max\{d(x,y),\,d(y,z)\}$ holds for all points. \emph{Ultralength} of the polyline $(x_0,x_1,\dots,x_n)$ --- is $\max_{1\le i\le n}d(x_{i-1},x_i)$, and $d_u(x,y)=\inf\{\text{ultralengths of polylines from }x\text{ to }y\}$\textup{;} mapping $d_u$ is an ultrametric, and \emph{ultrametrization} $\mathcal U(X)$ is the quotient space of $X$ with respect to $d_u(x,y)=0$ with the metric $d_{\mathcal U(X)}\bigl([x],[y]\bigr)=d_u(x,y)$. $\Delta_1$ denotes a one-point space. For a finite metric space $X$, $\sigma(X)=(\sigma_1,\dots,\sigma_{n-1})$ denotes its $\MST$ spectrum, ordered in descending order\textup{;} \emph{ultrametrics of a single connection} is given by the formula $d_u(x,y)=\max\{\text{edge lengths } \MST \text{ on the way from } x \text{ to } y\}$. $\Dm{m}{X}$ denotes the set of partitions of $X$ into $m$ non-empty parts, $\alphaD{D}=\min_{i<j}|X_iX_j|$ and $\diam D=\max_i\diam X_i$\textup{;} the correspondence $R\subset X\times Y$ has \emph{distortion} $\dis R=\sup\{|d_X(x,x')-d_Y(y,y')|:(x,y),(x',y')\in R\}$, and $\ghdist{X}{Y}=\frac12\inf_R\dis R$. Finally, $P_k$ is the set of vertices of a regular $k$-gon with the metric induced by the intrinsic metric of the circle, and $X_n=\{\frac{k}{n}:k=0,\dots,n\}\subset[0,1]$.
+
+\begin{task}[ultrametrization and finite length curves]
+\textup{a)} Let any two points $x,y\in X$ be connected by a broken line of arbitrarily small ultra-length \textup{(}for example, if $X$ is path connected and any two of its points are connected by a curve of finite length\textup{)}. Prove that then $d_u\equiv 0$ and $\mathcal U(X)=\Delta_1$.
+
+\textup{b)} Deduce from here the one-point ultrametrization for a segment, for a circle $S^1$ with an internal metric, for any metric tree, and for a space obtained by gluing together several segments at one common point.
+
+\textup{c)} Prove that for any metric space $X$ $\diam\mathcal U(X)\le\diam X$ holds, and give an example $X$ for which the inequality is strict.
+
+\textup{d)} Prove that the relation $x\sim y\iff d_u(x,y)=0$ is an equivalence relation, and that the class $[x]$ consists of exactly those points that are connected to $x$ by broken lines of arbitrarily small ultralength.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{1} \textup{(}ultrametrization and curves of finite length\textup{)}]
+\textit{Part \textup{(a)}.} By condition, for any $x,y\in X$ and any $\varepsilon>0$ there is a broken line from $x$ to $y$, the ultralength of which is less than $\varepsilon$. This means that the ultralengths of the broken lines from $x$ to $y$ take values arbitrarily close to zero, and the infimum of these values is equal to zero\textup{:} $d_u(x,y)=0$. Since this is true for all pairs of points, $d_u\equiv0$.
+
+Let us check that the condition on broken lines of arbitrarily small ultralength is satisfied in a typical situation when $X$ is path connected and any two of its points are connected by a curve of finite length. Let $\gamma\colon[0,1]\to X$ be such a curve, $L$ be its length, $L<\infty$. The length is finite and additive, so there is a partition $0=t_0<t_1<\dots<t_n=1$ such that the length of each piece $\gamma|_{[t_{i-1},t_i]}$ is less than $\varepsilon$. For any piece, the distance between its ends does not exceed its length, that is
+\[
+d\bigl(\gamma(t_{i-1}),\ \gamma(t_i)\bigr)\le\operatorname{length}\bigl(\gamma|_{[t_{i-1},t_i]}\bigr)<\varepsilon .
+\]
+This means that the broken line $\bigl(\gamma(t_0),\gamma(t_1),\dots,\gamma(t_n)\bigr)$ connects $x=\gamma(0)$ with $y=\gamma(1)$ and has an ultralength less than $\varepsilon$. Since $\varepsilon$ is arbitrary, we obtain $d_u(x,y)=0$.
+
+Now let's find out what the identity $d_u\equiv0$ gives for ultrametrization. The classes of the relation $d_u(x,y)=0$ are equivalence classes (problem \textup{1}, point \textup{(d)}), and the metric on the factor is given by the formula $d_{\mathcal U(X)}\bigl([x],[y]\bigr)=d_u(x,y)$. If $d_u\equiv0$, then all points lie in the same class, the factor consists of one point, and the distance from this point to itself is zero. This means $\mathcal U(X)=\Delta_1$, which is what was required.
+
+\textit{Part \textup{(b)}.} In all the listed cases, the space is linearly connected and any two of its points are connected by a curve of finite length, therefore, we apply to each of them the clause \textup{(a)}\textup{:} ultrametrization is one-point.
+
+Segment $[a,b]\subset\R$\textup{:} two points $x,y$ are connected by a segment, its length is $|x-y|\le b-a<\infty$, so $\mathcal U([a,b])=\Delta_1$.
+
+Circle $S^1$ with internal metric\textup{:} two points are connected by one of two arcs of the circle, the length of each of them does not exceed the length of the entire circle, that is, it is finite, therefore $\mathcal U(S^1)=\Delta_1$.
+
+A metric tree $T$\textup{:} two of its points are connected by a unique path that follows a finite set of edges \textup{(}a path in a graph is a finite sequence of edges\textup{)}, and this set has a finite total length, since each edge has a finite length by the definition of a metric tree. This means $\mathcal U(T)=\Delta_1$ for any metric tree.
+
+Gluing together several segments at one common point\textup{:} any two points lie on their segments and are connected by a broken line of two links through a common point, the length of which is finite \textup{(}it is equal to the sum of the distances to the common point\textup{)}, therefore here too the ultrametrization is single-point.
+
+The above reasoning is based precisely on the finiteness of the length\textup{:} if the curve between two points has an infinite length, then it is not possible to split it into pieces of arbitrarily small length, and estimating the links of a broken line through the lengths of the pieces does not work\textup{(}although ultrametrization may turn out to be single-point for some other reasons\textup{)}. Note also that in paragraph \textup{(b)} we are talking about continuous spaces. For a discrete set, for example, for the set of vertices of a quadrilateral considered in problem \textup{3} and problem \textup{5}, the picture is different\textup{:} broken there --- it is a finite sequence of vertices, and $d_u$ coincides with the ultrametrics of a single connection, so ultrametrization can be nontrivial.
+\textit{Part \textup{(c)}.} First we prove the inequality. Take any two points $x,y\in X$ and consider a broken line of two points $(x,y)$\textup{:} its ultralength is equal to $d(x,y)$. By defining $d_u$ as the lower bound of ultralengths of broken lines, we obtain
+\[
+d_u(x,y)\le d(x,y)\ \ \text{for all}\ x,y\in X .
+\]
+Now let $[x],[y]$ be the equivalence classes of the points $x$ and $y$ in $\mathcal U(X)$. Their distance is given by the formula $d_{\mathcal U(X)}\bigl([x],[y]\bigr)=d_u(x,y)$, therefore
+\[
+d_{\mathcal U(X)}\bigl([x],[y]\bigr)=d_u(x,y)\le d(x,y)\le\diam X .
+\]
+The right side does not depend on the choice of $x\in[x]$ and $y\in[y]$, which means that the left side does not depend either \textup{(}the same independence statement will be proven in problem \textup{2}, point \textup{(d)}\textup{)}. Passing to the upper bound over all pairs of classes, we obtain
+\[
+\diam\mathcal U(X)=\sup_{[x],[y]\in\mathcal U(X)}d_{\mathcal U(X)}\bigl([x],[y]\bigr)\le\diam X ,
+\]
+which is what was required.
+
+Let us show that the inequality can be strict. Let $X=\{0,1,2\}\subset\R$ with the usual metric\textup{;} then $\diam X=|0-2|=2$. Let's find $d_u$. On the one hand, the broken line $(0,1,2)$ has ultralength
+\[
+\max\{d(0,1),\,d(1,2)\}=\max\{1,1\}=1 ,
+\]
+therefore $d_u(0,2)\le 1$ \textup{(}and $d_u$ between any different points does not exceed the distance between them, that is, does not exceed $1$\textup{)}. On the other hand, we prove that $d_u(0,2)\ge 1$. Let $(x_0,x_1,\dots,x_n)$ be a broken line from $0$ to $2$ with ultralength less than $1$. Each link is the distance between two points of the set $\{0,1,2\}$, that is, one of the numbers $0$, $1$, $2$. The condition $d(x_{i-1},x_i)<1$ leaves the only possibility $d(x_{i-1},x_i)=0$, that is, $x_{i-1}=x_i$. This means that all points of the broken line coincide\textup{:} $0=x_0=x_1=\dots=x_n=2$, a contradiction. Consequently, there are no broken lines from $0$ to $2$ with ultralength less than $1$, and $d_u(0,2)\ge 1$.
+
+So, $d_u(0,2)=1$, and since $\diam\mathcal U(X)\le\diam X$ and the distance between the classes of points $0$ and $2$ is equal to $1$, we get
+\[
+\diam\mathcal U(X)=1<2=\diam X .
+\]
+The resulting ultrametric is the ultrametric of a single connection of the set $\{0,1,2\}$\textup{:} the minimum spanning tree consists of edges $\{0,1\}$ and $\{1,2\}$ of length $1$, therefore $d_u$ is equal to $1$ on all pairs of distinct points, and $\mathcal U(X)$ is a three-point space with pairwise distances $1$, that is $\Delta_3$ with double \textup{(}compared to the normal convention\textup{)} metric.
+
+\textit{Part \textup{(d)}.} First we prove that $d_u$ satisfies the strong triangle inequality. Let $\bigl(x_0,x_1,\dots,x_k\bigr)$ be a broken line from $x$ to $y$, and $\bigl(y_0,y_1,\dots,y_l\bigr)$ be a broken line from $y$ to $z$ \textup{(}that is, $x_0=x$, $x_k=y=y_0$, $y_l=z$\textup{)}. Gluing them together
+\[
+\bigl(x_0,x_1,\dots,x_k=y_0,y_1,\dots,y_l\bigr)
+\]
+there is a broken line from $x$ to $z$, the ultralength of which is equal to the maximum of the ultralengths of the broken lines being glued together. Therefore, for any $x,y,z\in X$
+\[
+d_u(x,z)\le\max\bigl\{d_u(x,y),\,d_u(y,z)\bigr\} .
+\]
+Indeed, for any $\varepsilon>0$ we take a broken line from $x$ to $y$ with an ultralength less than $d_u(x,y)+\varepsilon$ and a broken line from $y$ to $z$ with an ultralength less than $d_u(y,z)+\varepsilon$\textup{;} their gluing has an ultralength less $\max\{d_u(x,y),d_u(y,z)\}+\varepsilon$, whence $d_u(x,z)\le\max\{d_u(x,y),d_u(y,z)\}+\varepsilon$, and it remains to direct $\varepsilon$ to zero.
+
+\textit{Reflexivity.} The polyline from one point $(x)$ has ultralength $0$\textup{;} together with the inequality $d_u(x,x)\le d(x,x)=0$ this gives $d_u(x,x)=0$, that is, $x\sim x$.
+
+\textit{Symmetry.} The ultralength of a broken line does not change when the order of its points is reversed, therefore the sets of ultralengths of broken lines from $x$ to $y$ and from $y$ to $x$ coincide, and $d_u(x,y)=d_u(y,x)$\textup{;} means, $d_u(x,y)=0$ is equivalent to $d_u(y,x)=0$ and $x\sim y\iff y\sim x$.
+
+\textit{Transitivity.} If $d_u(x,y)=0$ and $d_u(y,z)=0$, then by the strengthened triangle inequality $d_u(x,z)\le\max\{0,0\}=0$, whence $d_u(x,z)=0$, that is, $x\sim z$.
+
+So $\sim$ is an equivalence relation, and the class $[x]$ is well defined.
+
+Let us describe the class $[x]$. By definition of $d_u$ as the infimum
+\[
+d_u(x,y)=0\iff\inf\bigl\{\text{ultralengths of broken lines from }x\text{ to }y\bigr\}=0 .
+\]
+The equality of the lower bound to zero means that the ultralengths of the broken lines from $x$ to $y$ take arbitrarily small values, that is, that the points $x$ and $y$ are connected by broken lines of arbitrarily small ultralength. So,
+\[
+[x]=\{y\in X:\ \text{points } x \text{ and } y \text{ are connected by broken lines of arbitrarily small ultra-length}\},
+\]
+which is what was required. Note that the classes of the relation $\sim$ are exactly the points of the quotient space $\mathcal U(X)$, and the formula $d_{\mathcal U(X)}\bigl([x],[y]\bigr)=d_u(x,y)$ correctly defines the metric on them due to point \textup{(d)} of problem \textup{2}.
+
+\end{proof}
+\begin{task}[ultrametric distance properties]
+Let $X$ be an ultrametric space. Prove the following statements.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item \emph{Polygon inequality}\textup{:} for any points $x_0,x_1,\dots,x_n\in X$ $d(x_0,x_n)\le\max_{1\le i\le n}d(x_{i-1},x_i)$ is satisfied.
+\item \emph{Isosceles}\textup{:} among the distances $d(x,y)$, $d(y,z)$, $d(z,x)$ two are equal, and the third does not exceed them.
+\item \emph{Property of balls}\textup{:} each ball of non-zero radius is both open and closed\textup{;} if two balls intersect, then one of them is contained in the other.
+\item \emph{Correctness of factorization}\textup{:} if $d_u(x,x')=d_u(y,y')=0$, then $d_u(x,y)=d_u(x',y')$\textup{;} deduce from this that the metric on $\mathcal U(X)$ is well defined and is an ultrametric.
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{2} \textup{(}properties of ultrametric distances\textup{)}]
+\textit{Point \textup{(a)}.} We use induction on the number of points in the chain. When $n=1$ the statement turns into the equality $d(x_0,x_1)=d(x_0,x_1)$. Let it be proven for all chains of $n$ points. For the chain $x_0,x_1,\dots,x_n$, apply the strengthened triangle inequality to the triple $x_0,x_{n-1},x_n$ and the induction hypothesis to the chain $x_0,\dots,x_{n-1}$\textup{:}
+\[
+\begin{gathered}
+d(x_0,x_n)\le\max\bigl\{d(x_0,x_{n-1}),\,d(x_{n-1},x_n)\bigr\}\\
+\le\max\Bigl\{\max_{1\le i\le n-1}d(x_{i-1},x_i),\ d(x_{n-1},x_n)\Bigr\}=\max_{1\le i\le n}d(x_{i-1},x_i) .
+\end{gathered}
+\]
+So, for any points $x_0,x_1,\dots,x_n\in X$, $d(x_0,x_n)\le\max_{1\le i\le n}d(x_{i-1},x_i)$ holds.
+
+\textit{Item \textup{(b)}.} Let us denote $a=d(x,y)$, $b=d(y,z)$, $c=d(z,x)$. The strengthened triangle inequality applied to the three possible midpoints gives
+\[
+c\le\max\{a,b\},\qquad a\le\max\{b,c\},\qquad b\le\max\{c,a\} .
+\]
+For definiteness, let $a$ be the largest of the three numbers, that is, $a\ge b$ and $a\ge c$. Then $\max\{b,c\}\le a$, and from the second inequality $a\le\max\{b,c\}$. This means $\max\{b,c\}=a$, so one of the numbers $b$, $c$ is equal to $a$. So, among the distances $d(x,y)=a$, $d(y,z)=b$, $d(z,x)=c$, two are equal to $a$ \textup{(}namely $a$ and that of $b$, $c$, which is equal to $a$\textup{)}, and the third does not exceed $a$. Cases where the largest is $b$ or $c$ are dealt with verbatim in the same way, with the corresponding rearrangement of letters.
+
+\textit{Part \textup{(c)}.} Let $B(x,r)=\{y\in X:d(x,y)<r\}$ denote the open ball of radius $r>0$ with center $x$.
+
+\textit{The ball is open.} Let $y\in B(x,r)$, that is, $d(x,y)<r$, and let $z\in B(y,r)$, that is, $d(y,z)<r$. Then
+\[
+d(x,z)\le\max\bigl\{d(x,y),\,d(y,z)\bigr\}<r ,
+\]
+that is, $z\in B(x,r)$. This means that $B(y,r)\subset B(x,r)$\textup{:} each point of the ball enters it along with some ball around it, and $B(x,r)$ is open.
+
+\textit{The ball is closed.} Let's check that the complement is open. Let $y\notin B(x,r)$, that is, $d(x,y)\ge r$. If there were a point $z\in B(y,r)\cap B(x,r)$, that is, $d(y,z)<r$ and $d(x,z)<r$, then
+\[
+d(x,y)\le\max\bigl\{d(x,z),\,d(z,y)\bigr\}<r ,
+\]
+which contradicts $d(x,y)\ge r$. This means that $B(y,r)\cap B(x,r)=\varnothing$, each point of the complement is included in the complement along with some ball, and $B(x,r)$ is closed. So, any ball of non-zero radius is both open and closed.
+
+\textit{The intersecting balls are nested.} Let $B(x,r)\cap B(y,s)\ne\varnothing$\textup{:} there be a point $w$ with $d(x,w)<r$ and $d(y,w)<s$. For definiteness, let $r\le s$ and let $z\in B(x,r)$, that is, $d(x,z)<r$. Let's apply the polygon inequality \textup{(}item \textup{(a)}\textup{)} to the chain $y,w,x,z$\textup{:}
+\[
+d(y,z)\le\max\bigl\{d(y,w),\,d(w,x),\,d(x,z)\bigr\}<s ,
+\]
+since $d(y,w)<s$, $d(w,x)<r\le s$ and $d(x,z)<r\le s$. This means that $z\in B(y,s)$, that is, $B(x,r)\subset B(y,s)$\textup{:} contains a ball of smaller radius. For $s\le r$, the same calculation with replacement of the roles of $x$ and $y$, $r$ and $s$ gives $B(y,s)\subset B(x,r)$.
+
+\textit{Note about closed balls.} The same reasoning applies to closed balls $\bar B(x,r)=\{y\in X:d(x,y)\le r\}$ for $r>0$. If $d(x,y)\le r$ and $d(y,z)\le r$, then $d(x,z)\le\max\{d(x,y),d(y,z)\}\le r$\textup{;} if $d(x,y)>r$ and $d(y,z)\le r$, then $d(x,z)\le\max\{d(x,y),d(y,z)\}=d(x,y)>r$ \textup{(}here the distance from the center along the ball not only does not increase, but does not change at all\textup{)}. Therefore, closed balls are also open, closed, and form a chain by embedding. The condition $r>0$ is essential\textup{:} a ball of zero radius is $\{x\}$, it is closed but not open if there is a point in space at a distance $0<\rho$ from $x$.
+
+\textit{Item \textup{(g)}.} Let $d_u(x,x')=0$ and $d_u(y,y')=0$. Let us apply the polygon inequality for $d_u$ \textup{(}the strengthened triangle inequality for $d_u$ was proven in the solution of problem \textup{1}, point \textup{(d)}\textup{)} to the chain of points $x,x',y',y$\textup{:}
+\[
+d_u(x,y)\le\max\bigl\{d_u(x,x'),\,d_u(x',y'),\,d_u(y',y)\bigr\}
+=\max\bigl\{0,\,d_u(x',y'),\,0\bigr\}=d_u(x',y') .
+\]
+Changing the roles of primed and unprimed points, that is, applying the same estimate to the chain $x',x,y,y'$, we obtain the inverse inequality $d_u(x',y')\le d_u(x,y)$. So $d_u(x,y)=d_u(x',y')$, and the value
+\[
+d_{\mathcal U(X)}\bigl([x],[y]\bigr)=d_u(x,y)
+\]
+does not depend on the choice of representatives $x\in[x]$ and $y\in[y]$\textup{:} the formula correctly defines a function on pairs of classes.
+
+Let's check that this is a metric. The symmetry of $d_{\mathcal U(X)}([x],[y])=d_{\mathcal U(X)}([y],[x])$ follows from the symmetry of $d_u$\textup{;} the equality $d_{\mathcal U(X)}([x],[y])=0$ is equivalent to $d_u(x,y)=0$, that is, $[x]=[y]$, and for $[x]=[y]$ it is satisfied, since $d_u(x,x)=0$\textup{;} finally, for any $x,y,z\in X$
+\[
+d_{\mathcal U(X)}\bigl([x],[z]\bigr)=d_u(x,z)\le\max\bigl\{d_u(x,y),\,d_u(y,z)\bigr\}
+=\max\bigl\{d_{\mathcal U(X)}\bigl([x],[y]\bigr),\,d_{\mathcal U(X)}\bigl([y],[z]\bigr)\bigr\} .
+\]
+This means that $d_{\mathcal U(X)}$ is an ultrametric on $\mathcal U(X)$, as required.
+
+\textit{Note.} If the metric $d$ on $X$ was itself an ultrametric, then ultrametrization does not change anything\textup{:} $d_u=d$ and $\mathcal U(X)=X$. In fact, for any broken line $(x_0,\dots,x_n)$ from $x$ to $y$, the polygon inequality at point \textup{(a)} gives $d(x,y)\le\max_{1\le i\le n}d(x_{i-1},x_i)$, that is, the ultralength of any broken line is not less than $d(x,y)$, and a broken line from two points $(x,y)$ has ultralength exactly $d(x,y)$. Therefore $d_u(x,y)=d(x,y)$ and all equivalence classes are single-pointed.
+
+\end{proof}
+\begin{task}[representation by trees and dendrogram]
+Let $T$ be a tree with each edge assigned a positive weight $\omega(e)$. For vertices $v$ and $w$ we set
+\[
+d(v,w)=\max\bigl\{\omega(e):\ e\ \text{lies on the path from}\ v\ \text{to}\ w\bigr\}.
+\]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that $d$ is an ultrametric on the set of vertices of the tree $T$.
+\item Prove the converse\textup{:} any finite ultrametric space $X$ is isometric to a subset of the vertices of a suitable edge-weighted tree equipped with a maximum edge metric. Hint\textup{:} take balls of space $X$ of nonzero radius as vertices and connect each ball with an edge to the smallest ball containing it.
+\item Construct such a dendrogram and find $\mathcal U(X)$ for $X$ --- the set of vertices of a square with side $1$ with the metric induced from the plane. Compare the answer with the ultrametrization $\mathcal U(P_4) = \frac{\pi}{2}\Delta_4$ of the vertices of a regular quadrilateral with the intrinsic metric of the circle.
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to the problem \textup{3} \textup{(}representation by trees and dendrogram\textup{)}]
+\textit{Point \textup{(a)}.} The symmetry is obvious\textup{:} the path from $v$ to $w$ is the same path as from $w$ to $v$, so $d(v,w)=d(w,v)$. For $v=w$ the path is empty, and the maximum over the empty set of edges is zero, so $d(v,v)=0$\textup{;} for $v\ne w$ the path is non-empty, and all its edges have positive weight, so $d(v,w)>0$. This means $d(v,w)=0$ only for $v=w$.
+
+Let us prove the strengthened triangle inequality. For three vertices $u,v,w$, let $E(v,w)$ denote the set of edges of a unique path from $v$ to $w$. In the tree, the paths $P(u,v)$, $P(v,w)$, $P(w,u)$ have a single common vertex - the \emph{median} $m$ of these three vertices. Let's explain this. Consider the path $P(v,w)$. The vertex $u$ either lies on it \textup{(}then we put $m=u$\textup{)}, or is connected to $P(v,w)$ by a single branch coming out of some vertex $m$ of this path \textup{(}if there were two such branches, they, together with a section of the path, would form a cycle\textup{)}. In both cases, $m$ lies on all three paths, and they do not have another common vertex\textup{:} otherwise there would be a cycle in the tree. Moreover, each of the three paths is decomposed into a disjunctive union
+\[
+\begin{gathered}
+E(u,v)=E(u,m)\sqcup E(m,v),\qquad E(v,w)=E(v,m)\sqcup E(m,w),\\
+E(u,w)=E(u,m)\sqcup E(m,w) .
+\end{gathered}
+\]
+Hence $E(v,w)\subset E(v,u)\cup E(u,w)$, so the largest weight on $E(v,w)$ does not exceed the largest weight on the union
+\[
+d(v,w)=\max_{e\in E(v,w)}\omega(e)\le\max\Bigl\{\max_{e\in E(v,u)}\omega(e),\ \max_{e\in E(u,w)}\omega(e)\Bigr\}=\max\bigl\{d(v,u),\,d(u,w)\bigr\} .
+\]
+So, $d$ is an ultrametric on the set of vertices of the tree $T$, as required.
+
+\textit{Part \textup{(b)}.} Let $X$ be a finite ultrametric space, $\#X=n<\infty$. Let us call a \emph{ball} a set of the form $B(x,r)=\{y\in X:d(x,y)<r\}$ for $r>0$. We will need the nesting property of balls from problem \textup{2}, point \textup{(c)}\textup{:} any two balls either do not intersect, or one is contained in the other.
+
+\textit{Step \textup{1}\textup{:} distance from a point on the ball to a point outside the ball.} Let $B=B(x_0,r_0)$ be a ball and $B\ne X$. Let us prove that for any $y\in B$ and $z\notin B$ we have
+\[
+d(y,z)=d(x_0,z),
+\]
+that is, this distance does not depend on the choice of point $y$ inside the ball. Since $y\in B$, then $d(x_0,y)<r_0$, and since $z\notin B$, then $d(x_0,z)\ge r_0>d(x_0,y)$. Therefore
+\[
+d(y,z)\le\max\bigl\{d(y,x_0),\,d(x_0,z)\bigr\}=d(x_0,z),
+\]
+since $d(y,x_0)<d(x_0,z)$ cannot be greatest at maximum\textup{;} and, on the other hand,
+\[
+d(x_0,z)\le\max\bigl\{d(x_0,y),\,d(y,z)\bigr\}=d(y,z),
+\]
+for the same reason $d(x_0,y)<d(x_0,z)$. Both inequalities together give $d(y,z)=d(x_0,z)$.
+
+Let us now put
+\[
+\omega(B)=\min\bigl\{d(y,z):\ y\in B,\ z\notin B\bigr\} .
+\]
+By what has been proven, $\omega(B)=\min\{d(x_0,z):z\notin B\}$ and, in particular, $\omega(B)\ge r_0>0$\textup{:} the set $B$ is different from $X$, so the minimum is taken over a non-empty set and is positive.
+
+\textit{Step \textup{2}\textup{:} the ball can be set as a center at any of its points.} Let $B=B(x_0,r_0)\ne X$ and $x\in B$. Let's prove that
+\[
+B=B\bigl(x,\omega(B)\bigr).
+\]
+Let $y\in B$ first. Then $d(x,x_0)<r_0$ and $d(x_0,y)<r_0$, so
+\[
+d(x,y)\le\max\bigl\{d(x,x_0),\,d(x_0,y)\bigr\}<r_0\le\omega(B),
+\]
+and, therefore, $y\in B(x,\omega(B))$\textup{:} the inclusion of $B\subset B(x,\omega(B))$ is proven. Conversely, let $z\notin B$. Then by step \textup{1} $d(x,z)=d(x_0,z)\ge\omega(B)$, that is, $z\notin B(x,\omega(B))$. This means $B(x,\omega(B))\subset B$, and the equality is proven.
+
+\textit{Step \textup{3}\textup{:} one-point balls and monotonicity of $\omega$.} For a point $x\in X$ we set $\rho_x=\min\{d(x,z):z\ne x\}$. The set $X$ is finite, and all distances between different points are positive, so $\rho_x>0$ and
+\[
+B(x,\rho_x)=\{x\},
+\]
+that is, every point in space is a one-point ball. Further, if $B\subset B'\ne X$ are balls, then $\omega(B)\le\omega(B')$. Indeed, by step \textup{1} applied to the ball $B'$, for a fixed point $y\in B$ and any point $z\notin B'$ the number $d(y,z)$ does not depend on $y\in B'\supset B$\textup{;} therefore
+\[
+\omega(B)=\min_{y\in B,\,z\notin B}d(y,z)\le\min_{y\in B,\,z\notin B'}d(y,z)=\min_{z\notin B'}d(y,z)=\omega(B'),
+\]
+where the first equality on the right side is again the step \textup{1} for $B'$ \textup{(}the minimum over $z$ does not depend on which point $y\in B'$ is fixed\textup{)}.
+
+\textit{Step \textup{4}\textup{:} tree of balls.} Let us take as the vertices of the tree all the balls of the space $X$, that is, all sets of the form $B(x,r)$, $r>0$\textup{;} different pairs of $(x,r)$ can correspond to the same ball, and then this is one vertex. By step \textup{3}, among the vertices there are all one-point balls, and $X$ itself is a ball, for example $B(x,\diam X+1)$. For each ball $B\ne X$, the set of balls strictly containing it is non-empty \textup{(}it contains $X$\textup{)} and, by the property of nesting of balls, forms a chain, so among them there is the smallest --- let's denote it $\mathrm{par}(B)$ and call it the \emph{parent} of the ball $B$. Let us connect each ball $B\ne X$ to $\mathrm{par}(B)$ by an edge of weight $\omega(B)$.
+
+The resulting graph is a tree. It is connected\textup{:} ascending along the edges from $B$ to $\mathrm{par}(B)$, each time we move to a ball with a large number of elements, and since $\#X=n$, in no more than $n$ steps we reach $X$, from where we descend to any single-point vertex. There are no cycles\textup{:} a cycle would give a closed route in which the number of elements of the balls does not decrease and at the same time strictly increases on at least one edge, which is impossible.
+
+\textit{Step \textup{5}\textup{:} isometry.} Let us associate the point $x\in X$ with the vertex $\{x\}$ of this tree. Let $x\ne y$ and $C$ be the smallest ball containing both $x$ and $y$\textup{;} it exists\textup{:} balls containing both $x$ and $y$ form a non-empty set \textup{(}it contains $X$\textup{)} and by nesting form a chain that has the smallest element. Let us denote by $C_x$ the ball from the path that is a child of $C$ and contains $x$ \textup{(}in other words, $C_x$ is the smallest ball containing $x$ and not containing $y$\textup{)}, and by $C_y$ a similar ball containing $y$. A path from $\{x\}$ to $\{y\}$ ascends from $\{x\}$ along balls containing $x$ and contained in $C$, reaches $C$, and descends along balls containing $y$ to $\{y\}$.
+
+Let's find the weights of the edges of this path. Since $x\in C_x$, and $y\notin C_x$, from step \textup{2} we obtain $y\notin C_x=B(x,\omega(C_x))$, that is, $d(x,y)\ge\omega(C_x)$\textup{;} on the other hand, by definition $\omega$ is the minimum over pairs $(y',z)$ with $y'\in C_x$, $z\notin C_x$ done $\omega(C_x)\le d(x,y)$. So,
+\[
+\omega(C_x)=d(x,y),
+\]
+and in the same way $\omega(C_y)=d(x,y)$. All other balls whose edges are included in the path are contained in $C_x$ or $C_y$, so at step \textup{3} their weights do not exceed $\omega(C_x)=\omega(C_y)=d(x,y)$. This means that the maximum weight of an edge on the path from $\{x\}$ to $\{y\}$ is equal to $d(x,y)$, that is, the mapping of $x\mapsto\{x\}$ is an isometry of $X$ onto the set of one-point balls \textup{(}subset of tree vertices\textup{)} with the metric of the maximum weight on the path. This is what was required.
+
+\textit{Part \textup{(c)}.} Let $X=\{A,B,C,D\}$ be the set of vertices of a square with side $1$ with metric induced from the plane\textup{:} $d(A,B)=d(B,C)=d(C,D)=d(D,A)=1$ and $d(A,C)=d(B,D)=\sqrt2$. The minimum spanning tree of a complete graph on $X$ consists of three edges of length $1$. Indeed, Kruskal's algorithm starts with edges of the smallest weight $1$\textup{:} three such edges, for example $AB$, $BC$, $CD$, form a tree, and any fourth edge \textup{(}the remaining edge of weight $1$ or an edge of weight $\sqrt2$\textup{)} would close the loop. Therefore $\sigma(X)=(1,1,1)$. The ultrametrics of a single link \textup{(}see\ leaflet details\textup{)} is equal to the maximum length of the spanning tree edges on the path between vertices\textup{:} in a spanning tree any two vertices are connected by two edges of weight $1$ \textup{(}the path from $A$ to $C$ goes either through $B$ or through $D$\textup{)}, therefore
+\[
+d_u(x,y)=1\ \ \text{for all}\ x\ne y\in X,\qquad\text{and}\qquad \mathcal U(X)=1\cdot\Delta_4 ,
+\]
+where $c\cdot\Delta_4$ denotes the four-point space with pairwise distances $c$. The corresponding dendrogram \textup{(}tree of balls from point \textup{(b)}\textup{)} has the form of a star with a single merger at height $1$\textup{:} for $0<r<1$ all balls are single-pointed, and for $r>1$ ball $X$ contains all vertices, so there are no intermediate clusters of two or three vertices\textup{:} already for $r>1$ any two vertices are connected by a polyline of two edges of weight $1$ with ultralength $1<r$.
+
+Let's compare this with the ultrametrization of $P_4$ --- the set of vertices of a regular quadrilateral with the intrinsic metric of a circle. There, the distances between neighboring vertices are $\pi/2$, between opposite ones are $\pi$\textup{;} the minimum spanning tree consists of three edges of length $\pi/2$ \textup{(}these edges form a cycle of four vertices, so the fourth edge is not needed\textup{)}, and the ultrametric of a single connection is equal to $\pi/2$ on each pair of different vertices, which is consistent with the formula proven in the lecture $\mathcal U(P_n)=\frac{2\pi}{n}\Delta_n$ for $n=4$. So,
+\[
+\mathcal U(P_4)=\frac{\pi}{2}\,\Delta_4 .
+\]
+So, both spaces are ultrametrized into the same combinatorial configuration --- a four-point space with a dendrogram-star from one merger, --- but with different scales\textup{:} for a flat square with side $1$ the scale is $1$, for the vertices of a quadrilateral with the internal metric of a circle --- $\pi/2\approx1.57$. The reason is that the lengths of the sides are compared in two different metrics\textup{:} in the flat metric the side of a square is $1$, and in the circle metric the distance between adjacent vertices is the arc length $\pi/2$. Note also that the diameters of the original spaces are different\textup{:} $\diam X=\sqrt2\approx1.41$ versus $\diam P_4=\pi\approx3.14$\textup{;} the diameters of the ultrametrizations are equal to $1$ and $\pi/2$ and both do not exceed the diameters of the original spaces, as it should be according to the problem \textup{1}, point \textup{(in)}.
+
+\end{proof}
+\begin{task}[lower bounds for GH distance]
+\textup{a)} Prove that for any metric space $Y$
+\[
+\ghdist{\Delta_1}{Y}=\frac12\diam Y .
+\]
+\textup{b)} Let $V$ be a normed space, $X\subset V$. Prove that
+\[
+\ghdist{V}{X}\ge\frac12\diam\mathcal U(X).
+\]
+\textup{c)} Let $X_n=\bigl\{\frac{k}{n}: k=0,\dots,n\bigr\}\subset[0,1]$. Find the $\operatorname{MST}$-spectrum of $X_n$ and prove that $\diam\mathcal U(X_n)=\frac1n$. Deduce from this that
+\[
+\frac{1}{2n}\le\ghdist{[0,1]}{X_n}\le d_H\bigl([0,1],X_n\bigr)=\frac{1}{2n},
+\]
+that is, $\ghdist{[0,1]}{X_n}=\frac{1}{2n}$.
+
+\textup{d)} For any metric tree $T$, prove that $\ghdist{T}{X}\ge\frac12\diam\mathcal U(X)$, and check this inequality for $X=X_n$, $T=[0,1]$.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{4} \textup{(}lower bounds for the GH-distance\textup{)}]
+Recall that the \emph{correspondence} between the metric spaces $X$ and $Y$ is the set $R\subset X\times Y$ whose projections onto $X$ and onto $Y$ coincide with $X$ and $Y$, respectively\textup{;} distortion --- this
+\[
+\dis R=\sup\bigl\{|d_X(x,x')-d_Y(y,y')|:\ (x,y),(x',y')\in R\bigr\},\qquad
+\ghdist{X}{Y}=\frac12\inf_R\dis R ,
+\]
+where the infimum is taken over all correspondences, and the surjectivity of projections is an essential part of the definition.
+
+\textit{Item \textup{(a)}.} Let us denote $D=\diam Y=\sup\{d_Y(y,y'):y,y'\in Y\}$.
+
+\textit{Upper bound.} Consider the correspondence $R=\Delta_1\times Y$, consisting of all pairs $(o,y)$, where $o$ is the only point in the space $\Delta_1$. Its projections onto $\Delta_1$ and onto $Y$ are surjective. Since $d_{\Delta_1}(o,o)=0$, for any two pairs $(o,y),(o,y')\in R$ we have
+\[
+\bigl|d_{\Delta_1}(o,o)-d_Y(y,y')\bigr|=d_Y(y,y')\le D ,
+\]
+therefore $\dis R\le D$ and $\ghdist{\Delta_1}{Y}\le\frac12D$.
+
+\textit{Lower estimate.} Let $R\subset\Delta_1\times Y$ be an arbitrary correspondence. Its projection onto $Y$ coincides with $Y$, so for every point $y\in Y$ there is a pair $(o,y)\in R$. Take any $y,y'\in Y$ and the corresponding pairs $(o,y),(o,y')\in R$. Then
+\[
+\bigl|d_{\Delta_1}(o,o)-d_Y(y,y')\bigr|=d_Y(y,y') ,
+\]
+whence $\dis R\ge\sup_{y,y'\in Y}d_Y(y,y')=D$. Since this is true for any correspondence, $\ghdist{\Delta_1}{Y}\ge\frac12D$. Both estimates together give
+\[
+\ghdist{\Delta_1}{Y}=\frac12\diam Y ,
+\]
+which is what was required. Note that the infimum in the definition of $\ghdist{\Delta_1}{Y}$ is achieved at the correspondence $\Delta_1\times Y$, and the constant $\frac12$ cannot be improved for any space $Y$ with $\diam Y>0$.
+
+\textit{Part \textup{(b)}.} First we show that the ultrametrization of a normed space is one-point. Let $x,y\in V$ and $\gamma(t)=x+t(y-x)$, $t\in[0,1]$ be the segment between them. Its length is equal to $\|y-x\|<\infty$\textup{:} for any partition $0=t_0<t_1<\dots<t_k=1$ the sum of the lengths of the links is equal to
+\[
+\sum_{i=1}^k\bigl\|\gamma(t_i)-\gamma(t_{i-1})\bigr\|=\sum_{i=1}^k(t_i-t_{i-1})\|y-x\|=\|y-x\| .
+\]
+This means that any two points $V$ are connected by a curve of finite length, and by problem \textup{1}, point \textup{(a)}, \textup{(}applied to a linearly connected space\textup{)} the ultrametrization of the space $V$ is one-point\textup{:} $\mathcal U(V)=\Delta_1$. Let's apply the main theorem about ultrametrization, proven in the lecture\textup{:}
+\[
+\ghdist{V}{X}\ge\ghdist{\mathcal U(V)}{\mathcal U(X)}=\ghdist{\Delta_1}{\mathcal U(X)} ,
+\]
+and all that remains is to use point \textup{(a)} with $Y=\mathcal U(X)$\textup{:}
+\[
+\ghdist{\Delta_1}{\mathcal U(X)}=\frac12\diam\mathcal U(X) .
+\]
+So, $\ghdist{V}{X}\ge\frac12\diam\mathcal U(X)$, which is what was required. We emphasize that no properties of the norm, except for the existence of segments of finite length, were used in this reasoning\textup{:} sufficiently for the ultrametrization of the ambient space to be one-point.
+
+\textit{Item \textup{(c)}.} \textit{Spectrum $\operatorname{MST}$.} The distance between the vertices $\frac{k}{n}$ and $\frac{l}{n}$ of the set $X_n$ is equal to $\frac{|k-l|}{n}$. Let's apply Kruskal's algorithm to the complete graph on $X_n$. There are edges of weight $\frac1n$ exactly $n$ --- these are edges between neighboring vertices $\frac{k-1}{n}$ and $\frac{k}{n}$, $k=1,\dots,n$\textup{;} they form a path connecting all $n+1$ vertices and not containing a cycle, that is, they already constitute a spanning tree. So,
+\[
+\sigma(X_n)=\Bigl(\underbrace{\tfrac1n,\ \tfrac1n,\ \dots,\ \tfrac1n}_{n}\Bigr)
+\]
+\textup{(}all $n$ edges of the spanning tree have weight $\frac1n$\textup{)}.
+
+\textit{Ultrametrics and diameter.} The spanning tree is a specified path, and the ultrametrics of a single link is equal to the maximum weights of the edges on the path between vertices. For any two distinct vertices, this maximum is $\frac1n$, since all edges of the path have weight $\frac1n$. So,
+\[
+d_u\Bigl(\tfrac{k}{n},\tfrac{l}{n}\Bigr)=\frac1n\ \ \text{at}\ k\ne l,\qquad \mathcal U(X_n)=\frac1n\cdot\Delta_{n+1},\qquad \diam\mathcal U(X_n)=\frac1n .
+\]
+
+\textit{Estimate from above in terms of the Hausdorff distance.} Since $X_n\subset[0,1]\subset\R$ and the metrics are induced from $\R$, the Hausdorff distance between $[0,1]$ and $X_n$ is
+\[
+d_H\bigl([0,1],X_n\bigr)=\max_{t\in[0,1]}\,\min_{k=0,\dots,n}\Bigl|t-\tfrac{k}{n}\Bigr|=\frac{1}{2n} ,
+\]
+because for $t\in\bigl[\frac{k}{n},\frac{k+1}{n}\bigr]$ the distance to the nearest node does not exceed $\frac{1}{2n}$ and is equal to $\frac{1}{2n}$ in the middle of the interval, and the distance from each point $X_n$ to $[0,1]$ is zero. Let us recall why $d_H$ evaluates $\ghdist{\ }$ from above\textup{:} for subsets $X,Y$ of the general metric space $Z$ consider the correspondence
+\[
+R=\bigl\{(x,y)\in X\times Y:\ d_Z(x,y)\le d_H(X,Y)\bigr\} .
+\]
+Its projections are surjective by the definition of the Hausdorff distance, and the distortion does not exceed $2d_H(X,Y)$\textup{:} for any $(x,y),(x',y')\in R$ by the triangle inequality in $Z$
+\[
+d_X(x,x')=d_Z(x,x')\le d_Z(x,y)+d_Z(y,y')+d_Z(y',x')\le d_H+d_Y(y,y')+d_H ,
+\]
+whence $d_X(x,x')-d_Y(y,y')\le 2d_H$\textup{;}, changing the roles of $X$ and $Y$, we obtain the inverse inequality $d_Y(y,y')-d_X(x,x')\le2d_H$. So,
+\[
+\ghdist{[0,1]}{X_n}\le d_H\bigl([0,1],X_n\bigr)=\frac{1}{2n} .
+\]
+
+\textit{Lower estimate.} The segment $[0,1]$ is linearly connected, and any two of its points are connected by a segment of finite length, therefore, according to problem \textup{1}, point \textup{(b)}, $\mathcal U([0,1])=\Delta_1$. Repeating the reasoning of point \textup{(b)} with $V$ replaced by $[0,1]$, we obtain
+\[
+\ghdist{[0,1]}{X_n}\ge\ghdist{\mathcal U([0,1])}{\mathcal U(X_n)}=\ghdist{\Delta_1}{\tfrac1n\cdot\Delta_{n+1}}=\frac12\cdot\frac1n=\frac{1}{2n} ,
+\]
+where we used the fact that $\diam\bigl(\frac1n\cdot\Delta_{n+1}\bigr)=\frac1n$ and item \textup{(a)}. Together with the upper bound, this gives
+\[
+\frac{1}{2n}\le\ghdist{[0,1]}{X_n}\le d_H\bigl([0,1],X_n\bigr)=\frac{1}{2n},
+\qquad\text{that is}\qquad \ghdist{[0,1]}{X_n}=\frac{1}{2n} .
+\]
+
+\textit{Item \textup{(d)}.} Let $T$ be a metric tree, that is, a connected graph without cycles, the edges of which are segments of a given length, and the distance is equal to the length of a single path. Any two points of the tree $T$ are connected by this path, the length of which is finite \textup{(}it is equal to the sum of the lengths of the edges of the path, and there are a finite number of edges\textup{)}, and $T$ itself is path connected. This means that according to problem \textup{1}, point \textup{(b)}, $\mathcal U(T)=\Delta_1$. As in point \textup{(b)}, the main theorem on ultrametrization and point \textup{(a)} give
+\[
+\ghdist{T}{X}\ge\ghdist{\mathcal U(T)}{\mathcal U(X)}=\ghdist{\Delta_1}{\mathcal U(X)}=\frac12\diam\mathcal U(X) ,
+\]
+which is what was required.
+
+Let's check the inequality for $X=X_n$, $T=[0,1]$. The segment $[0,1]$ is a metric tree with one edge of length $1$, and by point \textup{(c)} $\diam\mathcal U(X_n)=\frac1n$\textup{:} the right side of the inequality is equal to $\frac{1}{2n}$, and the left side is equal to $\frac{1}{2n}$, so the inequality turns into equality. This example shows that the constant $\frac12$ in the estimate cannot be improved.
+
+\end{proof}
+\begin{task}[distance between simplexes]
+Let $X$ be a finite metric space, $\#X=n$, $m\le n$ and $\lambda>0$. For the distance from $X$ to the simplex $\lambda\Delta_m$ the following formula is correct:
+\[
+2\ghdist{\lambda\Delta_m}{X}=\inf_{D\in\Dm{m}{X}}\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\}.
+\]
+\textup{a)} Prove this formula for $m=2$, that is, for the distance to a segment of length $\lambda$.
+
+\textup{b)} Describe the general case\textup{:} of the correspondence between $X$ and $\lambda\Delta_m$ given by the partition $D\in\Dm{m}{X}$, and show that its distortion does not exceed the specified maximum.
+
+\textup{c)} Deduce from the formula that for $m<n$ and $\lambda>\mu$
+\[
+2\ghdist{\lambda\Delta_m}{\mu\Delta_n}=\max\{\mu,\ \lambda-\mu\}.
+\]
+
+\textup{g)} Using $\mathcal U(P_k)=\frac{2\pi}{k}\Delta_k$ and the main ultrametrization theorem, obtain an estimate $\ghdist{P_m}{P_n}\ge\frac{\pi}{m}-\frac{\pi}{n}$ for regular polygons with intrinsic circle metric.
+
+\end{task}
+
+\begin{proof}[Solution to the problem \textup{5} \textup{(}distance between simplexes\textup{)}]
+Everywhere below $\lambda\Delta_m$ is a simplex with $m$ vertices, all pairwise distances between which are equal to $\lambda$\textup{;} for $m=2$ this is exactly a segment of length $\lambda$, that is, the set $\{0,\lambda\}\subset\R$, and for $m=1$ it is a single-point space. Let $v_1,\dots,v_m$ denote the vertices of the simplex.
+
+\textit{Item \textup{(a)}.} Let $X$ be a finite metric space, $\#X=n\ge2$, and $D=(X_1,X_2)\in\Dm{2}{X}$ be a partition into two non-empty parts with $\alphaD{D}=|X_1X_2|=\min\{d_X(x,x'):x\in X_1,\,x'\in X_2\}$ and $\diam D=\max\{\diam X_1,\diam X_2\}$.
+
+\textit{Upper bound.} Consider the correspondence
+\[
+R=(X_1\times\{v_1\})\cup(X_2\times\{v_2\})\subset X\times\lambda\Delta_2 .
+\]
+Its projections onto $X$ and onto $\lambda\Delta_2$ are surjective\textup{:} each point of $X$ lies in exactly one of the parts, and $v_1$ and $v_2$ have partners since the parts are non-empty. Let's evaluate the distortion. For pairs $(x,v_1),(x',v_1)$ with $x,x'\in X_1$
+\[
+\bigl|d_X(x,x')-d_{\lambda\Delta_2}(v_1,v_1)\bigr|=d_X(x,x')\le\diam X_1\le\diam D ,
+\]
+and in the same way for pairs inside $X_2$ we obtain the estimate $\diam X_2\le\diam D$. For pairs $(x,v_1),(x',v_2)$ with $x\in X_1$, $x'\in X_2$ we have $d_{\lambda\Delta_2}(v_1,v_2)=\lambda$ and
+\[
+\alphaD{D}\le d_X(x,x')\le\diam X ,
+\]
+whence, considering the cases $\lambda\le\alphaD{D}$, $\lambda\ge\diam X$ and $\alphaD{D}\le\lambda\le\diam X$, we obtain
+\[
+\bigl|d_X(x,x')-\lambda\bigr|\le\max\bigl\{\lambda-\alphaD{D},\ \diam X-\lambda\bigr\} .
+\]
+This means $\dis R\le\max\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\}$ and, therefore,
+\[
+2\ghdist{\lambda\Delta_2}{X}\le\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\} .
+\]
+Passing to the lower bound over all partitions $D\in\Dm{2}{X}$, we obtain an upper bound for the entire formula.
+
+\textit{Lower estimate.} Let $R\subset X\times\lambda\Delta_2$ be an arbitrary correspondence, and let $\delta=\dis R$. Let us show that there is a partition $D\in\Dm{2}{X}$ for which
+\[
+\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\}\le\delta ,
+\]
+that is, that the infimum in the formula by the right side of $\delta$ is not bounded below. For a point $x\in X$, let $R(x)\subset\{v_1,v_2\}$ denote the set of its partners (it is non-empty, since the projection of $R$ onto $X$ is surjective). Let's put
+\[
+\begin{gathered}
+A=\bigl\{x\in X:\ R(x)=\{v_1\}\bigr\},\qquad B=\bigl\{x\in X:\ R(x)=\{v_2\}\bigr\},\\
+F=\bigl\{x\in X:\ R(x)=\{v_1,v_2\}\bigr\},
+\end{gathered}
+\]
+so $\{A,B,F\}$ is a partition of $X$, where $F$ is non-empty or not, but $A\cup F\ne\varnothing$ and $B\cup F\ne\varnothing$ \textup{(}point $v_1$ and point $v_2$ have partners\textup{)}. Points from $A$ can connect only to $v_1$, points from $B$ can only connect to $v_2$, and points from $F$ can connect to both $v_1$ and $v_2$. Let us take as $X_2$ the one-point set $\{x_0\}$, where $x_0\in B\cup F$ \textup{(}if $B\ne\varnothing$, we can take any point $B$\textup{)}, and as $X_1$ the remaining points\textup{:} $X_1=X\setminus\{x_0\}$. This is a partition into two non-empty parts, since $\#X\ge2$. Let's check the required ratings.
+
+Let $x,x'\in X_1$. By construction, $x_0\notin X_1$, therefore $X_1\subset A\cup F$, and for each point $X_1$ the pair with $v_1$ lies in $R$ \textup{(}for points $A$ this is the only possibility, for points $F$ it is one of two\textup{)}. This means $(x,v_1),(x',v_1)\in R$ and
+\[
+d_X(x,x')=\bigl|d_X(x,x')-d_{\lambda\Delta_2}(v_1,v_1)\bigr|\le\delta ,
+\]
+whence $\diam X_1\le\delta$. Next, $\diam X_2=0\le\delta$. For points $x\in X_1$ and $x_0\in X_2$, the pair $(x,v_1)$ lies in $R$ \textup{(}see\ above\textup{)}, and the pair $(x_0,v_2)$ also lies in $R$, since $x_0\in B\cup F$. Therefore
+\[
+\bigl|d_X(x,x_0)-\lambda\bigr|\le\delta\qquad\text{for all}\ x\in X_1 ,
+\]
+that is, the distance from $x_0$ to each point $X_1$ is between $\lambda-\delta$ and $\lambda+\delta$. Therefore,
+\[
+\alphaD{D}=\min_{x\in X_1}d_X(x,x_0)\ge\lambda-\delta
+\quad\Longrightarrow\quad
+\lambda-\alphaD{D}\le\delta ,
+\]
+and for any pair of points $x,x'\in X$ realizing the diameter \textup{(}or arbitrarily close to the realization\textup{)}, either both points lie in $X_1$ and then $d_X(x,x')\le\diam X_1\le\delta\le\lambda+\delta$, or one of them is $x_0$ and then $d_X(x,x')\le\lambda+\delta$ as above. In both cases, $\diam X\le\lambda+\delta$, that is, $\diam X-\lambda\le\delta$. So, for the constructed partition $D$
+\[
+\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\}\le\delta=\dis R ,
+\]
+and therefore
+\[
+\inf_{D\in\Dm{2}{X}}\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\}\le\inf_R\dis R=2\ghdist{\lambda\Delta_2}{X} .
+\]
+Together with the upper bound, this proves the formula for $m=2$.
+
+\textit{Item \textup{(b)}.} Let $D=(X_1,\dots,X_m)\in\Dm{m}{X}$. Let us associate each part $X_i$ with its vertex $v_i$ of the simplex and consider the correspondence
+\[
+R=\bigcup_{i=1}^{m}\bigl(X_i\times\{v_i\}\bigr)
+\]
+\emph{\textup{(}}that is, each point of part $X_i$ is associated with vertex $v_i$\emph{\textup{)}}. Its projections are surjective\textup{:} points $X$ are covered by parts of the partition, and each vertex $v_i$ has partners, since the parts are non-empty. Let's evaluate the distortion in the same way as in paragraph \textup{(a)}. For pairs $(x,v_i),(x',v_i)$ from one part
+\[
+\bigl|d_X(x,x')-d_{\lambda\Delta_m}(v_i,v_i)\bigr|=d_X(x,x')\le\diam X_i\le\diam D .
+\]
+For pairs $(x,v_i),(x',v_j)$ from different parts $d_{\lambda\Delta_m}(v_i,v_j)=\lambda$, and $d_X(x,x')$ is contained between $|X_iX_j|\ge\alphaD{D}$ and $\diam X$, therefore, as in paragraph \textup{(a)},
+\[
+\bigl|d_X(x,x')-\lambda\bigr|\le\max\bigl\{\lambda-\alphaD{D},\ \diam X-\lambda\bigr\} .
+\]
+So,
+\[
+\dis R\le\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\} .
+\]
+Therefore,
+\[
+2\ghdist{\lambda\Delta_m}{X}\le\inf_{D\in\Dm{m}{X}}\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\} .
+\]
+This is the meaningful part of the formula in the general case\textup{:} it shows that the partition $D$ defines a correspondence whose distortion does not exceed the specified maximum. The inverse inequality \textup{(}that any correspondence can be replaced by a partition without increasing the distortion\textup{)} is proved in exactly the same way as in paragraph \textup{(a)}, with the difference that instead of two vertices, $m$ vertices are involved and the relation $R(x)\subset\{v_1,\dots,v_m\}$ splits $X$ not into three, but into a larger number of classes\textup{;} so here we we don't repeat. Thus, for any $m\le n$ and $\lambda>0$
+\[
+2\ghdist{\lambda\Delta_m}{X}=\inf_{D\in\Dm{m}{X}}\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\} .
+\]
+
+\textit{Item \textup{(c)}.} Let $m<n$ and $\lambda>\mu$. Let's apply the formula in \textup{(b)} to $X=\mu\Delta_n$. In this space, all pairwise distances between different points are equal to $\mu$, so $\diam X=\mu$, and for any partition $D\in\Dm{m}{X}$ with $m\ge2$ we have $\alphaD{D}=\mu$\textup{:} any two points from different parts are at a distance $\mu$. Further, since $m<n$, among the $m$ parts there is a part of at least two points, and therefore $\diam X_i=\mu$ for this part, that is, $\diam D=\mu$ \textup{(}no part can give a diameter greater than $\mu$, because all distances in $\mu\Delta_n$ are equal to $\mu$\textup{)}. This means that for any $D\in\Dm{m}{X}$
+\[
+\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\}=\max\{\mu,\ \lambda-\mu,\ \mu-\lambda\}=\max\{\mu,\ \lambda-\mu\} ,
+\]
+where the last equality uses $\lambda>\mu$, that is, $\mu-\lambda<0$. The set $\Dm{m}{X}$ is non-empty \textup{(}since $m\le n$\textup{)}, so the infimum is equal to the same number\textup{:}
+\[
+2\ghdist{\lambda\Delta_m}{\mu\Delta_n}=\max\{\mu,\ \lambda-\mu\} .
+\]
+
+\textit{Part \textup{(d)}.} Using the formula proven in the lecture $\mathcal U(P_k)=\frac{2\pi}{k}\Delta_k$ for the set of vertices of a regular $k$-gon with the intrinsic circle metric. The main theorem on ultrametrization gives
+\[
+\ghdist{P_m}{P_n}\ge\ghdist{\mathcal U(P_m)}{\mathcal U(P_n)}=\ghdist{\tfrac{2\pi}{m}\Delta_m}{\tfrac{2\pi}{n}\Delta_n} .
+\]
+Let us denote $\lambda=\frac{2\pi}{m}$, $\mu=\frac{2\pi}{n}$. For $m<n$, $\lambda>\mu$ is satisfied, so we apply point \textup{(c)}\textup{:}
+\[
+2\ghdist{P_m}{P_n}\ \ge\ 2\ghdist{\lambda\Delta_m}{\mu\Delta_n}=\max\{\mu,\ \lambda-\mu\}
+=\max\Bigl\{\frac{2\pi}{n},\ \frac{2\pi}{m}-\frac{2\pi}{n}\Bigr\}\ \ge\ \frac{2\pi}{m}-\frac{2\pi}{n} .
+\]
+Dividing by two, we get
+\[
+\ghdist{P_m}{P_n}\ge\frac{\pi}{m}-\frac{\pi}{n}\qquad(m<n),
+\]
+which is what was required. Note that we also obtained a stronger estimate
+\[
+\ghdist{P_m}{P_n}\ge\max\Bigl\{\frac{\pi}{n},\ \frac{\pi}{m}-\frac{\pi}{n}\Bigr\} .
+\]
+
+\end{proof}
+\begin{task}[ultrametrization and $\operatorname{MST}$-spectrum]
+Let $X$ be a finite metric space, $\#X=n$, and $\sigma(X)=(\sigma_1,\dots,\sigma_{n-1})$ its $\operatorname{MST}$-spectrum.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that $\diam\mathcal U(X)=\sigma_1\le\diam X$, and $\sigma_1=\diam X$ if and only if the diameter of $X$ is reached on the edge of some minimum spanning tree.
+\item Find $\sigma(X)$ and describe $\mathcal U(X)$ for $X$ --- the set of vertices of the rectangle $1\times 2$ with the metric induced from the plane.
+\item Derive from \textup{(b)} the lower bounds\textup{:} $\ghdist{T}{X}\ge 1$ for any metric tree $T$ and $\ghdist{V}{X}\ge 1$ for any normed space $V\supset X$.
+\end{enumerate}
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{6} \textup{(}ultrametrization and $\operatorname{MST}$-spectrum\textup{)}]
+\textit{Part \textup{(a)}.} Let $\#X=n\ge2$ and $T$ be the minimum spanning tree of a complete graph on $X$. Let us recall the formula for ultrametrics of a single connection\textup{:}
+\[
+d_u(x,y)=\max\bigl\{\omega(e):\ e\ \text{lies on the path from}\ x\ \text{to}\ y\ \text{in the tree}\ T\bigr\}
+\]
+\textup{(}this is a definition from the sheet information\textup{:} it is independent of the choice of minimum spanning tree\textup{)}. Then for any distinct $x,y\in X$, $d_u(x,y)\le\sigma_1$\textup{:} the path in the tree consists of edges, each of which has a weight no greater than the largest weight $\sigma_1$. So,
+\[
+\diam\mathcal U(X)=\max_{x\ne y\in X}d_u(x,y)\le\sigma_1 .
+\]
+Now let $e_*$ be the edge of the tree $T$ of the greatest weight, $\omega(e_*)=\sigma_1$, and let $x_*,y_*$ be its ends. The path from $x_*$ to $y_*$ in the tree consists of one edge $e_*$, so
+\[
+d_u(x_*,y_*)=\omega(e_*)=\sigma_1 ,
+\]
+and, therefore, $\diam\mathcal U(X)\ge\sigma_1$. Both inequalities together give
+\[
+\diam\mathcal U(X)=\sigma_1 .
+\]
+Further, the weight of any edge of the minimum spanning tree is the distance between a pair of points in space $X$, so it does not exceed $\diam X$\textup{:}
+\[
+\sigma_1\le\diam X .
+\]
+This is consistent with the inequality $\diam\mathcal U(X)\le\diam X$ from problem \textup{1}, point \textup{(c)}.
+
+Let's find out when $\sigma_1=\diam X$. If $\sigma_1=\diam X$, then edge $e_*$ of tree $T$ has weight $\diam X$ and therefore realizes diameter\textup{:} diameter $X$ is achieved on the edge of the minimum spanning tree $T$. Conversely, let the diameter $X$ be achieved on an edge $\{x,y\}$ of some minimum spanning tree $T'$, that is, $\omega(\{x,y\})=\diam X$. Then the largest weight of edge $T'$ is not less than $\diam X$, and since any weights do not exceed $\diam X$, we obtain $\sigma_1=\diam X$. So,
+\[
+\sigma_1=\diam X
+\]
+if and only if the diameter $X$ is reached on the edge of some minimum spanning tree.
+For example, for $X=\{0,1,2\}\subset\R$ \textup{(}problem \textup{1}, point \textup{(c)}\textup{)} the minimum spanning tree consists of edges $\{0,1\}$ and $\{1,2\}$ of weight $1$, so $\sigma_1=1<2=\diam X$\textup{:} the diameter is achieved at pair $\{0,2\}$, which is not an edge of the spanning tree.
+
+\textit{Part \textup{(b)}.} Let $A,B,C,D$ be the vertices of rectangle $1\times2$ in traversal order, so that
+\[
+|AB|=|CD|=1,\qquad |BC|=|DA|=2,\qquad |AC|=|BD|=\sqrt{1^2+2^2}=\sqrt5 .
+\]
+Let's order the edges of the complete graph by weight and apply Kruskal's algorithm. There are two edges of weight $1$ --- these are short sides $AB$ and $CD$\textup{;}; they do not form a cycle, so both are included in the spanning tree. The next in weight are edges of weight $2$, that is, sides $BC$ and $DA$\textup{;}, let's take one of them, for example $BC$\textup{:} it connects the component $\{B,A\}$ with the component $\{C,D\}$ and does not form a cycle, and the tree on this already contains $4-1=3$ edges and a spanning tree. So the minimum spanning tree is the way to go
+\[
+A-B-C-D
+\]
+with edge weights $1$, $2$, $1$, and
+\[
+\sigma(X)=(2,1,1).
+\]
+The ultrametric of a single link is equal to the maximum weights of the edges on the path of the tree\textup{:}
+\[
+d_u(A,B)=1,\qquad d_u(C,D)=1,\qquad d_u(A,D)=d_u(A,C)=d_u(B,D)=d_u(B,C)=2 .
+\]
+This means that ultrametrization consists of two pairs of \textup{(}clusters\textup{)}, within each pair the distance is $1$, and between the pairs is $2$\textup{:}
+\[
+\mathcal U(X)=\bigl\{\{A,B\},\ \{C,D\}\bigr\}
+\quad\text{with distances}\quad
+d_{\mathcal U(X)}\bigl(\{A,B\},\{C,D\}\bigr)=2 .
+\]
+The corresponding dendrogram has two levels\textup{:} for $0<r<1$ all four balls are single-pointed, for $1<r\le2$ exactly two balls $\{A,B\}$ and $\{C,D\}$ appear \textup{(}clusters of the vertices of the short sides\textup{)}, and for $r>2$ the only ball $X$ contains all the points. Note that in the original metric $d(A,C)=\sqrt5\approx2.24$, while in ultrametrization the same distance is equal to $2$\textup{:} ultrametrization glues distant pairs, replacing the distance between clusters with the maximum edge of the tree.
+
+\textit{Point \textup{(c)}.} By point \textup{(a)} $\diam\mathcal U(X)=\sigma_1=2$. Then problem \textup{4}, item \textup{(d)} \textup{(}for metric trees\textup{)} gives for any metric tree $T$
+\[
+\ghdist{T}{X}\ge\frac12\diam\mathcal U(X)=\frac12\cdot2=1 ,
+\]
+and problem \textup{4}, point \textup{(b)} \textup{(}for normed spaces\textup{)} gives for any normed space $V\supset X$
+\[
+\ghdist{V}{X}\ge\frac12\diam\mathcal U(X)=1 .
+\]
+Let's discuss the accuracy of the estimate. Both statements are special cases of one inequality
+\[
+\ghdist{Z}{X}\ge\frac12\diam\mathcal U(X),
+\]
+where $Z$ is the ambient space \textup{(}metric tree in the first case and normed space in the second\textup{)}. The constant $\frac12$ in this inequality cannot be improved\textup{:} in problem \textup{4}, paragraph \textup{(d)}, an example is given $X=X_n$, $T=[0,1]$, in which the inequality turns into equality.
+
+\end{proof}
+
+\end{document}

@@ -1,0 +1,537 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Lesson Problem Solutions \textup{3}}\\[2mm]
+{\large Simplicial complexes, homology, Cech and Vietoris-Rips complexes}\\[2mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, presentation lesson \textup{3}}
+\end{center}
+
+Numbering of tasks --- as in the sheet <<Learning tasks for the lesson \textup{3}>>. The solutions are based on the facts adopted in the lecture: homotopy invariance of homology, the nerve lemma, Stone's theorem on the paracompactness of metric spaces and the fact about higher homology of connected manifolds without boundary \textup{(}Hatcher, Theorem \textup{3.26}, Proposition \textup{3.29}\textup{)}. Let us also recall what was proved in the lecture: if $d_{GH}(X,Y)<r$, then for any $\varepsilon>0$ and $\nu\ge0$ there exist simplicial maps
+\[
+\VR(Y,\varepsilon)\xrightarrow{\ h\ }\VR(X,r+\varepsilon)\xrightarrow{\ \iota_\nu\ }\VR(X,r+\varepsilon+\nu)\xrightarrow{\ g\ }\VR(Y,2r+\varepsilon+\nu),
+\]
+where $\iota_\nu$ is an inclusion such that the composition $g\circ\iota_\nu\circ h$ is close to the inclusion $\iota\colon\VR(Y,\varepsilon)\hookrightarrow\VR(Y,2r+\varepsilon+\nu)$.
+
+\begin{task}[cycles, boundaries and minor homologies]
+Let $\Sigma$ be an abstract simplicial complex, $G$ an Abelian group, $C_k(\Sigma; G)$ a group of $k$-dimensional chains, and $\partial_k$ a boundary operator.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Check that $\partial_{k-1} \circ \partial_k = 0$ for all $k \ge 2$, and deduce from this that the \emph{cycles} subgroup $Z_k = \ker \partial_k$ contains the \emph{boundaries} subgroup $B_k = \operatorname{im} \partial_{k+1}$, so the quotient group $H_k(\Sigma; G) = Z_k / B_k$ is defined. Explain why the definition of circuits requires the coefficient $g \in G$ for the symbol $[v_0, \dots, v_k]$.
+\item Prove that for a connected $\Sigma$ the completion homomorphism $\varepsilon\bigl(g[v]\bigr) = g$ passes through $H_0$ and defines an isomorphism $H_0(\Sigma; G) \cong G$\textup{;} for a complex with $b_0$ connected components --- isomorphism $H_0(\Sigma; G) \cong G^{\oplus b_0}$.
+\item Prove that $H_k(\Delta_m; G) = 0$ for all $k \ge 1$ and any $G$, where $\Delta_m$ is an $m$-dimensional simplex. 
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{1} \textup{(}cycles, boundaries and lower homologies\textup{)}]
+\textit{Part \textup{(a)}.} The boundary operator $\partial$ is defined on the generators and is extended by linearity, therefore the equality $\partial_{k-1}\circ\partial_k=0$ is sufficient to check on one generator $\sigma=g[v_0,\dots,v_k]$, where $g\in G$ and $k\ge2$. We have
+\[
+\partial_k\sigma=\sum_{i=0}^{k}(-1)^i\,g[v_0,\dots,\widehat{v_i},\dots,v_k],
+\]
+where cap means throwing out the corresponding vertex. Each term is a chain of dimension $k-1$, and
+\[
+\partial_{k-1}\bigl(g[v_0,\dots,\widehat{v_i},\dots,v_k]\bigr)
+=\sum_{j\ne i}(-1)^{\tau(i,j)}\,g[v_0,\dots,\widehat{v_i},\dots,\widehat{v_j},\dots,v_k],
+\]
+where $\tau(i,j)=j$ for $j<i$ and $\tau(i,j)=j-1$ for $j>i$ \textup{(}this is the position of $v_j$ in the sequence from which vertex $v_i$\textup{ has already been discarded; } positions are numbered from zero\textup{)}. So,
+\[
+\partial_{k-1}\partial_k\sigma
+=\sum_{i=0}^{k}\ \sum_{j\ne i}(-1)^{i+\tau(i,j)}\,g[v_0,\dots,\widehat{v_i},\dots,\widehat{v_j},\dots,v_k].
+\]
+The terms are naturally divided into pairs: two records with the same set of discarded vertices $\{v_i,v_j\}$, $i<j$, namely $(\text{discarded }v_i\text{ and }v_j)$ and $(\text{discarded }v_j\text{ and }v_i)$. The first one has the sign equal to $(-1)^{i}(-1)^{j-1}=(-1)^{i+j-1}$, the second one has the sign equal to $(-1)^{j}(-1)^{i}=(-1)^{i+j}$. Since $(-1)^{i+j-1}=-(-1)^{i+j}$, the signs are opposite, and the symbol $g[v_0,\dots,\widehat{v_i},\dots,\widehat{v_j},\dots,v_k]$ is the same for both entries \textup{(}vertices are thrown out of the same sequence\textup{)}. Therefore, in total, all terms cancel in pairs:
+\[
+\partial_{k-1}\partial_k\sigma=0 .
+\]
+The reduction was based only on the fact that $g+(-g)=0$ in the Abelian group $G$, therefore the equality is true for any $G$ and does not require any additional conditions on the coefficients.
+
+From $\partial_k\partial_{k+1}=0$ we obtain: if $b\in B_k=\operatorname{im}\partial_{k+1}$, then $b=\partial_{k+1}c$ for some chain $c$, and then $\partial_k b=\partial_k\partial_{k+1}c=0$, that is, $b\in Z_k=\ker\partial_k$. So, $B_k\subseteq Z_k$. The chain group $C_k(\Sigma;G)$ is Abelian \textup{(}its elements are formal sums with coefficients from the Abelian group $G$\textup{)}, therefore every subgroup of it is normal, and the quotient group
+\[
+H_k(\Sigma;G)=Z_k/B_k=\ker\partial_k\big/\operatorname{im}\partial_{k+1}
+\]
+determined; this is an Abelian group.
+
+It remains to explain why the coefficient $g\in G$ with the symbol $[v_0,\dots,v_k]$ is needed in the definition of circuits. The relations $g_1[v_0,\dots,v_k]+g_2[v_0,\dots,v_k]=(g_1+g_2)[v_0,\dots,v_k]$ and $g[v_{\pi(0)},\dots,v_{\pi(k)}]=\sgn(\pi)\,g[v_0,\dots,v_k]$ show that $k$-chains are exactly formal sums of $\sum_\sigma g_\sigma[\sigma]$ over $k$-simplices with arbitrarily chosen orientations, that is, a direct sum of copies of the group $G$ over the number of $k$-simplices:
+\[
+C_k(\Sigma;G)\cong\bigoplus_{\sigma\in\Sigma_k}G .
+\]
+The coefficient carries meaningful information and is needed for three reasons. Firstly, the boundary operator must be a homomorphism of Abelian groups, and the formula $\partial_k(g[v_0,\dots,v_k])=\sum_i(-1)^i g[v_0,\dots,\widehat{v_i},\dots,v_k]$ is linear in $g$ precisely due to the first relation; without it, the operator $\partial$ would not be correctly defined on sums. Secondly, with $G=\Z$ we obtain integer homologies, with $G=\Z_2$ we obtain homology with coefficients $\Z_2$, in which the signs $\pm1$ do not play a role, and it is precisely such homology that appears in the problem \textup{6} on higher homology of manifolds; changing the group $G$ changes the answer \textup{ (}, for example, the real projective plane has $H_1(\cdot;\Z)=\Z_2$, and $H_1(\cdot;\Z_2)=\Z_2\oplus\Z_2$\textup{)}, so it is impossible to fix one group. Thirdly, the sign $\sgn(\pi)\in\{\pm1\}$ is an integer, and the formula $g\mapsto\sgn(\pi)g$ is meaningful in any Abelian group \textup{ (} is a homomorphism of $G\to G$, $g\mapsto\pm g$\textup{)}: this is what makes the definition of coefficients universal. If the symbol $[v_0,\dots,v_k]$ were the only generator without a coefficient, then the definition would give only the group $C_k(\Sigma;\Z)$ for $G=\Z$, and the whole homology theory with arbitrary coefficients would be inaccessible.
+\end{proof}
+\begin{proof}[Solution to Problem \textup{1}, points \textup{(b)}, \textup{(c)}]
+\textit{Part \textup{(b)}.} Consider the \emph{ completion homomorphism} $\varepsilon\colon C_0(\Sigma;G)\to G$, defined on the generators by the formula $\varepsilon(g[v])=g$ and extended by linearity: for the chain $c=\sum_v g_v[v]$ we have $\varepsilon(c)=\sum_v g_v$. The definition is correct, since $0$-chains are exactly formal linear combinations of vertices with coefficients from $G$, and $\varepsilon$ is a homomorphism of Abelian groups.
+
+According to the conditions of the problem $\partial_0=0$ \textup{(}there are no chains of dimension $-1$\textup{)}, therefore $Z_0=\ker\partial_0=C_0(\Sigma;G)$. Let us check that $\varepsilon$ vanishes at the boundaries. It is enough to check on the generator $C_1$: taking into account the orientation $[v_0,v_1]$ we have $\partial_1(g[v_0,v_1])=g[v_1]-g[v_0]$, whence
+\[
+\varepsilon\bigl(\partial_1(g[v_0,v_1])\bigr)=\varepsilon\bigl(g[v_1]-g[v_0]\bigr)=g-g=0 .
+\]
+This means that $\varepsilon|_{B_0}=0$, and $\varepsilon$ descends to the quotient group: it is well defined \textup{(}and is a homomorphism\textup{)} \emph{completion map}
+\[
+\varepsilon_*\colon H_0(\Sigma;G)=C_0(\Sigma;G)/B_0\to G,\qquad \varepsilon_*\bigl([c]\bigr)=\varepsilon(c).
+\]
+Correctness means that the value of $\varepsilon(c)$ does not depend on the choice of class representative $c$: if $c'=c+b$ with $b\in B_0$, then $\varepsilon(c')=\varepsilon(c)+\varepsilon(b)=\varepsilon(c)$.
+
+\emph{Surjectivity.} For any $g\in G$ and any vertex $v$ by classes we denote by $[g[v]]$ the class of the chain $g[v]$ in $H_0$; then $\varepsilon_*([g[v]])=\varepsilon(g[v])=g$. So $\varepsilon_*$ is surjective.
+
+\emph{Injectivity under connected $\Sigma$.} Let $\varepsilon(c)=0$, that is, $\sum_v g_v=0$, where $c=\sum_v g_v[v]$. The connectedness of a simplicial complex is equivalent to the connectedness of its one-dimensional skeleton as a graph, therefore, for each vertex $v$ there is a sequence of vertices $v_0=w_0,w_1,\dots,w_l=v$, in which every two adjacent vertices are connected by an edge of the complex. For each such edge
+\[
+[w_k]-[w_{k-1}]=\partial_1\bigl([w_{k-1},w_k]\bigr)\in B_0 ,
+\]
+that's why
+\[
+[v]-[v_0]=\sum_{k=1}^{l}\bigl([w_k]-[w_{k-1}]\bigr)\in B_0 .
+\]
+Let us choose an arbitrary vertex $v_0$ as a base one and write
+\[
+c=\sum_v g_v[v]=\sum_v g_v\bigl([v]-[v_0]\bigr)+\Bigl(\sum_v g_v\Bigr)[v_0]=\sum_v g_v\bigl([v]-[v_0]\bigr),
+\]
+where the last equality uses the condition $\sum_v g_v=0$. The first sum is a linear combination of elements $B_0$, which means $c\in B_0$ and $[c]=0$ in $H_0$. So, $\ker\varepsilon_*\subseteq\{0\}$, that is, $\varepsilon_*$ is injective, and together with surjectivity, it is an isomorphism of $H_0(\Sigma;G)\cong G$.
+
+\emph{Case of $b_0$ components.} Let $\Sigma_1,\dots,\Sigma_{b_0}$ be the connected components of $\Sigma$. Each simplex lies in exactly one component, so the chain groups split into a direct sum:
+\[
+C_k(\Sigma;G)=\bigoplus_{i=1}^{b_0}C_k(\Sigma_i;G).
+\]
+The boundary operator does not extend beyond the boundaries of the components \textup{(}the faces of the simplex lie in the same component\textup{)}, so $\partial_k$ preserves this decomposition, and therefore
+\[
+Z_k(\Sigma;G)=\bigoplus_{i=1}^{b_0}Z_k(\Sigma_i;G),\qquad B_k(\Sigma;G)=\bigoplus_{i=1}^{b_0}B_k(\Sigma_i;G),\qquad
+H_k(\Sigma;G)=\bigoplus_{i=1}^{b_0}H_k(\Sigma_i;G).
+\]
+In particular, $H_0(\Sigma;G)\cong\bigoplus_{i=1}^{b_0}H_0(\Sigma_i;G)\cong G^{\oplus b_0}$ is proven for the connected case, which is what was required.
+
+\textit{Part \textup{(c)}.} Let $\Delta_m$ be a complete complex on the vertices $v_0,v_1,\dots,v_m$\textup{:} its simplices are all non-empty subsets of this set of vertices. Let us define homomorphisms on the generators of the chain group $C_k(\Delta_m;G)$
+\[
+s_k\bigl(g[v_{i_0},\dots,v_{i_k}]\bigr)=
+\begin{cases}
+0, & \text{if } v_0\in\{v_{i_0},\dots,v_{i_k}\}, \\[1mm]
+g[v_0,v_{i_0},\dots,v_{i_k}], & \text{if } v_0\notin\{v_{i_0},\dots,v_{i_k}\},
+\end{cases}
+\]
+and continue them linearly. In other words, the chain attaches the vertex $v_0$ to the simplex; if $v_0$ is already included in the simplex, then the symbol $[v_0,\sigma]$ is degenerate and is set equal to zero \textup{(}equivalent to discarding the repeating vertex in accordance with the instructions\textup{)}. Note that $s_k$ are homomorphisms of Abelian groups, not just maps of sets, and that the coefficient $g$ carries over unchanged; for $k=m$ the group $C_{m+1}(\Delta_m;G)=0$ and $s_m=0$.
+
+Statement: for all $k\ge1$ the equality holds
+\[
+\partial_{k+1}\circ s_k+s_{k-1}\circ\partial_k=\operatorname{id}_{C_k(\Delta_m;G)} .
+\]
+Due to the linearity of both sides, it is enough to check it on the generator $\sigma=g[v_{i_0},\dots,v_{i_k}]$. There are two possible cases.
+
+\emph{Case \textup{1}\textup{:} $v_0\notin\sigma$.} Then $s_k\sigma=g[v_0,v_{i_0},\dots,v_{i_k}]$, and according to the boundary formula
+\[
+\partial_{k+1}\bigl(g[v_0,v_{i_0},\dots,v_{i_k}]\bigr)
+=g[v_{i_0},\dots,v_{i_k}]-\sum_{j=0}^{k}(-1)^{j}\,g[v_0,v_{i_0},\dots,\widehat{v_{i_j}},\dots,v_{i_k}]
+=\sigma-s_{k-1}(\partial_k\sigma),
+\]
+since $\partial_k\sigma=\sum_{j=0}^{k}(-1)^{j}g[v_{i_0},\dots,\widehat{v_{i_j}},\dots,v_{i_k}]$, and all terms of this sum do not contain $v_0$ \textup{(}we are in the case of $1$\textup{)}, and therefore $s_{k-1}$ converts them to $g[v_0,v_{i_0},\dots,\widehat{v_{i_j}},\dots,v_{i_k}]$. Therefore, $\partial_{k+1}s_k\sigma+s_{k-1}\partial_k\sigma=\sigma$.
+
+\emph{Case \textup{2}\textup{:} $v_0\in\sigma$.} Then $v_0=v_{i_t}$ for a single $t$, and $s_k\sigma=0$. Further, in the sum $\partial_k\sigma=\sum_{j=0}^{k}(-1)^{j}g[v_{i_0},\dots,\widehat{v_{i_j}},\dots,v_{i_k}]$ only the term with $j=t$ does not contain the vertex $v_0$, therefore
+\[
+s_{k-1}(\partial_k\sigma)=(-1)^{t}\,g\bigl[v_0,v_{i_0},\dots,\widehat{v_{i_t}},\dots,v_{i_k}\bigr].
+\]
+A permutation that takes the sequence $v_{i_0},\dots,v_{i_k}$ into the sequence $v_0,v_{i_0},\dots,\widehat{v_{i_t}},\dots,v_{i_k}$ \textup{(}that is, transfers $v_0$ from position $t$ to the beginning\textup{)}, is the product of $t$ transpositions, therefore, by the second relation for defining circuits
+\[
+g\bigl[v_0,v_{i_0},\dots,\widehat{v_{i_t}},\dots,v_{i_k}\bigr]=(-1)^{t}\,g[v_{i_0},\dots,v_{i_k}]=(-1)^{t}\sigma .
+\]
+This means $s_{k-1}(\partial_k\sigma)=(-1)^{t}(-1)^{t}\sigma=\sigma$, and since $\partial_{k+1}s_k\sigma=0$, we again get $\partial_{k+1}s_k\sigma+s_{k-1}\partial_k\sigma=\sigma$. The formula is proven.
+
+Now let us derive the vanishing of homology. Let $z\in Z_k(\Delta_m;G)$, $k\ge1$, that is, $\partial_k z=0$. According to the proven formula
+\[
+z=\partial_{k+1}\bigl(s_k z\bigr)+s_{k-1}\bigl(\partial_k z\bigr)=\partial_{k+1}\bigl(s_k z\bigr)\in B_k(\Delta_m;G).
+\]
+So, $Z_k\subseteq B_k$, and the converse inclusion $B_k\subseteq Z_k$ is true for any complex \textup{(}item \textup{(a)}\textup{)}. This means $Z_k=B_k$ and
+\[
+H_k(\Delta_m;G)=Z_k/B_k=0,\qquad k\ge1 ,
+\]
+for any Abelian group $G$: the constructed homomorphisms $s_k$ are linear in coefficients, so the argument goes verbatim for any coefficients.
+
+\emph{Note.} The same construction works in dimension $0$. Namely, $s_0(g[v_i])=g[v_0,v_i]$ for $i\ne0$ and $s_0(g[v_0])=0$, therefore $\partial_1 s_0(g[v_i])=g[v_i]-g[v_0]$ for $i\ne0$ and $\partial_1s_0(g[v_0])=0=g[v_0]-g[v_0]$. In both cases, $\partial_1 s_0\sigma=\sigma-\varepsilon(\sigma)[v_0]$, where $\varepsilon$ is the addition from point \textup{(b)}. Hence, for any $0$-chain $c$ we get $\partial_1s_0c=c-\varepsilon(c)[v_0]$, and for a cycle $c$ \textup{(}in dimension $0$ a cycle is any $0$-chain\textup{)} with $\varepsilon(c)=0$ we have $c=\partial_1 s_0c$, that is, $c$ is a boundary. This is an independent proof of the equality $H_0(\Delta_m;G)\cong G$ and at the same time a meaningful illustration of the fact that in dimension $0$ the completion plays the role that in positive dimensions the inversion $\partial s+s\partial=\operatorname{id}$ plays.
+\end{proof}
+\begin{task}[nerve lemma]
+Recall the nerve lemma\textup{:} if $\mathcal U = \{U_\alpha\}_{\alpha \in A}$ --- \emph{a good} open covering of $X$ \textup{(}all non-empty finite intersections of its elements are contractible\textup{)}, then the geometric realization of the nerve $|\Nerve{\mathcal U}|$ is homotopy equivalent $X$, so $H_k(X; G) \cong H_k(\Nerve{\mathcal U}; G)$ for any Abelian group $G$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item The circle $S^1$ is covered by three open arcs $U_1, U_2, U_3$ with non-empty pairwise intersections and an empty triple intersection. Check that the coverage is good, describe the nerve $\Nerve{\mathcal U}$ and calculate $H_1(S^1; \Z)$ and $H_0(S^1; \Z)$.
+\item Let a connected $X$ admit a good covering whose nerve is a tree, that is, a one-dimensional complex without cycles. Prove that $X$ is contractible and $H_k(X; G) = 0$ for all $k \ge 1$, and apply this to the covering of $\R^n$ by two open half-spaces $x_n < 1$ and $x_n > -1$.
+\item Deduce from the nerve lemma that if a connected $X$ has a good cover of $n$ elements, then $H_k(X; G) = 0$ for all $k \ge n$ and any $G$. 
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to problem \textup{2} \textup{(}nerve lemma\textup{)}]
+\textit{Item \textup{(a)}.} Let's first check that the coverage is good. The triple intersection is empty, therefore, only the arcs $U_1,U_2,U_3$ and their pairwise intersections $U_1\cap U_2$, $U_2\cap U_3$, $U_3\cap U_1$ can be non-empty finite intersections of the covering elements. Each arc is homeomorphic to an interval and therefore contractible. The intersection of two open arcs of a circle, if it is non-empty, is again an open arc \textup{(}a connected open subset of a circle\textup{)} and therefore also contractible. By condition, all three pairwise intersections are non-empty, which means that all non-empty finite intersections of covering elements are contractible, that is, the covering is good.
+
+Let us describe the nerve $\Nerve{\mathcal U}$. Its vertices are the elements $U_1,U_2,U_3$, that is, $1,2,3$. One-dimensional nerve simplices correspond to non-empty pairwise intersections: all three intersections are non-empty, so the edges $\{1,2\}$, $\{2,3\}$, $\{3,1\}$ are present. The two-dimensional simplex $\{1,2,3\}$ corresponds to the triple intersection $U_1\cap U_2\cap U_3=\varnothing$ and is therefore absent. So, $\Nerve{\mathcal U}$ is a complete graph on three vertices without a two-dimensional edge, that is, the boundary of a triangle homeomorphic to a circle:
+\[
+|\Nerve{\mathcal U}|\cong S^1 .
+\]
+
+The nerve lemma is applicable \textup{(}coverage is good, the space $S^1$ is metrizable, and hence paracompact\textup{)} and gives the homotopy equivalence $S^1\simeq|\Nerve{\mathcal U}|$, whence
+\[
+H_k(S^1;\Z)\cong H_k(\Nerve{\mathcal U};\Z)
+\]
+for all $k$. It remains to calculate the homologies of the nerve --- a finite one-dimensional complex. Let's denote its vertices $v_1,v_2,v_3$, orient the edges as $[v_1,v_2]$, $[v_2,v_3]$, $[v_3,v_1]$ and write the boundary operator:
+\[
+\partial_1\bigl([v_1,v_2]\bigr)=v_2-v_1,\qquad
+\partial_1\bigl([v_2,v_3]\bigr)=v_3-v_2,\qquad
+\partial_1\bigl([v_3,v_1]\bigr)=v_1-v_3 .
+\]
+Since there are no two-dimensional simplexes, $C_2=0$ and $B_1=\operatorname{im}\partial_2=0$, so $H_1=\ker\partial_1$. For the chain $a[v_1,v_2]+b[v_2,v_3]+c[v_3,v_1]$ we have
+\[
+\partial_1\bigl(a[v_1,v_2]+b[v_2,v_3]+c[v_3,v_1]\bigr)=(c-a)v_1+(a-b)v_2+(b-c)v_3 ,
+\]
+and this chain is equal to zero if and only if $a=b=c$. So,
+\[
+H_1(\Nerve{\mathcal U};\Z)=\ker\partial_1=\Z\cdot\bigl([v_1,v_2]+[v_2,v_3]+[v_3,v_1]\bigr)\cong\Z ,
+\]
+that is, the one-dimensional cycles of the nerve are exactly multiples of the ``travel'' of the triangle. Further, $\operatorname{im}\partial_1$ consists of chains $x_1v_1+x_2v_2+x_3v_3$ with $x_1+x_2+x_3=0$, that is, $\operatorname{im}\partial_1$ is a subgroup of rank $2$ in $\Z^3$, and
+\[
+H_0(\Nerve{\mathcal U};\Z)=\Z^3/\operatorname{im}\partial_1\cong\Z ,
+\]
+as it should be for a non-empty connected complex \textup{(}item \textup{(b)} of problem \textup{1}\textup{)}. So,
+\[
+H_0(S^1;\Z)\cong\Z,\qquad H_1(S^1;\Z)\cong\Z,\qquad H_k(S^1;\Z)=0\ \ (k\ge2),
+\]
+which coincides with the known homologies of the circle: the connection gives $H_0=\Z$, and the one-dimensional cycle gives $H_1=\Z$.
+
+\textit{Part \textup{(b)}.} First we prove an auxiliary statement: a connected one-dimensional simplicial complex without cycles \textup{(}tree\textup{)} is contractible. Let $T$ be such a complex endowed with the metric of an internal path \textup{(}each edge is a segment, the path is a broken line along the edges\textup{)}, and let $r\in T$ be an arbitrary point. In a tree, between any two points there is a single simple path: if there were two simple paths, their union would contain a cycle. We denote by $\gamma_x\colon[0,d(x,r)]\to T$ the only simple path from $x$ to $r$, parameterized by the arc length, and define
+\[
+H\colon[0,1]\times T\to T,\qquad H(t,x)=\gamma_x\bigl(t\,d(x,r)\bigr).
+\]
+Then $H(0,x)=x$ and $H(1,x)=r$ for all $x$, so if $H$ is continuous, then it is a homotopy between $\operatorname{id}_T$ and a constant map, and $T$ is contractible. Let us check the continuity of $H$ on each closed edge $e=[u,w]$. The point $r$ lies in exactly one of the two components of the complex $T\setminus e$, so for any point $x\in e$ the path $\gamma_x$ passes through the corresponding end of the edge --- say, through $u$. Then for $t\,d(x,r)\le d(x,u)$ the point $H(t,x)$ lies on the edge $e$ and the distance from it to $x$ is equal to $t\,d(x,r)$, and for $t\,d(x,r)\ge d(x,u)$ we have $H(t,x)=\gamma_u\bigl(t\,d(x,r)-d(x,u)\bigr)$, and both formulas are continuously glued together at $t\,d(x,r)=d(x,u)$ \textup{(}both give the point $u$\textup{)}. This means that $H$ is continuous on each edge, and at the common ends of the edges the definitions are consistent, that is, $H$ is continuous everywhere. In particular, every tree is contractible, and its homologies are the homologies of a point:
+\[
+H_0(T;G)\cong G,\qquad H_k(T;G)=0\quad(k\ge1).
+\]
+
+Let now a connected $X$ admit a good covering $\mathcal U$ whose nerve is a tree. By the nerve lemma $X\simeq|\Nerve{\mathcal U}|$; the geometric realization of a nerve is a tree and therefore contractible according to what has been proven. This means that $X$ is homotopy equivalent to a point, that is, contractible, and
+\[
+H_k(X;G)\cong H_k(\Nerve{\mathcal U};G)=0\qquad(k\ge1)
+\]
+for any Abelian group $G$; for $k=0$ we obtain $H_0(X;G)\cong G$, which is consistent with the connectedness of $X$.
+
+Let's apply this to $\R^n$. Let's take two open half-spaces
+\[
+U_1=\{x\in\R^n\colon x_n<1\},\qquad U_2=\{x\in\R^n\colon x_n>-1\}.
+\]
+They cover $\R^n$, since for any point $x_n<1$ or $x_n>-1$ holds. Each of them is convex, and therefore contractible; their intersection
+\[
+U_1\cap U_2=\{x\in\R^n\colon -1<x_n<1\}
+\]
+there is an open strip, also a convex set, and therefore contractible. So, non-empty finite intersections \textup{(}there are only three of them: $U_1$, $U_2$, $U_1\cap U_2$\textup{)} are contractible, that is, the coverage is good. Its nerve is two vertices connected by one edge \textup{(}both intersections $U_1$, $U_2$, $U_1\cap U_2$ are non-empty\textup{)}, that is, the segment is a tree. By what has been proved, $\R^n$ is contractible and $H_k(\R^n;G)=0$ for all $k\ge1$ for any $G$. This is consistent with the fact that $\R^n$ is a convex, and therefore contractible, space.
+
+\textit{Part \textup{(c)}.} Let a connected $X$ have a good cover $\mathcal U=\{U_1,\dots,U_n\}$ of $n$ elements. The nerve $\Nerve{\mathcal U}$ is an abstract simplicial complex whose vertices are the covering elements, so it has $n$ vertices in total. A simplex of dimension $k$ of a nerve is a subset of $k+1$ distinct vertices, and such a subset exists only for $k+1\le n$. This means that the nerve has no simplices of dimension $k\ge n$, that is, $\dim\Nerve{\mathcal U}\le n-1$ and
+\[
+C_k(\Nerve{\mathcal U};G)=0\quad\text{for all } k\ge n .
+\]
+Then $Z_k=B_k=0$, so $H_k(\Nerve{\mathcal U};G)=0$ for $k\ge n$ and any $G$. By the nerve lemma $H_k(X;G)\cong H_k(\Nerve{\mathcal U};G)$, therefore,
+\[
+H_k(X;G)=0\qquad\text{for all } k\ge n\ \text{and any Abelian group } G ,
+\]
+which is what was required. \textup{(}The estimate is exact: the circle $S^1$ from point \textup{(a)} has a good cover of $n=3$ elements and $H_1(S^1;\Z)\ne0$, and the equality $k\ge n$ here means $k\ge3$\textup{)}. The discussion that the finiteness of the covering and its goodness are essential is related to problem \textup{6}.
+\end{proof}
+\begin{task}[close simplicial mappings]
+Two simplicial maps $f, g \colon \Sigma \to \Sigma'$ are called \emph{close} if for each simplex $\sigma \in \Sigma$ the set $f(\sigma) \cup g(\sigma)$ is a simplex of the complex $\Sigma'$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that close maps induce the same homomorphisms $f_* = g_* \colon H_k(\Sigma; G) \to H_k(\Sigma'; G)$ for all $k$, and that their geometric realizations $|f|$ and $|g|$ are homotopic.
+\item Show that the converse is not true\textup{:} homotopy of realizations does not imply closeness. 
+\item Let $f \colon \Sigma \to \Sigma'$ and $g \colon \Sigma' \to \Sigma$ be such that $g \circ f$ is close to $\operatorname{id}_\Sigma$, and $f \circ g$ is close to $\operatorname{id}_{\Sigma'}$. Prove that $f_* \colon H_k(\Sigma; G) \to H_k(\Sigma'; G)$ is an isomorphism for all $k$.
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{3} \textup{(}close simplicial mappings\textup{)}]
+Let us recall two general facts about chain complexes that we will use. First, if two chain homotopies \textup{(}that is, two families of homomorphisms $P_k\colon C_k(\Sigma;G)\to C_{k+1}(\Sigma';G)$ with $\partial_{k+1}P_k+P_{k-1}\partial_k=g_\#-f_\#$ for all $k$, where $P_{-1}=0$\textup{)} connect the induced mappings $f_\#,g_\#$, then $f_*=g_*$: for any cycle $z$ we have $f_\#z-g_\#z=\partial P z$, that is, $f_\#z-g_\#z$ is a boundary, and in homology $[f_\#z]=[g_\#z]$. Secondly, it is natural to assume that the symbol $g[v_{\pi(0)},\dots,v_{\pi(k)}]$ with repeating vertices is equal to zero: if $v_{\pi(a)}=v_{\pi(b)}$ for $a\ne b$, then a permutation that swaps $a$ and $b$ does not change the sequence of vertices, but multiplies the symbol by $\sgn=-1$, so this the symbol satisfies the equality $s=-s$, that is, $2s=0$. Such degenerate symbols are considered equal to zero: this convention corresponds to the ejection of a repeating vertex, which is mentioned in the instructions for the problem.
+
+\textit{Part \textup{(a)}.} Let the simplicial maps $f,g\colon\Sigma\to\Sigma'$ be close, that is, for each simplex $\sigma\in\Sigma$ the set $f(\sigma)\cup g(\sigma)$ lies in some simplex $\tau_\sigma$ of the complex $\Sigma'$. Let us define the \emph{prism operator} on the generators of the group $C_k(\Sigma;G)$
+\[
+P_k\bigl(g[v_0,\dots,v_k]\bigr)=g\sum_{i=0}^{k}(-1)^i\,\bigl[f(v_0),\dots,f(v_i),g(v_i),\dots,g(v_k)\bigr],
+\]
+and continue by linearity; here the coefficient $g$ is carried forward unchanged. If $v_0,\dots,v_k$ are vertices of a simplex $\sigma$, then all vertices $f(v_j)$ lie in $f(\sigma)$, all vertices $g(v_j)$ lie in $g(\sigma)$, so the entire collection of vertices $f(v_0),\dots,f(v_i),g(v_i),\dots,g(v_k)$ lies in $\tau_\sigma$ and therefore generates a simplex of the complex $\Sigma'$; this means that the expression in square brackets is a well-defined chain of $C_{k+1}(\Sigma';G)$ \textup{(}coinciding vertices give zero by convention above, and the order of the vertices is taken into account through $\sgn$\textup{)}. So $P_k$ is a group homomorphism.
+
+Let us check that the prism operator implements a chain homotopy between the induced mappings. Since all mappings are linear in paths, it suffices to check the equality
+\[
+\partial_{k+1}\bigl(P_k\sigma\bigr)+P_{k-1}\bigl(\partial_k\sigma\bigr)=f_\#(\sigma)-g_\#(\sigma)
+\]
+on one generator $\sigma=g[v_0,\dots,v_k]$, where $f_\#,g_\#$ are induced mappings of chains. Let's consider a $k$-dimensional "prism": denote by $w_j=f(v_j)$ and $u_j=g(v_j)$ and calculate the boundary of each term. We have
+\begin{multline*}
+\partial\bigl[w_0,\dots,w_i,u_i,\dots,u_k\bigr]
+=\sum_{j=0}^{i}(-1)^j\bigl[w_0,\dots,\widehat{w_j},\dots,w_i,u_i,\dots,u_k\bigr]\\
+-\sum_{j=i}^{k}(-1)^j\bigl[w_0,\dots,w_i,u_i,\dots,\widehat{u_j},\dots,u_k\bigr],
+\end{multline*}
+where the sign of the second sum is negative, since the vertex $u_j$ is at position $i+1+j-i=i+j+1$ and therefore gives the multiplier $(-1)^{i+j+1}$. Let's substitute this expression into $P_k\sigma=\sum_i(-1)^i[\dots]$ and collect the terms. The terms in which the faces of the ``side'' faces degenerate cancel out in pairs: the face with the discarded $w_j$ at $j\le i$ coincides with the face with the discarded $u_j$ at $j\ge i$ when passing from the term with index $i$ to the term with index $i-1$ and has opposite signs; Formally, this is a standard calculation of the prism formula. Only two extreme edges remain:
+\[
+\partial P_k\sigma+P_{k-1}\partial_k\sigma=[u_0,\dots,u_k]-[w_0,\dots,w_k]=g_\#(\sigma)-f_\#(\sigma) .
+\]
+Let's check the sign in the simplest case $k=0$: here $P_0\sigma=[f(v_0),g(v_0)]$, $\partial_1P_0\sigma=[g(v_0)]-[f(v_0)]=g_\#\sigma-f_\#\sigma$, and $P_{-1}=0$, so the equality $\partial P_0+P_{-1}\partial_0=g_\#-f_\#$ done. The same calculation for $k=1$:
+\[
+P_1[v_0,v_1]=[w_0,w_1,u_1]-[w_0,u_0,u_1],\qquad
+\partial P_1[v_0,v_1]=[u_0,u_1]+[w_0,u_0]-[w_1,u_1]-[w_0,w_1],
+\]
+and $P_0\partial_1[v_0,v_1]=P_0[v_1]-P_0[v_0]=[w_1,u_1]-[w_0,u_0]$, so
+\[
+\partial P_1[v_0,v_1]+P_0\partial_1[v_0,v_1]=[u_0,u_1]-[w_0,w_1]=g_\#[v_0,v_1]-f_\#[v_0,v_1].
+\]
+So, in all dimensions
+\[
+\partial_{k+1}P_k+P_{k-1}\partial_k=g_\#-f_\# ,
+\]
+that is, $f_\#$ and $g_\#$ are chain homotopic, and therefore, by the first of the recalled facts
+\[
+f_*=g_*\colon H_k(\Sigma;G)\to H_k(\Sigma';G)\qquad\text{for all } k ,
+\]
+which is what was required.
+
+Let us now show that the geometric realizations $|f|$ and $|g|$ are homotopic; this statement does not follow from the previous one, but is proved by direct construction of a homotopy. Let $\sigma=[v_0,\dots,v_k]$ be the simplex $\Sigma$ and the point $x\in|\sigma|$ have barycentric coordinates $\lambda_0,\dots,\lambda_k\ge0$, $\sum\lambda_j=1$. All points $f(v_j)$ and $g(v_j)$ lie in the simplex $\tau_\sigma$, so the convex combination
+\[
+H(t,x)=\sum_{j=0}^{k}\lambda_j\Bigl((1-t)\,f(v_j)+t\,g(v_j)\Bigr),\qquad t\in[0,1],
+\]
+is a well-defined point of the simplex $|\tau_\sigma|\subset|\Sigma'|$: it is a convex combination of the points $f(v_0),\dots,f(v_k),g(v_0),\dots,g(v_k)$ with non-negative coefficients $\lambda_j(1-t)$ and $\lambda_jt$, the sum of which is $\sum_j\lambda_j((1-t)+t)=1$. The formula is consistent on common faces of simplices: if $\lambda_j=0$, then the term with number $j$ disappears, and for a point on the face written in barycentric coordinates relative to a smaller set of vertices, the same value is obtained. Consequently, the formula defines a continuous mapping $H\colon[0,1]\times|\Sigma|\to|\Sigma'|$. Finally,
+\[
+H(0,x)=\sum_j\lambda_j f(v_j)=|f|(x),\qquad H(1,x)=\sum_j\lambda_j g(v_j)=|g|(x),
+\]
+since the linear mapping of a simplex, defined by a simplicial mapping, maps a point with barycentric coordinates $\lambda_j$ into a convex combination of vertex images. So $H$ is a homotopy between $|f|$ and $|g|$.
+
+\textit{Point \textup{(b)}.} Let us show that the homotopy of realizations does not imply closeness. Let $\Sigma=\Sigma'=C_3$ be a cycle of three vertices $v_0,v_1,v_2$ with edges $\{v_0,v_1\}$, $\{v_1,v_2\}$, $\{v_2,v_0\}$ and without a two-dimensional simplex. Let's take $f=\operatorname{id}$ and $g(v_j)=v_{j+1}$, where the index is taken modulo $3$ \textup{(}cyclic shift of vertices\textup{)}; This is a simplicial mapping because it maps edges to edges. The implementation of $|C_3|$ is a circle, and $|g|$ is a rotation of this circle by $2\pi/3$ \textup{(}the shift of the triangle vertices continues until the triangle boundary is rotated\textup{)}. The rotations of the circle $R_\theta$ depend continuously on $\theta$ and $R_0=\operatorname{id}$, so $|g|=R_{2\pi/3}$ is homotopic $|f|=\operatorname{id}$: homotopy --- family of rotations $R_{2\pi t/3}$, $t\in[0,1]$.
+
+Let us show that the mappings $f$ and $g$ are not close. It is enough to present a simplex for which the proximity condition is violated. Let's take the edge $\sigma=[v_0,v_1]$. Then $f(\sigma)=\{v_0,v_1\}$ and $g(\sigma)=\{v_1,v_2\}$, therefore,
+\[
+f(\sigma)\cup g(\sigma)=\{v_0,v_1,v_2\} .
+\]
+But the three-element set $\{v_0,v_1,v_2\}$ is not a simplex of the complex $C_3$: only single-element sets and edges $\{v_0,v_1\}$, $\{v_1,v_2\}$, $\{v_2,v_0\}$ serve as simplexes of $C_3$, and the cycle does not have a two-dimensional face. This means that $f(\sigma)\cup g(\sigma)$ does not lie in any simplex of the complex $C_3$, and the mappings are not close.
+
+Note additionally that the induced homomorphisms coincide: the homology of the cycle is equal to $H_0(C_3;\Z)=\Z$ and $H_1(C_3;\Z)=\Z$, the forming cycle is $[v_0,v_1]+[v_1,v_2]+[v_2,v_0]$, and
+\[
+g_\#\bigl([v_0,v_1]+[v_1,v_2]+[v_2,v_0]\bigr)=[v_1,v_2]+[v_2,v_0]+[v_0,v_1]=[v_0,v_1]+[v_1,v_2]+[v_2,v_0],
+\]
+so $g_*=\operatorname{id}=f_*$. So, here $f_*=g_*$ and $|f|\simeq|g|$, but there is no closeness: neither the equality of induced homomorphisms nor the homotopy of realizations is equivalent to closeness, and the statement of paragraph \textup{(a)} in the opposite direction is incorrect.
+
+\textit{Part \textup{(c)}.} Let $f\colon\Sigma\to\Sigma'$ and $g\colon\Sigma'\to\Sigma$ be such that the composition $g\circ f$ is close to $\operatorname{id}_\Sigma$, and $f\circ g$ is close to $\operatorname{id}_{\Sigma'}$. Let us fix $k$ and consider homomorphisms of homology groups. By item \textup{(a)}, close maps induce identical homomorphisms, therefore
+\[
+(g\circ f)_*=( \operatorname{id}_\Sigma)_*=\operatorname{id}_{H_k(\Sigma;G)},\qquad
+(f\circ g)_*=(\operatorname{id}_{\Sigma'})_*=\operatorname{id}_{H_k(\Sigma';G)} .
+\]
+On the other hand, an induced composition map is equal to the composition of induced maps: for chains this is obvious from the definition of $f_\#$ as a linear extension of a vertex map, and the passage to homology commutes with composition since $f_\#\partial=\partial f_\#$. Therefore
+\[
+g_*\circ f_*=(g\circ f)_*=\operatorname{id}_{H_k(\Sigma;G)},\qquad
+f_*\circ g_*=(f\circ g)_*=\operatorname{id}_{H_k(\Sigma';G)} .
+\]
+So, $f_*\colon H_k(\Sigma;G)\to H_k(\Sigma';G)$ has the inverse mapping $g_*$ on the left and on the right: the first equality implies the injectivity of $f_*$ \textup{(}if $f_*c=0$, then $c=g_*f_*c=0$\textup{)}, from the second - the surjectivity of \textup{(}for any $c'\in H_k(\Sigma';G)$ we have $c'=f_*(g_*c')$\textup{)}. This means that $f_*$ is an isomorphism for all $k$, and $g_*$ is its inverse isomorphism. In particular, $\Sigma$ and $\Sigma'$ have isomorphic homology groups with arbitrary coefficients.
+\end{proof}
+\begin{task}[stability of homology under space perturbation]
+The lecture proves\textup{:} if $d_{GH}(X, Y) < r$, then for any $\varepsilon > 0$ and $\nu \ge 0$ there exist simplicial mappings
+\[
+\VR(Y, \varepsilon) \xrightarrow{h} \VR(X, r+\varepsilon) \xrightarrow{\iota_\nu} \VR(X, r+\varepsilon+\nu) \xrightarrow{g} \VR(Y, 2r+\varepsilon+\nu),
+\]
+where $\iota_\nu$ is an inclusion such that the composition $g \circ \iota_\nu \circ h$ is close to the inclusion $\iota \colon \VR(Y, \varepsilon) \hookrightarrow \VR(Y, 2r+\varepsilon+\nu)$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Based on problem \textup{3}, prove that the homomorphism $\iota_* \colon H_k\bigl(\VR(Y, \varepsilon); G\bigr) \to H_k\bigl(\VR(Y, 2r+\varepsilon+\nu); G\bigr)$ passes through $H_k\bigl(\VR(X, r+\varepsilon); G\bigr)$, that is, $\iota_* = g_* \circ (\iota_\nu)_* \circ h_*$ for all $k$.
+\item Deduce from here the stability of homology\textup{:} if the class $c \in H_k\bigl(\VR(Y, \varepsilon); G\bigr)$ does not vanish when passing to the scale $2r+\varepsilon+\nu$, that is, $\iota_*(c) \neq 0$, then $h_*(c) \neq 0$. This means that a class that survives to a large scale does not disappear when moving to a space $X$ located at a distance less than $r$ from $Y$.
+\item Calculate $\VR(X, r)$ and $\check C_r(X; \R^2)$ for $X = \{(0,0), (1,0), (1,1), (0,1)\}$ \textup{(}vertices of the unit square\textup{)} for $r \in (1, \sqrt{2})$ and show that both complexes are a cycle of four vertices, so $H_1 = \Z$ and $H_0 = \Z$. 
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{4} \textup{(}stability of homology under space perturbation\textup{)}]
+\textit{Part \textup{(a)}.} By the lemma on close spaces, applied to the pair $X,Y$ with $d_{GH}(X,Y)<r$, for any $\varepsilon>0$ and $\nu\ge0$ there exist simplicial maps
+\[
+\VR(Y,\varepsilon)\xrightarrow{\ h\ }\VR(X,r+\varepsilon)\xrightarrow{\ \iota_\nu\ }\VR(X,r+\varepsilon+\nu)\xrightarrow{\ g\ }\VR(Y,2r+\varepsilon+\nu),
+\]
+where $\iota_\nu$ is an inclusion of complexes, and the composition $\psi=g\circ\iota_\nu\circ h$ is close to the inclusion $\iota\colon\VR(Y,\varepsilon)\hookrightarrow\VR(Y,2r+\varepsilon+\nu)$. Both maps, $\psi$ and $\iota$, are simplicial maps of the same complex $\VR(Y,\varepsilon)$ into the complex $\VR(Y,2r+\varepsilon+\nu)$, and they are close by condition. By point \textup{(a)} of problem \textup{3}, close maps induce identical homomorphisms, therefore
+\[
+\psi_*=\iota_*\colon H_k\bigl(\VR(Y,\varepsilon);G\bigr)\to H_k\bigl(\VR(Y,2r+\varepsilon+\nu);G\bigr)
+\]
+for all $k$. On the other hand, an induced composition map is equal to the composition of induced maps:
+\[
+\psi_*=(g\circ\iota_\nu\circ h)_*=g_*\circ(\iota_\nu)_*\circ h_* ,
+\]
+since for chain maps $(g\circ\iota_\nu\circ h)_\#=g_\#\circ(\iota_\nu)_\#\circ h_\#$ and the transition to homology is functorial. Comparing the two equalities, we obtain the desired expansion:
+\[
+\iota_*=g_*\circ(\iota_\nu)_*\circ h_*\colon
+H_k\bigl(\VR(Y,\varepsilon);G\bigr)\to H_k\bigl(\VR(Y,2r+\varepsilon+\nu);G\bigr),
+\]
+that is, the homomorphism $\iota_*$ passes through the group $H_k\bigl(\VR(X,r+\varepsilon);G\bigr)$: it is equal to the composition of the homomorphism $h_*$, the homomorphism induced by the inclusion $(\iota_\nu)_*$, and the homomorphism $g_*$.
+
+\textit{Part \textup{(b)}.} Let the class $c\in H_k\bigl(\VR(Y,\varepsilon);G\bigr)$ not vanish when passing to the scale $2r+\varepsilon+\nu$, that is, $\iota_*(c)\ne0$. By item \textup{(a)}
+\[
+\iota_*(c)=g_*\Bigl((\iota_\nu)_*\bigl(h_*(c)\bigr)\Bigr),
+\]
+and if $h_*(c)=0$, then $(\iota_\nu)_*(0)=0$ and therefore $\iota_*(c)=g_*(0)=0$, which contradicts the condition $\iota_*(c)\ne0$. This means that $h_*(c)\ne0$: the class $c$ does not disappear when passing from $\VR(Y,\varepsilon)$ to $\VR(X,r+\varepsilon)$.
+
+The meaning of the statement is the stability of homology: if a nontrivial $k$-dimensional class of the space $Y$, observed at the scale $\varepsilon$, survives to the large scale $2r+\varepsilon+\nu$, that is, its image when turning on $\VR(Y,\varepsilon)\hookrightarrow\VR(Y,2r+\varepsilon+\nu)$ is nonzero, then this class cannot be killed by replacement space $Y$ onto a space $X$ located at a distance less than $r$ from $Y$: its image at $h_*$ is nonzero. This is a meaningful statement about \emph{local stability}: classes that live long are stable. Note that this does not claim that every class from $\VR(X,r+\varepsilon)$ comes from $Y$ \textup{(}the homomorphism $h_*$ need not be either injective or surjective\textup{)}: only an irreversible direction is guaranteed --- the image of a living class is alive.
+
+Note also that for $\nu=0$ a chain of homomorphisms arises between the complex $\VR(X,r+\varepsilon)$ and the complexes $\VR(Y,\varepsilon)$, $\VR(Y,2r+\varepsilon)$, showing that the persistent homology module of the space $Y$ \textup{(}as a sequence of groups $\{H_k(\VR(Y,s))\}_s$ with inclusion homomorphisms\textup{)} in the scale interval $[\varepsilon,2r+\varepsilon]$ is passed through the group $H_k(\VR(X,r+\varepsilon))$: the values of $\varepsilon$- and $(2r+\varepsilon)$-homologies $Y$ are connected through one group corresponding space $X$. This is exactly how the stability of persistent homology \textup{(}barcode\textup{)} under GH-perturbation of space is deduced from the lemma on close spaces.
+
+\textit{Point \textup{(c)}.} Let $X=\{x_1,x_2,x_3,x_4\}$ be the set of vertices of the unit square:
+\[
+x_1=(0,0),\quad x_2=(1,0),\quad x_3=(1,1),\quad x_4=(0,1),
+\]
+considered as a subset of $Z=\R^2$ with the standard metric. Its pairwise distances are as follows: four distances between adjacent vertices are equal to $1$ \textup{(}sides of the square\textup{)}, two distances between opposite vertices are equal to $\sqrt2$ \textup{(}diagonals\textup{)}. Let $1<r<\sqrt2$.
+
+\emph{Vietoris--Rips complex.} Simplexes of the complex $\VR(X,r)$ are finite subsets of $X$ with diameter less than $r$. Pairs of vertices at a distance of $1$ give a diameter of $1<r$, so all four edges corresponding to the sides of the square are present; pairs of opposite vertices have diameter $\sqrt2>r$, so there are no diagonals. Any three-element subset of the vertices of a square contains a diagonal, which means its diameter is equal to $\sqrt2>r$, and there are no three-element simplexes \textup{(}much less there are no four-element ones\textup{)}. So, $\VR(X,r)$ is a graph of four vertices and four edges, that is, a cycle of length four:
+\[
+\VR(X,r)=C_4,\qquad H_1\bigl(\VR(X,r);\Z\bigr)=\Z,\qquad H_0\bigl(\VR(X,r);\Z\bigr)=\Z .
+\]
+Indeed, $C_4$ is connected, so $H_0=\Z$ \textup{(}task \textup{1}, point \textup{(b)}\textup{)}; it has no two-dimensional simplexes, so $H_1=\ker\partial_1$ is a group of graph cycles generated by traversing $[x_1,x_2]+[x_2,x_3]+[x_3,x_4]+[x_4,x_1]$, that is, $\Z$ \textup{(}the calculation is the same as for $C_3$ in the problem \textup{2}, paragraph \textup{(a)}: the boundary operator takes such a chain to $0$, and its image has rank $3$\textup{)}.
+
+\emph{Cech complex in the sense of the lecture definition.} Recall that in the lecture \emph{external Cech complex} $\CechAmb{r}{X}{\R^2}$ is defined as follows: the set $\{x_{i_0},\dots,x_{i_k}\}\subset X$ is a simplex if and only if there is a point $z\in\R^2$ with $|zx_{i_j}|<r$ for all $j$; in other words, it is the nerve of a family of balls $\{B(x;r)\}_{x\in X}$ of radius $r$ in $\R^2$. For $1<r<\sqrt2$ the radius $r$ is greater than half the diagonal of the square:
+\[
+\frac{\sqrt2}{2}<1<r .
+\]
+The center of the square $z=\bigl(\tfrac12,\tfrac12\bigr)$ is distant from each vertex at a distance of $\sqrt2/2$, which means $|zx_i|<r$ for all $i=1,2,3,4$; therefore \emph{all} subsets of the set $X$ \textup{(}including the four-element\textup{)} are simplexes, and in this normalization
+\[
+\CechAmb{r}{X}{\R^2}=\Delta_3
+\]
+--- a complete complex on four vertices, that is, a simplicial complex without cycles, homotopy equivalent to a point; in particular, $H_1\bigl(\CechAmb{r}{X}{\R^2};\Z\bigr)=0$ and $H_0=\Z$. This conclusion does not contradict the inclusions $\VR(X,r)\subset\CechAmb{r}{X}{\R^2}\subset\VR(X,2r)$ from the lecture: for $r<\sqrt2$ we have $2r>\sqrt2$, so $\VR(X,2r)=\Delta_3$ contains both a cycle and a complete complex.
+
+\emph{Cech complex with balls of radius $r/2$.} Statement of the problem --- "both complexes are a cycle of four vertices" --- refers to another \textup{(}standard in the literature\textup{)} normalization of the Cech complex: subsets $\sigma\subset X$ are considered simplexes for which there is a point $z$ with $|zx|<r/2$ for all $x\in\sigma$, that is, the nerve of a family of balls of radius $r/2$. Balls $B(x_i;r/2)$ and $B(x_j;r/2)$ intersect exactly when $|x_ix_j|<r$ \textup{(}if $z$ lies in the intersection, then $|x_ix_j|\le|x_iz|+|zx_j|<r$; conversely, for $|x_ix_j|<r$ the point of the segment $[x_ix_j]$ is removed from both ends to $|x_ix_j|/2<r/2$, lies in both balls\textup{)}. Therefore, the edges of this complex are exactly pairs of vertices at a distance less than $r$, that is, the same four sides of the square. Further, three balls of radius $r/2$ with centers at the vertices of a square have a common point if and only if $r/2$ is greater than the radius of the smallest circumcircle of this trio of vertices \textup{(}if $r/2$ is equal to this radius, then the only candidate is the center of the circumcircle --- giving the equalities $|zx_i|=r/2$, and not strict inequalities of definition\textup{;} this boundary case is analyzed below\textup{)}. Any three vertices of a square is a right triangle with legs $1$ and hypotenuse $\sqrt2$; its smallest circumcircle has a radius of $\sqrt2/2$ \textup{(}center --- midpoint of the hypotenuse\textup{)}. This means that the common point of the three balls appears only at $r/2\ge\sqrt2/2$, that is, at $r\ge\sqrt2$; for $1<r<\sqrt2$ there are no three-element simplices, and
+\[
+\check C_r(X;\R^2)=C_4,\qquad H_1=\Z,\qquad H_0=\Z ,
+\]
+that is, in this normalization both complexes actually coincide with a cycle of four vertices.
+
+\emph{What happens at $r\ge\sqrt2$.} At $r=\sqrt2$ the definition inequalities are strict, and the distances $|x_ix_j|=\sqrt2$ do not strictly exceed $r$: the diagonals of the square do not appear in $\VR(X,r)$, there are no three-element subsets with a diameter strictly less than $\sqrt2$, therefore $\VR(X,\sqrt2)=C_4$ as before. Similarly, for $r/2=\sqrt2/2$, the triple of balls passes through one common point \textup{(}the center of the square, $|zx_i|=\sqrt2/2=r/2$\textup{)}, but there is no strict inequality, therefore $\check C_{\sqrt2}(X;\R^2)=C_4$. As soon as $r>\sqrt2$:
+\begin{itemize}[leftmargin=*]
+\item diagonals appear \textup{(}their length is $\sqrt2<r$\textup{)}, and $\VR(X,r)$ becomes a complete graph on four vertices;
+\item three-element subsets with diameter $\sqrt2<r$ appear, and with them a four-element subset, so $\VR(X,r)=\Delta_3$;
+\item balls of radius $r/2>\sqrt2/2$ acquire a common point at each triple of vertices, therefore $\check C_r(X;\R^2)=\Delta_3$ in the normalization with balls of radius $r/2$.
+\end{itemize}
+In both complexes then $H_1=0$, $H_0=\Z$: the cycle is filled and the homology of the one-dimensional class disappears. The same effect in the original normalization of the lecture occurs earlier --- already for $r>\sqrt2/2$, since there the definition includes a ball of radius $r$, and not $r/2$. So, for the vertices of the unit square and $r$ between $1$ and $\sqrt2$, a cycle of four vertices implements a one-dimensional class, and for $r$ strictly smaller than $\sqrt2$ and tending to it, this class ``survives'' up to the scale $\sqrt2$ and disappears immediately after it---the simplest illustration of the persistent homology of the Vietoris-Rips complex.
+\end{proof}
+\begin{task}[paracompactness and partitioning of unity]
+A space is \emph{paracompact} if each of its open coverings can contain a locally finite open covering. Fact \textup{(}Stone, \textup{1948}\textup{)}\textup{:} every metric space is paracompact.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that for any open covering $\mathcal U = \{U_\alpha\}$ of the metric space $X$ there is a subdivided partition of unity\textup{:} such a locally finite family of continuous functions $\varphi_\alpha \colon X \to [0, 1]$ such that $\operatorname{supp} \varphi_\alpha \subset U_\alpha$ and $\sum_\alpha \varphi_\alpha \equiv 1$. 
+\item Explain how the partition of unity is used in the nerve lemma\textup{:} prove that the formula $f(x) = \sum_\alpha \varphi_\alpha(x) \, \alpha$ correctly defines a continuous mapping $f \colon X \to |\Nerve{\mathcal U}|$ into the geometric realization of the covering nerve. 
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{5} \textup{(}paracompactness and partitioning of unity\textup{)}]
+\textit{Part \textup{(a)}.} Let $\mathcal U=\{U_\alpha\}_{\alpha\in A}$ be an open covering of the metric space $X$. By Stone's theorem, $X$ is paracompact, which means that the covering $\mathcal U$ has a locally finite open refinement $\{W_\beta\}_{\beta\in B}$: each $W_\beta$ is open and lies in some $U_{\alpha(\beta)}$. A metric space is normal, and in a normal space every locally finite open covering has a locally finite open refinement whose elements' closures lie in the elements of the original covering \textup{(}standard compression lemma\textup{)}. Applying it to $\{W_\beta\}$, we obtain a locally finite open covering $\{V_\beta\}_{\beta\in B}$ with
+\[
+\overline{V_\beta}\subset W_\beta\subset U_{\alpha(\beta)}
+\]
+for all $\beta$ \textup{(}index $\alpha(\beta)$ is chosen for $W_\beta$ and is valid for the smaller set $V_\beta$\textup{)}. The elements of the covering can be considered non-empty: we discard the empty elements, the local finiteness and the covering are preserved.
+
+For each $\beta$ we set
+\[
+\psi_\beta(x)=\operatorname{dist}\bigl(x,\,X\setminus V_\beta\bigr).
+\]
+The function $\psi_\beta$ is continuous \textup{(}distance to a fixed set --- continuous function on the metric space\textup{)}, non-negative, strictly positive exactly on $V_\beta$ \textup{(}if $x\in V_\beta$, then together with some ball $B(x;\rho)$ lies in $V_\beta$, so the distance to the complement is not less $\rho>0$; if $x\notin V_\beta$ then $x\in X\setminus V_\beta$ and the distance is $0$\textup{)}, and
+\[
+\operatorname{supp}\psi_\beta=\overline{\{x\colon\psi_\beta(x)>0\}}=\overline{V_\beta}\subset U_{\alpha(\beta)} .
+\]
+
+Let us now define
+\[
+\Psi(x)=\sum_{\beta\in B}\psi_\beta(x),\qquad \varphi_\alpha(x)=\frac{1}{\Psi(x)}\sum_{\substack{\beta\in B\\ \alpha(\beta)=\alpha}}\psi_\beta(x),\quad \alpha\in A .
+\]
+The function $\Psi$ is well defined and continuous: the family $\{V_\beta\}$ is locally finite, so each point has a neighborhood in which only a finite many of the functions $\psi_\beta$ are nonzero, and in such a neighborhood the sum is a finite sum of continuous functions. In addition, $\Psi(x)>0$ for all $x$: the covering $\{V_\beta\}$ covers $X$, which means that for some $\beta$ we have $x\in V_\beta$ and $\psi_\beta(x)>0$. Therefore, division by $\Psi$ is legal, and all functions $\varphi_\alpha$ are continuous and non-negative.
+
+Let's check the required properties. Carrier: since $\{\varphi_\alpha>0\}\subset\bigcup_{\beta\colon\alpha(\beta)=\alpha}V_\beta$, and a subfamily of a locally finite family is itself locally finite, the closure of this union is equal to $\bigcup_{\beta\colon\alpha(\beta)=\alpha}\overline{V_\beta}$, and therefore
+\[
+\operatorname{supp}\varphi_\alpha\subset\bigcup_{\beta\colon\alpha(\beta)=\alpha}\overline{V_\beta}\subset U_\alpha .
+\]
+Normalization:
+\[
+\sum_{\alpha\in A}\varphi_\alpha(x)=\frac{1}{\Psi(x)}\sum_{\alpha\in A}\sum_{\substack{\beta\colon\alpha(\beta)=\alpha}}\psi_\beta(x)=\frac{1}{\Psi(x)}\sum_{\beta\in B}\psi_\beta(x)=1 ,
+\]
+since each $\beta$ falls into exactly one group. Hence, $\sum_\alpha\varphi_\alpha\equiv1$ and $\varphi_\alpha(x)\in[0,1]$.
+
+Local finiteness of the family $\{\varphi_\alpha\}$: due to the local finiteness of $\{V_\beta\}$, each point $x$ has a neighborhood $O$ intersecting only with a finite set of sets $V_\beta$, that is, the condition $V_\beta\cap O\ne\varnothing$ is satisfied only by a finite set of indices $\beta$, say $\beta_1,\dots,\beta_m$. Let $O_1\subset O$ be an open neighborhood of the same point $x$. If $\operatorname{supp}\varphi_\alpha\cap O_1\ne\varnothing$, then the set $\{\varphi_\alpha>0\}$, the closure of which the support is, also intersects $O_1$ \textup{(}otherwise $O_1$ would be a neighborhood of the complement $\{\varphi_\alpha=0\}$\textup{)}, and since $\{\varphi_\alpha>0\}\subset\bigcup_{\beta\colon\alpha(\beta)=\alpha}V_\beta$, some $V_\beta$ with $\alpha(\beta)=\alpha$ intersects $O$, that is, $\beta$ is included in the finite list $\beta_1,\dots,\beta_m$. This means that the support $\operatorname{supp}\varphi_\alpha$ intersects $O_1$ only for a finite number of indices $\alpha$ \textup{(}only for $\alpha(\beta_1),\dots,\alpha(\beta_m)$\textup{)}, that is, the family $\{\varphi_\alpha\}$ is locally finite.
+
+Thus, the family $\{\varphi_\alpha\}$ is locally finite and subject to the covering $\mathcal U$: this is the required partition of unity.
+
+\emph{Note about the formula from the note.} The expression $\max\{0,1-\operatorname{dist}(x,X\setminus V_\beta)/\rho_\beta\}$ from the note is equal to one outside $V_\beta$, since outside $V_\beta$ we have $\operatorname{dist}(x,X\setminus V_\beta)=0$; as a function concentrated inside $V_\beta$, it is therefore not suitable. To get a truncated function with support inside $V_\beta$, you need to take the distance to the set itself, and not to its complement:
+\[
+\psi_\beta(x)=\max\Bigl\{0,\ 1-\frac{\operatorname{dist}(x,V_\beta)}{\rho_\beta}\Bigr\},
+\qquad 0<\rho_\beta<\operatorname{dist}\bigl(V_\beta,\,X\setminus U_{\alpha(\beta)}\bigr);
+\]
+the last distance is positive due to $\overline{V_\beta}\subset U_{\alpha(\beta)}$, and then from $\operatorname{dist}(x,V_\beta)<\rho_\beta$ it follows $\operatorname{dist}(x,X\setminus U_{\alpha(\beta)})>0$, that is, $x\in U_{\alpha(\beta)}$, so $\operatorname{supp}\psi_\beta\subset U_{\alpha(\beta)}$. The above construction with $\psi_\beta=\operatorname{dist}(x,X\setminus V_\beta)$ is simpler: truncation is needed only to ensure that the values lie in $[0,1]$, but after normalization by $\Psi$ the values of $\varphi_\alpha$ automatically fall into $[0,1]$.
+
+\textit{Item \textup{(b)}.} Let us show that the formula
+\[
+f(x)=\sum_{\alpha\in A}\varphi_\alpha(x)\,\alpha
+\]
+correctly defines a continuous mapping $f\colon X\to|\Nerve{\mathcal U}|$ into the geometric realization of the covering nerve $\mathcal U=\{U_\alpha\}$.
+
+\emph{Correctness.} The geometric realization of $|\Nerve{\mathcal U}|$ consists of formal convex combinations $\sum s_\alpha\alpha$ of nerve vertices with non-negative coefficients whose sum is equal to one, for which the set $\{\alpha\colon s_\alpha>0\}$ is a nerve simplex, that is, a subfamily with a non-empty intersection. The kernel of the partition of unity is locally finite, so for each point $x$ only a finite number of coefficients $\varphi_\alpha(x)$ are nonzero, and the sum $\sum_\alpha\varphi_\alpha(x)\alpha$ is a finite convex combination: the coefficients are non-negative and add up to unity at point \textup{(a)}. Further, if $\varphi_\alpha(x)>0$, then $x\in\operatorname{supp}\varphi_\alpha\subset U_\alpha$, which means that all such $\alpha$ satisfy the condition $x\in U_\alpha$, that is
+\[
+\bigcap_{\alpha\colon\varphi_\alpha(x)>0}U_\alpha\ni x\ne\varnothing ,
+\]
+and therefore the set $\{\alpha\colon\varphi_\alpha(x)>0\}$ is a nerve simplex. Consequently, $f(x)$ really lies in the realization of this simplex, and hence in $|\Nerve{\mathcal U}|$.
+
+\emph{Continuity.} For each vertex $\alpha$ the function $\varphi_\alpha$ is continuous, so for any finite set of indices the sum $\sum\varphi_\alpha(x)\alpha$ is continuous over $x$. Local finiteness allows us to go to the limit: each point $x_0$ has a neighborhood $O$ on which only the functions $\varphi_{\alpha_1},\dots,\varphi_{\alpha_m}$ from a fixed finite set of indices are nonzero, and on $O$
+\[
+f(x)=\varphi_{\alpha_1}(x)\alpha_1+\dots+\varphi_{\alpha_m}(x)\alpha_m ,
+\]
+that is, $f|_O$ is a finite combination of continuous functions with constant coefficients; This means that $f$ is continuous at the point $x_0$ \textup{(}more precisely, it is continuous as a mapping into the space of formal linear combinations of vertices\textup{)}.
+
+Formally, it is convenient to reason as follows: realizations of nerve simplices form a locally finite closed covering $|\Nerve{\mathcal U}|$, and the sets
+\[
+X_\sigma=\Bigl\{x\in X\colon\sum_{\alpha\notin\sigma}\varphi_\alpha(x)=0\Bigr\},\qquad\sigma\in\Nerve{\mathcal U},
+\]
+are closed and cover $X$ \textup{(}if $\sigma$ is a simplex containing the support of the set $\{\alpha\colon\varphi_\alpha(x)>0\}$\textup{)}, and $f(X_\sigma)\subset|\sigma|$ and $f|_{X_\sigma}$ are continuous as a finite convex combination with continuous coefficients. Due to the local finiteness of the family $\{X_\sigma\}$ and the characteristic property of the weak topology on the simplicial complex \textup{(}continuity, it is enough to check the mapping $f$ is continuous on each closed simplex\textup{)}.
+
+\emph{Role in the nerve lemma.} The constructed mapping $f$ is the main technical step in the proof of the nerve lemma. It is precisely this that allows us to compare $X$ with $|\Nerve{\mathcal U}|$: for a good covering, the mapping $f$ turns out to be a homotopy equivalence, and the inverse \textup{(}up to homotopy\textup{)} mapping is constructed from the contractions of non-empty intersections $U_{\alpha_0}\cap\dots\cap U_{\alpha_k}$: point $y\in|\sigma|$, $\sigma=\{\alpha_0,\dots,\alpha_k\}$, a point of the set $U_{\alpha_0}\cap\dots\cap U_{\alpha_k}$ chosen continuously over $y$ using these contractions is matched. This implies $H_k(X;G)\cong H_k(\Nerve{\mathcal U};G)$. Note that a continuous mapping $f$ exists for any locally finite covering, and goodness is needed precisely at the step of constructing the inverse mapping: the intersections of elements of a good covering are contractible, which ensures homotopy equivalence.
+\end{proof}
+\begin{task}[higher homology of connected manifolds]
+Let us recall the fact used in chapter \textup{4}\textup{:} for a connected $n$-dimensional manifold $M$ without boundary
+\[
+H_n(M; \Z_2) = \begin{cases} \Z_2, & M \text{ compact}, \\ 0, & M \text{ non-compact}. \end{cases}
+\]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that a compact connected $n$-dimensional manifold without boundary cannot be covered by $n$ open sets so that all non-empty intersections of these sets are contractible. 
+\item Show that compactness in \textup{(a)} is essential\textup{:} the non-compact $\R^n$ has a good cover of just two elements. Also calculate $H_n(M; \Z_2)$ for $M = S^n$, $M = \R^n$, $M = $ open unit ball, $M = $ closed unit ball, and $M = S^1 \sqcup S^1$ \textup{(}in the latter case, compare the answer with the statement of fact for a connected circle and explain why connectedness is important\textup{)}.
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{6} \textup{(}higher homology of connected manifolds\textup{)}]
+\textit{Part \textup{(a)}.} Let $M$ be a compact connected $n$-dimensional manifold without boundary, $n\ge1$, and let, contrary to the assertion, there exist an open cover $\mathcal U=\{U_1,\dots,U_n\}$ of $n$ sets all of whose non-empty finite intersections are contractible. This coverage is good, so the nerve lemma applies: $M$ is homotopy equivalent to the geometric realization of its nerve \textup{(}the manifold is metrizable, and therefore paracompact, so the condition of the lemma is satisfied\textup{)}, and therefore
+\[
+H_k(M;\Z_2)\cong H_k\bigl(\Nerve{\mathcal U};\Z_2\bigr)
+\]
+for all $k$. The nerve $\Nerve{\mathcal U}$ is an abstract simplicial complex whose vertices are the covering elements, and there are at most $n$ of them. A simplex of dimension $k$ of a nerve is a set of $k+1$ different vertices, so for $k=n$ there are no such simplexes: $\dim\Nerve{\mathcal U}\le n-1$. This means $C_n(\Nerve{\mathcal U};\Z_2)=0$, whence
+\[
+H_n\bigl(\Nerve{\mathcal U};\Z_2\bigr)=0 .
+\]
+On the other hand, according to the fact adopted in the lecture about higher homology for a compact connected $n$-dimensional manifold without boundary
+\[
+H_n(M;\Z_2)=\Z_2\ne0 ,
+\]
+and this contradicts the previous equality, since homology isomorphism preserves the zero group. The resulting contradiction shows that such a variety does not have a good covering of $n$ open sets. In other words, for a compact connected $n$-dimensional manifold without boundary, any good covering contains at least $n+1$ elements --- which is consistent with the estimate of problem \textup{2}, point \textup{(c)}: for a covering of $n$ elements, all homologies of dimension $k\ge n$ must vanish. Note that the $n$-dimensional sphere $S^n$ has a good covering of $n+2$ elements \textup{(}open stars of the vertices of the boundary of the standard $(n+1)$-simplex; for $n=1$ these are three arcs from problem \textup{2}, point \textup{(a)}\textup{)}, so the found lower bound $n+1$ is exact in order of magnitude and, in In particular, for $n=1$, a cover of one element is obviously insufficient.
+
+\textit{Point \textup{(b)}.} Let us show that compactness is essential. The non-compact space $\R^n$ has a good cover of only two elements: these are the open half-spaces constructed in problem \textup{2}, point \textup{(b)}
+\[
+U_1=\{x\in\R^n\colon x_n<1\},\qquad U_2=\{x\in\R^n\colon x_n>-1\},
+\]
+both are convex \textup{(}and therefore contractible\textup{)}, with a convex \textup{(}contractible\textup{)} intersection $U_1\cap U_2=\{-1<x_n<1\}$; their nerve is a segment, a tree, and therefore $H_k(\R^n;\Z_2)=0$ for $k\ge1$, in particular $H_n(\R^n;\Z_2)=0$ for all $n\ge1$. So, for the non-compact $\R^n$, both statements \textup{(}and the presence of a covering of a few good elements, and the vanishing of higher homology\textup{)} are consistent with the fact about the non-compact case and do not give a contradiction --- precisely because of the equality $H_n=0$, the argument of clause \textup{(a)} does not work here.
+
+Let us now calculate $H_n(M;\Z_2)$ for the listed varieties; in all cases $n\ge1$ and the coefficients are taken in $\Z_2$.
+
+\emph{Sphere $S^n$.} This is a compact connected $n$-dimensional manifold without boundary, therefore, according to the fact from the lecture
+\[
+H_n(S^n;\Z_2)=\Z_2 .
+\]
+
+\emph{Space $\R^n$.} This is a non-compact connected $n$-dimensional manifold without boundary, so $H_n(\R^n;\Z_2)=0$; the same answer is given by calculation through a good covering of two half-spaces and through the contractibility of $\R^n$ \textup{(}it was proved in problem \textup{2}, point \textup{(b)}\textup{)}, since the homology of a point is trivial in positive dimensions.
+
+\emph{Open unit ball.} An open ball is homeomorphic to $\R^n$ \textup{(}for example, by mapping $x\mapsto x/(1-|x|)$ in the opposite direction --- $y\mapsto y/(1+|y|)$\textup{)}, and the homeomorphism induces an isomorphism of homology; Moreover, an open ball is non-compact, connected and has no boundary like a manifold. Therefore
+\[
+H_n\bigl(B^n;\Z_2\bigr)=H_n(\R^n;\Z_2)=0 .
+\]
+
+\emph{Closed unit ball.} It is important here that the fact from the lecture was formulated for manifolds \emph{without boundary}, and a closed ball is a compact manifold \emph{with boundary} $\partial B^n=S^{n-1}$, so this fact cannot be applied to it. A closed ball is convex, which means it is contractible, its homologies are the homologies of a point, and
+\[
+H_n\bigl(\overline B^n;\Z_2\bigr)=0 .
+\]
+
+\emph{Disjoint union $M=S^1\sqcup S^1$.} This is a compact disconnected one-dimensional manifold without boundary with two connected components. As in problem \textup{1}, point \textup{(b)}, the chain groups of the disjunctive union decompose into a direct sum of the component chain groups, and the boundary operator does not go beyond the component; therefore
+\[
+H_k(M_1\sqcup M_2;\Z_2)\cong H_k(M_1;\Z_2)\oplus H_k(M_2;\Z_2)
+\]
+for any varieties $M_1,M_2$. In particular,
+\[
+H_1\bigl(S^1\sqcup S^1;\Z_2\bigr)\cong H_1(S^1;\Z_2)\oplus H_1(S^1;\Z_2)\cong\Z_2\oplus\Z_2 ,
+\]
+that is, the group is isomorphic to $\Z_2^2$, not $\Z_2$. Comparing with the fact for an \emph{connected} manifold, we conclude that the connection in this fact is essential: for each individual compact connected manifold without boundary, the leading homology is equal to $\Z_2$, but for a disconnected union of such manifolds, the leading group is the direct sum of the contributions of the components, that is, $\Z_2^{\oplus c}$, where $c$ is the number of compact connected components. \textup{(}If there were a non-compact component among the components, its contribution to $H_n$ would be equal to zero, so the formula $H_n=\Z_2^{\oplus c}$ with the number $c$ of compact components remains true.\textup{)} Connection is also needed in the non-compact case: for a disconnected union of non-compact components, the leading group is also zero, but this is not a consequence of the statement about \emph{connected} case, but a consequence of the same splitting into components.
+
+So, to summarize:
+\begin{gather*}
+H_n(S^n;\Z_2)=\Z_2,\qquad H_n(\R^n;\Z_2)=0,\qquad H_n(B^n;\Z_2)=0,\\
+H_n(\overline B^n;\Z_2)=0,\qquad H_1(S^1\sqcup S^1;\Z_2)=\Z_2\oplus\Z_2 .
+\end{gather*}
+From these examples it is clear why in the problem \textup{(a)} both factual reservations are essential: the compactness \textup{(}for a non-compact $\R^n$ the leading homologies are zero, and a good covering of a small number of elements exists\textup{)} and the absence of a boundary \textup{(}for a closed ball, a manifold with a boundary, the leading homologies are also zero\textup{)}. It was precisely the equality $H_n(M;\Z_2)=\Z_2$ that was the only source of contradiction, from which the impossibility of a good covering of $n$ elements was deduced.
+\end{proof}
+\end{document}

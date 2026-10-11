@@ -1,0 +1,90 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\input{pres_preamble_en.tex}
+\title[Lesson 5 objectives]{Lesson objectives \textup{5}: intersection property in normed spaces}
+\subtitle{Lesson based on lecture \textup{5} (chapter \textup{10}) of the minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>}
+\author{Alexey A.~Tuzhilin}
+\date{Beijing University, October 2026}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Lesson plan (\textup{50} minutes)}
+\begin{enumerate}
+\item Task \textup{1}. Dual norm and polarity --- \textup{10} minutes.
+\item Task \textup{2}. Minkowski terms and index $\Gamma(B)$ --- \textup{12} minutes.
+\item Task \textup{3}. Spawning ball --- \textup{10} minutes.
+\item Task \textup{4}. The square $\ell_\infty^2$ generates --- \textup{18} minutes.
+\end{enumerate}
+\medskip
+For reference\textup{:} $F^*(u)=\sup\{\langle x,u\rangle: F(x)\le1\}$, $B^\circ=\{u: \langle x,u\rangle\le1\ \forall x\in B\}$, $\Gamma(B)=\inf\{\lambda\ge1: Q\preceq_M\lambda B\ \forall Q\in\mathcal S(B)\}$.
+\end{frame}
+
+\begin{frame}{Problem \textup{1}: dual norm and polars}
+\begin{block}{Formulation}
+Prove that $F^*$ is a norm on $V$ and that its unit ball is equal to the polar $B^\circ$.
+\end{block}
+\begin{block}{Normal}
+Limb\textup{:} $F^*(u)=\max_{x\in B}\langle x,u\rangle<\infty$. Uniformity\textup{:} $B=-B$ gives $F^*(-u)=F^*(u)$, so $F^*(tu)=|t|F^*(u)$. Triangle inequality and non-negativity --- transition to the supremum. Positive definiteness\textup{:} $\langle x,u\rangle=0$ for all $x\in B$, and $B$ contains the basis $V$.
+\end{block}
+\begin{block}{Unit ball}
+$F^*(u)\le1$ is equivalent to $\langle x,u\rangle\le1$ for all $x\in B$, that is, $u\in B^\circ$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{2}: Minkowski terms}
+\begin{block}{Formulation}
+For $A\preceq_M C$ (that is, $A+D=C$) prove\textup{:} \textup{(a)} $\diam A\le\diam C$\textup{;} \textup{(b)} the relation is reflexive and transitive\textup{;} \textup{(c)} if $Q\preceq_M\lambda B$ and $\mu\ge\lambda$, then $Q\preceq_M\mu B$.
+\end{block}
+\begin{block}{Solution}
+\textup{(a)} For $a,a'\in A$ and $d\in D$ points $a+d,a'+d\in C$, then $|a-a'|\le\diam C$.
+\textup{(b)} $A+\{0\}=A$\textup{;} if $A+D=C$ and $C+E=F$, then $A+(D+E)=F$.
+\textup{(c)} $Q+\bigl(D+(\mu-\lambda)B\bigr)=\mu B$, since $\lambda B+(\mu-\lambda)B=\mu B$.
+\end{block}
+\begin{block}{Output}
+The set of admissible $\lambda$ is a half-line, therefore $\Gamma(B)=\min\Lambda$ for $\Lambda\ne\varnothing$, and $\Gamma(B)=1$ is equivalent to the admissibility of $\lambda=1$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{3}: generating ball}
+\begin{block}{Formulation}
+Prove the equivalence\textup{:} \textup{(i)} $B$ generating\textup{;} \textup{(ii)} $\Gamma(B)\le1$\textup{;} \textup{(iii)} $\Gamma(B)=\tau(B)=1$. Does the norm then have the intersection property?
+\end{block}
+\begin{block}{Solution}
+\textup{(i)} $\Leftrightarrow$ \textup{(ii)}\textup{:} the generating ball means $Q\preceq_M B$ for all $Q\in\mathcal S(B)$, that is, the admissibility of $\lambda=1$, which is equivalent to $\Gamma(B)\le1$ (the set of admissible $\lambda$ is a half-line).
+\textup{(ii)} $\Leftrightarrow$ \textup{(iii)}\textup{:} by the main theorem $\tau(B)=\Gamma(B)$, and $\Gamma(B)\ge1$ by definition.
+\end{block}
+\begin{block}{Intersection property}
+Yes\textup{:} the intersection property is $\tau(B)<\infty$, and here $\tau(B)=1$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{4}: the square $\ell_\infty^2$ generates}
+\begin{block}{Intersections of shifts}
+For $B=[-1,1]^2$ and $Q=\bigcap_\alpha(B+x_\alpha)\ne\varnothing$ we have
+\[
+Q=\prod_{i=1}^2[a_i,b_i],\qquad a_i=\sup_\alpha(x_{\alpha,i}-1),\quad b_i=\inf_\alpha(x_{\alpha,i}+1),
+\]
+where $b_i-a_i\le2$.
+\end{block}
+\begin{block}{Minkowski term}
+The rectangle $D=\prod_i[-1-a_i,\,1-b_i]$ is not empty, compact and convex, and $Q+D=\prod_i[-1,1]=B$. This means that $Q\preceq_M B$, that is, $\Gamma(B)=\tau(B)=1$\textup{:} generates a square.
+\end{block}
+\end{frame}
+
+\begin{frame}{Lesson summary \textup{5}}
+\begin{block}{What has been proven}
+\begin{itemize}
+\item The dual norm of $F^*$ is a norm, and its unit ball is a polar $B^\circ$.
+\item The relation $A\preceq_M C$ is reflexive, transitive and monotone in scale\textup{:} the set of admissible $\lambda$ is a half-line.
+\item The generating ball is equivalent to $\Gamma(B)=\tau(B)=1$, and then the norm has the intersection property.
+\item For the square $\ell_\infty^2$ the index is equal to \textup{1}\textup{:} all intersections of shifts are rectangles, and the rectangle is a term of the Minkowski square.
+\end{itemize}
+\end{block}
+\begin{block}{Perspective}
+Chapter classification \textup{10}\textup{:} for $\ell_p^n$ the intersection property is satisfied for $n\le2$ and for $n\ge3$, $p\in\{2,\infty\}$.
+\end{block}
+\end{frame}
+
+\end{document}

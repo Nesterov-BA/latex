@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Learning objectives for the lesson \textup{1}}\\[2mm]
+{\large Applications of GH-distance: $\MST$-spectrum, Borsuk problem and combinatorial invariants}\\[2mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, lesson on presentation \textup{1} (chapter \textup{1} minicourse)}
+\end{center}
+
+\section*{Lesson plan (\textup{50} minutes)}
+
+\begin{itemize}[leftmargin=*]
+\item Problem \textup{1} (existence of $\MST$ and non-uniqueness) --- \textup{6} minutes\textup{;}
+\item Problem \textup{2} (independence of the set of lengths $\MST$) --- \textup{12} minutes\textup{;}
+\item Problem \textup{3} (duality of clique coverage and chromatic number) --- \textup{8} minutes\textup{;}
+\item Problem \textup{4} (duality in terms of GH distances) --- \textup{6} minutes\textup{;}
+\item Problem \textup{5} (Assuad criterion) --- \textup{10} minutes\textup{;}
+\item Problem \textup{6} (Bandelt--Chepoy--Laurent theorem and $\lone$-dimension) --- \textup{8} minutes.
+\end{itemize}
+
+The lecture proves the \textup{cut}-characterization of the $\MST$-spectrum, the theorem on the $\MST$-spectrum in terms of the distance to the simplex, the criterion for the existence of a Borsuk tiling, as well as theorems on the clique covering number, the chromatic number and the Manhattan dimension in terms of GH-distances. The sheet contains only those statements of the chapter \textup{1} that are presented in the lecture without proof, such as the known facts\textup{:} independence of the set of lengths $\MST$ from the choice of tree, duality of the clique covering and the chromatic number, the Assuad criterion, the Bandelt--Chepoy--Laurent theorem and its corollary on the $\lone$-dimension.
+
+\section*{Reference information}
+
+\begin{itemize}[leftmargin=*]
+\item \emph{$\MST$-spectrum} of a finite metric space $X$ with $\#X=n$ --- a descending ordered set of minimum spanning tree edge lengths\textup{:} $\sigma(X)=(\sigma_1,\dots,\sigma_{n-1})$.
+\item \emph{Cut} of the set $X$ is an unordered pair $c=\{S,S'\}$, where $S$ is a proper non-empty subset and $S'=X\setminus S$. Cut pseudometric\textup{:} $\delta_c(x,y)=1$ if $x$ and $y$ lie on opposite sides of the cut, and $\delta_c(x,y)=0$ otherwise. If $\mathcal C$ is a family of cuts and $\lambda_c>0$, then $d_{\mathcal C,\lambda}=\sum_{c\in\mathcal C}\lambda_c\delta_c$ is a cut pseudometric, and $\mathrm{CUT}_{\#X}$ is the cone of all such functions.
+\item \emph{Partitions}: $\mathcal D_{k+1}(X)$ --- set of partitions of $X$ into $k+1$ non-empty subsets, $\alpha(D)=\min_{i<j}|X_iX_j|$, where $|X_iX_j|=\inf\{|xy|:x\in X_i,\ y\in X_j\}$. The lecture proves the \emph{cut}-characterization of the $\MST$-spectrum\textup{:} $\sigma_k=\max_{D\in\mathcal D_{k+1}(X)}\alpha(D)$ for all $k=1,\dots,n-1$.
+\item \emph{Clique cover number} $\CliqueCover(G)$ --- the smallest $k$ for which $V(G)$ is covered by $k$ cliques\textup{;} \emph{chromatic number} $\Chromatic(G)$ --- the smallest $k$ for which there is a regular coloring of $G$ in $k$ colors. $\bar G$ denotes an additional graph, and $\omega(G)$ denotes the size of the largest clique.
+\item \emph{$(a,b)$-spaces}: for $0<a<b\le2a$ and a graph $G$, $Y_G$ denotes the space in which adjacent vertices are at a distance $a$, and non-adjacent vertices are at a distance $b$; through $X_G=Y_{\bar G}$ --- a space with distances $b$ on the edges of $G$ and $a$ outside the edges; through $a\Delta_m$ --- $m$-point space with pairwise distances $a$. The lecture proves the formulas $\CliqueCover(G)=\min\{m\ge1:2\ghdist{a\Delta_m}{Y_G}<b\}$ and $\Chromatic(G)=\min\{m\ge1:2\ghdist{a\Delta_m}{X_G}<b\}$.
+\item \emph{Incompatible cuts}: $\{A,A'\}$ and $\{B,B'\}$ are incompatible if all four intersections $A\cap B$, $A\cap B'$, $A'\cap B$, $A'\cap B'$ are non-empty. \emph{Asteroid triple} --- three cuts from which one can choose one side $\widetilde A$, $\widetilde B$, $\widetilde C$ so that these three sets are pairwise disjoint.
+\item \emph{Nest hypergraph} $\Nest{\mathcal C}$ --- a hypergraph with a set of vertices $\mathcal C$, whose hyperedges are all pairs of incompatible cuts and all asteroid triplets\textup{;} correct coloring of a hypergraph --- a coloring without monochrome hyperedges. \emph{A family of simple graphs} $\Simple{\mathcal C}$ is obtained by replacing each asteroid triple with one of its three edges; hyperedges of size $2$ are preserved.
+\item \emph{Manhattan \textup{(}$\lone$-\textup{)}dimension} $\dim_{\lone}(X)$ --- the smallest $m$ for which $X$ is isometrically embedded in $\mathbb R^m_1$.
+\end{itemize}
+
+\section*{Tasks}
+
+\begin{task}[existence of $\MST$ and non-uniqueness]
+Let $X$ be a finite metric space, $\#X=n\ge2$.
+
+\textup{a)} Prove that a minimum spanning tree of a complete graph on $X$ with edge weights $|xy|$ exists.
+
+\textup{b)} Give an example of a finite metric space in which several $\MST$ have different sets of edges and the same set of lengths.
+
+\textbf{Hint.} At \textup{(a)} the graph is finite, so you can iterate over spanning trees or use a greedy algorithm. At point \textup{(b)}, a four-point space is suitable, in which four distances are equal to $1$ (edges of the cycle $C_4$), and two are equal to $2$ (diagonals).
+\end{task}
+
+\begin{task}[independence of the set of lengths $\MST$ from the choice of tree]
+Let $X$ be a finite metric space, $\#X=n\ge2$, and $T_1$, $T_2$ be two minimal spanning trees on $X$.
+
+\textup{a)} Prove the cut property\textup{:} if $T$ is $\MST$ and $c=\{S,S'\}$ is a cut, then among the edges connecting $S$ and $S'$ there is an edge lying in $T$, and its length is minimal among all such edges.
+
+\textup{b)} By induction on the number of edges lying in $T_1$, but not in $T_2$, prove that the multisets of edge lengths $T_1$ and $T_2$ coincide. Thus, the definition of $\sigma(X)$ is correct.
+\end{task}
+
+\begin{task}[duality of clique coverage and chromatic number]
+Let $G$ be a finite simple graph.
+
+\textup{a)} Prove that $\CliqueCover(G)=\Chromatic(\bar G)$ and $\Chromatic(G)=\CliqueCover(\bar G)$.
+
+\textup{b)} Prove that $\Chromatic(G)\ge\omega(G)$ and $\CliqueCover(G)\ge\omega(\bar G)$ (the second inequality is the first one applied to $\bar G$).
+
+\textup{c)} Find a graph for which $\Chromatic(G)>\omega(G)$ and $\CliqueCover(G)<\Chromatic(G)$.
+
+\textbf{Hint.} In paragraph \textup{(a)} cliques $G$ correspond to independent sets $\bar G$ and vice versa, so a clique covering is a coloring of the complement. In step \textup{(b)} the vertices of the largest clique are pairwise adjacent and therefore must receive different colors. At point \textup{(c)} a $W_5$ wheel on five outer and one central vertices is suitable.
+\end{task}
+
+\begin{task}[duality in terms of GH distances]
+Let $0<a<b\le2a$ and $G$ be a finite simple graph.
+
+\textup{a)} Check the consistency of the definitions\textup{:} $X_G=Y_{\bar G}$ and $Y_G=X_{\bar G}$.
+
+\textup{b)} Derive the lecture theorem on the chromatic number in terms of the GH-distance from the clique cover number theorem\textup{:} check that the $(a,b)$-spaces corresponding to $G$ and $\bar G$ are obtained from each other by replacing the roles of $a$ and $b$.
+
+\textbf{Hint.} In $Y_G$, adjacent vertices are at a distance of $a$, and non-adjacent are at a distance of $b$\textup{;} in $X_G=Y_{\bar G}$, adjacent vertices in $G$ (that is, non-adjacent in $\bar G$) are at a distance of $b$, and non-adjacent are at a distance of $a$. Now compare the lecture formulas for $\CliqueCover(G)$ and $\Chromatic(G)$.
+\end{task}
+
+\begin{task}[Assuad criterion]
+A finite metric space $(X,d)$ is isometrically embedded in a rectangular space $\mathbb R^m_1$ (equivalently\textup{:} in some $L_1$-space) if and only if $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$ for a finite family of cuts $\mathcal C$ and coefficients $\lambda_c>0$ (Assuad criterion).
+
+\textup{a)} Prove the sufficiency of\textup{:} from the expansion into a sum of cut pseudometrics and construct an isometric embedding.
+
+\textup{b)} Prove the necessity\textup{:} show that each coordinate of an isometric embedding is decomposed into a sum of cut pseudometrics with respect to thresholds.
+
+\textup{c)} Explain why the coefficients can be considered strictly positive and why the family of cuts is finite.
+
+\textbf{Hint.} In step \textup{(a)}, assign to each cut $c$ a coordinate $\bigl(\sqrt{\lambda_c}\,\delta_{c}(x,\cdot)\bigr)$, that is, an indicator of the side of the cut containing $x$. In paragraph \textup{(b)} for one coordinate $|x_i-y_i|=\sum_{t}\delta_{\{x_i\le t<y_i\}}(x,y)$. In step \textup{(c)}, combine cuts with the same pseudometrics and discard cuts with a zero coefficient.
+\end{task}
+
+\begin{task}[Bandelt--Chepoy--Laurent theorem and $\lone$-dimension]
+Let $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$, $\lambda_c>0$, be a cut metric on a finite set $X$.
+
+\textup{a)} State the Bandelt--Chepoy--Laurent theorem\textup{:} $(X,d)$ is isometrically embedded in $\mathbb R^m_1$ if and only if the nested hypergraph $\Nest{\mathcal C}$ is $m$-colorable, and at the same time $\dim_{\lone}(X)=\Chromatic(\Nest{\mathcal C})$.
+
+\textup{b)} Prove the corollary\textup{:} $(X,d)$ is embedded in $\mathbb R^m_1$ if and only if the family $\Simple{\mathcal C}$ contains an $m$-colorable graph, and $\dim_{\lone}(X)=\min_{G\in\Simple{\mathcal C}}\Chromatic(G)$.
+
+\textup{c)} Verify the corollary using the example of a four-point space of $\lone$-dimension $2$.
+
+\textbf{Hint.} In step \textup{(b)} replace each hyperedge of size $3$ (asteroid triple) with one regular edge and take advantage of the fact that a correct coloring of any such graph is also correct for the hypergraph, and vice versa. At point \textup{(c)} the cycle metric $C_4$ from problem \textup{1}\textup{:} is suitable; it is decomposed into the sum of two cut pseudometrics with coefficients $1$, and the corresponding pair of cuts is incompatible, so $\Chromatic(\Nest{\mathcal C})=2$.
+\end{task}
+
+\end{document}

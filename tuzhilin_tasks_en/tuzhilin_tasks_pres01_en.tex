@@ -1,0 +1,211 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\input{pres_preamble_en.tex}
+\title[Lesson 1 objectives]{Lesson objectives \textup{1}: $\MST$-spectrum, Borsuk problem and combinatorial invariants}
+\subtitle{Lesson on the presentation \textup{1} of the minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>}
+\author{Alexey A.~Tuzhilin}
+\date{Beijing University, October 2026}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Lesson plan (\textup{50} minutes)}
+\begin{enumerate}
+\item Task \textup{1}. \textup{cut}-characterization of the $\MST$-spectrum --- \textup{8} minutes.
+\item Task \textup{2}. $\MST$-spectrum through GH-distance --- \textup{10} minutes.
+\item Task \textup{3}. The criterion for the existence of a Borsuk partition is --- \textup{8} minutes.
+\item Task \textup{4}. Click coverage number and chromatic number --- \textup{12} minutes.
+\item Task \textup{5}. Manhattan unit --- \textup{12} minutes.
+\end{enumerate}
+\medskip
+At the presentation \textup{1} these results were only formulated, and the evidence was outlined. The tasks fill precisely these gaps.
+\end{frame}
+
+\begin{frame}{Task \textup{1}: \textup{cut}-characterization of the $\MST$-spectrum}
+\begin{block}{Formulation}
+Let $X$ be a finite metric space with $\#X = n$ and $\sigma(X) = (\sigma_1, \dots, \sigma_{n-1})$ its $\MST$-spectrum. Prove that for each $k = 1, \dots, n-1$
+\[
+\sigma_k = \max_{D \in \Dm{k+1}{X}} \alphaD{D},
+\]
+where $\Dm{k+1}{X}$ is a partition of $X$ into $k+1$ non-empty part, and $\alphaD{D} = \min_{i<j} |X_i X_j|$.
+\end{block}
+\begin{block}{Note}
+Remove from the minimum spanning tree $T$ its $k$ largest edges and bound $\alphaD{D_T}$ from below in terms of $\sigma_k$\textup{;} then for an arbitrary partition of $D$, construct a graph $G_D$ on its parts and bound $\alphaD{D}$ from above in terms of $\sigma_k$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solving problem \textup{1}: steps \textup{1}--\textup{2}}
+\begin{block}{Step \textup{1}: MST cut property}
+If $e$ is an edge of the tree $T$, and $A$ and $B$ are the sets of vertices of two subtrees after removing $e$, then
+\[
+d(e) = \min\bigl\{ |ab| : a \in A,\ b \in B \bigr\}.
+\]
+Otherwise, replacing $e$ with a shorter edge $ab$ would reduce the weight of the skeleton.
+\end{block}
+\begin{block}{Step \textup{2}: estimate $\alphaD{D_T} \ge \sigma_k$}
+Let us remove from $T$ its $k$ largest edges: the forest $T'$ has $k+1$ components, and the partition $D_T$ has a set of component vertices. The edge $T$ connecting different parts of $D_T$ does not lie in $T'$, which means its length is $\ge \sigma_k$ and the step \textup{1} distance between the parts is also $\ge \sigma_k$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solving problem \textup{1}: steps \textup{3}--\textup{4}}
+\begin{block}{Step \textup{3}: estimate $\alphaD{D} \le \sigma_k$}
+Let $D = \{X_1, \dots, X_{k+1}\} \in \Dm{k+1}{X}$. Graph $G_D$: vertices --- parts of $D$, edges --- edges of tree $T$ connecting different parts (weight --- length of edge $T$). The graph $G_D$ is connected and has $\ge k$ edges. Take $k$ smallest\textup{:} among any $k$ distinct edges $T$ there is an edge of length $\le \sigma_k$. This means $\alphaD{D} \le \sigma_k$.
+\end{block}
+\begin{block}{Step \textup{4}: conclusion}
+From steps \textup{2} and \textup{3} the maximum of $\alphaD{D}$ over all $D \in \Dm{k+1}{X}$ is equal to $\sigma_k$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{2}: $\MST$-spectrum via GH-distance}
+\begin{block}{Formulation}
+Let $\#X = n$ and $\lambda \ge 2 \diam X$. Prove that for each $k = 1, \dots, n-1$
+\[
+\sigma_k(X) = \lambda - 2 \ghdist{\lambda \Delta_{k+1}}{X}.
+\]
+Why is the condition $\lambda \ge 2\diam X$ important?
+\end{block}
+\begin{block}{Note}
+Apply problem \textup{1} and formula
+\[
+2 \ghdist{\lambda\Delta_m}{X} = \inf_{D \in \Dm{m}{X}} \max\bigl\{\diam D,\ \lambda - \alphaD{D},\ \diam X - \lambda\bigr\}.
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Solving problem \textup{2}: steps \textup{1}--\textup{3}}
+\begin{block}{Steps \textup{1}--\textup{2}}
+According to problem \textup{1} $\sigma_k = \max_{D \in \Dm{k+1}{X}} \alphaD{D}$. Let's substitute $m = k+1$ into the formula for the distance to the simplex:
+\[
+2\ghdist{\lambda\Delta_{k+1}}{X} = \inf_{D \in \Dm{k+1}{X}} \max\bigl\{\diam D,\ \lambda - \alphaD{D},\ \diam X - \lambda\bigr\}.
+\]
+\end{block}
+\begin{block}{Step \textup{3}: maximum is $\lambda - \alphaD{D}$}
+Since $\diam D \le \diam X$ and $\lambda \ge 2 \diam X$, then $\lambda - \alphaD{D} \ge \lambda - \diam X \ge \diam X \ge \diam D$, and $\diam X - \lambda \le 0$. Therefore
+\[
+2\ghdist{\lambda\Delta_{k+1}}{X} = \lambda - \sup_{D \in \Dm{k+1}{X}} \alphaD{D} = \lambda - \sigma_k .
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{2}: the role of the condition $\lambda \ge 2\diam X$}
+\begin{block}{Why you can't refuse $\lambda \ge 2\diam X$}
+It is this condition that gives $\lambda - \alphaD{D} \ge \diam D$ for all partitions of $D$, that is, it allows us to remove $\diam D$ from the maximum. For $\lambda < 2\diam X$, the maximum in the formula for the distance to the simplex does not reduce to $\lambda - \alphaD{D}$, and the diameter of the parts of the partition appears in the answer.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{3}: criterion for the existence of a Borsuk tiling}
+\begin{block}{Formulation}
+Let $X$ be bounded, $m \le \#X$ and $0 < \lambda < \diam X$. Prove\textup{:} $X$ admits partitioning into $m$ subsets of strictly smaller diameter if and only if
+\[
+2 \ghdist{\lambda\Delta_m}{X} < \diam X.
+\]
+\end{block}
+\begin{block}{Note}
+In the formula for the distance to the simplex, the third term is equal to $\diam X - \lambda > 0$\textup{;} the equality $2\ghdist{\lambda\Delta_m}{X} = \diam X$ means that $\diam D = \diam X$ for all partitions $D \in \Dm{m}{X}$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{3}}
+\begin{block}{The upper bound is always correct}
+For any $D \in \Dm{m}{X}$ all three numbers do not exceed $\diam X$ (here $\alphaD{D} \ge 0$ and $\lambda < \diam X$), so
+\[
+2\ghdist{\lambda\Delta_m}{X} \le \diam X .
+\]
+\end{block}
+\begin{block}{Equality is equivalent to the absence of Borsuk partition}
+If there is $D$ with $\diam D < \diam X$, then all three numbers are strictly less than $\diam X$, which means $2\ghdist{\lambda\Delta_m}{X} < \diam X$. Conversely, if $2\ghdist{\lambda\Delta_m}{X} < \diam X$, then for some $D$ $\diam D < \diam X$ holds.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{4}: click coverage and chromatic number}
+\begin{block}{Formulation}
+Let $G = (V,E)$ be a finite graph and $0 < a < b \le 2a$. Prove that
+\[
+\CliqueCover(G) = \min\bigl\{ m \ge 1 : 2 \ghdist{a\Delta_m}{Y_G} < b \bigr\},
+\]
+and also that $\Chromatic(G) = \min\{ m \ge 1 : 2\ghdist{a\Delta_m}{X_G} < b\}$.
+\end{block}
+\begin{block}{Note}
+For a $(a,b)$-space, the simplex distance formula gives the third term $b-a<b$ and the second term $\le 0$\textup{;} then use $\Chromatic(G) = \CliqueCover(\overline{G})$ and $X_G = Y_{\overline{G}}$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{4}: click coverage}
+\begin{block}{Incomplete graph $G$}
+Then $\diam Y_G = b$ and
+\[
+2 \ghdist{a\Delta_m}{Y_G} = \inf_{D \in \Dm{m}{Y_G}} \max\bigl\{\diam D,\ a - \alphaD{D},\ b - a\bigr\}.
+\]
+Since $b - a < b$ and $\alphaD{D} \ge a$, the condition $2\ghdist{a\Delta_m}{Y_G} < b$ is equivalent to the existence of a partition with $\diam D < b$, that is, a partition into $m$ cliques.
+\end{block}
+\begin{block}{Full graph}
+$G$ is full: $\CliqueCover(G) = 1$ and $Y_G = a\Delta_n$\textup{;} since $a\Delta_m \subset a\Delta_n$, we have $\ghdist{a\Delta_m}{a\Delta_n} = 0 < b$ and the minimum is $1$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{4}: chromatic number}
+\begin{block}{Reduction to an additional graph}
+In space $X_G$, edges $G$ correspond to distance $b$, and not edges --- $a$, so $X_G = Y_{\overline{G}}$. A regular coloring of $G$ is exactly the clique covering of $\overline{G}$:
+\[
+\Chromatic(G) = \CliqueCover(\overline{G}) = \min\bigl\{ m \ge 1 : 2 \ghdist{a\Delta_m}{Y_{\overline{G}}} < b \bigr\}
+= \min\bigl\{ m \ge 1 : 2 \ghdist{a\Delta_m}{X_G} < b \bigr\}.
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{5}: Manhattan dimension}
+\begin{block}{Formulation}
+Let $d = \sum_{c \in \mathcal C} \lambda_c \delta_c$ with $\lambda_c > 0$ be a representation of the finite metric space $X$ through the family of cuts $\mathcal C$, and let $0 < a < b \le 2a$. Prove that
+\[
+\dim_{\lone}(X) = \min_{G \in \Simple(\mathcal C)} \Chromatic(G)
+= \min_{G \in \Simple(\mathcal C)} \min\bigl\{ m \ge 1 : 2 \ghdist{a\Delta_m}{C_G} < b \bigr\},
+\]
+where $C_G$ is a $(a,b)$-space on $\mathcal C$ (adjacent vertices correspond to $b$, non-adjacent ones correspond to $a$). Consider Assuad's criterion and the Bandelt--Chepoy--Laurent theorem known.
+\end{block}
+\begin{block}{Note}
+Let's first deal with the hypergraph $\Nest(\mathcal C)$: each asteroid triple in the correct coloring is not monochromatic, so it can be replaced by a single edge. Then apply problem \textup{4} to each graph $G \in \Simple(\mathcal C)$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{5}, point \textup{(a)}}
+\begin{block}{From hypergraph to simple graphs}
+Let $\xi$ be a regular $m$-coloring of $\Nest(\mathcal C)$. Each asteroid triple has two different colored vertices\textup{:} add an edge between them and delete the triple. We obtain a graph $G \in \Simple(\mathcal C)$ for which $\xi$ is still correct.
+\end{block}
+\begin{block}{Back}
+Let $G \in \Simple(\mathcal C)$ and $\xi$ be correct for $G$. Then every hyperedge of size $2$ is an edge $G$, and every asteroid triple contains an edge $G$, which means it is not monochromatic. Therefore,
+\[
+\Chromatic\bigl(\Nest(\mathcal C)\bigr) = \min_{G \in \Simple(\mathcal C)} \Chromatic(G).
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{5}, point \textup{(b)}}
+\begin{block}{Substitution}
+By the Bandelt--Chepoy--Laurent theorem, $\dim_{\lone}(X) = \Chromatic(\Nest(\mathcal C))$. By point \textup{(a)} this is the minimum of $\Chromatic(G)$ over $G \in \Simple(\mathcal C)$, and by problem \textup{4} for each such $G$ (with a set of vertices $\mathcal C$)
+\[
+\Chromatic(G) = \min\bigl\{ m \ge 1 : 2 \ghdist{a\Delta_m}{C_G} < b \bigr\}.
+\]
+From here
+\[
+\dim_{\lone}(X) = \min_{G \in \Simple(\mathcal C)} \min\bigl\{ m \ge 1 : 2 \ghdist{a\Delta_m}{C_G} < b \bigr\}.
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Lesson summary \textup{1}}
+\begin{block}{What has been proven}
+\begin{enumerate}
+\item $\MST$-spectrum is expressed through partitions\textup{:} $\sigma_k = \max_{D \in \Dm{k+1}{X}} \alphaD{D}$.
+\item $\sigma_k = \lambda - 2\ghdist{\lambda\Delta_{k+1}}{X}$ for $\lambda \ge 2\diam X$.
+\item A Borsuk partition exists if and only if $2\ghdist{\lambda\Delta_m}{X} < \diam X$.
+\item $\CliqueCover(G)$ and $\Chromatic(G)$ are calculated through the $(a,b)$-spaces $Y_G$, $X_G$.
+\item $\dim_{\lone}(X)$ is calculated through the chromatic numbers of graphs from $\Simple(\mathcal C)$.
+\end{enumerate}
+\end{block}
+\begin{block}{Next lesson}
+Ultrametrization: properties of ultrametrics, consequences of the main theorem, trees, Young's constant and $\MST$-spectrum.
+\end{block}
+\end{frame}
+
+\end{document}

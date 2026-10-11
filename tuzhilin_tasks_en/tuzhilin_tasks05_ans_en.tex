@@ -1,0 +1,332 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Lesson Problem Solutions \textup{5}}\\[2mm]
+{\large Intersection property in finite-dimensional normed spaces}\\[2mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, lesson based on lecture \textup{5} (chapter \textup{10} minicourse)}
+\end{center}
+
+Numbering of tasks --- as in the sheet <<Learning tasks for the lesson \textup{5}>>; designations are taken from this sheet. Recall that $A\preceq_M C$ means the existence of a compact convex $D$ with $A+D=C$, and
+\begin{equation}\label{eq:gamma}
+\Gamma(B)=\inf\bigl\{\lambda\ge1: Q\preceq_M\lambda B\ \text{for all}\ Q\in\mathcal S(B)\bigr\}.
+\end{equation}
+\begin{task}[dual norm, polars and support function]
+Prove that the function $F^*(u)=\sup\{\langle x,u\rangle: F(x)\le1\}$ is a norm on $V$ and that its unit ball coincides with the polar $B^\circ$ of the ball $B$. Explain why the support function $h=F^*|_{S^{n-1}}$ completely defines the ball $B$.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{1} \textup{(}dual norm, polars and support function\textup{)}]
+
+Let $V$ be a finite-dimensional normed space with norm $F$, and let $B=\{x: F(x)\le1\}$ be its unit ball. Let us recall the properties that we will use: $B$ is non-empty, compact, convex, symmetric \textup{(}that is, $B=-B$\textup{)} and contains some neighborhood of zero; the latter is equivalent to the fact that $B$ linearly generates $V$ \textup{(}in a finite-dimensional space --- that the interior of $B$ is non-empty\textup{)}.
+
+\textit{Step \textup{1}\textup{:} $F^*$ is defined and finite.} Since $B$ is nonempty and compact and the function $x\mapsto\langle x,u\rangle$ is continuous, the supremum in the definition of $F^*$ is achieved and finite\textup{:}
+\[
+F^*(u)=\max_{x\in B}\langle x,u\rangle<\infty .
+\]
+In particular, $F^*(u)\ge\langle0,u\rangle=0$ for all $u\in V$.
+
+\textit{Step \textup{2}\textup{:} homogeneity.} For $t>0$, replacing the variable $x\mapsto x$ gives
+\[
+F^*(tu)=\sup\{\langle x,tu\rangle: F(x)\le1\}=t\sup\{\langle x,u\rangle: F(x)\le1\}=tF^*(u).
+\]
+Further, since $B=-B$, that is, $\{-x: x\in B\}=B$, we have
+\[
+F^*(-u)=\sup_{x\in B}\langle x,-u\rangle=\sup_{x\in B}\langle -x,u\rangle=\sup_{y\in B}\langle y,u\rangle=F^*(u).
+\]
+Together with what has already been proven, this gives $F^*(tu)=|t|F^*(u)$ for all $t\in\R$, including $t=0$.
+
+\textit{Step \textup{3}\textup{:} triangle inequality.} For any $x\in B$, $\langle x,u+v\rangle=\langle x,u\rangle+\langle x,v\rangle\le F^*(u)+F^*(v)$ holds, since each term does not exceed the corresponding maximum. Passing to the maximum in $x\in B$, we obtain
+\[
+F^*(u+v)\le F^*(u)+F^*(v).
+\]
+
+\textit{Step \textup{4}\textup{:} positive definiteness.} Let $F^*(u)=0$. Then $\langle x,u\rangle\le0$ for all $x\in B$. But $B=-B$, therefore, together with $x$, $-x$ also lies in $B$, whence $-\langle x,u\rangle\le0$, that is, $\langle x,u\rangle\ge0$. This means $\langle x,u\rangle=0$ for all $x\in B$. The set $B$ generates $V$ \textup{(}it contains a neighborhood of zero\textup{)}, so $u$ vanishes on the entire $V$, that is, $u=0$. So, $F^*\ge0$ and $F^*(u)=0$ only for $u=0$.
+
+Three proven properties \textup{(}finiteness, absolute homogeneity, triangle inequality\textup{)} together with positive definiteness mean that $F^*$ is a norm on $V$.
+
+\textit{Step \textup{5}\textup{:} the unit ball of norm $F^*$ coincides with the polar.} By definition, the polar from the sheet is $B^\circ=\{u: \langle x,u\rangle\le1$ for all $x\in B\}$, and the unit ball of norm $F^*$ is $B_{F^*}=\{u: F^*(u)\le1\}$. Let's compare the definitions:
+\[
+u\in B_{F^*}\iff \max_{x\in B}\langle x,u\rangle\le1\iff \langle x,u\rangle\le1\ \ \text{for all}\ x\in B\iff u\in B^\circ .
+\]
+Here the first equivalence is the definition of $F^*$, the second is the standard property of the maximum \textup{(}if all values do not exceed one, then so does the maximum, and vice versa\textup{)}. So $B_{F^*}=B^\circ$.
+
+\textit{Step \textup{6}\textup{:} the support function determines the ball.} Let us first show that $F^*$ is reconstructed from the support function $h=F^*|_{S^{n-1}}$. Indeed, by step \textup{2} for $u\ne0$
+\[
+F^*(u)=\|u\|\cdot F^*\Bigl(\frac{u}{\|u\|}\Bigr)=\|u\|\cdot h\Bigl(\frac{u}{\|u\|}\Bigr),
+\]
+so the values of $F^*$ are uniquely determined by the values of $h$ on the unit sphere. Let us now show that $F^*$ determines $B$. For any point $v\notin B$, the ball $B$ and the point $v$ are separated by a support hyperplane\textup{:} there is $u\ne0$ with $\langle v,u\rangle>F^*(u)=\max_{x\in B}\langle x,u\rangle$ \textup{(}separability theorem for a compact convex set\textup{)}. Therefore
+\[
+B=\bigcap_{u\ne0}\{x: \langle x,u\rangle\le F^*(u)\},
+\]
+that is, $B$ is exactly the set of solutions to the system of inequalities defined by the values of $F^*$. This means that $h$ determines $F^*$, $F^*$ determines $B=B_{F^*}$, and the unit ball determines the norm\textup{:} $F(x)=\inf\{t>0: x\in tB\}$. Thus, the support function on the unit sphere completely determines the ball $B$ and the norm $F$.
+
+Let us note two consequences of the above reasoning. First\textup{-}First, the correspondence $B\mapsto B^\circ$ isinvolution on symmetric convex bodies: applying step \textup{5} twice, we obtain $B^{\circ\circ}=B$,because$F^{**}=F$. In\textup{-}secondly, polar$B^\circ$is also compact, convex, symmetrical and containsa neighborhood of zero, therefore the polar itself is the unit ball of some norm - namely the norm $F^*$.
+
+\end{proof}
+
+\begin{task}[Minkowski terms and invariant $\Gamma(B)$]
+Prove the following properties of the relation $A\preceq_M C$\textup{:}
+\begin{enumerate}
+\item[(a)] if $A\preceq_M C$, then $\diam A\le\diam C$\textup{;}
+\item[(b)] relation is reflexive and transitive\textup{;}
+\item[(c)] if $Q\preceq_M\lambda B$ and $\mu\ge\lambda$ then $Q\preceq_M\mu B$.
+\end{enumerate}
+Deduce from this that the set of admissible $\lambda$ in the definition of $\Gamma(B)$ is a half-line, and the equality $\Gamma(B)=1$ is equivalent to the fact that $\lambda=1$ is admissible.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{2} \textup{(}properties of the relation $A\preceq_M C$ and the structure of the set of admissible $\lambda$\textup{)}]
+
+Recall the definition\textup{:} $A\preceq_M C$ means that there is a compact convex $D$ with $A+D=C$, where $A+D=\{a+d: a\in A,\ d\in D\}$ is the Minkowski sum. Below, $A$ and $C$ are compact and convex, as stated in the worksheet.
+
+\textit{Item \textup{(a)}\textup{:} the diameter does not increase.} Let $A+D=C$. Take arbitrary points $a_1,a_2\in A$ and any point $d\in D$ \textup{(}the set $D$ is non-empty, since $A+D=C\ne\varnothing$\textup{)}. Then $a_1+d\in C$ and $a_2+d\in C$, that is, both points are obtained by shifting $a_1$ and $a_2$ by the same vector $d$. Therefore
+\[
+\|a_1-a_2\|=\|(a_1+d)-(a_2+d)\|\le\diam C .
+\]
+The right side does not depend on $a_1,a_2$, which means we can go to the exact supremum from a pair of points in the set $A$\textup{:}
+\[
+\diam A=\sup_{a_1,a_2\in A}\|a_1-a_2\|\le\diam C .
+\]
+In other words, $A\preceq_M C$ implies $A+d\subseteq C$ for any $d\in D$, so that $A$ lies in $C$ up to a shift.
+
+\textit{Point \textup{(b)}\textup{:} reflexivity and transitivity.} Reflexivity\textup{:} for $D=\{0\}$ is the sum $A+D=A$, and the one-point set is compact and convex, so $A\preceq_M A$.
+
+Transitivity\textup{:} let $A+D_1=B$ and $B+D_2=C$, where $D_1,D_2$ are compact and convex. Then \textup{(}Minkowski sum is associative\textup{)}
+\[
+A+(D_1+D_2)=(A+D_1)+D_2=B+D_2=C .
+\]
+The sum $D_1+D_2$ is compact as a continuous image of the compact set $D_1\times D_2$ under the mapping $(x,y)\mapsto x+y$ and is convex as the sum of convex sets \textup{(}if $d_1,d_1'\in D_1$, $d_2,d_2'\in D_2$ and $t\in[0,1]$, then $t(d_1+d_2)+(1-t)(d_1'+d_2')=(td_1+(1-t)d_1')+(td_2+(1-t)d_2')\in D_1+D_2$\textup{)}. So $A\preceq_M C$.
+
+\textit{Item \textup{(c)}\textup{:} monotonicity in factor.} Let $Q\preceq_M\lambda B$, that is, $Q+D=\lambda B$ for some compact convex $D$, and let $\mu\ge\lambda\ge0$. Let $D'=D+(\mu-\lambda)B$; this set is compact and convex for the same reasons as in paragraph \textup{(b)}. Then
+\[
+Q+D'=Q+D+(\mu-\lambda)B=\lambda B+(\mu-\lambda)B .
+\]
+It remains to note that for convex $B$ and numbers $s,t\ge0$ the equality $sB+tB=(s+t)B$ holds. The inclusion of $\subseteq$ is a convexity\textup{:} at $x,y\in B$
+\[
+sx+ty=(s+t)\Bigl(\frac{s}{s+t}\,x+\frac{t}{s+t}\,y\Bigr)\in(s+t)B ,
+\]
+and the reverse inclusion is obtained by multiplying $B=\frac{s}{s+t}B+\frac{t}{s+t}B\subseteq B$ by $s+t$. This means $\lambda B+(\mu-\lambda)B=\mu B$, whence $Q\preceq_M\mu B$, which is what was required.
+
+\textit{Transition to the half-line.} Let us denote
+\[
+\Lambda(B)=\{\lambda\ge1: Q\preceq_M\lambda B\ \ \text{for all}\ Q\in \mathcal S(B)\}
+\]
+set of admissible $\lambda$ from the definition of $\Gamma(B)$, so $\Gamma(B)=\inf\Lambda(B)$ \textup{(}and $\Gamma(B)=\infty$ if $\Lambda(B)=\varnothing$\textup{)}. Section \textup{(c)} shows that $\Lambda(B)$ is the upper set in $[1,\infty)$\textup{:} if $\lambda\in\Lambda(B)$ and $\mu\ge\lambda$, then $\mu\in\Lambda(B)$.
+
+Let us additionally show that $\Lambda(B)$ is closed in $[1,\infty)$. Let $\lambda_k\in\Lambda(B)$ and $\lambda_k\to\lambda$. For each $k$ we have $Q+D_k=\lambda_k B$ with compact convex $D_k$. Let us fix the point $q_0\in Q$; then from the inclusion $Q\subseteq Q+D_k=\lambda_kB$ it follows that $D_k\subseteq\lambda_kB-q_0$ \textup{(}for $d\in D_k$ the point $q_0+d$ lies in $\lambda_kB$\textup{)}; the numbers $\lambda_k$ are bounded, so all $D_k$ lie in one compact set. By Blaschke's choice theorem, there is a subsequence $D_{k_j}$ that converges in the Hausdorff metric to some compact convex $D$. The Minkowski sum is continuous in both arguments in the Hausdorff metric, so by passing to the limit in the equalities $Q+D_{k_j}=\lambda_{k_j}B$ we obtain $Q+D=\lambda B$, that is, $\lambda\in\Lambda(B)$.
+
+The closed upper set in $[1,\infty)$ is either empty or has the form $[\gamma,\infty)$ with $\gamma=\min\Lambda(B)=:\gamma(B)$\textup{:} if $\Lambda(B)\ne\varnothing$ then $\gamma=\min\Lambda(B)$ \textup{(}the minimum exists by closure and boundedness from below\textup{)} and due to the supremacy of $\Lambda(B)\supseteq[\gamma,\infty)$, and by definition $\gamma$ --- $\Lambda(B)\subseteq[\gamma,\infty)$. So, the set of admissible $\lambda$ is a half-line $[\Gamma(B),\infty)$ \textup{(}perhaps empty\textup{)}, and inf in the definition of $\Gamma$ is reached only when it is finite. In particular, $\Gamma(B)\ge1$ automatically.
+
+Finally, the equality $\Gamma(B)=1$ is equivalent to the admissibility of $\lambda=1$. In one direction this is clear from the half-line $[\Gamma(B),\infty)$\textup{:} if $\Gamma(B)=1$, then $1\in[\Gamma(B),\infty)=\Lambda(B)$. On the other hand\textup{:} if $1\in\Lambda(B)$, then $\inf\Lambda(B)=1$ due to $\Lambda(B)\subseteq[1,\infty)$. In essence, the admissibility of $\lambda=1$ means that every non-empty intersection of translations of the ball $B$ is itself a summand of the Minkowski ball $B$, that is, that $B$ is generating.
+
+\end{proof}
+
+\begin{task}[generating ball and basic equivalence]
+Using the definition of a generating ball and the main theorem of chapter \textup{10} ($\tau(B)=\Gamma(B)$), prove that the conditions are equivalent\textup{:} \textup{(i)} $B$ generating\textup{;} \textup{(ii)} $\Gamma(B)\le1$\textup{;} \textup{(iii)} $\Gamma(B)=\tau(B)=1$. Is it true that then the norm $F$ has the intersection property?
+
+\end{task}
+
+\begin{proof}[Solution to problem \textup{3} \textup{(}generating ball and basic equivalence\textup{)}]
+
+Let us recall three definitions from the sheet. The family of intersections of shifts $\mathcal S(B)$ consists of all non-empty sets of the form $\bigcap_{\alpha\in I}(B+x_\alpha)$. A ball $B$ is called generating if each $Q\in\mathcal S(B)$ is a term of the Minkowski ball $B$, that is, $Q\preceq_M B$. The norm $F$ has the intersection property if $\tau(B)<\infty$, where $\tau(B)$ is the topological threshold from chapter \textup{10}. The main theorem of chapter \textup{10} states that $\tau(B)=\Gamma(B)$ for any finite-dimensional normed space and that $B$ is generating if and only if $\Gamma(B)=\tau(B)=1$.
+
+Thus, we need to prove the equivalence of the conditions \textup{(i)} $B$ is generating, \textup{(ii)} $\Gamma(B)\le1$, \textup{(iii)} $\Gamma(B)=\tau(B)=1$, using the definition of $\Gamma$ and the main theorem.
+
+\textit{Point \textup{(i)} $\Rightarrow$ \textup{(ii)}.} If $B$ is generating, then each $Q\in\mathcal S(B)$ satisfies $Q\preceq_M B$, that is, $\lambda=1$ is admissible in the definition
+\[
+\Gamma(B)=\inf\bigl\{\lambda\ge1: Q\preceq_M\lambda B\ \ \text{for all}\ Q\in\mathcal S(B)\bigr\}.
+\]
+Therefore, $1$ belongs to the set over which the infimum is taken, and this infimum itself is $\ge1$, since all $\lambda$ in it are subject to the condition $\lambda\ge1$. This means $\Gamma(B)=1\le1$, and even more so $\Gamma(B)\le1$.
+
+Note that the restriction $\lambda\ge1$ in the definition of $\Gamma$ is not a loss of generality\textup{:} the ball $B$ itself lies in $\mathcal S(B)$ \textup{(}for example, $B=B+0$\textup{)}, and if $B\preceq_M\lambda B$, then by problem \textup{2}\textup{(a)} $\diam B\le\diam(\lambda B)=\lambda\diam B$, whence $\lambda\ge1$, since $\diam B>0$. In other words, the values $\lambda<1$ are obviously invalid, and therefore $\Gamma(B)\ge1$ is automatic.
+
+\textit{Item \textup{(ii)} $\Rightarrow$ \textup{(iii)}.} Let $\Gamma(B)\le1$. As just shown, $\Gamma(B)\ge1$ means $\Gamma(B)=1$. By the main theorem of the chapter \textup{10} $\tau(B)=\Gamma(B)=1$, therefore $\Gamma(B)=\tau(B)=1$, that is, \textup{(iii)} is satisfied.
+
+\textit{Point \textup{(iii)} $\Rightarrow$ \textup{(i)}.} Let $\Gamma(B)=\tau(B)=1$. You can refer directly to the main theorem \textup{(}it already says that generativeness is equivalent to the equality $\Gamma=\tau=1$\textup{)}. In order not to rely on this part of the theorem, we present a direct argument. From $\Gamma(B)=1$ it follows that $\lambda=1$ is admissible in the definition of $\Gamma$. Indeed, the set of admissible $\lambda$ is the half-line $[\Gamma(B),\infty)$ \textup{(}problem \textup{2}\textup{)}; for $\Gamma(B)=1$ it starts from one, so one is acceptable. The admissibility of $\lambda=1$ means exactly that $Q\preceq_M B$ for every $Q\in\mathcal S(B)$, and this is the definition of a generating ball. So $B$ is generative.
+
+The three implications complete the cycle \textup{(i)} $\Rightarrow$ \textup{(ii)} $\Rightarrow$ \textup{(iii)} $\Rightarrow$ \textup{(i)}, and the conditions are equivalent.
+
+\textit{Does $F$ have the intersection property?} Yes, it does. By definition, the norm $F$ has the intersection property if and only if $\tau(B)<\infty$, and under the conditions \textup{(iii)} $\tau(B)=1$ \textup{(}and in general any of the equivalent points gives $\Gamma(B)=1<\infty$, whence, by the main theorem, $\tau(B)<\infty$\textup{)}. Moreover, the generating ball delivers not just the finiteness of the threshold, but its smallest possible value\textup{:} $\tau(B)=1$. Conversely, if $\Gamma(B)=\infty$, then by the main theorem $\tau(B)=\infty$ and $F$ do not have the intersection property.
+
+It is useful to emphasize that in the condition \textup{(ii)} the inequality $\Gamma(B)\le1$ cannot be strict\textup{:} it means exactly $\Gamma(B)=1$. In other words, for a normed space there are only two possible cases\textup{:} either $\Gamma(B)=\tau(B)=1$ and the generating ball \textup{(}the norm has the intersection property\textup{)}, or $\Gamma(B)>1$, and there may not be any admissible $\lambda$ at all, so $\Gamma(B)=\tau(B)=\infty$ and the intersection properties no.
+
+\end{proof}
+
+\begin{task}[producing balls]
+Let $B_1\subset V_1$ and $B_2\subset V_2$ be unit balls.
+
+\textup{a)} Prove that $\Gamma(B_1\times B_2)=\max\{\Gamma(B_1),\Gamma(B_2)\}$.
+
+\textup{b)} Using the basic equivalence, derive a similar formula for $\tau$ and corollary\textup{:} the Cartesian product of normed spaces has the intersection property if and only if both factors have this property.
+
+\end{task}
+
+\begin{proof}[Solution to the problem \textup{4} \textup{(}product of balls\textup{)}]
+
+Let $V_1,V_2$ be finite-dimensional normed spaces, $B_1\subset V_1$, $B_2\subset V_2$ be their unit balls. Consider the direct product with the norm
+\[
+\|(x_1,x_2)\|=\max\{\|x_1\|_1,\|x_2\|_2\},
+\]
+whose unit ball is $B_1\times B_2$: the inequality $\max\{\|x_1\|_1,\|x_2\|_2\}\le1$ is equivalent to the pair of inequalities $\|x_1\|_1\le1$, $\|x_2\|_2\le1$. Let us immediately note that $\dim(V_1\times V_2)=\dim V_1+\dim V_2<\infty$, so the main theorem of chapter \textup{10} applies to the product.
+
+\textit{Step \textup{1}\textup{:} the intersections of the shifts are separated coordinatewise.} The shift of a product is the product of shifts\textup{:}
+\[
+(B_1\times B_2)+(x_1,x_2)=(B_1+x_1)\times(B_2+x_2).
+\]
+Therefore, the intersection of any non-empty family of shifts is arranged like this\textup{:}
+\[
+\bigcap_{\alpha\in I}\bigl((B_1\times B_2)+(x_1^\alpha,x_2^\alpha)\bigr)
+=\Bigl(\bigcap_{\alpha\in I}(B_1+x_1^\alpha)\Bigr)\times\Bigl(\bigcap_{\alpha\in I}(B_2+x_2^\alpha)\Bigr),
+\]
+and such an intersection is non-empty if and only if both factors are non-empty \textup{(}the product is non-empty exactly if both factors are non-empty \textup{)}. So,
+\[
+\mathcal S(B_1\times B_2)=\{Q_1\times Q_2: Q_1\in\mathcal S(B_1),\ Q_2\in\mathcal S(B_2)\} .
+\]
+
+\textit{Step \textup{2}\textup{:} the decomposability of the term is equivalent to the coordinate decomposability.} Let us prove that
+\[
+Q_1\times Q_2\preceq_M\lambda(B_1\times B_2)\iff Q_1\preceq_M\lambda B_1\ \ \text{and}\ \ Q_2\preceq_M\lambda B_2
+\]
+for non-empty compact convex $Q_1,Q_2$ and $\lambda\ge0$.
+
+If $Q_1+D_1=\lambda B_1$ and $Q_2+D_2=\lambda B_2$ with compact convex $D_1,D_2$, then $D_1\times D_2$ is compact and convex and
+\[
+(Q_1\times Q_2)+(D_1\times D_2)=(Q_1+D_1)\times(Q_2+D_2)=\lambda B_1\times\lambda B_2=\lambda(B_1\times B_2),
+\]
+since multiplying a product by a number is coordinatewise. This gives the implication from right to left.
+
+Conversely, let $Q_1\times Q_2+D=\lambda B_1\times\lambda B_2$ for some compact convex $D\subset V_1\times V_2$. Let's put
+\[
+D_1=D\cap(V_1\times\{0\}),\qquad D_2=D\cap(\{0\}\times V_2).
+\]
+These sets are compact and convex as the intersections of a convex compact $D$ with linear subspaces. Let's check that $Q_1+D_1=\lambda B_1$. The inclusion of $\subseteq$ is obvious since $Q_1+D_1\subseteq Q_1\times Q_2+D=\lambda B_1\times\lambda B_2$ in the first coordinate. For reverse inclusion, take $x\in\lambda B_1$ and any point $q_2\in Q_2$ \textup{(}the set $Q_2$ is non-empty\textup{)}. The point $(x,q_2)$ lies in $Q_1\times Q_2+D$, which means there are $q_1\in Q_1$ and $d=(d_1,d_2)\in D$ with $(q_1+d_1,q_2+d_2)=(x,q_2)$. From the equality of the second coordinates we obtain $d_2=0$, that is, $d\in D_1$, and then $x=q_1+d_1\in Q_1+D_1$. So, $Q_1+D_1=\lambda B_1$, that is, $Q_1\preceq_M\lambda B_1$. Symmetrically, taking the point $q_1\in Q_1$ and an arbitrary $y\in\lambda B_2$, we obtain $Q_2+D_2=\lambda B_2$.
+
+\textit{Item \textup{(a)}\textup{:} formula for the $\Gamma$ product.} By steps \textup{1} and \textup{2} the condition for the admissibility of $\lambda$ for the product is equivalent to the simultaneous admissibility of $\lambda$ for both factors\textup{:}
+\[
+\Lambda(B_1\times B_2)=\Lambda(B_1)\cap\Lambda(B_2),
+\]
+where $\Lambda(B_i)=\{\lambda\ge1: Q\preceq_M\lambda B_i$ for all $Q\in\mathcal S(B_i)\}$. By problem \textup{2} each $\Lambda(B_i)$ is either an empty set or a half-line $[\Gamma(B_i),\infty)$. The intersection of two half-lines $[\gamma_1,\infty)\cap[\gamma_2,\infty)=[\max\{\gamma_1,\gamma_2\},\infty)$ is non-empty, and its infimum is equal to $\max\{\gamma_1,\gamma_2\}$\textup{;} if at least one of the sets is empty, then the intersection is empty, and then by definition $\Gamma(B_1\times B_2)=\infty=\max\{\Gamma(B_1),\Gamma(B_2)\}$ taking into account the convention $\Gamma=\infty$ for the empty $\Lambda$. So, always
+\[
+\Gamma(B_1\times B_2)=\max\{\Gamma(B_1),\Gamma(B_2)\}.
+\]
+
+\textit{Item \textup{(b)}\textup{:} formula for $\tau$ and the intersection property.} By the main theorem of chapter \textup{10} the topological threshold coincides with $\Gamma$ in every finite-dimensional normed space, therefore
+\[
+\tau(B_1\times B_2)=\Gamma(B_1\times B_2)=\max\{\Gamma(B_1),\Gamma(B_2)\}=\max\{\tau(B_1),\tau(B_2)\}.
+\]
+By definition, a norm on a product has the intersection property if and only if $\tau(B_1\times B_2)<\infty$. Since the maximum of two numbers is finite exactly when both are finite, we get
+\[
+\tau(B_1\times B_2)<\infty\iff \tau(B_1)<\infty\ \ \text{and}\ \ \tau(B_2)<\infty .
+\]
+This means that the direct product of normed spaces \textup{(}with a max-norm\textup{)} has the intersection property exactly when both factors have it. Moreover, the equality $\tau(B_1\times B_2)=1$ holds if and only if $\tau(B_1)=\tau(B_2)=1$, that is, when both factors are generating balls.
+
+Induction extends both formulas to any finite number of factors\textup{:} $\Gamma(B_1\times\dots\times B_k)=\max_i\Gamma(B_i)$ and $\tau(B_1\times\dots\times B_k)=\max_i\tau(B_i)$, so the product has the intersection property if and only if everyone has it factor.
+
+\end{proof}
+
+\begin{task}[polyhedra\textup{:} classification and prism]
+Formulate the classification of centrally symmetric polyhedra from chapter \textup{10}\textup{:} for an $n$-dimensional centrally symmetric polyhedron $B$ the intersection property, finiteness of $\Gamma(B)$, generativeness and representability are equivalent
+\[
+B=P_1\times\dots\times P_k\times[-1,1]^\varepsilon
+\]
+with centrally symmetric polygons $P_i$ and $2k+\varepsilon=n$, and in all these cases $\Gamma(B)=\tau(B)=1$.
+
+\textup{a)} Check that for $n\le3$ such representations are exhausted by the segment, square and prisms over centrally symmetric polygons.
+
+\textup{b)} Derive a corollary\textup{:} A three-dimensional polyhedral normed space has the intersection property if and only if its unit ball is a prism over a centrally symmetric polygon.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{5} \textup{(}classification of polyhedra and prism\textup{)}]
+
+\textit{Classification from chapter \textup{10}.} Let $B$ be an $n$-dimensional centrally symmetric polyhedron. Then the following four conditions are equivalent\textup{:} \textup{(i)} the norm with the unit ball $B$ has the intersection property\textup{;} \textup{(}ii\textup{)} the quantity $\Gamma(B)$ is finite\textup{;} \textup{(}iii\textup{)} the ball $B$ is generating\textup{;} \textup{(}iv\textup{)} $B$ will be represented in the form
+\[
+B=P_1\times\dots\times P_k\times[-1,1]^{\varepsilon},
+\]
+where $P_1,\dots,P_k$ are centrally symmetric polygons \textup{(}that is, two-dimensional centrally symmetric polyhedra\textup{)} and $2k+\varepsilon=n$. In all these cases $\Gamma(B)=\tau(B)=1$.
+
+Equivalence \textup{(i)}--\textup{(}iii\textup{)} --- this is the main theorem of chapter \textup{10} \textup{(}problem \textup{3}\textup{)} together with the definition of the intersection property\textup{:} $\Gamma(B)$ is finite if and only if the half-line of admissible $\lambda$ is non-empty, and according to the main theorem $\tau(B)=\Gamma(B)$. The remaining equivalence \textup{(}iv\textup{)} --- the content part of the classification\textup{:} a polyhedron has the property of intersection exactly when it is decomposed into a product of polygons and segments. Note that a product of this type actually has the intersection property\textup{:} according to problem \textup{4} its $\Gamma$ is the maximum of $\Gamma$ factors, and for two-dimensional balls and the segment $\Gamma=1$ \textup{(}in dimension $\le2$ all norms have the intersection property; what was said below for $n\le3$ confirms\textup{)}.
+
+\textit{Item \textup{(a)}\textup{:} of dimension $n\le3$.} The condition $2k+\varepsilon=n$ with integers $k\ge0$, $\varepsilon\in\{0,1,\dots\}$ is parsed by dimensions\textup{:}
+\begin{itemize}
+\item $n=1$\textup{:} $2k+\varepsilon=1$ gives only $k=0$, $\varepsilon=1$, that is, $B=[-1,1]$ is a segment.
+\item $n=2$\textup{:} $2k+\varepsilon=2$ gives $k=1$, $\varepsilon=0$ \textup{(}the polygon itself $P_1$\textup{)} or $k=0$, $\varepsilon=2$ \textup{(}square $[-1,1]^2$\textup{)}. So, two-dimensional balls with the intersection property are exactly centrally symmetric polygons\textup{;} the square also fits, and it also falls into the first case with $P_1=[-1,1]^2$ as the product of two segments.
+\item $n=3$\textup{:} $2k+\varepsilon=3$ gives only $(k,\varepsilon)=(1,1)$ and $(0,3)$. In the first case, $B=P_1\times[-1,1]$ is a prism over a centrally symmetric polygon $P_1$; in the second, $B=[-1,1]^3$ is a cube, which is a prism over a square, that is, already contained in the first case. This means that in dimension \textup{3} the list is exhausted by prisms over centrally symmetric polygons \textup{(}including a cube for $P_1=[-1,1]^2$ and rectangular parallelepipeds for $P_1$ equal to a parallelogram\textup{)}.
+\end{itemize}
+There are no other possibilities for $n\le3$\textup{:} the equation $2k+\varepsilon=n$ has only written solutions for $n\le3$.
+
+\textit{Point \textup{(b)}\textup{:} corollary in dimension \textup{3}.} Let $V$ be a three-dimensional space whose unit ball is the polyhedron $B$. According to the classification condition \textup{(i)}, the presence of the intersection property is equivalent to the representability of \textup{(iv)}. For $2k+\varepsilon=3$ this is possible only for $(k,\varepsilon)=(1,1)$, that is, $B=P_1\times[-1,1]$, where $P_1$ is a centrally symmetric polygon. So,
+\[
+\text{intersection property}\iff B\ \text{--- prism over a centrally symmetric polygon}.
+\]
+The inverse implication has already been noted\textup{:} if $B=P_1\times[-1,1]$, then by problem \textup{4} $\Gamma(B)=\max\{\Gamma(P_1),\Gamma([-1,1])\}=1$, since for two-dimensional $P_1$ and for the segment $\Gamma=1$ \textup{(}for $n=2$ all balls are centrally symmetric polygons, and for $n=1$ they are segments\textup{)}. This means that $\tau(B)=\Gamma(B)=1<\infty$ and the norm has the intersection property.
+
+Note that among three-dimensional polyhedra, for example, the octahedron \textup{(}ball of norm $\ell_1^3$\textup{)} and the dodecahedron\textup{:} octahedron has $6$ vertices do not have the intersection property, while a prism over a $2m$-gon has $2m+2\ge8$ vertices, and a cube has $8$ vertices, so the octahedron does not fall into the list of prisms.
+
+\end{proof}
+
+\begin{task}[examples\textup{:} square $\ell_\infty^2$ and classification $\ell_p^n$]
+Let $V=\R^2$, $F(x)=\max\{|x_1|,|x_2|\}$ and $B=[-1,1]^2$.
+
+\textup{a)} Prove that $\Gamma(B)=\tau(B)=1$. Verify that the intersection of any non-empty family of translations of a square has the form $Q=[a_1,b_1]\times[a_2,b_2]$, where $b_i-a_i\le2$, and that $Q$ is a term of the Minkowski square $B$.
+
+\textup{b)} Using the classification $\Gamma(B_p^n)=1$ for $n\le2$ and for $n\ge3$, $p\in\{2,\infty\}$, as well as $\Gamma(B_p^n)=\infty$ for $n\ge3$, $p\notin\{2,\infty\}$, explain why for $n\ge3$ $\ell_2^n$ and $\ell_\infty^n$ have the intersection property, but $\ell_1^n$ and $\ell_4^n$ do not.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{6} \textup{(}square $\ell_\infty^2$ and classification $\ell_p^n$\textup{)}]
+
+\textit{Item \textup{(a)}\textup{:} square.} Let $V=\R^2$, $F(x)=\max\{|x_1|,|x_2|\}$, $B=[-1,1]^2$. A square is the product of two unit segments\textup{:}
+\[
+B=B_1\times B_2,\qquad B_1=B_2=[-1,1]\subset\R,
+\]
+and the sup-norm on $\R^2$ is exactly the max-norm of the product, so problem \textup{4} applies.
+
+Let us first describe all intersections of shifts of the segment. The shift is the segment $[-1,1]+t=[-1+t,1+t]$ of length $2$, and the intersection of any non-empty family of such segments is the segment $[a,b]$ with $b=\inf_\alpha(1+t_\alpha)$ and $a=\sup_\alpha(-1+t_\alpha)$; in particular, it lies in any of the segments of the family, so its length does not exceed $2$\textup{:}
+\[
+b-a\le2 .
+\]
+Moreover, for any segment $[a,b]$ with $b-a\le2$ we have
+\[
+[a,b]+[-1-a,\,1-b]=[-1,1],
+\]
+since the sum of segments is a segment with ends $a+(-1-a)=-1$ and $b+(1-b)=1$, and the term $[-1-a,1-b]$ is non-empty exactly for $b-a\le2$. This means that each intersection of translations of a segment is a term of the Minkowski segment, that is, the segment \textup{(}one-dimensional ball\textup{)} is generating, and $\Gamma(B_1)=\Gamma(B_2)=1$.
+
+The intersections of the translations of the square are split coordinatewise \textup{(}task \textup{4}, step \textup{1}\textup{)}:
+\[
+\mathcal S(B)=\{Q_1\times Q_2: Q_i\in\mathcal S(B_i)\}=\bigl\{[a_1,b_1]\times[a_2,b_2]: b_i-a_i\le2\bigr\},
+\]
+that is, the intersection of any non-empty family of translations of a square is a rectangle $Q=[a_1,b_1]\times[a_2,b_2]$ whose side lengths do not exceed $2$. Now let's set
+\[
+D=[-1-a_1,\,1-b_1]\times[-1-a_2,\,1-b_2].
+\]
+Both factors are non-empty due to $b_i-a_i\le2$, so $D\ne\varnothing$; $D$ is compact and convex as a product of segments. Coordinatewise\textup{,} as shown above, $[a_i,b_i]+[-1-a_i,1-b_i]=[-1,1]$, and multiplication by a number and the sum of the Minkowski product are calculated coordinatewise\textup{:}
+\[
+Q+D=([a_1,b_1]+[-1-a_1,1-b_1])\times([a_2,b_2]+[-1-a_2,1-b_2])=[-1,1]\times[-1,1]=B .
+\]
+This means that $Q\preceq_M B$ for all $Q\in\mathcal S(B)$, that is, $\lambda=1$ is admissible and $B$ is generating. According to the task \textup{4}\textup{(a)}
+\[
+\Gamma(B)=\max\{\Gamma(B_1),\Gamma(B_2)\}=\max\{1,1\}=1,
+\]
+and by the main theorem of the chapter \textup{10} and $\tau(B)=\Gamma(B)=1$. At the same time, this provides direct proof that the square \textup{(}and hence the sup-norm in $\R^n$ as the product of $n$ segments\textup{)} has the intersection property.
+
+\textit{Item \textup{(b)}\textup{:} classification $\ell_p^n$.} The sheet shows the classification of numerical norms\textup{:}
+\[
+\Gamma(B_p^n)=1\ \ \text{at}\ n\le2\ \text{and at}\ n\ge3,\ p\in\{2,\infty\};\qquad
+\Gamma(B_p^n)=\infty\ \ \text{at}\ n\ge3,\ p\notin\{2,\infty\} .
+\]
+The intersection property is equivalent to the finiteness of $\Gamma$ \textup{(}problem \textup{5}, condition \textup{(ii)}\textup{)}. Therefore, for $n\ge3$ we have\textup{:}
+\begin{itemize}
+\item for $p=2$\textup{:} $\Gamma(B_2^n)=1<\infty$ --- the intersection property exists, although the ball is not a polyhedron\textup{;} this is the very non-trivial case when the classification of polyhedra does not work, and the Euclidean ball itself is the generating one;
+\item for $p=\infty$\textup{:} $\Gamma(B_\infty^n)=1<\infty$ --- the intersection property is\textup{;} this can be independently seen from problem \textup{4}, since $B_\infty^n=[-1,1]^n$ is the product of $n$ segments, and each segment is generating;
+\item for $p=1$\textup{:} $\Gamma(B_1^n)=\infty$ --- no intersection property\textup{;} for $n=3$ this is consistent with the classification of polyhedra\textup{:} ball $\ell_1^3$ --- octahedron with six vertices, which is not a prism over a centrally symmetric polygon \textup{(}at a prism $2m+2\ge8$ vertices, and the cube has $8$\textup{)}, which means it does not fall into the list \textup{(iv)} of task \textup{5};
+\item for $p=4$\textup{:} $\Gamma(B_4^n)=\infty$ --- no intersection property\textup{;} the ball $\ell_4^n$ is strictly convex and not polyhedral, so the classification of polyhedra is not applicable to it, and the absence of the intersection property is taken from the above classification of numerical norms.
+\end{itemize}
+So, for $n\ge3$ the picture is like this\textup{:} $\ell_2^n$ and $\ell_\infty^n$ have the intersection property, but $\ell_1^n$ and $\ell_4^n$ do not. As for $n\le2$, here the intersection property is satisfied for all norms\textup{:} for polyhedral balls this follows from the classification extup{(}segments and centrally symmetric polygons generating extup{)}, and for the rest extup{(}for example, for the ball $\ell_2^2$, which is not a polygon extup{)} --- from the same statement in chapter \textup{10} that in of dimension $\le2$ all norms have the intersection property.
+
+\end{proof}
+
+\end{document}

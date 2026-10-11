@@ -1,0 +1,319 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Lesson Problem Solutions \textup{1}}\\[2mm]
+{\large Applications of GH-distance: $\MST$-spectrum, Borsuk problem and combinatorial invariants}\\[2mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, presentation lesson \textup{1}}
+\end{center}
+
+Numbering of tasks --- as in the sheet <<Learning tasks for the lesson \textup{1}>>. Before solving each problem, its formulation is repeated. Below we use three statements from chapter \textup{1} of the minicourse, given in the lecture without proof\textup{:} the independence of the set of lengths $\MST$ from the choice of tree, Assuad's criterion and the Bandelt--Chepoy--Laurent theorem. In addition to them, the \textup{cut}-characterization of the $\MST$-spectrum, the formulas for the clique coverage number and the chromatic number through the GH-distance, and the formula for the $\lone$-dimension through the GH-distance are used, proven in the lecture.
+
+Let us recall the notation. For a finite metric space $X$ with $\#X=n\ge2$, $\sigma(X)=(\sigma_1,\dots,\sigma_{n-1})$ denotes its $\MST$-spectrum --- the set of edge lengths of the minimum spanning tree of a complete graph on $X$, ordered in descending order\textup{:} $\sigma_1\ge\dots\ge\sigma_{n-1}$. We denote by $\Dm{m}{X}$ the set of partitions of $X$ into $m$ non-empty parts, and by
+\[
+\alphaD{D}=\min_{i<j}|X_iX_j|,\qquad |X_iX_j|=\inf\bigl\{|xy|:x\in X_i,\ y\in X_j\bigr\},
+\]
+--- minimum distances between different parts of the partition $D=\{X_1,\dots,X_m\}$.
+
+For a graph $G$, $\theta(G)$ denotes the clique cover number, $\gamma(G)$ the chromatic number, $\omega(G)$ the size of the largest clique, and $\bar G$ the additional graph. For $0<a<b\le2a$, $Y_G$ denotes the $(a,b)$-space in which adjacent vertices of $G$ are at a distance $a$, and non-adjacent vertices are at a distance $b$\textup{;} is set to $X_G=Y_{\bar G}$, that is, this is a space with distances $b$ on the edges of $G$ and $a$ outside the edges.
+
+Finally, for a family of cuts $\mathcal C$ of a finite set $X$ and coefficients $\lambda_c>0$, $d_{\mathcal C,\lambda}=\sum_{c\in\mathcal C}\lambda_c\delta_c$ denotes the corresponding cut metric, and $\Gamma(\mathcal C)$ is a nested hypergraph whose hyperedges are pairs incompatible cuts and asteroid triples\textup{;} $\mathcal G(\mathcal C)$ denotes the family of simple graphs obtained by replacing each asteroid triple with one of its three edges.
+
+\begin{task}[existence of $\MST$ and non-uniqueness]
+Let $X$ be a finite metric space, $\#X=n\ge2$.
+
+\textup{a)} Prove that a minimum spanning tree of a complete graph on $X$ with edge weights $|xy|$ exists.
+
+\textup{b)} Give an example of a finite metric space in which several $\MST$ have different sets of edges and the same set of lengths.
+
+\end{task}
+
+\begin{proof}[Solution to problem \textup{1} \textup{(}existence of $\MST$ and non-uniqueness\textup{)}]
+\textit{Step \textup{1} \textup{(}formalization\textup{)}.} Consider the complete graph $K_X$ on the set of vertices $X$, assigning to the edge $\{x,y\}$ the weight $|xy|$\textup{;} such a graph is connected and has $\binom n2$ edges. A spanning tree is a subgraph $T\subset K_X$ with a set of vertices $X$, which is a tree\textup{;} it automatically has exactly $n-1$ edges. The weight of the tree is $W(T)=\sum_{e\in T}w(e)$. We need to show that the minimum $W(T)$ over all spanning trees is achieved.
+
+\textit{Step \textup{2} \textup{(}spanning trees exist\textup{)}.} Let's number the points\textup{:} $X=\{x_1,\dots,x_n\}$. Then the path connecting successive points is a spanning tree.
+
+\textit{Step \textup{3} \textup{(}the minimum is reached\textup{)}}, since there is a finite number of spanning trees.
+
+\textit{Step \textup{4} \textup{(}example of non-uniqueness, point \textup{b}\textup{)}.} Let's take a three-point space in which all distances are equal. There are then three different minimum spanning trees.
+\end{proof}
+
+\begin{task}[independence of the set of lengths $\MST$ from the choice of tree]
+Let $X$ be a finite metric space, $\#X=n\ge2$, and $T_1$, $T_2$ be two minimal spanning trees on $X$.
+
+\textup{a)} Prove the cut property\textup{:} if $T$ is $\MST$ and $c=\{S,S'\}$ is a cut, then among the edges connecting $S$ and $S'$ there is an edge lying in $T$, and its length is minimal among all such edges.
+
+\textup{b)} By induction on the number of edges lying in $T_1$, but not in $T_2$, prove that the multisets of edge lengths $T_1$ and $T_2$ coincide. Thus, the definition of $\sigma(X)$ is correct.
+\end{task}
+
+\begin{proof}[Solution to problem \textup{2} \textup{(}independence of the set of lengths $\MST$\textup{)}]
+\textit{Step \textup{1} \textup{(}auxiliary exchange lemma\textup{)}.} Let $T$ --- $\MST$ on $X$ and $e\in T$. Removing $e$ from $T$\textup{;} we obtain a forest of two components, denote by $A$ and $B$ the sets of their vertices and set
+\[
+m(e)=\min\bigl\{|ab|:a\in A,\ b\in B\bigr\}.
+\]
+Let us prove that $w(e)=m(e)$. The edge $e$ connects $A$ and $B$, so $m(e)\le w(e)$. Suppose that $m(e)<w(e)$, and let the inequality be realized on the pair $a\in A$, $b\in B$\textup{:} $|ab|<w(e)$. Then the graph $T-e+\{a,b\}$ is a spanning tree\textup{:} removing $e$ split $T$ into components with vertex sets $A$ and $B$, and the added edge connects these components, so no cycles have arisen and connectivity is restored. Its weight is equal to $W(T)-w(e)+|ab|<W(T)$, which contradicts the minimality of $T$. So $w(e)=m(e)$.
+
+\textit{Step \textup{2} \textup{(}cut property, point \textup{a}\textup{)}.} Let $c=\{S,S'\}$ --- cut and $T$ --- $\MST$. The existence of an edge in the tree $T$ connecting $S$ and $S'$ follows from the connectivity\textup{:} a path in $T$ between an arbitrary point in $S$ and an arbitrary point in $S'$ must go from $S$ to $S'$ at least once\textup{;} the edge on which this transition occurs connects $S$ and $S'$.
+
+Now let $e$ be an edge of tree $T$ of minimum weight among all edges $T$ connecting $S$ and $S'$. Let us show that $w(e)$ is minimal among all edges of the complete graph connecting $S$ and $S'$. On the contrary, let the edge $\{x,y\}$ be such that $x\in S$, $y\in S'$ and $|xy|<w(e)$. The graph $T+\{x,y\}$ has exactly one cycle $Z$\textup{:} it consists of an added edge and a path $P$ in the tree $T$ from $x$ to $y$. The path $P$ starts in $S$ and ends in $S'$, which means that among its edges there is an edge $e'$ connecting $S$ and $S'$\textup{;} by choice of $e$ we have $w(e')\ge w(e)>|xy|$. The edge $e'$ lies on the cycle $Z$, so the graph $T-e'+\{x,y\}$ is connected and has $n-1$ edges, that is, it is a spanning tree, and its weight is
+\[
+W(T)-w(e')+|xy|<W(T)-w(e)+w(e)\le W(T),
+\]
+which contradicts the minimality of $T$. So, there are no edges connecting $S$ and $S'$ and having a weight less than $w(e)$, that is, the length of the edge $e\in T$ is minimal among all edges connecting $S$ and $S'$.
+
+\textit{Note.} If a tree $T$ has several edges connecting $S$ and $S'$, then the statement applies specifically to the edge of the smallest weight among them\textup{:} the equality $W(T-e'+\{x,y\})=W(T)$ in the calculation above shows that for $|xy|=w(e)$ the exchange is permissible and the weight does not increase. Let us also note the special case that we use in step \textup{b}\textup{:} if the cut is a pair of sets of vertices of the components of the tree $T-e$, then the only edge $T$ connecting these parts is $e$ itself, and at step \textup{1} its weight is equal to the minimum distances between the parts.
+
+\textit{Step \textup{3} \textup{(}induction, point \textup{b}\textup{)}.} Let $T_1$ and $T_2$ be two $\MST$ on $X$. Let us perform induction on the number $k=\#(T_1\setminus T_2)$ of edges lying in $T_1$, but not in $T_2$.
+
+\textit{Base of induction.} Let $k=0$, that is, every edge $T_1$ lies in $T_2$. Then $T_1\subset T_2$, and both trees are spanning trees and therefore have $n-1$ edges. This means that $T_1=T_2$ as sets of edges and multisets of their lengths coincide.
+
+\textit{Inductive transition.} Let $k\ge1$ and the statement is proven for all $\MST$ pairs with a smaller value of $k$. Let us choose the edge $e\in T_1\setminus T_2$. Removing $e$ from $T_1$\textup{:} we obtain a forest of two components\textup{;} denote by $A$ and $B$ the sets of their vertices, so that $A\cup B=X$, $A\cap B=\varnothing$, and the edge $e$ is the only edge of the tree $T_1$ connecting $A$ and $B$. Consider the path $\gamma$ in the tree $T_2$ between the ends of the edge $e$. It starts at $A$ and ends at $B$, so among its edges there is an edge $g$ connecting $A$ and $B$. Note that $g\notin T_1$\textup{:} the only edge $T_1$ connecting $A$ and $B$ is $e$, and $e\notin T_2$.
+
+\textit{Step \textup{4} \textup{(}comparing weights, reducing $k$ and terminating\textup{)}.} Edge $g$ connects different components of the forest $T_1-e$, so $w(g)\ge w(e)$ by step 1. On the other hand, $\gamma\cup e$ is a cycle in the graph $T_2\cup e$, and by discarding any edge from this cycle we get spanning tree, so the weights of all edges from this cycle are not greater than $w(e)$, otherwise we would get a spanning tree of less weight than $w(T_2)$, in particular, $w(g)\le w(e)$, whence $w(g)=w(e)$. Thus, the trees $(T_1\setminus e)\cup g$ and $T_2$ have one more common edge than $T_1$ and $T_2$, which is what was required.
+\end{proof}
+
+\begin{task}[duality of clique coverage and chromatic number]
+Let $G$ be a finite simple graph.
+
+\textup{a)} Prove that $\CliqueCover(G)=\Chromatic(\bar G)$ and $\Chromatic(G)=\CliqueCover(\bar G)$.
+
+\textup{b)} Prove that $\Chromatic(G)\ge\omega(G)$ and $\CliqueCover(G)\ge\omega(\bar G)$ (the second inequality is the first one applied to $\bar G$).
+
+\textup{c)} Find a graph for which $\Chromatic(G)>\omega(G)$ and $\CliqueCover(G)<\Chromatic(G)$.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{3} \textup{(}duality of clique coverage and chromatic number\textup{)}]
+Let's clarify the terms. \emph{Clique cover} of the graph $G=(V,E)$ --- this is a family of cliques $C_1,\dots,C_m\subseteq V$ such that $V=C_1\cup\dots\cup C_m$, that is, each vertex lies in at least one of the cliques\textup{;} cliques can intersect, and the number $\CliqueCover(G)$ is the minimum number of cliques in such a family. \emph{Regular coloring} is a partition of $V=V_1\sqcup\dots\sqcup V_m$ into non-empty independent sets, and $\Chromatic(G)$ is the minimum number of $m$ colors in it. Let us immediately note that a subset of a clique is itself a clique\textup{:} if all pairs of distinct vertices of the set $C$ are adjacent in $G$, then all the more so all pairs of distinct vertices of any $S\subseteq C$.
+
+\textit{Point \textup{(a)}.} Key observation\textup{:} a set $S\subseteq V$ is a clique in $G$ if and only if it is independent in $\bar G$. Indeed, all pairs of distinct vertices from $S$ are adjacent in $G$ if and only if no pair of distinct vertices from $S$ is adjacent in $\bar G$.
+
+Hence the clique cover $G$ is nothing more than a family of independent sets $\bar G$ covering all vertices. It remains to move from covering to partitioning, since coloring is precisely a partition. Let $C_1,\dots,C_m$ be the clique cover of $G$. Let's number the vertices and assign each vertex $v$ to the first clique containing it by number\textup{:} $j(v)=\min\{j:v\in C_j\}$, and put $V_j=\{v\in V:j(v)=j\}$. The sets $V_j$ are pairwise disjoint and cover $V$, and $V_j\subseteq C_j$, which means that each $V_j$ is a clique in $G$ and therefore an independent set in $\bar G$. Discarding the empty $V_j$ and renumbering the remaining ones, we obtain a partition of $V$ into non-empty sets independent in $\bar G$, that is, a coloring of $\bar G$ in at most $m$ colors\textup{:} $\Chromatic(\bar G)\le\CliqueCover(G)$.
+
+Conversely, let $V_1,\dots,V_m$ be a regular coloring of $\bar G$. Each part of $V_j$ is independent in $\bar G$, which means that by the same observation it is a clique in $G$, and the parts cover $V$ (even split it). Thus, the set $V_1,\dots,V_m$ is a clique cover of $G$, and $\CliqueCover(G)\le m$ for any coloring $\bar G$, whence $\CliqueCover(G)\le\Chromatic(\bar G)$. Together with the previous inequality, this gives $\CliqueCover(G)=\Chromatic(\bar G)$.
+
+The second equality is the first one applied to the graph $\bar G$. Namely, $\bar{\bar G}=G$ as a graph on the same set of vertices\textup{:} the vertices $G$ and $\bar G$ are the same, and an edge in $\bar{\bar G}$ is an edge between different vertices missing in $\bar G$, that is, exactly an edge $G$. Therefore, the first equality for the graph $\bar G$ gives $\CliqueCover(\bar G)=\Chromatic(\bar{\bar G})=\Chromatic(G)$.
+
+So, a clique covering is a coloring of the complement, and vice versa\textup{:} both invariants are the same function, calculated on the graphs of the pair $\{G,\bar G\}$, only read for different elements of the pair.
+
+\textit{Part \textup{(b)}.} Let $Q$ be the largest clique, $\#Q=\omega(G)$. In a proper coloring, two adjacent vertices must have different colors, and in a clique, each vertex is adjacent to every other. This means that all vertices $Q$ are pairwise different in color, and the number of colors is at least $\omega(G)$\textup{:}
+\[
+\Chromatic(G)\ge\omega(G).
+\]
+Let's apply this inequality to the graph $\bar G$ and use item \textup{(a)}\textup{:}
+\[
+\CliqueCover(G)=\Chromatic(\bar G)\ge\omega(\bar G).
+\]
+It remains to note that $\omega(\bar G)$ is the size of the largest set of pairwise nonadjacent vertices in $G$, that is, the independence number $\alpha(G)$ of the graph $G$. So $\CliqueCover(G)\ge\omega(\bar G)=\alpha(G)$, and the second leaf inequality is indeed the first one applied to the complement. Both inequalities can be strict: the example from \textup{(c)} gives $\Chromatic(W_5)=4>\omega(W_5)=3$ and $\CliqueCover(W_5)=3>\omega(\bar W_5)=2$.
+
+\textit{Point \textup{(c)}.} Take the wheel $W_5$: five vertices $r_1,\dots,r_5$ forming the rim --- cycle $C_5$ with edges $r_1r_2$, $r_2r_3$, $r_3r_4$, $r_4r_5$, $r_5r_1$, and the central vertex $h$ adjacent to all five vertices of the rim. Let's show that $\Chromatic(W_5)=4$, $\omega(W_5)=3$ and $\CliqueCover(W_5)=3$.
+
+\textit{Chromatic number.} The rim $C_5$ is odd, so $\Chromatic(W_5)\ge\Chromatic(C_5)=3$. In any coloring of the rim in three colors, there are two vertices of the same color\textup{:}, three colors, and five vertices. Vertex $h$ is adjacent to all rim vertices, so its color is different from the colors of all five rim vertices and, in particular, cannot match any of the three colors used\textup{:} a fourth color is needed, and $\Chromatic(W_5)\ge4$. There is a four-color coloring (three colors on the rim and a fourth on $h$), which means $\Chromatic(W_5)=4$.
+
+\textit{The largest clique.} A clique not containing $h$ lies in the rim, and there are no triangles in a cycle of length $5$, so such a clique has at most two vertices. The clique containing $h$ consists of $h$ and a set of rim vertices all of whose pairs are adjacent, that is, from $h$ and one edge of the rim\textup{:} in the rim, only two neighboring vertices can be selected, since there is no third vertex adjacent to both of them in $C_5$. This means that the largest clique is the triangle $\{h,r_1,r_2\}$, and $\omega(W_5)=3<4=\Chromatic(W_5)$.
+
+\textit{Number of clique coverage.} Three cliques $\{h,r_1,r_2\}$, $\{h,r_3,r_4\}$ and $\{h,r_5,r_1\}$ cover all vertices\textup{:} $h$ is included in each of them, and the rim vertices are distributed like this\textup{:} $r_1,r_2$ --- in the first, $r_3,r_4$ --- in the second, $r_5$ --- in the third (intersecting cliques do not bother us). So $\CliqueCover(W_5)\le3$.
+
+Fewer clicks will not be enough. Let the cliques $C_1$ and $C_2$ cover all six vertices. If one of them does not contain $h$, then it lies in the rim and has at most two vertices, and the second clique has at most three vertices, for a total of two cliques covering at most five vertices. If both cliques contain $h$, then each of them is $h$ plus an edge of the rim, and together they cover $h$ and at most four vertices of the rim, again totaling at most five vertices. In both cases, two cliques cover at most five of the six vertices, so $\CliqueCover(W_5)\ge3$ and hence $\CliqueCover(W_5)=3<4=\Chromatic(W_5)$.
+
+So, the wheel $W_5$ is the desired graph\textup{:} $\Chromatic(W_5)=4>\omega(W_5)=3$ and $\CliqueCover(W_5)=3<\Chromatic(W_5)=4$. Along the way, it is clear that the equality $\Chromatic(G)=\omega(G)$ is not a property of all graphs, although the inequality $\Chromatic(G)\ge\omega(G)$ is always true.
+\end{proof}
+
+\begin{task}[duality in terms of GH distances]
+Let $0<a<b\le2a$ and $G$ be a finite simple graph.
+
+\textup{a)} Check the consistency of the definitions\textup{:} $X_G=Y_{\bar G}$ and $Y_G=X_{\bar G}$.
+
+\textup{b)} Derive the lecture theorem on the chromatic number in terms of the GH-distance from the clique cover number theorem\textup{:} check that the $(a,b)$-spaces corresponding to $G$ and $\bar G$ are obtained from each other by replacing the roles of $a$ and $b$.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{4} \textup{(}duality in terms of GH-distances\textup{)}]
+Let us recall the definitions of a leaf. For $0<a<b\le2a$, the space $Y_G$ is a metric on the same set of vertices $V$ as the graph $G$\textup{:} $a$ corresponds to pairs of adjacent vertices, $b$ to pairs of distinct non-adjacent vertices. By definition, $X_G=Y_{\bar G}$, that is, in $X_G$, the distance $b$ corresponds to the edges of $G$, and the distance $a$ corresponds to all other pairs of distinct vertices. Finally, $a\Delta_m$ is a space of $m$ points with pairwise distances $a$. The lecture proves a theorem on the number of clique covering\textup{:} for any finite graph $H$ and any $m\ge1$
+\[
+\CliqueCover(H)\le m\iff 2\ghdist{a\Delta_m}{Y_H}<b,
+\]
+and the chromatic number theorem
+\[
+\Chromatic(G)\le m\iff 2\ghdist{a\Delta_m}{X_G}<b
+\]
+must be deduced from it without repeating the proof.
+
+\textit{Clause \textup{(a)}.} Let's check the consistency of the definitions. The first equality $X_G=Y_{\bar G}$ is a definition, but it is useful to describe it in terms of distances and make sure that it does not contradict the description in terms of the edges of $G$. In $Y_{\bar G}$, the distance $a$ corresponds to the edges of $\bar G$, that is, to pairs of distinct non-adjacent vertices of $G$, and the distance $b$ corresponds to pairs of vertices that are adjacent in $\bar G$, that is, to the edges of $G$. We have obtained exactly a space with distances $b$ on the edges of $G$ and $a$ outside the edges of $G$; this is $X_G$, so the two descriptions define the same distance matrix on $V$.
+
+The second equality $Y_G=X_{\bar G}$ is obtained as follows. By definition, $X_{\bar G}=Y_{\bar{\bar G}}$, and $\bar{\bar G}=G$ as a graph on the same set of vertices\textup{:} a pair of distinct vertices is adjacent in $\bar{\bar G}$ if and only if it is not adjacent in $\bar G$, that is, when it is adjacent in $G$. This means that $X_{\bar G}=Y_G$, and the equalities are consistent with each other.
+
+So, the transition to the complement of the graph rearranges the roles of the distances $a$ and $b$\textup{:} in $Y_{\bar G}$; those pairs of vertices that were distant in $Y_G$ became close, and vice versa. It is on this symmetry that the duality of the clique cover and the chromatic number rests, and the meaningful formulation of the duality is the equalities $\CliqueCover(G)=\Chromatic(\bar G)$ and $\Chromatic(G)=\CliqueCover(\bar G)$ from problem \textup{3}.
+
+\textit{Part \textup{(b)}.} Let us substitute the graph $H=\bar G$ into the theorem in the lecture on clique covering. The left side will turn into the chromatic number $G$\textup{:} according to point \textup{(a)} of problem \textup{3} $\CliqueCover(\bar G)=\Chromatic(G)$. The right side will turn into the distance from $a\Delta_m$ to $X_G$\textup{:} by point \textup{(a)} of this problem $Y_{\bar G}=X_G$, and the coincidence of metrics means the coincidence of pairwise distances, that is, the coincidence of the metric spaces themselves, therefore the Gromov--Hausdorff distances from them to any fixed space coincide. As a result, for all $m\ge1$
+\[
+\Chromatic(G)\le m\iff \CliqueCover(\bar G)\le m\iff 2\ghdist{a\Delta_m}{Y_{\bar G}}<b\iff 2\ghdist{a\Delta_m}{X_G}<b.
+\]
+Taking the smallest $m\ge1$ for which the right condition is satisfied, we obtain
+\[
+\Chromatic(G)=\min\bigl\{m\ge1:2\ghdist{a\Delta_m}{X_G}<b\bigr\},
+\]
+that is, the lecture theorem on the chromatic number.
+
+It is useful to understand what exactly ``swapping the roles of $a$ and $b$'' consists of. From the proof of the clique covering theorem it is known that the condition $2\ghdist{a\Delta_m}{Y_H}<b$ is equivalent to the existence of a partition of $V$ into $m$ parts, each of which is a clique in $H$\textup{:} for a $(a,b)$-space the diameter of the part is equal to either $a$ or $b$, and the requirement $\diam D_i<b$ means $\diam D_i=a$. Therefore, ``role replacement'' --- is the replacement of the graph $H$ with an additional one, in which the cliques of $H$ become independent sets\textup{:} partition of the graph $\bar G$ into $m$ cliques --- this is exactly the partition into $m$ of independent sets $G$, that is, the correct coloring of $G$ in $m$ colors. In this case, the simplex $a\Delta_m$ and the threshold $b$ in the formula do not change, only the space\textup{:} the place of $Y_G$ is occupied by $Y_{\bar G}=X_G$, whose close scale corresponds to the edges of the complement. It is impossible to swap $a$ and $b$ in the entire formula at once\textup{:} then instead of $a\Delta_m$ $b\Delta_m$ would appear, and the condition $\diam D_i<b$ is a condition on the size of the part on a scale of a smaller distance $a$, and the symmetry $a\leftrightarrow b$ is realized precisely by the transition to an additional graph, and not by rearranging the letters in the notation of the theorem.
+
+Using the same reasoning in the opposite direction from the chromatic number theorem, we derive the clique cover theorem\textup{:} apply the formula for $\Chromatic$ to the graph $\bar G$ and use the equalities $\Chromatic(\bar G)=\CliqueCover(G)$ and $X_{\bar G}=Y_G$. This means that the two theorems of the lecture are the same statement, written for a pair of additional graphs.
+\end{proof}
+
+\begin{task}[Assuad criterion]
+A finite metric space $(X,d)$ is isometrically embedded in a rectangular space $\mathbb R^m_1$ if and only if $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$ for a finite family of cuts $\mathcal C$ and coefficients $\lambda_c>0$ (Assuad criterion).
+
+\textup{a)} Prove the sufficiency of\textup{:} from the expansion into a sum of cut pseudometrics and construct an isometric embedding.
+
+\textup{b)} Prove the necessity\textup{:} show that each coordinate of an isometric embedding is decomposed into a sum of cut pseudometrics with respect to thresholds.
+
+\textup{c)} Explain why the coefficients can be considered strictly positive and why the family of cuts is finite.
+
+\end{task}
+
+\begin{proof}[Solution to the problem \textup{5} \textup{(}Assuad criterion\textup{)}]
+Let us recall the necessary definitions. \emph{Cut} of a finite set $X$ is an unordered pair $c=\{S,S'\}$ of its own non-empty subsets, $S'=X\setminus S$, and \emph{cut pseudometric} is given by $\delta_c(x,y)=1$ if $x$ and $y$ lie on opposite sides of the cut, and $\delta_c(x,y)=0$ otherwise. The notation $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$ means that $d(x,y)=\sum_{c\in\mathcal C}\lambda_c\delta_c(x,y)$ for all $x,y\in X$, where the family of cuts $\mathcal C$ is finite and all $\lambda_c$ are positive. Finally, $\mathbb R^m_1$ is $\mathbb R^m$ with norm $\|u\|_1=\sum_{i=1}^m|u_i|$ (the usual absolute value is denoted by a single vertical bar, and the norm in $\mathbb R^m_1$ is double with index $\textup{1}$), so the distance between vectors $u$ and $v$ is $\|u-v\|_1=\sum_i|u_i-v_i|$. Below, $\mathbf 1_S$ denotes the indicator of the set $S$\textup{:} $\mathbf 1_S(x)=1$ for $x\in S$ and $\mathbf 1_S(x)=0$ otherwise.
+
+\textit{Item \textup{(a)}\textup{:} sufficiency.} Let $\mathcal C=\{c_1,\dots,c_m\}$, where $c_i=\{S_i,S_i'\}$, and $d=\sum_{i=1}^m\lambda_i\delta_{c_i}$ with $\lambda_i>0$. Let's build an embedding along one coordinate per cut\textup{:} put
+\[
+\varphi(x)=\bigl(\lambda_1\mathbf 1_{S_1}(x),\ \lambda_2\mathbf 1_{S_2}(x),\ \dots,\ \lambda_m\mathbf 1_{S_m}(x)\bigr)\in\mathbb R^m.
+\]
+In other words, the $i$-th coordinate of the image is an indicator of that side of the cut $c_i$, which is named first, multiplied by the coefficient $\lambda_i$.
+
+Let's check that $\varphi$ preserves distances. For any $x,y\in X$ and any number $i$, the numerical factor $\lambda_i$ is taken out from under the module, and the indicators differ exactly when $x$ and $y$ lie on opposite sides of the cut, and then their difference is equal to $\pm1$\textup{:}
+\[
+|\varphi_i(x)-\varphi_i(y)|=\lambda_i\bigl|\mathbf 1_{S_i}(x)-\mathbf 1_{S_i}(y)\bigr|=\lambda_i\delta_{c_i}(x,y).
+\]
+Summing this equality over all coordinates, we get
+\[
+\|\varphi(x)-\varphi(y)\|_1=\sum_{i=1}^m\bigl|\varphi_i(x)-\varphi_i(y)\bigr|=\sum_{i=1}^m\lambda_i\delta_{c_i}(x,y)=d(x,y).
+\]
+This means that $\varphi$ is an isometric embedding of $X$ into $\mathbb R^m_1$, and sufficiency is proved. Note that the choice of the side, which we call the first, does not affect the result\textup{:} replacing $S_i$ with $S_i'$ turns the coordinate $\varphi_i(x)$ into $\lambda_i-\varphi_i(x)$, that is, into a reflection with a subsequent shift, and such coordinate transformations preserve all differences $|\varphi_i(x)-\varphi_i(y)|$.
+\end{proof}
+
+\begin{proof}[Solution to problem \textup{5}, points \textup{(b)} and \textup{(c)} \textup{(}necessity and canonical form\textup{)}]
+\textit{Point \textup{(b)}\textup{:} necessity.} Let $\varphi\colon X\to\mathbb R^m_1$ be an isometric embedding, that is, for all $x,y\in X$
+\[
+d(x,y)=\|\varphi(x)-\varphi(y)\|_1=\sum_{i=1}^m\bigl|\varphi_i(x)-\varphi_i(y)\bigr|,
+\]
+where $\varphi_i$ is the $i$th coordinate. Let us denote $d_i(x,y)=\bigl|\varphi_i(x)-\varphi_i(y)\bigr|$\textup{:} is a pseudometric generated by one coordinate. It is enough to prove that each $d_i$ decomposes into a sum of cut pseudometrics with positive coefficients\textup{:} then, adding these decompositions over all $i$, we obtain the required decomposition of $d$ (coefficients of different coordinates are added if they have the same cuts, --- see paragraph \textup{(c)}).
+
+So, we fix the coordinate $i$ and work on the function $f=\varphi_i\colon X\to\mathbb R$. Let's shift it by a constant $c=\min_{x\in X}f(x)$\textup{:} the function $f-c$ is non-negative, and all differences $\bigl|f(x)-f(y)\bigr|$ do not change with the shift, so we can assume that $f\ge0$ and $\min_{x\in X}f(x)=0$. The set $X$ is finite, so the function $f$ takes only a finite number of values. Let us denote them by $v_0<v_1<\dots<v_r$, where $v_0=0$ and $v_r=\max_{x\in X}f(x)$\textup{;} the case $r=0$ means that $f$ is constant and $d_i\equiv0$, so then there is nothing to expand. For each $k=1,\dots,r$, consider the set
+\[
+S_k=\{x\in X:f(x)\le v_{k-1}\}
+\]
+and the corresponding cut $c_k=\{S_k,\ X\setminus S_k\}$. This is a real cut\textup{:} $S_k$ is non-empty (it contains any point with value $v_0$), and its complement is non-empty (it contains any point with value $v_r>v_{k-1}$), and $S_k$ is a proper subset, since $v_{k-1}<v_r$.
+
+Statement\textup{:} for all $x,y\in X$
+\[
+\bigl|f(x)-f(y)\bigr|=\sum_{k=1}^{r}(v_k-v_{k-1})\,\delta_{c_k}(x,y).
+\]
+Let's prove it. The left side and both sides of the equality are symmetric in $x$ and $y$, so we can assume $f(x)\le f(y)$. Note that $\delta_{c_k}(x,y)=1$ exactly when exactly one of the points $x,y$ lies in $S_k$, that is, exactly when $f(x)\le v_{k-1}<f(y)$ \textup{(}if $x\in S_k$, then $f(x)\le v_{k-1}$, and then $y\notin S_k$ means $f(y)>v_{k-1}$\textup{;} if $x\notin S_k$, that is, $f(x)>v_{k-1}$, then $y\in S_k$ is impossible due to $f(y)\ge f(x)$\textup{)}. Let $f(x)=v_s$ and $f(y)=v_{s'}$ for $s\le s'$. Then the summation is over those $k$ for which $v_{k-1}\in[v_s,\ v_{s'})$, that is, over $k=s+1,\dots,s'$\textup{:}
+\[
+\sum_{k=1}^{r}(v_k-v_{k-1})\,\delta_{c_k}(x,y)=\sum_{k=s+1}^{s'}(v_k-v_{k-1})=v_{s'}-v_s=f(y)-f(x)=\bigl|f(x)-f(y)\bigr|.
+\]
+Here the sum is collapsed according to the telescopic rule, and the equalities $v_s=f(x)$ and $v_{s'}=f(y)$ are satisfied by the definition of the numbers $s$ and $s'$. All coefficients $\mu_k=v_k-v_{k-1}$ are strictly positive, since the values of $v_k$ are strictly increasing.
+
+So, $d_i=\sum_{k=1}^{r}\mu_k\delta_{c_k}$ --- decomposition of the coordinate pseudometric into the sum of cut ones, and, adding over $i=1,\dots,m$, we obtain the decomposition
+\[
+d=\sum_{i=1}^m\sum_{k=1}^{r_i}\mu_{i,k}\,\delta_{c_{i,k}},
+\]
+where all coefficients are positive. This is the need.
+
+\textit{Finite.} The family $\mathcal C$ can be considered finite, because the metric $d$ takes only finite values on a finite set $X$. More precisely, let $\lambda_c>0$ for all $c\in\mathcal C$ and $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$. Let's take an arbitrary pair of distinct points $x,y\in X$. The terms with $\delta_c(x,y)=1$ are non-negative, therefore
+\[
+\sum_{c\in\mathcal C:\ \delta_c(x,y)=1}\lambda_c\le d(x,y)<\infty,
+\]
+and the sum of positive numbers is finite only for a finite number of non-zero terms, which means that the set $\{c\in\mathcal C:\delta_c(x,y)=1\}$ is finite. Each cut $c=\{S,S'\}$ separates at least one pair of points $x\in S$, $y\in S'$, and therefore is included in one of these sets. The union of a finite number of finite sets (over all pairs of distinct points $X$) is finite, thus the entire set of cuts with positive coefficients $c$ is finite\textup{:} cuts with zero coefficients can simply not be included in the family.
+
+\textit{Positivity.} If in the notation $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$ the coefficient $\lambda_c$ is equal to zero, then the term $\lambda_c\delta_c$ is identically equal to zero and can be discarded without changing the sum. If two cuts coincide as unordered pairs of sides, then their cut pseudometrics also coincide, and the corresponding terms can be combined by adding the coefficients\textup{:} $\lambda_c\delta_c+\lambda_{c'}\delta_{c'}=(\lambda_c+\lambda_{c'})\delta_c$. Having done this for all terms, we obtain a decomposition $d=\sum_{c\in\mathcal C'}\lambda'_c\delta_c$, in which all $\lambda'_c>0$, and each cut occurs once. It is precisely this decomposition that is meant in the Assuad criterion, and it is precisely this that is given by the construction of point \textup{(b)}\textup{:} where the coefficients $\mu_k=v_k-v_{k-1}$ are positive from the very beginning, and the number of cuts does not exceed $\sum_{i=1}^m r_i\le m(\#X-1)$.
+
+We emphasize that the decomposition into a sum of cut pseudometrics is not unique (for example, the same cut can be replaced by two copies with half the coefficients, or a pair of opposite terms can be added), therefore statements about positivity and finiteness are an agreement on the canonical form, and not a property of all possible records. The existence of a finite expansion with positive coefficients is the substantive part of the criterion, and we have proved it.
+\end{proof}
+
+\begin{task}[Bandelt--Chepoy--Laurent theorem and $\lone$-dimension]
+Let $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$, $\lambda_c>0$, be a cut metric on a finite set $X$.
+
+\textup{a)} State the Bandelt--Chepoy--Laurent theorem\textup{:} $(X,d)$ is isometrically embedded in $\mathbb R^m_1$ if and only if the nested hypergraph $\Nest{\mathcal C}$ is $m$-colorable, and at the same time $\dim_{\lone}(X)=\Chromatic(\Nest{\mathcal C})$.
+
+\textup{b)} Prove the corollary\textup{:} $(X,d)$ is embedded in $\mathbb R^m_1$ if and only if the family $\Simple{\mathcal C}$ contains an $m$-colorable graph, and $\dim_{\lone}(X)=\min_{G\in\Simple{\mathcal C}}\Chromatic(G)$.
+
+\textup{c)} Verify the corollary using the example of a four-point space of $\lone$-dimension $2$.
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{6} \textup{(}Bandelt--Chepoy--Laurent theorem and $\lone$-dimension\textup{)}]
+\textit{Item \textup{(a)}\textup{:} formulation.} Let $X$ be a finite set, $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$ with $\lambda_c>0$ be a cut metric on $X$, and let $\Nest{\mathcal C}$ be a nested hypergraph of the family $\mathcal C$\textup{:} its vertices are cuts of the family, and hyperedges are all pairs of incompatible cuts and all asteroid triplets. Recall that two cuts $c=\{A,A'\}$ and $c'=\{B,B'\}$ are \emph{incompatible} if all four intersections $A\cap B$, $A\cap B'$, $A'\cap B$, $A'\cap B'$ are non-empty, and \emph{asteroid triple} are three cuts from which one can choose one side $\widetilde A$, $\widetilde B$, $\widetilde C$ so that these three sets are pairwise disjoint. A proper coloring of a hypergraph is a vertex coloring such that no hyperedge is monochrome. The Bandelt--Chepoy--Laurent theorem states\textup{:}
+
+\textup{(1)} the space $(X,d)$ is isometrically embedded in $\mathbb R^m_1$ if and only if the hypergraph $\Nest{\mathcal C}$ admits a regular coloring of $m$ colors\textup{;}
+
+\textup{(2)} The $\lone$-dimension, that is, the smallest $m$ for which such an embedding exists, is equal to the chromatic number of the nested hypergraph\textup{:}
+\[
+\dim_{\lone}(X)=\Chromatic\bigl(\Nest{\mathcal C}\bigr).
+\]
+
+The meaning of hyperedges is this. Two compatible cuts are nested cuts\textup{:} they can choose the sides $\widetilde A$, $\widetilde B$ with $\widetilde B\subseteq\widetilde A$ \textup{(}simply because one of the four intersections is empty\textup{)}, and then the corresponding cut pseudometrics can be placed in one coordinate by adding the coefficients. On the contrary, incompatible cuts cannot be placed in one coordinate, so vertices connected by a hyperedge must receive different colors. An asteroid triple is three cuts that are not pairwise incompatible, but all together do not fit into one coordinate\textup{:} in $\mathbb R^1$ there are only two sides relative to each point, and three pairwise disjoint pieces cannot be placed in them. Therefore, correct coloring is a division of cuts into groups, each of which can be added to one coordinate, and the number of colors is equal to the number of required coordinates.
+
+Note that the formulation is correct, that is, the right-hand side does not depend on the choice of the decomposition of $d$ into a sum of cut pseudometrics. If $d=\sum_{c\in\mathcal C}\lambda_c\delta_c$ and $d=\sum_{c'\in\mathcal C'}\lambda'_{c'}\delta_{c'}$ are two expansions with positive coefficients, then by \textup{(1)} both hypergraphs $\Nest{\mathcal C}$ and $\Nest{\mathcal C'}$ admit a regular coloring into the same set of numbers $m$ (namely, into those $m$ for which an embedding into $\mathbb R^m_1$ exists), so their chromatic numbers coincide and are equal to $\dim_{\lone}(X)$.
+
+\textit{Item \textup{(b)}\textup{:} corollary about the family $\Simple{\mathcal C}$.} Recall that the family of simple graphs $\Simple{\mathcal C}$ is obtained from the hypergraph $\Nest{\mathcal C}$ so\textup{:} each hyperedge of size $2$ \textup{(}a pair of incompatible cuts\textup{)} is preserved, and each asteroid triple is replaced by one of its three edges, that is, one of three pairs that can be made from three cuts of the triple.
+
+Key observation\textup{:} a vertex coloring of a hypergraph $\Nest{\mathcal C}$ is correct if and only if it is correct for some graph $G\in\Simple{\mathcal C}$. Indeed, let the coloring be correct for the hypergraph. Let us check its correctness for a suitable $G$. Hyperedges of size $2$ are ordinary edges, and they are not monochrome by convention, so they can be taken into $G$ without changes. For each asteroid triple $\{c_1,c_2,c_3\}$, from the fact that the triple is not monochrome, it follows that in at least one of the three pairs $(c_1,c_2)$, $(c_2,c_3)$, $(c_1,c_3)$ the colors are different\textup{:} if the colors were the same in all three pairs, then all three sections would have the same color. By choosing such a pair for each triple and declaring it an edge, we obtain the graph $G\in\Simple{\mathcal C}$ for which our coloring is correct. Conversely, if the coloring is correct for some $G\in\Simple{\mathcal C}$, then it is also correct for a hypergraph\textup{:} hyperedges of size $2$ are included in $G$, and for an asteroid triple, the edge that replaces it is one of three pairs of the triple, and from the mismatch of colors in this pair it follows that the triple is not monochrome.
+
+Therefore, for any $m$
+\[
+\Nest{\mathcal C}\ \text{allows correct coloring in } m\ \text{colors}
+\iff
+\exists\,G\in\Simple{\mathcal C}\text{ with }\Chromatic(G)\le m.
+\]
+Together with item \textup{(a)} this gives\textup{:} $(X,d)$ embeds in $\mathbb R^m_1$ if and only if the family $\Simple{\mathcal C}$ contains an $m$-colorable graph and the smallest such $m$ is equal to
+\[
+\dim_{\lone}(X)=\min_{G\in\Simple{\mathcal C}}\Chromatic(G).
+\]
+The minimum here is achieved\textup{:} family $\mathcal C$ is finite \textup{(}see\ problem \textup{5}, point \textup{(c)}\textup{)}, therefore the number of asteroid triplets is finite, and with it the family $\Simple{\mathcal C}$ \textup{(}each triple gives three options for choosing an edge, so there are no more graphs in total $3^{\tau}$, where $\tau$ is the number of asteroid triplets\textup{)}.
+\end{proof}
+
+\begin{proof}[Solution to problem \textup{6}, point \textup{(c)} \textup{(}four-point space of $\lone$-dimension \textup{2}\textup{)}]
+Take $X=\{1,2,3,4\}$ with cycle metric $C_4$\textup{:} $d(i,j)=1$ if $i$ and $j$ are adjacent in the cycle $1\textup{--}2\textup{--}3\textup{--}4\textup{--}1$, and $d(i,j)=2$ on the diagonals $\{1,3\}$ and $\{2,4\}$. \textup{(}This metric has already been encountered in problem \textup{1} as an example of the non-uniqueness of a minimum spanning tree\textup{:} it has four spanning trees from edges of weight $1$.\textup{)} Let us show that it admits exactly the decomposition that is predicted\textup{:} in the sum of two cut pseudometrics with coefficients $1$, and the corresponding pair of cuts is incompatible.
+
+Let's look at the cuts
+\[
+c_1=\bigl\{\{1,2\},\{3,4\}\bigr\},\qquad c_2=\bigl\{\{2,3\},\{1,4\}\bigr\}.
+\]
+Let's check the equality $d=\delta_{c_1}+\delta_{c_2}$ for all six pairs of points. For loop edges\textup{:}
+\[
+\delta_{c_1}(1,2)+\delta_{c_2}(1,2)=0+1=1,\quad
+\delta_{c_1}(2,3)+\delta_{c_2}(2,3)=1+0=1,
+\]
+\[
+\delta_{c_1}(3,4)+\delta_{c_2}(3,4)=0+1=1,\quad
+\delta_{c_1}(4,1)+\delta_{c_2}(4,1)=1+0=1,
+\]
+and for diagonals, both pseudometrics give one each, since each diagonal is divided by each of the two cuts\textup{:}
+\[
+\delta_{c_1}(1,3)+\delta_{c_2}(1,3)=1+1=2,\qquad
+\delta_{c_1}(2,4)+\delta_{c_2}(2,4)=1+1=2.
+\]
+This means that $d=\delta_{c_1}+\delta_{c_2}$ with $\mathcal C=\{c_1,c_2\}$ and $\lambda_{c_1}=\lambda_{c_2}=1$, that is, $d$ is a cut metric.
+
+Let's check for incompatibility. Let's take the side $A=\{1,2\}$ \textup{(}then $A'=\{3,4\}$\textup{)} of the cut $c_1$, and the side $B=\{2,3\}$ \textup{(}then $B'=\{1,4\}$\textup{)} of the cut $c_2$. Then
+\[
+A\cap B=\{2\},\qquad A\cap B'=\{1\},\qquad A'\cap B=\{3\},\qquad A'\cap B'=\{4\},
+\]
+all four intersections are non-empty, so the cuts $c_1$ and $c_2$ are incompatible\textup{:} they cannot be placed in the same coordinate. There are no asteroid triplets in the family --- for a triple you need three cuts, and we only have two of them. This means that the nested hypergraph $\Nest{\mathcal C}$ has one edge vertex \textup{(}a pair of incompatible cuts\textup{)} and no other hyperedges, that is, it is a $K_2$ graph of two vertices, and
+\[
+\Chromatic\bigl(\Nest{\mathcal C}\bigr)=2.
+\]
+The family $\Simple{\mathcal C}$ is obtained by replacing asteroid triplets, but there are none, so it consists of a single graph --- the same $K_2$, from which $\min_{G\in\Simple{\mathcal C}}\Chromatic(G)=2$. Both formulations of the corollary give $\dim_{\lone}(X)=2$.
+
+Let's make sure that this is really so and not an artifact of the formula. The attachment gives item \textup{(a)} of task \textup{5}\textup{:} coordinates --- indicators of the first sides of the cuts, multiplied by coefficients, that is
+\[
+1\mapsto(1,0),\qquad 2\mapsto(1,1),\qquad 3\mapsto(0,1),\qquad 4\mapsto(0,0).
+\]
+The image is the four vertices of the unit square in $\mathbb R^2_1$, and the distances in $\mathbb R^2_1$ between them are equal to $1$ for the sides of the square and $2$ for its diagonals, as required by the $C_4$ metric. So $\dim_{\lone}(X)\le2$.
+
+Below estimate. In $\mathbb R^1$, any four distinct points can be ordered\textup{:} $u_1<u_2<u_3<u_4$, and then the greatest distance $u_4-u_1$ is achieved only at the pair of extreme points, since for all other pairs the distance is strictly less than \textup{(}for example, $u_4-u_2<u_4-u_1$\textup{)}. In our $X$, the diameter is $2$ and is achieved on two different pairs, $\{1,3\}$ and $\{2,4\}$\textup{:} pairs with the greatest distance are two, not one. This means that $X$ is not embedded in $\mathbb R^1_1$, and $\dim_{\lone}(X)\ge2$. Together with the previous one, we obtain $\dim_{\lone}(X)=2$, which confirms the corollary in the example being tested.
+\end{proof}
+\end{document}

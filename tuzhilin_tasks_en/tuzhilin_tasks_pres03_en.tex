@@ -1,0 +1,212 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\input{pres_preamble_en.tex}
+\title[Lesson 3 Objectives]{Lesson Learning Objectives \textup{3}: complexes, homologies and proximity lemmas}
+\subtitle{Lesson on the presentation \textup{3} of the minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>}
+\author{Alexey A.~Tuzhilin}
+\date{Beijing University, October 2026}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Lesson plan (\textup{50} minutes)}
+\begin{enumerate}
+\item Task \textup{1}. Chain complex\textup{:} $\partial_{k-1}\partial_k = 0$ --- \textup{6} minutes.
+\item Task \textup{2}. Lemma about the nerve in the simplest cases --- \textup{10} minutes.
+\item Task \textup{3}. Inclusions of Cech and Vietoris--Rips --- \textup{6} minutes.
+\item Task \textup{4}. The key lemma about close spaces is \textup{14} minutes.
+\item Task \textup{5}. The connection of complexes through Young's constant --- \textup{8} minutes.
+\item Task \textup{6}. Higher homology of own open subset --- \textup{6} minutes.
+\end{enumerate}
+\medskip
+At the presentation \textup{3} the nerve lemma and homotopy invariance of homology were accepted as known facts, the key lemma was given as an idea, and problems \textup{5} and \textup{6} were given as corollaries without proof.
+\end{frame}
+
+\begin{frame}{Problem \textup{1}: chain complex}
+\begin{block}{Formulation}
+Prove that $\partial_{k-1} \circ \partial_k = 0$ for all $k \ge 2$, that the groups $H_k(\Sigma;G)$ are well defined, and describe $H_0(\Sigma;\Z)$ for a complex of $c$ connected components.
+\end{block}
+\begin{block}{Note}
+Check the equality on the generator $g[v_0,\dots,v_k]$. The term with a fixed pair of distant vertices $i<j$ receives the coefficient
+\[
+(-1)^i(-1)^{j-1} + (-1)^j(-1)^i = (-1)^{i+j-1} + (-1)^{i+j} = 0 .
+\]
+For $H_0$, note that $\partial_1[v_0,v_1] = [v_1]-[v_0]$ and $\ker\partial_0 = C_0$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{2}: the nerve lemma in the simplest cases}
+\begin{block}{Formulation}
+\begin{enumerate}
+\item[(a)] $Y = U_1 \cup U_2$, where $U_1$, $U_2$ and $U_1\cap U_2$ are contractible\textup{:} prove that $Y$ is contractible \textup{(}nerve --- segment\textup{)}.
+\item[(b)] The circle is covered by three arcs of length $2\pi/3$\textup{:} find the nerve, check the coverage and calculate $H_1(S^1;\Z_2)$.
+\item[(c)] Give a covering of $S^2$ by two sets where the conclusion of the lemma is false, and indicate the violated condition.
+\end{enumerate}
+\end{block}
+\begin{block}{Note}
+In \textup{(a)} use homotopy extrusion of the diagram $U_1 \leftarrow U_1\cap U_2 \rightarrow U_2$\textup{:} all three spaces are contractible, which means the extrusion is a point. In \textup{(b)} the nerve is the border of the triangle. In \textup{(c)} take the open hemispheres.
+\end{block}
+\end{frame}
+
+\begin{frame}{Task \textup{3}: inclusions of Cech and Vietoris--Rips}
+\begin{block}{Formulation}
+Let $Z$ be a metric space, $X \subset Z$ and $r > 0$. Prove that
+\[
+\VR(X, r) \subset \CechAmb{r}{X}{Z} \subset \VR(X, 2r).
+\]
+\end{block}
+\begin{block}{Note}
+If $\diam\sigma < r$, then the ball $B(x_i;r)$ centered at any vertex $\sigma$ contains the entire $\sigma$. Conversely, if $\sigma$ lies in the ball $B(z;r)$, then by the triangle inequality $\diam\sigma < 2r$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{4}: key lemma about close spaces}
+\begin{block}{Formulation}
+Let $X, Y$ be compact and $\ghdist{X}{Y} < r$. Prove that for any $\varepsilon > 0$ and $\nu \ge 0$ there exist simplicial mappings
+\[
+\VR(Y, \varepsilon) \xrightarrow{h} \VR(X, r+\varepsilon) \xrightarrow{\iota_\nu} \VR(X, r+\varepsilon+\nu) \xrightarrow{g} \VR(Y, 2r+\varepsilon+\nu),
+\]
+for which the composition $g \circ \iota_\nu \circ h$ is close to the inclusion $\VR(Y,\varepsilon) \hookrightarrow \VR(Y, 2r+\varepsilon+\nu)$.
+\end{block}
+\begin{block}{Note}
+Take the correspondence $R$ with $\dis R < r$ and the mappings $h$, $g$ with properties $(h(y),y) \in R$, $(x,g(x)) \in R$. Check the simpliciality of $h$, then $g$, then the closeness of the composition.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{5}: connection of complexes through Young's constant}
+\begin{block}{Formulation}
+Let $X \subset Z$, $X \ne \varnothing$ and $s, r > 0$. Prove that
+\begin{enumerate}
+\item[(a)] each simplex $\VR(X,s)$ belongs to $\check C_{J(Z)s}(X;Z)$\textup{;}
+\item[(b)] each simplex $\check C_r(X;Z)$ belongs to $\VR(X,2r)$\textup{;}
+\item[(c)] $\VR(X,s) \subset \check C_{J(Z)s}(X;Z) \subset \VR\bigl(X, 2J(Z)s\bigr)$.
+\end{enumerate}
+\end{block}
+\begin{block}{Note}
+In \textup{(a)} apply the definition of Young's constant to the set of vertices of the simplex\textup{:} $\sup_{x\in\sigma}|zx|_Z \le J(Z)\diam\sigma < J(Z)s$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{6}: higher homology of own open subset}
+\begin{block}{Formulation}
+Let $M$ be a connected closed $n$-dimensional manifold, $U \subset M$ a proper open subset. Prove that $H_n(U;\Z_2) = 0$.
+\end{block}
+\begin{block}{Note}
+Decompose $U$ into a union of connected components\textup{:} each component is a connected $n$-dimensional manifold without boundary\textup{;} show that there are no compact components, and apply the known fact about the highest homology of a non-compact manifold.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{1}}
+\begin{block}{Calculation}
+For the generator $g[v_0,\dots,v_k]$, the sum $\partial_{k-1}\partial_k$ splits into terms corresponding to pairs of remote vertices $i<j$, with coefficients
+\[
+(-1)^i(-1)^{j-1} + (-1)^j(-1)^i = 0 .
+\]
+This means $\partial_{k-1}\partial_k = 0$, so $\operatorname{im}\partial_{k+1} \subset \ker\partial_k$ and homologies are defined.
+\end{block}
+\begin{block}{Zero homology group}
+$\operatorname{im}\partial_1$ consists of chains with zero sum of coefficients in each connected component, whence $H_0(\Sigma;\Z) \cong \Z^{c}$, where $c$ is the number of components.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{2}}
+\begin{block}{\textup{(a)} Two sets}
+Nerve --- segment\textup{:} $|\Nerve{\mathcal U}| \simeq *$. The homotopy expulsion of the diagram $U_1 \leftarrow U_1\cap U_2 \rightarrow U_2$ is homotopy equivalent to $Y$ and, due to the contractibility of all three spaces, to a point. This means $Y$ is contractible.
+\end{block}
+\begin{block}{\textup{(b)} Circle}
+Nerve --- boundary of triangle $\simeq S^1$\textup{:} coverage is good \textup{(}arcs and their pairwise intersections are contractible, triple intersection is empty\textup{)}. In the nerve $\partial_1 e_{ij} = [v_i]+[v_j]$ over $\Z_2$, the kernel is one-dimensional, so $H_1(S^1;\Z_2) = \Z_2$.
+\end{block}
+\begin{block}{\textup{(c)} Hemispheres}
+The intersection of open hemispheres $S^2$ is a belt $\simeq S^1$, that is, a non-contractible\textup{:} covering is not good, and the conclusion of the nerve lemma does not have to hold.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{3}}
+\begin{block}{Czech between two VR}
+$\VR(X,r) \subset \CechAmb{r}{X}{Z}$\textup{:} if $\diam\sigma < r$, then the ball $B(x_i;r)$ centered at any vertex $\sigma$ contains $\sigma$.
+\end{block}
+\begin{block}{}
+$\CechAmb{r}{X}{Z} \subset \VR(X,2r)$\textup{:} if all $x_i$ lie in $B(z;r)$, then
+\[
+|x_i x_j|_Z \le |x_i z|_Z + |z x_j|_Z < 2r .
+\]
+\end{block}
+\begin{block}{Output}
+Both inclusions --- estimates <<through a point>> and <<through a diameter>>\textup{;} together they give the chain $\VR(X,r) \subset \check C_r(X;Z) \subset \VR(X,2r)$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{4}: simpliciality of $h$ and $g$}
+\begin{block}{Maps from correspondence}
+Let us choose $R$ with $\dis R < r$ and maps $h\colon Y \to X$, $g\colon X \to Y$ with $(h(y),y) \in R$, $(x,g(x)) \in R$.
+\end{block}
+\begin{block}{Step \textup{1}}
+For $\sigma = \{y_0,\dots,y_k\} \in \VR(Y,\varepsilon)$ and any $i,j$
+\[
+|h(y_i)h(y_j)|_X \le |y_i y_j|_Y + \dis R < \varepsilon + r .
+\]
+\end{block}
+\begin{block}{Step \textup{2}}
+For $\tau \in \VR(X, r+\varepsilon+\nu)$ similarly $|g(x_i)g(x_j)|_Y < (r+\varepsilon+\nu) + r = 2r+\varepsilon+\nu$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{4}: proximity of composition}
+\begin{block}{Step \textup{3}}
+The pairs $(h(y_i),y_i)$ and $(h(y_j), g(h(y_j)))$ lie in $R$, so
+\[
+\bigl|y_i\, (g\circ h)(y_j)\bigr|_Y < \bigl|h(y_i)h(y_j)\bigr|_X + r < (\varepsilon + r) + r = \varepsilon + 2r .
+\]
+Similarly, $|g(h(y_i)) g(h(y_j))|_Y < \varepsilon + 2r$.
+\end{block}
+\begin{block}{Conclusion}
+All pairwise distances in $\sigma \cup (g\circ h)(\sigma)$ are less than $2r+\varepsilon+\nu$, which means that this set lies in the simplex of the complex $\VR(Y, 2r+\varepsilon+\nu)$\textup{:} mappings are close.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{5}}
+\begin{block}{\textup{(a)} VR in Czech}
+For $\sigma \in \VR(X,s)$, by the definition of Young's constant, there is $z \in Z$ with
+\[
+\sup_{x\in\sigma}|zx|_Z \le R_Z(\sigma) \le J(Z)\diam\sigma < J(Z)s,
+\]
+that is, $\sigma \in \check C_{J(Z)s}(X;Z)$.
+\end{block}
+\begin{block}{\textup{(b)} and \textup{(c)}}
+Second inclusion --- problem \textup{3} with $r = J(Z)s$\textup{:}
+\[
+\VR(X,s) \subset \check C_{J(Z)s}(X;Z) \subset \VR\bigl(X, 2J(Z)s\bigr).
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{6}}
+\begin{block}{Decomposition by components}
+$U = \bigsqcup_C C$, each component is open in $M$ and is a connected $n$-dimensional manifold without boundary. The images of singular simplices are connected, therefore
+\[
+C_\bullet(U;\Z_2) = \bigoplus_C C_\bullet(C;\Z_2), \qquad H_n(U;\Z_2) = \bigoplus_C H_n(C;\Z_2).
+\]
+\end{block}
+\begin{block}{Components are not compact}
+A compact component would be closed in $M$ and open, that is, open-closed\textup{;} in a connected $M$, this would give $C = M \supset U$, which is impossible. This means that each component is non-compact and $H_n(C;\Z_2) = 0$, whence $H_n(U;\Z_2) = 0$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Lesson summary \textup{3}}
+\begin{block}{What has been proven}
+\begin{enumerate}
+\item $\partial_{k-1}\partial_k = 0$ and $H_0(\Sigma;\Z) \cong \Z^{c}$.
+\item Lemma on the nerve\textup{:} two contractible sets with contractible intersection, three arcs of a circle, the value of the goodness of the covering.
+\item $\VR(X,r) \subset \check C_r(X;Z) \subset \VR(X,2r)$.
+\item Key lemma\textup{:} simplicial $h$, $g$ and proximity of $g \circ \iota_\nu \circ h$ to inclusion.
+\item $\VR(X,s) \subset \check C_{J(Z)s}(X;Z) \subset \VR(X, 2J(Z)s)$.
+\item $H_n(U;\Z_2) = 0$ for own open $U \subset M$.
+\end{enumerate}
+\end{block}
+\begin{block}{Next lesson}
+Weak and strong GH-distance estimates\textup{:} triangulation, continuous continuation, Webster's lemma, intersection property and corollaries.
+\end{block}
+\end{frame}
+
+\end{document}

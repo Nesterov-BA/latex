@@ -1,0 +1,124 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Learning objectives for the lesson \textup{2}}\\[2mm]
+{\large Ultrametrization and its applications in GH geometry}\\[2mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, lesson on presentation \textup{2} (chapter \textup{2} minicourse)}
+\end{center}
+
+\section*{Lesson plan (\textup{50} minutes)}
+
+\begin{itemize}[leftmargin=*]
+\item Problem \textup{1} (ultrametrization and finite length curves) --- \textup{8} minutes\textup{;}
+\item Problem \textup{2} (properties of ultrametric distances) --- \textup{8} minutes\textup{;}
+\item Problem \textup{3} (representation by trees and dendrogram) --- \textup{8} minutes\textup{;}
+\item Problem \textup{4} (lower bounds for GH distance) --- \textup{12} minutes\textup{;}
+\item Problem \textup{5} (distance between simplexes) --- \textup{8} minutes\textup{;}
+\item Task \textup{6} (ultrametrization and $\operatorname{MST}$-spectrum) --- \textup{6} minutes.
+\end{itemize}
+
+The lecture proves the main theorem on ultrametrization, that is, the inequality $d_{GH}(X,Y)\ge d_{GH}\bigl(\mathcal U(X),\mathcal U(Y)\bigr)$, the theorem $d_{GH}(P_n,S^1)=\pi/n$, lower bounds through the Young constant and the connection with the $\operatorname{MST}$-spectrum. The sheet contains statements from chapter \textup{2}, given in the lecture without proof as known facts \textup{(}properties of ultrametric spaces, their representation by trees, corollaries of the main theorem, single-point ultrametrization of a metric tree, formula for the distance to a simplex\textup{)}, and problems on calculating and estimating the Gromov--Hausdorff distance. Let us note the corollary of the example to the definition\textup{:} if any two points in space are connected by a curve of finite length, then $\mathcal U(X)=\Delta_1$\textup{;} in particular, the ultrametrization of a segment, as well as the gluing of two segments at a common point \textup{(}this is again a segment\textup{)} is one-point.
+
+\section*{Reference information}
+
+\begin{itemize}[leftmargin=*]
+\item \emph{Ultrametric} --- a metric in which the strengthened triangle inequality $d(x,z)\le\max\{d(x,y),d(y,z)\}$ holds for all points.
+\item \emph{Polyline} $(x_0,x_1,\dots,x_n)$ has \emph{ultralength} $\max_{1\le i\le n}d(x_{i-1},x_i)$. Let $d_u(x,y)=\inf\{\text{ultralengths of broken lines from }x\text{ to }y\}$\textup{;} then $d_u$ is an ultrametric, and \emph{ultrametrization} $\mathcal U(X)$ is the quotient space of $X$ with respect to $d_u(x,y)=0$ with metric $d_{\mathcal U(X)}\bigl([x],[y]\bigr)=d_u(x,y)$.
+\item $\Delta_1$ --- one-point metric space\textup{;} for any metric space $Y$ $\diam Y = \sup_{y,y'\in Y}d(y,y')$ is true.
+\item \emph{Metric tree} --- a connected graph without cycles, the edges of which are segments of a given length, and the distance is equal to the length of a single path.
+\item \emph{Match Distortion}: The match $R\subset X\times Y$ has a distortion $\dis R=\sup\bigl\{|d_X(x,x')-d_Y(y,y')|:(x,y),(x',y')\in R\bigr\}$, and $\ghdist{X}{Y}=\frac12\inf_R\dis R$.
+\item \emph{$\operatorname{MST}$-spectrum} of a finite metric space $X$ --- a set of $(\sigma_1,\dots,\sigma_{n-1})$ edge lengths of the minimum spanning tree of a complete graph on $X$, ordered in descending order\textup{;} $\sigma_1$ --- largest edge.
+\item \emph{Ultrametrics of a single link}: $d_u(x,y)$ --- the maximum length of the edges of the minimum spanning tree on the path from $x$ to $y$.
+\item \emph{Partitions}: $\Dm{m}{X}$ --- set of partitions of $X$ into $m$ non-empty parts, $\alphaD{D}=\min_{i<j}|X_iX_j|$, $\diam D=\max_i\diam X_i$.
+\end{itemize}
+
+\section*{Tasks}
+
+\begin{task}[ultrametrization and finite length curves]
+\textup{a)} Let any two points $x,y\in X$ be connected by a broken line of arbitrarily small ultra-length \textup{(}for example, if $X$ is path connected and any two of its points are connected by a curve of finite length\textup{)}. Prove that then $d_u\equiv 0$ and $\mathcal U(X)=\Delta_1$.
+
+\textup{b)} Deduce from here the one-point ultrametrization for a segment, for a circle $S^1$ with an internal metric, for any metric tree, and for a space obtained by gluing together several segments at one common point.
+
+\textup{c)} Prove that for any metric space $X$ $\diam\mathcal U(X)\le\diam X$ holds, and give an example $X$ for which the inequality is strict.
+
+\textup{d)} Prove that the relation $x\sim y\iff d_u(x,y)=0$ is an equivalence relation, and that the class $[x]$ consists of exactly those points that are connected to $x$ by broken lines of arbitrarily small ultralength.
+
+\textbf{Hint.} In \textup{a)} approximate a finite length curve with a polyline with small links and go to the length limit\textup{;} in \textup{c)} use a polyline of two points and compare with $X=\{0,1,2\}\subset\R$.
+\end{task}
+
+\begin{task}[ultrametric distance properties]
+Let $X$ be an ultrametric space. Prove the following statements.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item \emph{Polygon inequality}\textup{:} for any points $x_0,x_1,\dots,x_n\in X$ $d(x_0,x_n)\le\max_{1\le i\le n}d(x_{i-1},x_i)$ is satisfied.
+\item \emph{Isosceles}\textup{:} among the distances $d(x,y)$, $d(y,z)$, $d(z,x)$ two are equal, and the third does not exceed them.
+\item \emph{Property of balls}\textup{:} each ball of non-zero radius is both open and closed\textup{;} if two balls intersect, then one of them is contained in the other.
+\item \emph{Correctness of factorization}\textup{:} if $d_u(x,x')=d_u(y,y')=0$, then $d_u(x,y)=d_u(x',y')$\textup{;} deduce from this that the metric on $\mathcal U(X)$ is well defined and is an ultrametric.
+\end{enumerate}
+\end{task}
+
+\begin{task}[representation by trees and dendrogram]
+Let $T$ be a tree with each edge assigned a positive weight $\omega(e)$. For vertices $v$ and $w$ we set
+\[
+d(v,w)=\max\bigl\{\omega(e):\ e\ \text{lies on the path from}\ v\ \text{to}\ w\bigr\}.
+\]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that $d$ is an ultrametric on the set of vertices of the tree $T$.
+\item Prove the converse\textup{:} any finite ultrametric space $X$ is isometric to a subset of the vertices of a suitable edge-weighted tree equipped with a maximum edge metric. Hint\textup{:} take balls of space $X$ of nonzero radius as vertices and connect each ball with an edge to the smallest ball containing it.
+\item Construct such a dendrogram and find $\mathcal U(X)$ for $X$ --- the set of vertices of a square with side $1$ with the metric induced from the plane. Compare the answer with the ultrametrization $\mathcal U(P_4) = \frac{\pi}{2}\Delta_4$ of the vertices of a regular quadrilateral with the intrinsic metric of the circle.
+\end{enumerate}
+\end{task}
+
+\begin{task}[lower bounds for GH distance]
+\textup{a)} Prove that for any metric space $Y$
+\[
+\ghdist{\Delta_1}{Y}=\frac12\diam Y .
+\]
+\textup{b)} Let $V$ be a normed space, $X\subset V$. Prove that
+\[
+\ghdist{V}{X}\ge\frac12\diam\mathcal U(X).
+\]
+\textup{c)} Let $X_n=\bigl\{\frac{k}{n}: k=0,\dots,n\bigr\}\subset[0,1]$. Find the $\operatorname{MST}$-spectrum of $X_n$ and prove that $\diam\mathcal U(X_n)=\frac1n$. Deduce from this that
+\[
+\frac{1}{2n}\le\ghdist{[0,1]}{X_n}\le d_H\bigl([0,1],X_n\bigr)=\frac{1}{2n},
+\]
+that is, $\ghdist{[0,1]}{X_n}=\frac{1}{2n}$.
+
+\textup{d)} For any metric tree $T$, prove that $\ghdist{T}{X}\ge\frac12\diam\mathcal U(X)$, and check this inequality for $X=X_n$, $T=[0,1]$.
+
+\textbf{Hint.} In \textup{a)} consider the correspondence corresponding to the mapping $Y\to\Delta_1$\textup{:} its distortion is $\diam Y$. In \textup{b)} apply the main ultrametrization theorem and the result of problem \textup{1} \textup{(}item \textup{b}\textup{)} for $V$\textup{;} in \textup{c)} use the ultrametrics of a single link and that $d_H$ gives an upper bound.
+\end{task}
+
+\begin{task}[distance between simplexes]
+Let $X$ be a finite metric space, $\#X=n$, $m\le n$ and $\lambda>0$. For the distance from $X$ to the simplex $\lambda\Delta_m$ the following formula is correct:
+\[
+2\ghdist{\lambda\Delta_m}{X}=\inf_{D\in\Dm{m}{X}}\max\bigl\{\diam D,\ \lambda-\alphaD{D},\ \diam X-\lambda\bigr\}.
+\]
+\textup{a)} Prove this formula for $m=2$, that is, for the distance to a segment of length $\lambda$.
+
+\textup{b)} Describe the general case\textup{:} of the correspondence between $X$ and $\lambda\Delta_m$ given by the partition $D\in\Dm{m}{X}$, and show that its distortion does not exceed the specified maximum.
+
+\textup{c)} Deduce from the formula that for $m<n$ and $\lambda>\mu$
+\[
+2\ghdist{\lambda\Delta_m}{\mu\Delta_n}=\max\{\mu,\ \lambda-\mu\}.
+\]
+
+\textup{g)} Using $\mathcal U(P_k)=\frac{2\pi}{k}\Delta_k$ and the main ultrametrization theorem, obtain an estimate $\ghdist{P_m}{P_n}\ge\frac{\pi}{m}-\frac{\pi}{n}$ for regular polygons with intrinsic circle metric.
+
+\textbf{Hint.} In \textup{b)} split $X$ into $m$ parts $X_1,\dots,X_m$ and assign each part to its vertex of the simplex. In \textup{c)} put $D=\Delta_m$ in the formula and note that $\alphaD{D}=\mu$ and $\diam D=\mu$.
+\end{task}
+
+\begin{task}[ultrametrization and $\operatorname{MST}$-spectrum]
+Let $X$ be a finite metric space, $\#X=n$, and $\sigma(X)=(\sigma_1,\dots,\sigma_{n-1})$ its $\operatorname{MST}$-spectrum.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that $\diam\mathcal U(X)=\sigma_1\le\diam X$, and $\sigma_1=\diam X$ if and only if the diameter of $X$ is reached on the edge of some minimum spanning tree.
+\item Find $\sigma(X)$ and describe $\mathcal U(X)$ for $X$ --- the set of vertices of the rectangle $1\times 2$ with the metric induced from the plane.
+\item Derive from \textup{(b)} the lower bounds\textup{:} $\ghdist{T}{X}\ge 1$ for any metric tree $T$ and $\ghdist{V}{X}\ge 1$ for any normed space $V\supset X$.
+\end{enumerate}
+
+\textbf{Hint.} In \textup{(a)} use that $d_u(x,y)$ is the maximum length of edges along a path in a minimum spanning tree. In \textup{(b)} the minimum spanning tree has edges of lengths $1$, $1$, $2$, whence $\sigma(X)=(2,1,1)$\textup{;} distances in $\mathcal U(X)$ are equal to the maximum lengths of the edges on the paths of the tree, so $d_{\mathcal U(X)}(A,B)=d_{\mathcal U(X)}(C,D)=1$, and all other distances are equal to $2$ \textup{(}although in the original metric $d(A,C)=\sqrt5$\textup{)}.
+\end{task}
+
+\end{document}

@@ -1,0 +1,99 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Learning objectives for the lesson \textup{5}}\\[2mm]
+{\large Intersection property in finite-dimensional normed spaces}\\[2mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, lesson based on lecture \textup{5} (chapter \textup{10} minicourse)}
+\end{center}
+
+\section*{Lesson plan (\textup{50} minutes)}
+
+\begin{itemize}[leftmargin=*]
+\item Problem \textup{1} (dual norm, polar and support function) --- \textup{10} minutes\textup{;}
+\item Problem \textup{2} (Minkowski terms and invariant $\Gamma(B)$) --- \textup{8} minutes\textup{;}
+\item Problem \textup{3} (generating ball and basic equivalence) --- \textup{10} minutes\textup{;}
+\item Problem \textup{4} (producing balls) --- \textup{6} minutes\textup{;}
+\item Problem \textup{5} (polyhedra: classification and prism) --- \textup{8} minutes\textup{;}
+\item Problem \textup{6} (examples: square $\ell_\infty^2$ and classification $\ell_p^n$) --- \textup{8} minutes.
+\end{itemize}
+
+In chapter \textup{10} the intersection property is described through three equivalent languages\textup{:} Minkowski terms, the topology of intersections of balls and the differential geometry of the boundary of the unit ball. The substantive statements of the chapter are given in the lecture without proof, so they are also included in the sheet (the basic equivalence $\tau(B)=\Gamma(B)$, the product of balls, classifications of polytopes and spaces $\ell_p^n$), and computational preparation\textup{:} the dual norm, the invariants $\Gamma(B)$ and $\tau(B)$, generating balls and a fully analyzed two-dimensional example.
+
+\section*{Reference information}
+
+\begin{itemize}[leftmargin=*]
+\item $V$ --- finite-dimensional real vector space (for simplicity $\R^n$), $F$ --- norm on $V$, $B=\{x: F(x)\le1\}$ --- unit ball, $S^{n-1}=\{F=1\}$ --- unit sphere.
+\item \emph{Dual norm\textup{:}} $F^*(u)=\sup\{\langle x,u\rangle: F(x)\le1\}$\textup{;} \emph{support function\textup{:}} $h=F^*|_{S^{n-1}}$.
+\item \emph{Polar\textup{:}} $B^\circ=\{u: \langle x,u\rangle\le1$ for all $x\in B\}$.
+\item The sets $A,C\subset V$ below are assumed to be compact and convex. Write $A\preceq_M C$ if there is a compact convex $D$ with $A+D=C$.
+\item \emph{Family of intersections of shifts\textup{:}} $\mathcal S(B)=\bigl\{\bigcap_{\alpha\in I}(B+x_\alpha)\ne\varnothing: I\ne\varnothing\bigr\}$.
+\item Ball $B$ is \emph{generating} if each $Q\in\mathcal S(B)$ is a term of the Minkowski ball $B$.
+\item \emph{Invariants\textup{:}} $\Gamma(B)=\inf\{\lambda\ge1: Q\preceq_M\lambda B$ for all $Q\in\mathcal S(B)\}$ (equality $\infty$ if there are no such $\lambda$), and $\tau(B)$ --- topological threshold from chapter \textup{10}.
+\item The norm $F$ \emph{has the intersection property} if $\tau(B)<\infty$.
+\item Main theorem of the chapter \textup{10}\textup{:} $\tau(B)=\Gamma(B)$ for any finite-dimensional normed space\textup{;} and $B$ is generating if and only if $\Gamma(B)=\tau(B)=1$.
+\end{itemize}
+
+\section*{Tasks}
+
+\begin{task}[dual norm, polars and support function]
+Prove that the function $F^*(u)=\sup\{\langle x,u\rangle: F(x)\le1\}$ is a norm on $V$ and that its unit ball coincides with the polar $B^\circ$ of the ball $B$. Explain why the support function $h=F^*|_{S^{n-1}}$ completely defines the ball $B$.
+
+\textbf{Hint.} Positive definiteness follows from the fact that $B$ contains a neighborhood of zero and is symmetric\textup{:} from $\langle x,u\rangle=0$ for all $x\in B$ it follows that $u=0$. The homogeneity and inequality of the triangle are checked by passing to the supremum, and the equality $B_{F^*}=B^\circ$ is checked by direct comparison of definitions.
+\end{task}
+
+\begin{task}[Minkowski terms and invariant $\Gamma(B)$]
+Prove the following properties of the relation $A\preceq_M C$\textup{:}
+\begin{enumerate}
+\item[(a)] if $A\preceq_M C$, then $\diam A\le\diam C$\textup{;}
+\item[(b)] relation is reflexive and transitive\textup{;}
+\item[(c)] if $Q\preceq_M\lambda B$ and $\mu\ge\lambda$ then $Q\preceq_M\mu B$.
+\end{enumerate}
+Deduce from this that the set of admissible $\lambda$ in the definition of $\Gamma(B)$ is a half-line, and the equality $\Gamma(B)=1$ is equivalent to the fact that $\lambda=1$ is admissible.
+
+\textbf{Hint.} At \textup{(a)}, shift both points of $A$ by the same vector from $D$. In step \textup{(c)} add to the term $D$ with $Q+D=\lambda B$ the set $(\mu-\lambda)B$ (the sum of compact convex sets is compact and convex).
+\end{task}
+
+\begin{task}[generating ball and basic equivalence]
+Using the definition of a generating ball and the main theorem of chapter \textup{10} ($\tau(B)=\Gamma(B)$), prove that the conditions are equivalent\textup{:} \textup{(i)} $B$ generating\textup{;} \textup{(ii)} $\Gamma(B)\le1$\textup{;} \textup{(iii)} $\Gamma(B)=\tau(B)=1$. Is it true that then the norm $F$ has the intersection property?
+
+\textbf{Hint.} Use the definition of the family $\mathcal S(B)$, the inequality $\Gamma(B)\ge1$ from the definition, and the main theorem $\tau(B)=\Gamma(B)$.
+\end{task}
+
+\begin{task}[producing balls]
+Let $B_1\subset V_1$ and $B_2\subset V_2$ be unit balls.
+
+\textup{a)} Prove that $\Gamma(B_1\times B_2)=\max\{\Gamma(B_1),\Gamma(B_2)\}$.
+
+\textup{b)} Using the basic equivalence, derive a similar formula for $\tau$ and corollary\textup{:} the Cartesian product of normed spaces has the intersection property if and only if both factors have this property.
+
+\textbf{Hint.} The intersections of the translations of the product decompose coordinatewise\textup{:} $\mathcal S(B_1\times B_2)=\{Q_1\times Q_2: Q_i\in\mathcal S(B_i)\}$, and $Q\preceq_M\lambda(B_1\times B_2)$ is equivalent $Q_i\preceq_M\lambda B_i$ for $i=1,2$.
+\end{task}
+
+\begin{task}[polyhedra\textup{:} classification and prism]
+Formulate the classification of centrally symmetric polyhedra from chapter \textup{10}\textup{:} for an $n$-dimensional centrally symmetric polyhedron $B$ the intersection property, finiteness of $\Gamma(B)$, generativeness and representability are equivalent
+\[
+B=P_1\times\dots\times P_k\times[-1,1]^\varepsilon
+\]
+with centrally symmetric polygons $P_i$ and $2k+\varepsilon=n$, and in all these cases $\Gamma(B)=\tau(B)=1$.
+
+\textup{a)} Check that for $n\le3$ such representations are exhausted by the segment, square and prisms over centrally symmetric polygons.
+
+\textup{b)} Derive a corollary\textup{:} A three-dimensional polyhedral normed space has the intersection property if and only if its unit ball is a prism over a centrally symmetric polygon.
+
+\textbf{Hint.} In paragraph \textup{(a)} for $n=3$ the equality $2k+\varepsilon=3$ gives only $(k,\varepsilon)=(1,1)$ and $(0,3)$.
+\end{task}
+
+\begin{task}[examples\textup{:} square $\ell_\infty^2$ and classification $\ell_p^n$]
+Let $V=\R^2$, $F(x)=\max\{|x_1|,|x_2|\}$ and $B=[-1,1]^2$.
+
+\textup{a)} Prove that $\Gamma(B)=\tau(B)=1$. Verify that the intersection of any non-empty family of translations of a square has the form $Q=[a_1,b_1]\times[a_2,b_2]$, where $b_i-a_i\le2$, and that $Q$ is a term of the Minkowski square $B$.
+
+\textup{b)} Using the classification $\Gamma(B_p^n)=1$ for $n\le2$ and for $n\ge3$, $p\in\{2,\infty\}$, as well as $\Gamma(B_p^n)=\infty$ for $n\ge3$, $p\notin\{2,\infty\}$, explain why for $n\ge3$ $\ell_2^n$ and $\ell_\infty^n$ have the intersection property, but $\ell_1^n$ and $\ell_4^n$ do not.
+
+\textbf{Hint.} In clause \textup{(a)} put $D=[-1-a_1,1-b_1]\times[-1-a_2,1-b_2]$ and check that $D$ is not empty and $Q+D=B$. In paragraph \textup{(b)} compare the indicator $p$ with the classification.
+\end{task}
+
+\end{document}

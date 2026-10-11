@@ -1,0 +1,116 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Learning objectives for the lesson \textup{4}}\\[2mm]
+{\large Young's constant, measure of non-convexity and intersection property}\\[1mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, lesson on presentation \textup{4} (chapter \textup{4} of the minicourse)}
+\end{center}
+
+\section*{Lesson plan (\textup{50} minutes)}
+
+\begin{itemize}[leftmargin=*]
+\item Problem \textup{1} (measure of non-convexity and Gulevich's theorem) --- \textup{10} minutes\textup{;}
+\item Problem \textup{2} (values of Young's constant) --- \textup{8} minutes\textup{;}
+\item Problem \textup{3} (equality criterion $J(V) = J_s(V)$) --- \textup{6} minutes\textup{;}
+\item Problem \textup{4} (Webster's Lemma) --- \textup{10} minutes\textup{;}
+\item Problem \textup{5} (sup-norm and cylindrical norms) --- \textup{10} minutes\textup{;}
+\item Problem \textup{6} (norms without intersection property) --- \textup{6} minutes.
+\end{itemize}
+
+What was proved at the presentation \textup{4} \textup{(}the triangulation lemma, the continuous continuation lemma, weak and strong estimates\textup{)} is not included in the sheet\textup{:} only what is accepted in the lecture as a known fact is collected here.
+\section*{Reference information}
+
+\begin{itemize}[leftmargin=*]
+\item \emph{Radius of a circumscribed sphere} $\ChebRadius{A} = \inf_{v \in V} \sup_{a \in A} \|v - a\|$ and \emph{relative radius} $\RelChebRadius{Y}{A} = \inf_{y \in Y} \sup_{a \in A} \|y - a\|$\textup{;}
+\item \emph{Young constant} $\Jung{V} = \sup_A \ChebRadius{A}/\diam A$ and \emph{relative Young constant} \textup{(}Gulevich number\textup{)} $\JungRel{V} = \sup_A \RelChebRadius{\conv A}{A}/\diam A$, where the supremum is taken over non-empty bounded $A \subseteq V$ with $\diam A > 0$\textup{;}
+\item \emph{Measure of non-convexity} $\lambda(A) = \sup_{c \in \conv A} \inf_{a \in A} \|c - a\|$\textup{;}
+\item \emph{Gulevich's theorem\textup{:}} $\JungRel{V} = \sup_A \lambda(A)/\diam A$. Normalization by $\diam A$ is essential\textup{:} without it the supremum is infinite \textup{(}see problem \textup{1}\textup{)}\textup{;}
+\item \emph{Known values\textup{:}} $\frac12 \le \Jung{V} \le \JungRel{V} \le 1$\textup{;} in the Euclidean space of dimension $n$ we have $\Jung{V} = \JungRel{V} = \sqrt{\frac{n}{2(n+1)}}$\textup{;} in $\R^n$ with sup-norm $\Jung{V} = \frac12$ and $\JungRel{V} = \frac{n-1}{n}$ for $n \ge 2$\textup{;}
+\item \emph{Equality Criterion\textup{:}} $\Jung{V} = \JungRel{V}$ if and only if $V$ is Hilbert or $\dim V \le 2$\textup{;}
+\item \emph{Intersection property\textup{:}} for any $\rho > 0$ there is $t > 0$ such that for any $t' > t$ and any finite family of open balls of radii $r_i \le \rho$ the set
+\[
+\bigl(V \setminus \ClosedBall{0}{t'}\bigr) \cap \Bigl(\bigcap_{i=1}^m \OpenBall{x_i}{r_i}\Bigr)
+\]
+either empty or contractible. Euclidean spaces, spaces with sup-norm, and cylindrical norms \textup{(}unit ball $B^2 \times K^{n-2}$\textup{)}\textup{;} have it. There are norms that do not have it.
+\end{itemize}
+\section*{Tasks}
+
+\begin{task}[measure of non-convexity and Gulevich's theorem]
+Let $A \subseteq V$ be a non-empty bounded set, $\diam A > 0$.
+
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Derive from Gulevich's theorem \textup{(}the equality $\JungRel{V} = \sup_A \lambda(A)/\diam A$\textup{)} inequality
+\[
+\lambda(A) \le \JungRel{V} \cdot \diam A,
+\]
+and explain why then any point $v \in \conv A$ is removed from $A$ by no more than $\JungRel{V} \diam A$. Then compare $\lambda(A)$ with the relative radius\textup{:} show that there is no pointwise inequality between them \textup{(}for example, for $A = \{0, 1, 2\} \subset \R$ we have $\lambda(A) = 1/2 < 1 = \RelChebRadius{\conv A}{A}$\textup{)}.
+\item Calculate $\lambda(A)/\diam A$ for the set of vertices of a regular triangle with side $1$, for the vertices of a square, and for a circle of radius $1$ and compare with $\JungRel{\R^2} = 1/\sqrt3$ from the reference information.
+\item Explain why in Gulevich's theorem it is impossible to remove division by $\diam A$\textup{:} show that $\sup_A \lambda(A) = +\infty$ by considering the sets $tA$ for $t \to \infty$.
+\end{enumerate}
+
+\textbf{Hint.} In \textup{(a)} the estimate for $\lambda(A)$ is obtained by passing to the exact upper bound in the equality $\JungRel{V} = \sup_A \lambda(A)/\diam A$, and in the example $A = \{0,1,2\}$ both numbers are calculated directly\textup{:} $\inf_{y \in [0,2]} \max\{|y|, |y-1|, |y-2|\} = 1$ for $y = 1$ and $\sup_{c \in [0,2]} \inf_{a \in A} |c - a| = 1/2$ for $c = 1/2$. In \textup{(b)} for a square and a circle, the maximum $\inf_{a \in A} \|c - a\|$ is achieved at the center of the figure.
+\end{task}
+
+\begin{task}[values of Young's constant]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove the inequalities $\frac12 \le \Jung{V} \le \JungRel{V} \le 1$ for any normed space $V$.
+\item In $V = \R^3$ with sup-norm, construct a set $A$ with $\RelChebRadius{\conv A}{A}/\diam A = 2/3$ and explain why for two-point $A$ this ratio is equal to $1/2$.
+\item Check that in $\R^2$ both reference formulas give the same value\textup{:} $1/2$ for sup-norm and $1/\sqrt3$ for Euclidean norm, but in $\R^3$ with sup-norm they give different values.
+\end{enumerate}
+
+\textbf{Note.} In \textup{(a)} for the lower bound take the two-point $A$\textup{;} inequality $\Jung{V} \le \JungRel{V}$ follows from $\conv A \subseteq V$\textup{;} for the upper bound prove that $\RelChebRadius{\conv A}{A} \le \diam A$. In \textup{(b)} $A = \{e_1, e_2, e_3\}$ is suitable, where $e_i$ are the ends of unit segments of the coordinate axes, and as the center is the center of gravity \textup{(}it divides the distance to the vertices in the ratio $2/3$\textup{)}.
+\end{task}
+
+\begin{task}[equality criterion $J(V) = J_s(V)$]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item In $\R^3$ with sup-norm, calculate $\Jung{V}$ and $\JungRel{V}$ on the set $A = \{e_1, e_2, e_3\}$ from problem \textup{2} \textup{(}the center can now be chosen in the entire space\textup{)} and compare with the table values $1/2$ and $2/3$.
+\item Explain why the found strict inequality does not contradict the criterion of equality\textup{:} which of the conditions of the criterion is violated?
+\item Check that the conditions of the criterion are consistent with \textup{(a)} of problem \textup{2}\textup{:} for $\dim V \le 2$ the equality holds for the non-Hilbert sup-norm.
+\end{enumerate}
+
+\textbf{Hint.} In \textup{(a)} take into account the symmetry of the set $A$\textup{:} in $\R^3$ with sup-norm the minimum $\sup_{a \in A} \|c - a\|$ in $c \in \R^3$ is achieved, for example, at the point $c = (\frac12, \frac12, \frac12)$, and the center of gravity $\conv A$ gives $2/3$.
+\end{task}
+\begin{task}[Webster's lemma]
+Let $f\colon V \to W$ be a continuous map between finite-dimensional normed spaces, $\dim V \ge \dim W$ and $\dis f < \infty$. Prove that then $\dim V = \dim W$ and $f$ is surjective.
+
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Show that all three conditions are essential by constructing examples in which the conclusion is violated when \textup{(i)} the $\dim V \ge \dim W$ inequality, \textup{(ii)} finite distortion, \textup{(iii)} continuity are abandoned.
+\item\label{it:webster_dim1} Prove the lemma in the case of $\dim V = \dim W = 1$.
+\item Explain how the lemma is used in the proof of the weak estimate\textup{:} why is the mapping $f^*\colon V \to V$ with $\dis f^* \le 3C + 4\varepsilon$ surjective?
+\end{enumerate}
+
+\textbf{Hint.} In \textup{(a)} for \textup{(i)} $f\colon \R \to \R^2$, $f(t) = (t, 0)$\textup{;} for \textup{(ii)} --- $f = \arctan$\textup{;} for \textup{(iii)} --- $f(x) = x$ for $x < 1$ and $f(x) = x + 1$ for $x \ge 1$ \textup{(}here $\dis f = 1$\textup{)}. In \textup{(b)} use that a continuous function with finite distortion cannot "jump" a point.
+\end{task}
+
+\begin{task}[sup-norm and cylindrical norms]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that the sup-norm in $\R^n$ has the intersection property, and give an explicit $t$ in terms of $\rho$.
+\item Explain why then any cylindrical norm, that is, a norm with a unit ball, also has the intersection property
+\[
+B^n = B^2 \times K^{n-2},
+\]
+where $B^2$ is a unit ball of some norm in the plane, and $K^{n-2}$ is a cube. Reduce the matter to the plane case and to the case of the cube.
+\item Explain\textup{,} why the intersection property is needed in the proof of the strengthened estimate and what breaks if the intersection of balls is not contractible.
+\end{enumerate}
+
+\textbf{Hint.} In \textup{(a)} the ball $\OpenBall{x}{r}$ in sup-norm is an open cube $\prod_j (x_j - r, x_j + r)$, therefore $Q$ is an open parallelepiped with half-widths no more than $\rho$\textup{;} set $Q \setminus \ClosedBall{0}{t'}$ --- union of intersections of $Q$ with half-spaces $\{x_j > t'\}$ and $\{x_j < -t'\}$\textup{;} for $t' > t = \rho$ the conditions $x_j > t'$ and $x_j < -t'$ cannot be satisfied on $Q$ simultaneously \textup{(}otherwise the side of the cube along the coordinate $j$ is longer than $2t' > 2\rho$, and it does not exceed $2\rho$\textup{)}, so all non-empty pieces have a common point $z$, each piece is star relative to $z$, and hence their union is contractible.
+\end{task}
+
+\begin{task}[norms without intersection property]
+It is known that in $\R^3$ norms with a unit ball in the form of an octahedron, icosahedron or dodecahedron do not have the intersection property.
+
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item For an octahedron \textup{(}norm $\lone$ in $\R^3$\textup{)} and one ball $Q = \OpenBall{0}{\rho}$, explain why the set $Q \setminus \ClosedBall{0}{t'}$ is not contractible for $t' < \rho$, and why this example still does not violate the definition.
+\item Indicate\textup{,} which part of the proof of problem \textup{5}\,\textup{(a)} is based on the ``rectangularity'' of sup-norm balls, and why this argument does not work for the octahedron.
+\item Check that in $\R^2$ with norm $\lone$ the intersection property still holds\textup{:} this is consistent with the fact that for $\dim V = 2$ all norms have it.
+\end{enumerate}
+\end{task}
+
+\vfill
+
+{\small The central problems for the lesson are \textup{1} and \textup{5}\textup{:} the measure of non-convexity explains where the factor $\JungRel{V}$ in the weak estimate comes from, and the intersection property is an additional condition under which the estimate is strengthened\textup{.}}
+
+\end{document}

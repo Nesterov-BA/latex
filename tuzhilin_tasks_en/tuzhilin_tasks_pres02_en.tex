@@ -1,0 +1,204 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\input{pres_preamble_en.tex}
+\title[Lesson Objectives 2]{Lesson Objectives \textup{2}: ultrametrization, trees and Young's constant}
+\subtitle{Lesson on the presentation \textup{2} of the minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>}
+\author{Alexey A.~Tuzhilin}
+\date{Beijing University, October 2026}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Lesson plan (\textup{50} minutes)}
+\begin{enumerate}
+\item Task \textup{1}. Properties of ultrametric spaces --- \textup{10} minutes.
+\item Task \textup{2}. Corollaries of the main theorem --- \textup{8} minutes.
+\item Task \textup{3}. Metric trees --- \textup{10} minutes.
+\item Task \textup{4}. Ultrametrization diameter and Young's constant --- \textup{12} minutes.
+\item Task \textup{5}. Ultrametrization and $\MST$-spectrum --- \textup{10} minutes.
+\end{enumerate}
+\medskip
+At the presentation \textup{2} the main theorem on ultrametrization and the upper bound for regular polygons \textup{;} the rest is given without proof.
+\end{frame}
+
+\begin{frame}{Problem \textup{1}: properties of ultrametric spaces}
+\begin{block}{Formulation}
+Let $X$ be an ultrametric space. Prove that\textup{:}
+\begin{enumerate}
+\item[(a)] $d(x_0,x_n) \le \max_{1\le i\le n} d(x_{i-1}, x_i)$ for any finite sequence of points\textup{;}
+\item[(b)] for any $x,y,z$ among $d(x,y)$, $d(y,z)$, $d(z,x)$ two distances are equal, and the third does not exceed them\textup{;}
+\item[(c)] each ball of non-zero radius is open and closed, and of two intersecting balls, one is contained in the other\textup{;}
+\item[(d)] if $d(x,y) = \diam X$, then for any $z$ either $d(x,z) = \diam X$ or $d(y,z) = \diam X$\textup{;}
+\item[(e)] every point of the ball is its center.
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{1}, points \textup{(a)}--\textup{(c)}}
+\begin{block}{\textup{(a)} Polygon}
+Induction on the number of links\textup{:}
+\[
+d(x_0,x_n) \le \max\bigl\{d(x_0,x_{n-1}), d(x_{n-1},x_n)\bigr\} \le \max_{1\le i\le n} d(x_{i-1},x_i).
+\]
+\end{block}
+\begin{block}{\textup{(b)} Isosceles}
+For $a \le b \le c$, the \textup{(a)} clause for a triple gives $c \le \max\{a,b\} = b$, so $b = c$.
+\end{block}
+\begin{block}{\textup{(c)} Balls}
+If $y \in B(x;r) \cap B(x';r')$, then $d(x,x') < \max\{r,r'\}$\textup{;} for $r \le r'$ any $z \in B(x;r)$ satisfies $d(x',z) \le \max\{d(x',y), d(y,z)\} < r'$. This means $B(x;r) \subset B(x';r')$, and for $r = r'$ the balls coincide and are therefore open and closed.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{1}, points \textup{(d)}--\textup{(e)}}
+\begin{block}{\textup{(d)} Diameter}
+Let $d(x,y) = \diam X$. By item \textup{(b)}, among $d(x,y)$, $d(y,z)$, $d(z,x)$, two are equal, and the third is not greater than them. Since $d(x,y)$ is maximal, $\max\{d(x,z), d(y,z)\} = \diam X$.
+\end{block}
+\begin{block}{\textup{(e)} Center}
+If $y \in B(x;r)$, then the balls $B(x;r)$ and $B(y;r)$ intersect and have equal radii, which means they coincide by point \textup{(c)}.
+\end{block}
+\begin{block}{Output}
+Balls of non-zero radius are equivalence classes\textup{:} ultrametrics breaks up into clusters.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{2}: consequences of the main theorem}
+\begin{block}{Formulation}
+\begin{enumerate}
+\item[(a)] If $\ghdist{X}{Y} = 0$, then $\ghdist{\Ucal(X)}{\Ucal(Y)} = 0$.
+\item[(b)] $\diam\Ucal(X) \le \diam X$\textup{;} if $X$ is path connected and the points are connected by curves of finite length, then $\diam\Ucal(X) = 0$.
+\item[(c)] $\ghdist{\Deltaone}{Y} = \frac12 \diam Y$ for any metric space $Y$.
+\end{enumerate}
+\end{block}
+\begin{block}{Note}
+In \textup{(a)} apply the fundamental theorem $d_{GH}(X,Y) \ge \ghdist{\Ucal(X)}{\Ucal(Y)}$. In \textup{(b)} take a polyline of one link, and then a polyline along a curve of finite length. In \textup{(c)} compare the distortion of an arbitrary match with the distortion of the $\Deltaone \times Y$ match.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{2}}
+\begin{block}{\textup{(a)} and \textup{(b)}}
+$\ghdist{\Ucal(X)}{\Ucal(Y)} \le \ghdist{X}{Y} = 0$, and the distance is non-negative. Further, a broken line of one link gives $d_u(x,y) \le d(x,y)$, whence $\diam\Ucal(X) \le \diam X$. If points $X$ are connected by curves of finite length, then, following such a curve in steps of length $< \varepsilon$, we obtain $d_u(x,y) < \varepsilon$ for any $\varepsilon > 0$, that is, $\Ucal(X) = \Deltaone$.
+\end{block}
+\begin{block}{\textup{(c)} Single-point space}
+For any correspondence $R$ between $\Deltaone$ and $Y$ and points $y,y'$ with $|yy'| = \diam Y$ we have $(p,y), (p,y') \in R$, so $\dis R \ge \diam Y$. The correspondence $\Deltaone \times Y$ has the distortion $\diam Y$, which means
+\[
+\ghdist{\Deltaone}{Y} = \frac12 \diam Y .
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{3}: metric trees}
+\begin{block}{Formulation}
+\begin{enumerate}
+\item[(a)] Prove that $\Ucal(T) = \Deltaone$ for any metric tree $T$.
+\item[(b)] Print that $\ghdist{T}{X} \ge \frac12 \diam\Ucal(X)$.
+\item[(c)] Check this on a tripod $T = [o,a] \cup [o,b] \cup [o,c]$ with unit segments and $X = \{a,b,c\}$.
+\end{enumerate}
+\end{block}
+\begin{block}{Note}
+In \textup{(a)}, split the segment $[x,y]$ into parts of length $< \varepsilon$. In \textup{(b)} use the main theorem, clause \textup{(a)} and the formula $\ghdist{\Deltaone}{Y} = \frac12\diam Y$. In \textup{(c)} note that any two distinct points $X$ are $2$ apart.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{3}}
+\begin{block}{\textup{(a)} and \textup{(b)}}
+The tree is geodesic\textup{:} along the segment $[x,y]$, divided into parts of length $< \varepsilon$, we obtain $d_u(x,y) < \varepsilon$ for any $\varepsilon$, which means $\Ucal(T) = \Deltaone$. Then
+\[
+\ghdist{T}{X} \ge \ghdist{\Ucal(T)}{\Ucal(X)} = \ghdist{\Deltaone}{\Ucal(X)} = \frac12 \diam\Ucal(X).
+\]
+\end{block}
+\begin{block}{\textup{(c)} Tripod}
+In $X$ all non-zero distances are equal to $2$, so $\Ucal(X) = X$ and $\diam\Ucal(X) = 2$, whence $\ghdist{T}{X} \ge 1$. On the other hand, $X \subset T$ and $\hdist{T}{X} = 1$, so $\ghdist{T}{X} \le 1$. Total\textup{:} $\ghdist{T}{X} = 1$ --- the estimate is accurate.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{4}: ultrametrization diameter and Young's constant}
+\begin{block}{Formulation}
+Let $Z$ be a metric space, $X \subseteq Z$ and $\hdist{X}{Z} < \infty$. Prove that
+\begin{enumerate}
+\item[(a)] for $J(Z) < 1$ $\diam\Ucal(X) \le \dfrac{\hdist{X}{Z}}{1 - J(Z)}$\textup{;}
+\item[(b)] if any two points $Z$ have a midpoint, then $\diam\Ucal(X) \le 2\hdist{X}{Z}$.
+\end{enumerate}
+\end{block}
+\begin{block}{Note}
+Denote $r = \hdist{X}{Z}$. For $a,b \in X$, find $x \in X$ with $\max\{|ax|,|xb|\} \le J|ab| + r + \delta$ (the near-optimal center of the two-point set plus the nearest point $X$), then double the number of segments of the polyline with $D_{k+1} = J D_k + r + \delta$. In \textup{(b)}, take the middle and replace $J$ with $1/2$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{4}, point \textup{(a)}}
+\begin{block}{Key step}
+For $a,b \in X$, take $z \in Z$ with $\max\{|az|,|zb|\} < R_Z(\{a,b\}) + \delta/2 \le J|ab|_Z + \delta/2$, and then $x \in X$ with $|zx|_Z < r + \delta/2$. Then
+\[
+\max\bigl\{|ax|_Z,\ |xb|_Z\bigr\} \le J|ab|_Z + r + \delta .
+\]
+\end{block}
+\begin{block}{Iteration}
+We construct broken lines $L_k$ with $D_0 = |xy|_Z$, $D_{k+1} = J D_k + r + \delta$, doubling the number of links\textup{:} each link $(u_i,u_{i+1})$ is replaced by a pair through the point $x_i \in X$. Since $J < 1$,
+\[
+d_u(x,y) \le \lim_k D_k = \frac{r+\delta}{1-J}, \qquad \delta \to 0\textup{:} \quad \diam\Ucal(X) \le \frac{r}{1-J}.
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{4}, point \textup{(b)}}
+\begin{block}{Replacing $J$ with $1/2$}
+The midpoint of $m$ points $a,b$ gives $\max\{|am|,|mb|\} = \frac12|ab|$, so for $x \in X$ with $|mx|_Z < r+\delta$
+\[
+\max\bigl\{|ax|_Z,\ |xb|_Z\bigr\} \le \tfrac12|ab|_Z + r + \delta .
+\]
+\end{block}
+\begin{block}{Same account}
+The sequence $D_{k+1} = \frac12 D_k + r + \delta$ converges to $2(r+\delta)$, which means $d_u(x,y) \le 2(r+\delta)$ and for $\delta \to 0$
+\[
+\diam\Ucal(X) \le 2\hdist{X}{Z}.
+\]
+There are midpoints in normed spaces, metric trees, and on a sphere with an intrinsic metric.
+\end{block}
+\end{frame}
+
+\begin{frame}{Problem \textup{5}: ultrametrization and $\MST$-spectrum}
+\begin{block}{Formulation}
+Let $T$ be the minimum spanning tree on a finite $X$, $\#X = n$, and $\sigma(X)$ be its $\MST$-spectrum. Prove that
+\begin{enumerate}
+\item[(a)] $d(e) = \min\{|ab| : a \in A, b \in B\}$ for edge $e$ and parts $A$, $B$ after its removal\textup{;}
+\item[(b)] $d_u(x,y) = b(x,y)$, where $b(x,y)$ is the maximum length of the edges of the path from $x$ to $y$ in the tree $T$\textup{;}
+\item[(c)] classes of the relation $d_u(x,y) < \sigma_k$ --- sets of vertices of the components of the tree $T$ after removing edges of length $\ge \sigma_k$, and the minimum distance between different classes is $\sigma_k$\textup{;}
+\item[(d)] $\diam\Ucal(X) = \sigma_1 \le \diam X$, and equality is equivalent to the fact that the diameter is reached on an edge of the tree $T$.
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{5}: points \textup{(a)}--\textup{(b)}}
+\begin{block}{\textup{(a)} Cut property}
+$e$ connects $A$ and $B$, so the minimum does not exceed $d(e)$\textup{;} if $|ab| < d(e)$ for some $a \in A$, $b \in B$, replacing $e$ with $ab$ would give a skeleton of less weight.
+\end{block}
+\begin{block}{\textup{(b)} Ultra distance through a tree}
+The inequality $d_u \le b$ gives the path itself in $T$. Conversely, take an edge $e$ of the greatest length $b(x,y)$ on the path from $x$ to $y$\textup{:} by point \textup{(a)} all distances between parts $A \ni x$ and $B \ni y$ are not less than $b(x,y)$, and any broken line from $x$ to $y$ contains a step from $A$ to $B$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Solution to problem \textup{5}: points \textup{(c)}--\textup{(d)}}
+\begin{block}{\textup{(c)} Classes and $\sigma_k$}
+$d_u(x,y) < \sigma_k$ means that all edges of the path from $x$ to $y$ are shorter than $\sigma_k$, that is, $x$ and $y$ lie in the same component after removing edges of length $\ge \sigma_k$. The ends of an edge of length $\sigma_k$ lie in different components and are separated from each other by exactly $\sigma_k$.
+\end{block}
+\begin{block}{\textup{(d)} Ultrametrization diameter}
+The largest edge gives $\diam\Ucal(X) = \sigma_1$, and $\sigma_1 \le \diam X$, since each edge $T$ connects points $X$. Equality is equivalent to the presence of an edge of length $\diam X$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Lesson summary \textup{2}}
+\begin{block}{What has been proven}
+\begin{enumerate}
+\item Five properties of ultrametrics\textup{:} polygon, isosceles, spheres, diameter, center.
+\item $\ghdist{X}{Y} \ge \ghdist{\Ucal(X)}{\Ucal(Y)}$, $\diam\Ucal(X) \le \diam X$, $\ghdist{\Deltaone}{Y} = \frac12\diam Y$.
+\item $\Ucal(T) = \Deltaone$ for a tree and $\ghdist{T}{X} \ge \frac12\diam\Ucal(X)$ (on a tripod --- equality).
+\item $\diam\Ucal(X) \le \dfrac{\hdist{X}{Z}}{1-J(Z)}$ and $\diam\Ucal(X) \le 2\hdist{X}{Z}$ in the presence of midpoints.
+\item $\diam\Ucal(X) = \sigma_1 \le \diam X$ and the structure of $\Ucal(X)$ through partitions of the tree $T$.
+\end{enumerate}
+\end{block}
+\begin{block}{Next lesson}
+Simplicial complexes and homology\textup{:} Cech and Vietoris-Rips complexes, the nerve lemma, close spaces and higher homology of manifolds.
+\end{block}
+\end{frame}
+
+\end{document}

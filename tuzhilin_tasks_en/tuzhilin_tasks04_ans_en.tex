@@ -1,0 +1,389 @@
+\documentclass[a4paper,12pt]{report}
+\input{tasks_preamble_en.tex}
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Lesson Problem Solutions \textup{4}}\\[2mm]
+{\large Young's constant, measure of non-convexity and intersection property}\\[1mm]
+{\small Minicourse <<Gromov--Hausdorff distance: applications and lower bounds>>, lesson on presentation \textup{4} (chapter \textup{4} of the minicourse)}
+\end{center}
+
+Source of tasks --- sheet <<Learning tasks for the lesson \textup{4}>>. The numbering of points repeats the sheet, links to numbered statements are to chapter \textup{4} of the minicourse \textup{(}chapter \textup{9} of the book\textup{)}. Solving the problem \textup{1}\,\textup{(a)} begins with analyzing the defect in its formulation.
+
+\begin{task}[measure of non-convexity and Gulevich's theorem]
+Let $A \subseteq V$ be a non-empty bounded set, $\diam A > 0$.
+
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Derive from Gulevich's theorem \textup{(}the equality $\JungRel{V} = \sup_A \lambda(A)/\diam A$\textup{)} inequality
+\[
+\lambda(A) \le \JungRel{V} \cdot \diam A,
+\]
+and explain why then any point $v \in \conv A$ is removed from $A$ by no more than $\JungRel{V} \diam A$. Then compare $\lambda(A)$ with the relative radius\textup{:} show that there is no pointwise inequality between them \textup{(}for example, for $A = \{0, 1, 2\} \subset \R$ we have $\lambda(A) = 1/2 < 1 = \RelChebRadius{\conv A}{A}$\textup{)}.
+\item Calculate $\lambda(A)/\diam A$ for the set of vertices of a regular triangle with side $1$, for the vertices of a square, and for a circle of radius $1$ and compare with $\JungRel{\R^2} = 1/\sqrt3$ from the reference information.
+\item Explain why in Gulevich's theorem it is impossible to remove division by $\diam A$\textup{:} show that $\sup_A \lambda(A) = +\infty$ by considering the sets $tA$ for $t \to \infty$.
+\end{enumerate}
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{1} \textup{(}measure of non-convexity and Gulevich's theorem\textup{)}]
+
+\textbf{Item \textup{(a)}: estimate for the measure of non-convexity and comparison with the relative radius.} Let us recall the definitions. For a non-empty bounded $A \subseteq V$ with $\diam A > 0$
+\[
+\lambda(A) = \sup_{c \in \conv A} \inf_{a \in A} \|c - a\|, \qquad
+\RelChebRadius{\conv A}{A} = \inf_{y \in \conv A} \sup_{a \in A} \|y - a\|.
+\]
+The first quantity measures how deep inside the convex hull the points distant from $A$ go, and the second measure how well $\conv A$ contracts to $A$. The example below shows that the pointwise inequality $\lambda(A) \ge \RelChebRadius{\conv A}{A}$ does not hold.
+
+\textbf{Counterexample.} Let $V = \R$ and $A = \{0, 1, 2\}$. Then $\conv A = [0,2]$, $\diam A = 2$ and
+\[
+\lambda(A) = \sup_{c \in [0,2]} \min\{|c|, |c-1|, |c-2|\} = \frac12:
+\]
+no point of the segment $[0,2]$ is distant from the set $\{0,1,2\}$ more than $1/2$ \textup{(}at points $c = 1/2$ and $c = 3/2$ this value is achieved, and at point $c = 1$ it is equal to zero\textup{)}. On the other hand,
+\[
+\RelChebRadius{\conv A}{A} = \inf_{y \in [0,2]} \max\{|y|, |y-1|, |y-2|\} = 1,
+\]
+since for $y \le 1$ the maximum is not less than $|y - 2| \ge 1$, for $y \ge 1$ it is not less than $|y| \ge 1$, and for $y = 1$ it is equal to one. So, $\lambda(A) = 1/2 < 1 = \RelChebRadius{\conv A}{A}$, that is, the pointwise inequality $\lambda(A) \ge \RelChebRadius{\conv A}{A}$ does not hold here.
+
+\textbf{Accurate calculation on the second example.} Let $V = \R^3$ with sup-norm and $A = \{e_1, e_2, e_3\}$, where $e_i$ are the ends of unit segments of the coordinate axes. Here $\diam A = 1$, and for the point $c_0 = (\frac13, \frac13, \frac13) \in \conv A$ we have $\|c_0 - e_i\|_\infty = \max\{2/3, 1/3, 1/3\} = 2/3$ for all $i$, so $\lambda(A) \ge 2/3$. Upper bound: if $c = (t_1, t_2, t_3)$, where $t_i \ge 0$, $\sum_i t_i = 1$, and $t_1 = \max_i t_i$ \textup{(}this can always be achieved by rearranging coordinates\textup{)}, then
+\[
+\|c - e_1\|_\infty = \max\{1 - t_1,\ t_2,\ t_3\} \le \frac23,
+\]
+because $t_2, t_3 \le 1 - t_1$ and $1 - t_1 \le 2/3$ due to $t_1 \ge 1/3$. So $\lambda(A) = 2/3$. The relative radius of this set is equal to the same number: for $y = (t_1,t_2,t_3) \in \conv A$
+\[
+\sup_{a \in A} \|y - a\|_\infty = \max\bigl\{1 - \min_i t_i,\ \max_i t_i\bigr\} \ge 1 - \min_i t_i \ge \frac23,
+\]
+since $\min_i t_i \le 1/3$, and equality is achieved at $y = c_0$. So, $\RelChebRadius{\conv A}{A} = 2/3 = \lambda(A)$: on this set both quantities coincide, and it is not a counterexample. Note at the same time that the point $(1/2,1/2,1/2)$ in $\conv A$ does not lie \textup{(}the sum of its coordinates is equal to $3/2$, and not $1$\textup{)}; it appears only in problem \textup{3}, where the center is allowed to be chosen in the entire space $V$.
+
+Thus, it is necessary to compare not the quantities $\lambda(A)$ and $\RelChebRadius{\conv A}{A}$ themselves, but their exact upper bounds normalized by $\diam A$.
+
+\textbf{True statement.} The lecture uses the inequality
+\[
+\inf_{a \in A} \|v - a\| \le \lambda(A) \le \JungRel{V} \cdot \diam A \qquad (v \in \conv A).
+\]
+The first inequality is a reformulation of the definition of $\lambda$: for each point $v \in \conv A$ the number $\inf_{a \in A} \|v - a\|$ does not exceed the upper bound of such numbers. The second is a corollary of Gulevich's theorem from the reference sheet: the equality $\JungRel{V} = \sup_A \lambda(A)/\diam A$ means that each number $\lambda(A)/\diam A$ does not exceed $\JungRel{V}$.
+
+We obtain an elementary estimate with the constant $1$ explicitly. Let $c \in \conv A$; Let's write $c = \sum_i t_i a_i$, where $t_i \ge 0$, $\sum_i t_i = 1$ and only a finite number of coefficients $t_i$ are nonzero. Then for any $i$ with $t_i > 0$
+\[
+\|c - a_i\| = \Bigl\|\sum_j t_j (a_j - a_i)\Bigr\| \le \sum_j t_j \|a_j - a_i\| \le (1 - t_i)\,\diam A \le \diam A,
+\]
+whence $\inf_{a \in A} \|c - a\| \le \diam A$ and $\lambda(A) \le \diam A$. This means that $\sup_A \lambda(A)/\diam A \le 1$, which is consistent with the inequality $\JungRel{V} \le 1$ from the reference information.
+
+\textbf{On the comparison of $\lambda$ with the relative radius.} Pointwise comparison of these quantities does not say anything about the exact upper bounds: the equality $\JungRel{V} = \sup_A \lambda(A)/\diam A$ is Gulevich's theorem \textup{(}Theorem \textup{1} by Gulevich, \textup{1996}\textup{)}, and both halves rely on a special construction rather than point-by-point comparison. The lecture needs precisely the estimate $\lambda(A) \le \JungRel{V} \diam A$: it begins the proof of the weak estimate, where the inequality $\inf_{a \in A} \|v - a\| \le \JungRel{V} (C + \varepsilon)$.
+
+\textbf{Clause \textup{(b)}.} Everywhere below we use the fact that the ratio $\lambda(A)/\diam A$ does not change with similarity. The Voronoi cell of a point $a \in A$ is the set $W_a = \{c \in \conv A : \|c - a\| = \inf_{b \in A} \|c - b\|\}$. Each $W_a$ is convex \textup{(}this is the intersection of $\conv A$ with the half-spaces $\|c - a\| \le \|c - b\|$\textup{)}, and on $W_a$ the function $c \mapsto \inf_{b \in A} \|c - b\|$ coincides with the convex function $\|c - a\|$. Therefore, the maximum of this function is achieved at the vertex of the partition into cells, that is, at a point equidistant from the three points $A$ \textup{(}in the flat case\textup{)}.
+
+\textit{Vertexes of a regular triangle with side $1$.} Let $a_1, a_2, a_3$ be the vertices, $g = (a_1 + a_2 + a_3)/3$ be the center of gravity, also known as the center of the circumscribed circle of radius $1/\sqrt3$; we denote the midpoints of the sides as $m_{12}, m_{13}, m_{23}$. Cell $W_{a_1}$ --- quadrilateral $a_1 m_{12} g m_{13}$ \textup{(}its boundaries lie on the perpendicular bisectors to the segments $a_1a_2$ and $a_1a_3$ passing through $a_3$ and $a_2$, respectively\textup{)}, and the values of the function $\inf_{b}\|c-b\| = \|c - a_1\|$ at the vertices of this quadrilateral are $0$, $1/2$, $1/\sqrt3$ and $1/2$. By symmetry, the same is true for the remaining cells, so
+\[
+\lambda(A) = \frac{1}{\sqrt3}, \qquad \diam A = 1, \qquad \frac{\lambda(A)}{\diam A} = \frac{1}{\sqrt3} = \JungRel{\R^2}:
+\]
+The vertices of a regular triangle are an extremal set for the relative Young constant of the plane.
+
+\textit{Vertices of a square with side $a$.} The Voronoi cell of each vertex is a quadrilateral with vertices at the vertex itself, at the two midpoints of adjacent sides, and at the center $g$ of the square. The values of $\|c - a_1\|$ at these vertices are $0$, $a/2$, $a/\sqrt2$ and $a/2$, whence $\lambda(A) = a/\sqrt2$; since $\diam A = a\sqrt2$, we get $\lambda(A)/\diam A = 1/2 < 1/\sqrt3$.
+
+\textit{Circle of radius $1$.} Here $A = \{x : \|x\| = 1\}$, $\conv A$ is a closed circle, and for the point $c$ with $\|c\| \le 1$ we have $\inf_{a \in A} \|c - a\| = 1 - \|c\|$. This means that the exact supremum is achieved at the center of the circle: $\lambda(A) = 1$, and $\diam A = 2$, so $\lambda(A)/\diam A = 1/2$.
+
+So, the triangle gives exactly $\JungRel{\R^2} = 1/\sqrt3$, and the square and circle give twice as much. In both last cases, the maximum $\inf_{a \in A} \|c - a\|$ is achieved in the center of the figure, as stated in the instructions for the problem.
+
+\textbf{Item \textup{(c)}.} For $t > 0$, the set $tA$ is similar to $A$, with $\diam(tA) = t\,\diam A$ and $\lambda(tA) = t\,\lambda(A)$: stretching $x \mapsto tx$ transforms $\conv A$ into $\conv(tA)$ and multiplies all distances by $t$. Therefore, the family $A_t = tA$ for $t \to \infty$ shows that
+\[
+\sup_A \lambda(A) = +\infty: \qquad \lambda(tA) = t\,\lambda(A) \to \infty,
+\]
+and without division by $\diam A$ Gulevich's theorem would lose its meaning. The simplest example: $A_t = \{0, t\} \subset \R$, where $\lambda(A_t) = t/2$ and $\diam A_t = t$. On the contrary, the normalized ratio does not depend on $t$:
+\[
+\frac{\lambda(tA)}{\diam(tA)} = \frac{\lambda(A)}{\diam A},
+\]
+Therefore, both Gulevich's theorem and the definitions of $\Jung{V}$ and $\JungRel{V}$ are formulated for relations --- quantities invariant under similarity.
+
+\end{proof}
+
+\begin{task}[values of Young's constant]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove the inequalities $\frac12 \le \Jung{V} \le \JungRel{V} \le 1$ for any normed space $V$.
+\item In $V = \R^3$ with sup-norm, construct a set $A$ with $\RelChebRadius{\conv A}{A}/\diam A = 2/3$ and explain why for two-point $A$ this ratio is equal to $1/2$.
+\item Check that in $\R^2$ both reference formulas give the same value\textup{:} $1/2$ for sup-norm and $1/\sqrt3$ for Euclidean norm, but in $\R^3$ with sup-norm they give different values.
+\end{enumerate}
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{2} \textup{(}values of Young's constant\textup{)}]
+
+\textbf{Point \textup{(a)}.} Let us prove three inequalities separately.
+
+\textit{The inequality $\Jung{V} \ge 1/2$.} Let $A \subseteq V$ be bounded, $\diam A > 0$, and let $a, b \in A$ be such that $\|a - b\| \ge \diam A - \varepsilon$ \textup{(}such a pair exists for any $\varepsilon > 0$ by the definition of the supremum\textup{)}. For any point $v \in V$ by the triangle inequality
+\[
+\|a - b\| \le \|a - v\| + \|v - b\| \le 2 \sup_{a \in A} \|v - a\|,
+\]
+so $\sup_{a \in A} \|v - a\| \ge (\diam A - \varepsilon)/2$ and therefore $\ChebRadius{A} \ge (\diam A - \varepsilon)/2$. Letting $\varepsilon \to 0$ and normalizing by $\diam A$, we obtain $\ChebRadius{A}/\diam A \ge 1/2$ for each $A$ and, therefore, $\Jung{V} \ge 1/2$.
+
+\textit{The inequality $\Jung{V} \le \JungRel{V}$.} Since $\conv A \subseteq V$, the infimum over the larger set does not exceed the infimum over the smaller set:
+\[
+\ChebRadius{A} = \inf_{v \in V} \sup_{a \in A} \|v - a\| \le \inf_{y \in \conv A} \sup_{a \in A} \|y - a\| = \RelChebRadius{\conv A}{A}.
+\]
+Dividing by $\diam A > 0$ and passing to the supremum over all $A$ gives $\Jung{V} \le \JungRel{V}$.
+
+\textit{Inequality $\JungRel{V} \le 1$.} Take any point $y \in A$; it lies in $\conv A$, so
+\[
+\RelChebRadius{\conv A}{A} \le \sup_{a \in A} \|y - a\| \le \diam A,
+\]
+since the distance between any two points $A$ does not exceed the diameter. This means that the ratio $\RelChebRadius{\conv A}{A}/\diam A$ does not exceed one for each $A$. So, $\frac12 \le \Jung{V} \le \JungRel{V} \le 1$.
+
+\textbf{Part \textup{(b)}.} Let $V = \R^3$ with sup-norm and $A = \{e_1, e_2, e_3\}$. Then $\diam A = \max_{i \ne j} \|e_i - e_j\|_\infty = 1$. For point $y = (t_1,t_2,t_3) \in \conv A$ \textup{(}that is, $t_i \ge 0$, $\sum_i t_i = 1$\textup{)} the distance to the most distant point $A$ is
+\[
+\sup_{a \in A} \|y - a\|_\infty = \max_i \max\bigl\{1 - t_i,\ t_1,\ t_2,\ t_3\bigr\} = \max\bigl\{1 - \min_i t_i,\ \max_i t_i\bigr\},
+\]
+and this value is not less than $2/3$, since $\min_i t_i \le 1/3$ \textup{(}otherwise $\sum_i t_i > 1$\textup{)}. At the center of gravity $y = (1/3,1/3,1/3)$ all three distances are exactly $2/3$, so
+\[
+\RelChebRadius{\conv A}{A} = \frac23, \qquad \frac{\RelChebRadius{\conv A}{A}}{\diam A} = \frac23.
+\]
+This is the same set that is given as an example in remark \textup{2.7} of the cited work, where $\JungRel{V} = 2/3 > 1/2 = \Jung{V}$.
+
+For two-point $A = \{a,b\}$ the ratio is equal to $1/2$ exactly. The midpoint $y = (a+b)/2$ of the segment lies in $\conv A$ and is distant from both points by $\|a-b\|/2 = \diam A/2$, which means $\RelChebRadius{\conv A}{A} \le \diam A/2$. Conversely, for any point $y \in \conv A$ the triangle inequality $\|a - b\| \le \|a - y\| + \|y - b\|$ gives $\sup_{a \in A} \|y - a\| \ge \diam A/2$. So, for a two-point set, the ratio is always the minimum possible, and in the previous example it increases precisely due to the third vertex.
+
+\textbf{Item \textup{(c)}.} In $\R^2$, both formulas from the reference information give the same value. For the sup-norm this is $1/2$: the table gives $\Jung{V} = 1/2$ and $\JungRel{V} = (n-1)/n = 1/2$ for $n = 2$, and the value is achieved, for example, at the vertices of the unit square: their diameter is $1$, and the center of the square is $1/2$ away from each vertex in the sup-norm. For the Euclidean norm, both formulas give
+\[
+\Jung{V} = \JungRel{V} = \sqrt{\frac{2}{2 \cdot 3}} = \frac{1}{\sqrt3},
+\]
+and this value is achieved at the vertices of a regular triangle with side $1$ \textup{(}problem \textup{1}\,\textup{(b)}\textup{)}. In $\R^3$ with sup-norm the formulas give different numbers:
+\[
+\Jung{V} = \frac12, \qquad \JungRel{V} = \frac{n-1}{n} = \frac23,
+\]
+and the difference is realized on the set $A = \{e_1, e_2, e_3\}$ from point \textup{(b)}. The consistency of these values with the equality criterion $\Jung{V} = \JungRel{V}$ is discussed in problem \textup{3}.
+
+\end{proof}
+
+\begin{task}[equality criterion $J(V) = J_s(V)$]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item In $\R^3$ with sup-norm, calculate $\Jung{V}$ and $\JungRel{V}$ on the set $A = \{e_1, e_2, e_3\}$ from problem \textup{2} \textup{(}the center can now be chosen in the entire space\textup{)} and compare with the table values $1/2$ and $2/3$.
+\item Explain why the found strict inequality does not contradict the criterion of equality\textup{:} which of the conditions of the criterion is violated?
+\item Check that the conditions of the criterion are consistent with \textup{(a)} of problem \textup{2}\textup{:} for $\dim V \le 2$ the equality holds for the non-Hilbert sup-norm.
+\end{enumerate}
+
+\end{task}
+
+\begin{proof}[Solution to problem \textup{3} \textup{(}equality criterion $\Jung{V} = \JungRel{V}$\textup{)}]
+
+\textbf{Part \textup{(a)}.} Let $V = \R^3$ with sup-norm, $A = \{e_1,e_2,e_3\}$, $\diam A = 1$. Now the center is allowed to be chosen at any point $v = (v_1,v_2,v_3)$ of space $V$, and
+\[
+\sup_{a \in A} \|v - a\|_\infty = \max_i \max\bigl\{1 - v_i,\ v_1,\ v_2,\ v_3\bigr\} = \max\bigl\{1 - \min_i v_i,\ \max_i v_i\bigr\}.
+\]
+For the point $v = (1/2,1/2,1/2)$ this expression is equal to $1/2$, and it cannot be less: if $\max_i v_i \ge 1/2$, then the expression is not less than $1/2$; if $\max_i v_i < 1/2$, then $\min_i v_i < 1/2$, whence $1 - \min_i v_i > 1/2$. So,
+\[
+\ChebRadius{A} = \frac12, \qquad \frac{\ChebRadius{A}}{\diam A} = \frac12.
+\]
+This is consistent with the table value $\Jung{V} = 1/2$ for $\R^n$ with sup-norm and shows that the estimate $\Jung{V} \ge 1/2$ from problem \textup{2}\,\textup{(a)} is achieved. The relative radius of the same set is equal to $2/3$ \textup{(}problem \textup{2}\,\textup{(b)}\textup{)}, and the table value $\JungRel{V} = (n-1)/n = 2/3$ shows that here the exact upper bound is achieved. So in this space
+\[
+\frac12 = \Jung{V} < \JungRel{V} = \frac23,
+\]
+that is, the equality of Young constants is not a general property of finite-dimensional normed spaces.
+
+\textbf{Item \textup{(b)}.} By the criterion from the reference information, the equality $\Jung{V} = \JungRel{V}$ is equivalent to the fact that $V$ is Hilbert \emph{or} $\dim V \le 2$. In our example, neither of the two conditions is satisfied: $\dim V = 3 > 2$, and the parallelogram identity is violated:
+\[
+\|e_1 + e_2\|_\infty^2 + \|e_1 - e_2\|_\infty^2 = 1 + 1 = 2 \ne 4 = 2\bigl(\|e_1\|_\infty^2 + \|e_2\|_\infty^2\bigr),
+\]
+so the space is non-Hilbertian. Consequently, the criterion in this situation does not assert anything, and the strict inequality from paragraph \textup{(a)} does not contradict it. It is the disjunction that is essential: the obstacle to equality is not the $3$-dimensionality as such, but the simultaneous absence of Hilbertity for dimensions not less than three.
+
+\textbf{Point \textup{(c)}.} The opposite direction of the criterion is the statement that the condition $\dim V \le 2$ is sufficient. Let's check it on a non-Hilbert example: in $\R^2$ with sup-norm the table gives
+\[
+\Jung{V} = \frac12, \qquad \JungRel{V} = \frac{n-1}{n} = \frac12,
+\]
+that is, the equality is satisfied, although the parallelogram identity is not satisfied here: for the pair $e_1, e_2$ in $\R^2$ we obtain $\|e_1+e_2\|_\infty^2 + \|e_1-e_2\|_\infty^2 = 1 + 1 = 2 \ne 4$. Thus, the equality $\Jung{V} = \JungRel{V}$ in the two-dimensional case is a consequence of dimensionality, not Hilbertity, which is the content of the second condition of the criterion.
+
+\end{proof}
+
+\begin{task}[Webster's lemma]
+Let $f\colon V \to W$ be a continuous map between finite-dimensional normed spaces, $\dim V \ge \dim W$ and $\dis f < \infty$. Prove that then $\dim V = \dim W$ and $f$ is surjective.
+
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Show that all three conditions are essential by constructing examples in which the conclusion is violated when \textup{(i)} the $\dim V \ge \dim W$ inequality, \textup{(ii)} finite distortion, \textup{(iii)} continuity are abandoned.
+\item\label{it:webster_dim1} Prove the lemma in the case of $\dim V = \dim W = 1$.
+\item Explain how the lemma is used in the proof of the weak estimate\textup{:} why is the mapping $f^*\colon V \to V$ with $\dis f^* \le 3C + 4\varepsilon$ surjective?
+\end{enumerate}
+
+\end{task}
+
+\begin{proof}[Solution to problem \textup{4} \textup{(}Webster's lemma\textup{)}]
+
+Let us recall the definition: \emph{distortion} of the mapping $f\colon V \to W$ is called
+\[
+\dis f = \sup_{x \ne y} \Bigl|\, \|f(x) - f(y)\| - \|x - y\| \,\Bigr|;
+\]
+the quantity $\dis f$ is the smallest $D \ge 0$ for which $\bigl|\|f(x)-f(y)\| - \|x-y\|\bigr| \le D$ for all $x, y$. It is this (additive) distortion normalization that is used in the continuous continuation lemma, where from $\dis f < C$ we deduce $\|f(y_i) - f(y_j)\| \le |y_i y_j| + \dis f < \varepsilon + C$.
+
+\textbf{Clause \textup{(a)}: materiality of all three conditions.}
+
+\textit{\textup{(i)} Condition $\dim V \ge \dim W$.} Let $V = \R$, $W = \R^2$ and $f(t) = (t,0)$. This is an isometric embedding: $\|f(x) - f(y)\|_\infty = |x - y|$, so $\dis f = 0 < \infty$, the mapping is continuous, but $\dim V = 1 < 2 = \dim W$ and $f$ is not surjective \textup{(}image --- x-axis\textup{)}. So, without the condition $\dim V \ge \dim W$ the conclusion of the lemma is false.
+
+\textit{\textup{(ii)} Condition $\dis f < \infty$.} Let $V = W = \R$ and $f(t) = \arctan t$. The mapping is continuous, $\dim V = \dim W = 1$, but the distortion is infinite: for $x_k = k\pi$ and $y_k = k\pi + k$ we have $|x_k - y_k| = k \to \infty$, whereas
+\[
+|\arctan x_k - \arctan y_k| = \Bigl|\arctan\frac{x_k - y_k}{1 + x_k y_k}\Bigr| \le \frac{k}{x_k y_k - 1} \to 0,
+\]
+so $|\,\|f(x_k) - f(y_k)\| - \|x_k - y_k\|\,| \to \infty$ and $\dis f = \infty$. The image of $\arctan$ is the interval $(-\pi/2, \pi/2)$, which means $f$ is not surjective. So, the finiteness of the distortion is essential.
+
+\textit{\textup{(iii)} Continuity condition.} Let $V = W = \R$ and
+\[
+f(x) = \begin{cases} x, & x < 1, \\ x + 1, & x \ge 1. \end{cases}
+\]
+The mapping is discontinuous at the point $x = 1$, but its distortion is finite and equal to unity: if $x, y < 1$ or $x, y \ge 1$, then $\|f(x) - f(y)\| = |x - y|$; if $x < 1 \le y$, then
+\[
+\|f(x) - f(y)\| = |x - y - 1| = y + 1 - x = |x - y| + 1,
+\]
+that is, the difference $\|f(x)-f(y)\| - \|x-y\|$ is equal to $1$ and its modulus is equal to $1$. The image of $f$ is the set $(-\infty, 1) \cup [2, \infty) = \R \setminus [1,2)$, so $f$ is not surjective. So, without continuity, the conclusion of the lemma is also false.
+
+Note that in the example \textup{(iii)} the mapping is not injective \textup{(}the same point is not reached twice, but the point $1$ is ``not defined'' as a value\textup{)}, and in the example \textup{(ii)} it is injective, but not surjective: it is the refusal of the corresponding condition that allows the conclusion to be violated.
+
+\textbf{Item \textup{(b)}: case $\dim V = \dim W = 1$.} In the one-dimensional case, both norms are proportional to the absolute value, therefore, having chosen the coordinates, we can consider $V = W = \R$ with the standard norm; in this case $f$ is still continuous and $D = \dis f < \infty$. Then for all $t$
+\[
+|f(t) - f(0)| \ge |t - 0| - D = |t| - D,
+\]
+so $|f(t)| \to \infty$ at $|t| \to \infty$. The image of a continuous mapping of a segment is a segment, therefore $f(\R)$ is an interval \textup{(}interval\textup{)}; from the estimate obtained, it is unbounded both above and below. The only interval in $\R$ that is unlimited in both directions is $\R$ itself, which means $f(\R) = \R$, that is, $f$ is surjective. The dimensions coincide by condition, so the conclusion of the lemma is satisfied. \textup{(}This is where continuity is used: without it, as the example \textup{(iii)} from paragraph \textup{(a)} shows, a function can ``jump'' a point, and the image will no longer be a gap.\textup{)}
+
+\textbf{Item \textup{(c)}: the role of the lemma in the proof of the weak estimate.} Let $C > 2\ghdist{V}{X}$. According to the formula for the Gromov--Hausdorff distance, through correspondences there is a correspondence $R \in \mathcal R(V,X)$ with $\dis R < C$, and with it a mapping $f\colon V \to X$ for which $\bigl(v, f(v)\bigr) \in R$ for all $v$; then $\dis f \le \dis R < C$. By the continuous continuation lemma, for any $\varepsilon > 0$ there is a continuous mapping $f^*\colon V \to V$ with $\dis f^* \le 3C + 4\varepsilon$. Applying Webster's Lemma to $f^*\colon V \to V$ \textup{(}here $W = V$, so $\dim V = \dim W$\textup{)}, we find that $f^*$ is surjective.
+
+It is surjectivity that is needed: the triangulation $\Sigma$ covers $V$, that is, $V = \bigcup_{\Delta \in \Sigma}\Delta$. For each point $v \in V$ there is a simplex $\Delta$ and a point $u \in \Delta$ with $f^*(u) = v$; the mapping $f^*$ is linear on $\Delta$ \textup{(}it is defined by the barycentric continuation of the values at the vertices\textup{)}, so $v = f^*(u) \in \conv A$, where $A = f(\text{vertices }\Delta)$. Since $A \subseteq X$ and by Gulevich's theorem $\inf_{a \in A} \|v - a\| \le \lambda(A) \le \JungRel{V} \cdot \diam A$, and $\diam A \le \diam \Delta + \dis f < \varepsilon + C$, we obtain
+\[
+\inf_{a \in A} \|v - a\| \le \JungRel{V}\,(C + \varepsilon), \qquad \text{that is} \qquad \sup_{v \in V} \inf_{a \in X} \|v - a\| \le \JungRel{V}\,(C + \varepsilon).
+\]
+Letting $\varepsilon \to 0$ and remembering that $C > 2\ghdist{V}{X}$ was arbitrary, we arrive at a weak estimate $\hdist{V}{X} \le 2\JungRel{V} \ghdist{V}{X}$.
+
+\end{proof}
+
+\begin{task}[sup-norm and cylindrical norms]
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Prove that the sup-norm in $\R^n$ has the intersection property, and give an explicit $t$ in terms of $\rho$.
+\item Explain why then any cylindrical norm, that is, a norm with a unit ball, also has the intersection property
+\[
+B^n = B^2 \times K^{n-2},
+\]
+where $B^2$ is a unit ball of some norm in the plane, and $K^{n-2}$ is a cube. Reduce the matter to the plane case and to the case of the cube.
+\item Explain\textup{,} why the intersection property is needed in the proof of the strengthened estimate and what breaks if the intersection of balls is not contractible.
+\end{enumerate}
+
+\end{task}
+
+\begin{proof}[Solution to Problem \textup{5} \textup{(}sup-norm and cylindrical norms\textup{)}]
+
+Everywhere below, $t$ denotes the constant from the definition of the intersection property, and $\tau$ is the very number $t$ for which $\tau > t$ \textup{(}in the sheet it is denoted $t$ with a prime\textup{)}.
+
+\textbf{Item \textup{(a)}.} Let $V = \R^n$ with norm $\|\cdot\|_\infty$, and let $B(x_i; r_i)$, $r_i \le \rho$ be a finite family of open balls. In the sup-norm, a ball is an open cube:
+\[
+B(x_i; r_i) = \prod_{j=1}^n \bigl((x_i)_j - r_i,\ (x_i)_j + r_i\bigr),
+\]
+therefore their intersection is either empty or equal to an open parallelepiped
+\[
+Q = \bigcap_{i=1}^m B(x_i; r_i) = \prod_{j=1}^n (a_j, b_j), \qquad
+a_j = \max_i \bigl((x_i)_j - r_i\bigr), \quad b_j = \min_i \bigl((x_i)_j + r_i\bigr),
+\]
+where $b_j - a_j \le 2 r_i \le 2\rho$ for any $i$, since $Q \subseteq B(x_i; r_i)$: the half-widths of the parallelepiped do not exceed $\rho$. If $Q$ is empty, there is nothing to prove; Let us assume that it is non-empty and show that for $\tau > \rho$ the set
+\[
+U = Q \setminus \overline{B}(0; \tau) = \bigl\{x \in Q : \max_j |x_j| > \tau\bigr\}
+\]
+empty or contractible.
+
+For each $j$, the condition $\sigma x_j > \tau$, where $\sigma = \pm 1$, can be satisfied on $Q$ for at most one sign of $\sigma$: if there were points in $Q$ with $x_j > \tau$ and with $x_j < -\tau$, then the projection of $Q$ onto the $j$-th coordinate would be an interval of length greater than $2\tau > 2\rho$, which contradicts the estimate $b_j - a_j \le 2\rho$. Let us denote by $\sigma_j \in \{+1, -1, 0\}$ the sign for which the projection of $Q$ on the $j$-th axis goes beyond the level $\tau$ \textup{(}$\sigma_j = 0$, if there is no such sign\textup{)}, and consider the pieces
+\[
+U_j = \bigl\{x \in Q : \sigma_j\, x_j > \tau\bigr\}, \qquad \sigma_j \ne 0.
+\]
+By construction, $U = \bigcup_{\sigma_j \ne 0} U_j$, and each piece $U_j$ is convex as the intersection of convex sets.
+
+All non-empty pieces have a common point. Let's put
+\[
+z_j \in \begin{cases} (\tau,\ b_j), & \sigma_j = +1, \\ (a_j,\ -\tau), & \sigma_j = -1, \\ (a_j,\ b_j), & \sigma_j = 0. \end{cases}
+\]
+Each of these intervals is non-empty: for $\sigma_j = +1$ we have $b_j > \tau$ by definition of $\sigma_j$, for $\sigma_j = -1$ we have $a_j < -\tau$, and for $\sigma_j = 0$ the interval is non-empty, since $Q \ne \varnothing$. Since $Q$ is a product of intervals, the point $z$ lies in $Q$, and the conditions $\sigma_j z_j > \tau$ are satisfied for all $j$ with $\sigma_j \ne 0$, that is, $z \in U_j$ for each piece.
+
+Now let's show contractility. Let $x \in U$; then $x$ lies in some piece $U_j$, and both points $x$ and $z$ satisfy the inequality $\sigma_j (\cdot)_j > \tau$, which means that by the convexity of the piece $U_j$, the entire segment $[x, z]$ lies in $U_j \subseteq U$. Therefore the rectilinear homotopy
+\[
+H\colon U \times [0,1] \to U, \qquad H(x, s) = (1-s)\,x + s\,z,
+\]
+is well defined, continuous, starts with the identity map and ends with the constant map $x \mapsto z$. So, $U$ is contractible, and $\rho$ can be taken as $t$: any $t$ with $t \ge \rho$ is suitable for the sup-norm.
+
+\textbf{Item \textup{(b)}.} Cylindrical norm with unit ball $B^n = B^2 \times K^{n-2}$ --- this is the norm $\max\{\|\cdot\|_2, \|\cdot\|_\infty\}$ on the direct sum $V = V_1 \oplus V_2$, where $V_1 = \R^2$ with the norm given by the ball $B^2$, and $V_2 = \R^{n-2}$ with the sup-norm. Therefore, a ball in $V$ is a product of balls of the same radius:
+\[
+B_V(x; r) = B_{V_1}(x_1; r) \times B_{V_2}(x_2; r),
+\]
+and the intersection of a family of such balls is equal to $Q = Q_1 \times Q_2$, where $Q_i$ is the intersection of the corresponding balls in the factors, and the radii in both factors are the same, that is, they do not exceed $\rho$. Moreover, $\overline B_V(0; \tau) = \overline B_{V_1}(0; \tau) \times \overline B_{V_2}(0; \tau)$, so
+\[
+Q \setminus \overline B_V(0; \tau) = \Bigl[\bigl(Q_1 \setminus \overline B_{V_1}(0;\tau)\bigr) \times Q_2\Bigr] \cup \Bigl[Q_1 \times \bigl(Q_2 \setminus \overline B_{V_2}(0;\tau)\bigr)\Bigr].
+\]
+Let us prove an auxiliary statement: if both factors have the intersection property, then their sum with norm $\max$ also has it, and with the constant $t = \max\{t_1, t_2\}$, where $t_i$ are the constants of the factors for the radius $\rho$. Indeed, for $\tau > t$ each of the two sets in the union is a product of sets, each of which is empty or contractible by the intersection property; the product of an empty set is empty, and the product of non-empty contractible sets is contractible. Further, the same reasoning as in paragraph \textup{(a)} \textup{(}the common point and the rectilinear homotopy inside the piece\textup{)} shows that the pieces are star-shaped with respect to one common point: in the first factor such a point is the common point of non-empty pieces $Q_1 \setminus \overline B_{V_1}(0;\tau)$ \textup{(}for the cube --- proven in point \textup{(a)}, for the plane --- a known fact: all two-dimensional norms have the intersection property, see problem \textup{6}\,\textup{(c)}\textup{)}, in the second --- any point of the convex $Q_2$. Therefore, the union of two star sets with a common point is starry and, therefore, contractible.
+
+It remains to apply this to $V = V_1 \oplus V_2$: the factor $V_2$ is a space $\R^{n-2}$ with sup-norm, it has the property of intersection with the constant $\rho$ by point \textup{(a)}; the factor $V_1$ is a plane where all norms have the intersection property. Thus, any cylindrical norm in $\R^n$ has the intersection property.
+
+\textbf{Item \textup{(c)}.} The intersection property is included in the proof of the strengthened estimate at the step where the space coverage is replenished with sets of the form $U_i = V \setminus \overline B(0; t + c_i r)$, $i = 1,2,3$. The reason for the completion is as follows: $V$ itself is convex, which means it is contractible, and the highest homologies of Cech complexes with respect to $V$ are trivial---the contradiction from which the estimate is derived does not arise. The complements of balls are homotopy equivalent to the sphere $S^{n-1}$, where $n = \dim V$, so the complemented families are no longer good coverings in $V$ itself, and the nerve lemma cannot be applied to them in $V$. The intersection property is exactly the condition that allows us to extend the argument to the sphere $S^n$: it is precisely this that guarantees that any non-empty intersection
+\[
+U_i \cap \bigcap_{j} B(x_j; r_j), \qquad r_j \le \rho,
+\]
+contractible. Under the stereographic projection $p\colon V \to S^n \setminus \{N\}$ the sets $V_i = p(U_i)$ are homeomorphic to the open ball, that is, contractible, and all three families on $S^n$ turn out to be good; then the nerve lemma gives the homotopy equivalences $|K_i| \to S^n$, and from the isomorphism $H_n(S^n;\Z_2) \to H_n(S^n;\Z_2)$ and the simpliciality of compatible mappings, a strengthened estimate is derived \textup{(}and for spaces with sup-norm - the exact equality $\ghdist{V}{X} = \hdist{V}{X}$\textup{)}.
+
+What breaks without contractibility can be seen from step \textup{6}. There, for the simplex of the augmented nerve containing the vertex $U_1$, we take the witness point $z \in \bigcap_i B(v_i; \varepsilon/2) \cap U_1$; the existence of such a point and the simpliciality of the mapping $h_0$ are based precisely on the nonemptiness and controlled structure of the intersections of $U_i$ with balls. If such an intersection were not contractible --- say, decomposed into several components or had the homotopy type of a sphere of positive dimension --- then the completed families would not be good either in $V$ or after passing to $S^n$: they would have non-contractible non-empty finite intersections, the nerve lemma would not give homotopy equivalences $|K_i| \to S^n$, and the entire homological part of the proof \textup{(}steps \textup{7}--\textup{8}\textup{)} would fall apart: it would not be possible to prove the strengthened estimate in this way.
+
+\end{proof}
+
+\begin{task}[norms without intersection property]
+It is known that in $\R^3$ norms with a unit ball in the form of an octahedron, icosahedron or dodecahedron do not have the intersection property.
+
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item For an octahedron \textup{(}norm $\lone$ in $\R^3$\textup{)} and one ball $Q = \OpenBall{0}{\rho}$, explain why the set $Q \setminus \ClosedBall{0}{t'}$ is not contractible for $t' < \rho$, and why this example still does not violate the definition.
+\item Indicate\textup{,} which part of the proof of problem \textup{5}\,\textup{(a)} is based on the ``rectangularity'' of sup-norm balls, and why this argument does not work for the octahedron.
+\item Check that in $\R^2$ with norm $\lone$ the intersection property still holds\textup{:} this is consistent with the fact that for $\dim V = 2$ all norms have it.
+\end{enumerate}
+\end{task}
+
+\begin{proof}[Solution to the problem \textup{6} \textup{(}norms without the intersection property\textup{)}]
+
+Let us recall the definition: a space $V$ has the intersection property if for any $\rho > 0$ there is a $t > 0$ such that for any $t' > t$ and any finite family of open balls $B(x_i; r_i)$ with $r_i \le \rho$ the intersection
+\[
+\bigl( V \setminus \overline B(0; t') \bigr) \cap \Bigl( \bigcap_{i=1}^m B(x_i; r_i) \Bigr)
+\]
+either empty or contractible. Below $V = \R^3$ with norm $\lone$, that is, the unit ball is an octahedron $\mathcal O = \bigl\{ \|x\|_1 \le 1 \bigr\}$, and $B(0; \rho) = \rho\, \mathcal O$.
+
+\textbf{Part \textup{(a)}.} Take a family of one ball: $Q = B(0; \rho)$, and let $0 < t' < \rho$. Then
+\[
+Q \setminus \overline B(0; t') = \bigl\{ x : t' < \|x\|_1 < \rho \bigr\}.
+\]
+Let us show that this set is homotopy equivalent to a two-dimensional sphere. Let us fix $t'' \in (t', \rho)$ and consider the homotopy
+\[
+H(x, s) = \Bigl( (1-s) + s\, \frac{t''}{\|x\|_1} \Bigr) x, \qquad x \in Q \setminus \overline B(0; t'), \quad s \in [0, 1].
+\]
+For $x$ from our set $\|x\|_1 > t''$, therefore
+\[
+\bigl\| H(x, s) \bigr\|_1 = (1-s)\, \|x\|_1 + s\, t'' \in (t'', \|x\|_1) \subset (t', \rho),
+\]
+that is, homotopy does not lead beyond the set; Moreover, $H(x, 0) = x$, and $H(x, 1) = t'' x / \|x\|_1$ lies in the surface $S_{t''} = \bigl\{ \|x\|_1 = t'' \bigr\}$ and $H$ is identical on $S_{t''}$. This means that $Q \setminus \overline B(0; t')$ is deformationally retracted to $S_{t''}$, and $S_{t''}$ is the boundary of the octahedron $t'' \mathcal O$, homeomorphic to the sphere $S^2$ \textup{(}for example, the mapping $x \mapsto t'' x / \|x\|_2$ maps $S_{t''}$ to a Euclidean sphere of radius $t''$\textup{)}.
+
+So, $Q \setminus \overline B(0; t')$ has the homotopy type of a sphere $S^2$ and therefore is not contractible: a contractible space has the homotopy type of a point. Geometrically, this is a ``shell'' between two homothetic octahedra --- it surrounds a hole, the role of which is played by the ball $\overline B(0; t')$.
+
+Why doesn't the example violate the definition? Because the constant $t$ in the definition is free: the space itself chooses it, and the property is required only when $t' > t$. In our example, the noncontractibility of the ``shell'' is possible only for $t' < \rho$: in order for a hole bounded by the surface $\bigl\{ \|x\|_1 = t' \bigr\}$ to form inside the intersection $C = \bigcap_i B(x_i; r_i)$, this surface must lie inside $C$, and $C \subseteq B(x_1; r_1)$, so that its must be placed entirely in a ball of radius $r_1 \le \rho$, whence $t' < r_1 \le \rho$. This means that by putting $t \ge \rho$ \textup{(}enough $t = \rho$\textup{)}, we remove this example: it only shows that the constant $t$ cannot be taken less than $\rho$, but does not refute the definition.
+
+The real counterexamples \textup{(}in $\R^3$ are the unit balls-octahedron, icosahedron and dodecahedron\textup{)} require several balls; the mechanism is \textup{(}see\textup{.} note \textup{4.5} to the work arXiv:2607.18447\textup{)}: take a reduced shifted copy $B_1$ of the unit ball, for which $(V \setminus B) \cap B_1$ is non-convex, and then a second such copy $B_2$, for which $(V \setminus B) \cap B_1 \cap B_2$ is not connected; a disconnected set is not contractible, and this holds for any admissible $t$, so the definition is violated.
+
+\textbf{Item \textup{(b)}.} In the solution of problem \textup{5}\,\textup{(a)} the ``rectangularity'' of sup-norm balls is used twice, and both times is essential.
+
+First, the ball of sup-norm is the product of intervals:
+\[
+B(x; r) = \prod_{j=1}^n \bigl( x_j - r,\ x_j + r \bigr),
+\]
+therefore, the intersection of any family of such balls is an open parallelepiped $Q = \prod_{j=1}^n (a_j, b_j)$ with half-widths $b_j - a_j \le 2\rho$, and the ``cutting off'' is coordinate-wise: the set $Q \setminus \overline B(0; \tau)$ is the union of pieces $Q \cap \{ x_j > \tau \}$ and $Q \cap \{ x_j < -\tau \}$, and each such piece is again a parallelepiped \textup{(}cutting $Q$ along one coordinate\textup{)}, that is, a convex, and therefore contractible, set. This is not the case for the octahedron: the surface $\bigl\{ \|x\|_1 = \tau \bigr\}$ is not a coordinate hyperplane, and its intersection with the ball gives the ``shell'' from point \textup{(a)} with homotopy type $S^2$, and not a convex piece at all.
+
+Secondly, ``squareness'' is needed for counting the pieces and their consistency. The half-width of each interval $(a_j, b_j)$ does not exceed $2\rho < 2\tau$, therefore, for a fixed $j$, the interval $(a_j, b_j)$ cannot touch both semi-axes $\{ x_j > \tau \}$ and $\{ x_j < -\tau \}$: then its length would be greater than $2\tau$. This means that for each coordinate no more than one sign is realized. Further, all non-empty pieces contain a common point $z$, which can be specified explicitly: for each coordinate $j$ we choose $z_j \in (a_j, b_j)$ on the side on which the sign is realized, and if no side is realized, in the interval $(a_j, \min\{ b_j, \tau \})$; then $z$ lies in all non-empty pieces at once, and their union is starry with respect to $z$, that is, contractible. This is where ``rectangularity'' comes into play: the pieces are coordinate cuts of the same parallelepiped, and they have a common ``angle'' $z$.
+
+For an octahedron, none of these steps go through. The ball $\lone$ is not a product of intervals \textup{(}this is a cross-polytope, not a parallelepiped\textup{)}, the set $\bigl\{ \|x\|_1 > \tau \bigr\}$ does not split into coordinate cuts, the pieces have no common ``angle'', and, as point \textup{(a)} shows, even one intersection with one ball gives a non-contractible shell. More precisely, among the norms in $\R^n$, the product of intervals is the unit ball exactly for the sup-norm \textup{(}up to linear isometry\textup{)}, therefore the argument of the problem \textup{5}\,\textup{(a)} is a property of the sup-norm.
+
+\textbf{Part \textup{(c)}.} In dimension $2$, the $\lone$ and sup-norms are isometric. Linear display
+\[
+T(x, y) = (x + y,\ x - y)
+\]
+satisfies the identity
+\[
+\bigl\| T(x, y) \bigr\|_\infty = \max \bigl\{ |x + y|,\ |x - y| \bigr\} = |x| + |y| = \bigl\| (x, y)\bigr\|_1,
+\]
+since $\max\{ |x+y|, |x-y| \} = |x| + |y|$ \textup{(}it is enough to square both expressions\textup{)}. This means that $T$ is a linear isometry $(\R^2, \lone) \to (\R^2, \|\cdot\|_\infty)$: it takes the unit rhombus $\lone$ to the unit square of sup-norm and generally takes balls to balls of the same radii.
+
+Under linear isometry, the intersection property is preserved: it takes a family of balls of radius at most $\rho$ into a family of balls of the same radius, and the complement of a closed ball into the complement of a closed ball of the same radius, and contractibility is a topological invariant. Therefore, in $(\R^2, \lone)$ the intersection property is satisfied precisely because it is satisfied in $(\R^2, \|\cdot\|_\infty)$ \textup{(}item \textup{(a)} of problem \textup{5}\textup{)}.
+
+This is consistent with the fact that in dimension $2$ all norms have the intersection property, and shows where the counterexamples come from: the isometry $\lone \to \|\cdot\|_\infty$ is possible only for $n = 2$. Already in $\R^3$ the octahedron is not a linear image of the cube, and, as section \textup{(a)} shows, the requirement of preserving the contractibility of all intersections with the complements of large balls is not satisfied for it.
+
+\end{proof}
+
+\end{document}
