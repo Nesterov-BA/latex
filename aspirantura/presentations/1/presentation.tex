@@ -1,0 +1,166 @@
+\documentclass[12pt]{beamer}
+
+% ****************
+% ***** INFO *****
+% ****************
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry, csquotes}
+\usepackage[style = ieee]{biblatex}
+\addbibresource{refs_1.bib}
+\usetheme{Madrid}
+
+\def\epsimage#1#2#3#4{
+  \begin{figure}[!ht]
+    \begin{center}%
+      \includegraphics[height=#2\textheight]{#1.eps}\caption{#4}\label{#3}%
+    \end{center}
+\end{figure}}
+\renewcommand*{\bibfont}{\normalfont\footnotesize}
+% \usepackage{helvet}
+\title[Gromov--Hausdorff distance between clouds...]{Gromov--Hausdorff distance
+  between clouds with nontrivial
+intersection of stationary groups}
+\author{Nesterov B. A.}
+\date{2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Basic definitions}
+  \begin{itemize}
+    \item \textbf{Simplex} --- a metric space \( \Delta _ \alpha
+      \) in which all distances are equal to \( 1 \).
+    \item \textbf{Gromov--Hausdorff distance} $d_{GH}$ --- a metric on
+      classes of isometric compact spaces. For unbounded
+      spaces, $d_{GH}$ can be \( 0 \) or $\infty$.
+    \item \textbf{Correspondence} between spaces \( X, Y \) ---
+      a subset of \( X \times Y \) whose projections onto \( X \) and
+      \( Y \) are surjective.
+  \end{itemize}
+\end{frame}
+\begin{frame}{Basic definitions}
+  \begin{itemize}
+    \item \textbf{Cloud} $[X]$ --- an equivalence class: $Y\sim X \iff
+      d_{GH}(X,Y)<\infty$.
+    \item \textbf{Stationary group} $\mathrm{St}\big([X]\big) =
+      \bigl\{\lambda>0
+      : [\lambda X]=[X]\bigr\}$.
+    \item \textbf{Center} of a cloud with a nontrivial stationary
+      group --- the unique
+      $M$: $\lambda M = M$ for $\lambda\in\mathrm{St}\big([M]\big)$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Clouds --- proper classes}
+  \begin{block}{Lemma}
+    Every cloud contains spaces of arbitrarily large cardinality.
+  \end{block}
+  \pause
+  \begin{block}{Theorem 3.3}
+    All clouds are proper classes in the NBG axiom system.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Distance between clouds with intersecting stationary groups}
+  \begin{block}{Lemma 3.6}
+    Let $\mathrm{St}([X])\cap\mathrm{St}([Y])\neq\{1\}$. Then
+    $d_{GH}([X],[Y])$ is either $0$ or $\infty$.
+  \end{block}
+  \pause
+  \begin{block}{Examples}
+    The clouds \( [\mathbb{R}^n], n \in \mathbb{N} \), \( [\Delta _1] \)
+    all pairwise have a
+    nontrivial intersection of stationary groups equal to \(
+    \mathbb{R}^+ \).
+  \end{block}
+\end{frame}
+
+\begin{frame}{Theorem on the image of the center}
+  \begin{block}{Theorem 4.3}
+    Let $[M]$ be a cloud with a nontrivial stationary group, and
+    let $M$ be its
+    center. Let $R$ be a correspondence between $[\Delta_1]$ and
+    $[M]$ with distortion
+    $\varepsilon$. Then the image of $\Delta_1$ lies at distance $\le
+    2\varepsilon$ from $M$.
+  \end{block}
+  \pause
+  \textbf{Corollary (Theorem 5.1):}
+  If in $[M]$ there exist $Y_1,Y_2$ with $\max|Y_i,M|=r$, $|Y_1,Y_2|>r$, then
+  $d_{GH}([\Delta_1],[M])=\infty$.
+\end{frame}
+\begin{frame}
+  \epsimage{diffAngles}{0.50}{fig:diffAngles}{Illustration of the
+  discrepancy of distances}
+\end{frame}
+
+\begin{frame}{Cloud of the real line}
+  \begin{itemize}
+    \item $d_{GH}(\mathbb{Z},\mathbb{R}) = \frac12$,
+      $d_{GH}(\tilde{\mathbb{R}},\mathbb{R})\le\frac12$,
+      $d_{GH}(\mathbb{Z},\tilde{\mathbb{R}})\ge\frac23$ (Theorem 6.3).
+    \item The spaces $\mathbb{Z}$ and $\tilde{\mathbb{R}}$
+      satisfy the conditions of Theorem 5.1.
+    \item \textbf{Corollary 6.4:}
+      $d_{GH}([\Delta_1],[\mathbb{R}]) = \infty$.
+  \end{itemize}
+  \pause
+  \vfill
+  \textbf{Remark:} In the cloud $[\Delta_1]$, the
+  ultrametric inequality holds; in $[\mathbb{R}]$, it does not.
+\end{frame}
+
+\begin{frame}{Angles of clouds}
+  \begin{block}{Definition}
+    The angle between $X_1,X_2\in[M]$ ($M$ is the center):
+    \[
+      \varphi(X_1,X_2)=\arccos\frac{r_1^2+r_2^2-d^2}{2r_1r_2},\quad
+      r_i=|X_iM|,\ d=|X_1X_2|.
+    \]
+  \end{block}
+  \pause
+  \begin{block}{Definition}
+    The angle of the cloud $[M]$: $\varphi([M])=\sup\varphi(X_1,X_2).$
+
+    The isosceles angle $\varphi_e([M])$ is the supremum over
+    $|X_1M|=|X_2M|$.
+  \end{block}
+  \pause
+  \textbf{Examples:}
+  \[
+    \varphi([\Delta_1])=\frac\pi2,\quad
+    \varphi_e([\Delta_1])=\frac\pi3,\quad
+    \varphi([\mathbb{R}])=\varphi_e([\mathbb{R}])=\pi.
+  \]
+\end{frame}
+
+\begin{frame}{Theorem on clouds with different angles}
+  \begin{block}{Theorem 7.9}
+    Let $\mathrm{St}([M])\cap\mathrm{St}([N])\neq\{1\}$ and
+    $\varphi([M])\neq\varphi([N])$. Then $d_{GH}([M],[N])=\infty$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Conclusions}
+  \begin{itemize}
+    \item Clouds are proper classes, not sets (in NBG).
+    \item The distance between clouds with a nontrivial intersection of
+      stationary groups can only be $0$ or $\infty$.
+    \item The theorem on the image of the center is proved, and a condition
+      for the distance to $[\Delta_1]$ to be infinite is obtained.
+    \item The cloud of the real line is studied: distances to subspaces
+      are computed.
+    \item New invariants are introduced --- the angle and the isosceles
+      angle of a cloud.
+    \item A difference of angles under a nontrivial intersection
+      of stationary
+      groups implies that the Gromov--Hausdorff distance is infinite.
+  \end{itemize}
+\end{frame}
+\nocite{*}
+\printbibliography
+\end{document}
